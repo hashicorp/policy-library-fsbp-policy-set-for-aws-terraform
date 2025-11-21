@@ -21,11 +21,11 @@ const = {
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
 		default_cache_behavior = maps.get(res.values, "default_cache_behavior", [])
-		if default_cache_behavior is empty or default_cache_behavior[0] is not defined{
+		if default_cache_behavior is empty or default_cache_behavior[0] is not defined {
 			return true
 		}
 		viewer_protocol_policy = maps.get(default_cache_behavior[0], "viewer_protocol_policy", "")
-		
+
 		origin = maps.get(res.values, "origin", [])
 		if origin is empty or origin[0] is not defined {
 			return true
@@ -34,7 +34,7 @@ get_violations = func(resources) {
 		if custom_origin_config is empty or custom_origin_config[0] is not defined {
 			return true
 		}
-		
+
 		origin_protocol_policy = maps.get(custom_origin_config[0], "origin_protocol_policy", "")
 
 		if viewer_protocol_policy is "allow-all" and origin_protocol_policy is "match-viewer" {

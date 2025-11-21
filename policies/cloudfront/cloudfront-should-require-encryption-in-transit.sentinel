@@ -26,7 +26,7 @@ get_violations = func(resources) {
 		if default_cache_behavior_values is empty or default_cache_behavior_values[0] is not defined {
 			return true
 		}
-		
+
 		viewer_protocol_policy_values = maps.get(default_cache_behavior_values[0], const.viewer_protocol_policy, "")
 		return viewer_protocol_policy_values is not "allow-all"
 	})

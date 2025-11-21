@@ -24,7 +24,7 @@ get_violations = func(resources) {
 		if viewer_certificate is empty or viewer_certificate[0] is not defined {
 			return true
 		}
-		
+
 		ssl_support_method = maps.get(viewer_certificate[0], "ssl_support_method", "")
 		return ssl_support_method is not null and ssl_support_method is "sni-only"
 	})
