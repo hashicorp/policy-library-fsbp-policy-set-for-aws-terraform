@@ -21,7 +21,14 @@ const = {
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
 		origin = maps.get(res.values, "origin", [])
+		if origin is empty or origin[0] is not defined {
+			return true
+		}
 		custom_origin_config = maps.get(origin[0], "custom_origin_config", [])
+
+		if custom_origin_config is empty or custom_origin_config[0] is not defined {
+			return true
+		}
 		origin_ssl_protocols = maps.get(custom_origin_config[0], "origin_ssl_protocols", [])
 
 		return origin_ssl_protocols not contains "SSLv3"

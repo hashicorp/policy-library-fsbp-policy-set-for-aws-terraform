@@ -21,6 +21,9 @@ const = {
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
 		viewer_certificate = maps.get(res.values, "viewer_certificate", [])
+		if viewer_certificate is empty or viewer_certificate[0] is not defined {
+			return true
+		}
 		default_certificate = maps.get(viewer_certificate[0], "cloudfront_default_certificate", false)
 		return default_certificate is null or default_certificate is false
 	})
