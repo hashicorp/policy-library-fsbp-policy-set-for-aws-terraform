@@ -28,7 +28,7 @@ violations = collection.reject(resources, func(res) {
 	# Check if the engine is PostgreSQL
 	engine = maps.get(res, "values.engine", "")
 	if engine != const.db_postgres and engine != const.db_postgresql {
-		return false
+		return true
 	}
 
 	# Check if logs are exported to CloudWatch

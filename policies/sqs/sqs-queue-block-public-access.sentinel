@@ -42,7 +42,7 @@ get_complaint_resources = func(sqs_policy_resources, policy_document_resources) 
 }
 
 get_referenced_policy_statements = func(res) {
-	policy = res.config.policy
+	policy = maps.get(res.config, const.policy, {})
 	if policy[const.references] is not defined or policy[const.references][1] not matches "^data.aws_iam_policy_document.(.*)$" {
 		return false
 	}
@@ -55,7 +55,15 @@ get_referenced_policy_statements = func(res) {
 	}
 
 	datasource = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_iam_policy_document).address(address).resources
-	return filter datasource[0].values.statement as _, statement {
+	if datasource[0] is empty or datasource[0] is not defined {
+		return null
+	}
+
+	datasource_statements = maps.get(datasource[0], "values.statement", [])
+	if datasource_statements is empty {
+		return null
+	}
+	return filter datasource_statements as _, statement {
 		not (statement.effect is "Allow" and any statement.principals as _, principal {
 			principal.type is "*"
 		})
@@ -75,7 +83,7 @@ violations = []
 
 if sqs_queue_policy_complaint is not ["all"] {
 	sqs_queue_addresses = map sqs_queue_policy_complaint as _, res {
-		res.config.queue_url.references[1]
+		maps.get(res.config, "queue_url", {}).references[1]
 	}
 
 	violations = filter sqs_queue_resources as _, res {
