@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_dms_replication_task' have the 'replication_task_settings'
 # have logging enabled
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

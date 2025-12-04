@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_dms_endpoint' have the 'certificate_arn'
 # shouldn't be empty
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfconfig/v2" as tfconfig

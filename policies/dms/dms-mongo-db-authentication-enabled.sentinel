@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_dms_endpoint' have the 'auth_mechanism'
 # not set to default in 'mongodb_settings' for engine of type 'mongodb'
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

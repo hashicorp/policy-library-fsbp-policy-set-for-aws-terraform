@@ -1,6 +1,6 @@
 # This control checks if Amazon S3 logs for an 'aws_codebuild_project' are encrypted.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

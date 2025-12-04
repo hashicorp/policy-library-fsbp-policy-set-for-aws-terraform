@@ -1,6 +1,6 @@
 # This control checks whether a 'aws_codebuild_project' has at least one log option, either to S3 or CloudWatch logs enabled.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_dms_endpoint' have the 'ssl_security_protocol'
 # set to 'ssl-encryption' in 'redis_settings' for engine of type 'redis'
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
