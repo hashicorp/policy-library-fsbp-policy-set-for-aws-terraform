@@ -1,7 +1,7 @@
 # This policy ensures that resources of type 'aws_networkfirewall_firewall_policy' have
 # default stateless action should be 'aws:drop' or 'aws:forward_to_sfe' for fragmented packets
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
