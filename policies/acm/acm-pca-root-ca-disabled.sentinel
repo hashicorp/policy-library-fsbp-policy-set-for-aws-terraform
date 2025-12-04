@@ -1,7 +1,7 @@
 # This policy checks if AWS ACM Private CA has a root certificate authority (CA) that is enabled.
 # The control fails if the root CA is enabled with type 'ROOT'.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
