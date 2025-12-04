@@ -1,6 +1,6 @@
 # This control checks whether 'aws_cloudfront_distribution' are using the default SSL/TLS certificate CloudFront provides.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

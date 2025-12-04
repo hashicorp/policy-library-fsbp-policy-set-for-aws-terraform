@@ -1,7 +1,7 @@
 # This control checks whether an 'aws_cloudfront_distribution' is configured to return a specific object
 # that is the default root object.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
