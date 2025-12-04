@@ -1,5 +1,5 @@
 # This control checks whether 'aws_lambda_function' runtime settings match the expected values set for the supported runtimes in each language.
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
