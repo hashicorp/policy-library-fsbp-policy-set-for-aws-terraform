@@ -1,6 +1,6 @@
 # This policy requires block public access setting is enabled and any port other than 22 should not be allowed
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
