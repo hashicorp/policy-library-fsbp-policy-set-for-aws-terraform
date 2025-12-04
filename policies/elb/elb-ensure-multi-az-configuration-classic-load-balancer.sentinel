@@ -1,7 +1,7 @@
 # This policy checks if load balancers span across
 # multiple availability zones.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
