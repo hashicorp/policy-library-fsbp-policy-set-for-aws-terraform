@@ -1,6 +1,6 @@
 # This policy requires resources of type `aws_sqs_queue` should not be public by the resource 'aws_sqs_queue_policy'.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
