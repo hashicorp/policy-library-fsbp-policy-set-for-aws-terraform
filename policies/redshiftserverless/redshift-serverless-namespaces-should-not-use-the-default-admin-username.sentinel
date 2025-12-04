@@ -1,6 +1,6 @@
 # This control checks whether the admin username for an Amazon Redshift Serverless namespace is the default admin username, admin.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
