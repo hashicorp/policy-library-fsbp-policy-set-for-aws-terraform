@@ -2,7 +2,7 @@
 # the 'assign_public_ip' attribute under networking configuration
 # set to true
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
