@@ -1,6 +1,6 @@
 # S3 general purpose buckets should block public read access
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

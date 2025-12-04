@@ -1,6 +1,6 @@
 # This control checks whether an Amazon S3 Multi-Region Access Point has block public access settings enabled.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

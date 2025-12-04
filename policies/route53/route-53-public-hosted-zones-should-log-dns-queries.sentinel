@@ -1,6 +1,6 @@
 # This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
