@@ -1,6 +1,6 @@
 # This policy requires that  `point_in_time_recovery` attribute of the `aws_dynamodb_table` resource has `enabled` set to true
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

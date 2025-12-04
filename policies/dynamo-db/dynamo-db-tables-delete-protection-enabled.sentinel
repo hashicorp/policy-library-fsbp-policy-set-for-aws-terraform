@@ -1,6 +1,6 @@
 # This policy requires that  `dynamo-db-tables-delete-protection-enabled` attribute of the `aws_dynamodb_table` resource is set to true
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

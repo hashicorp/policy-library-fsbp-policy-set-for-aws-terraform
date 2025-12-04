@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_docdb_cluster' have the 'backup-retention-period'
 # attribute set in between '7 to 35'
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

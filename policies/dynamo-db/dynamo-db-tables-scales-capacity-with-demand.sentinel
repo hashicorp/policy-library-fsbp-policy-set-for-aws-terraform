@@ -1,7 +1,7 @@
 # This policy requires that `aws_dynamodb_table` resources with 'billing_mode' attribute set to 'PROVISIONED'
 # have autoscaling configured
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

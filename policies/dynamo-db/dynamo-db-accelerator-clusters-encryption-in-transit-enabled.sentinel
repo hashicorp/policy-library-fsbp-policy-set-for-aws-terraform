@@ -1,6 +1,6 @@
 # This policy requires that the `aws_dax_cluster` resource has `cluster_endpoint_encryption_type` attribute set to `TLS`
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
