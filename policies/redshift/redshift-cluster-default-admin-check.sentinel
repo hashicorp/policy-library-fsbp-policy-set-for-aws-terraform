@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_redshift_cluster' have the 'master_username'
 # attribute not set to null or 'awsuser' (default value)
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
