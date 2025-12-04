@@ -1,7 +1,7 @@
 # This policy checks for resource type of 'aws_api_gateway_method_settings' whether all stages
 # of an Amazon API Gateway REST or WebSocket API have logging enabled.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

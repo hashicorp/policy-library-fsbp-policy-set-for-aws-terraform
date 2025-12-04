@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_autoscaling_group' have more than one value
 # in either 'availability_zone' or 'vpc_zone_identifier'
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfconfig/v2" as tfconfig
