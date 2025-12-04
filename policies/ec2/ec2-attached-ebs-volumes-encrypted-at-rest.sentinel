@@ -1,6 +1,6 @@
 // This policy requires `aws_ebs_volume` resources to be encrypted and in attached state.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 // Imports

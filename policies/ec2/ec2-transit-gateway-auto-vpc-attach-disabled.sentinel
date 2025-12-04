@@ -1,6 +1,6 @@
 # This policy checks if the EC2 Transit Gateway have the attribute 'auto_accept_shared_attachments' set to disable
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
