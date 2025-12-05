@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_db_instance' have the 'username'
 # attribute not set to 'admin' (default value)
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
