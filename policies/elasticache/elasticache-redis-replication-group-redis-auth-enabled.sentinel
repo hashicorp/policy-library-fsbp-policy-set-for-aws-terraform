@@ -1,7 +1,7 @@
 # This policy requires that the `aws_elasticache_replication_group` resource with `engine_version`
 # less than 6.0 has `auth_token` set.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

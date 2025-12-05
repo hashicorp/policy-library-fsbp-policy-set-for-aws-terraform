@@ -1,6 +1,6 @@
 # This policy requires that the `automatic_failover_enabled` attribute of the `aws_elasticache_replication_group` resource is true.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
