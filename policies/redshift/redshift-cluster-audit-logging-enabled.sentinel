@@ -2,7 +2,7 @@
 # enable attribute set to true in logging or referenced to the
 # resource 'aws_redshift_logging'
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
