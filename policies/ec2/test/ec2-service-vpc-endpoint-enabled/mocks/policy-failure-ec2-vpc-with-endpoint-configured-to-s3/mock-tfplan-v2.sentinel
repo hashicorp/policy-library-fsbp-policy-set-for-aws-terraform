@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2024, 2025
+
 terraform_version = "1.10.2"
 
 planned_values = {
