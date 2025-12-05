@@ -1,7 +1,7 @@
 # This policy ensures that resources of type 'aws_ecr_repository' have
 # a lifecycle policy configured
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfconfig/v2" as tfconfig

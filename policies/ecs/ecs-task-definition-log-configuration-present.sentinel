@@ -1,7 +1,7 @@
 # This policy checks if all container definitions of a given 'aws_ecs_task_definition'
 # resource contains a non empty value for the logConfiguration.logDriver attribute.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
