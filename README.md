@@ -1,10 +1,10 @@
-# Pre-written Sentinel Policies for AWS FSBP Foundations Benchmarking
+# Pre-written Sentinel Policies for AWS Foundational Security Best Practices(FSBP)
 
-Pre-written Sentinel policies are ready to use compliance checks for FSBP AWS Foundations Benchmarking to help enable your AWS resources meet industry security standards.
+Pre-written Sentinel policies are ready to use compliance checks for AWS Foundational Security Best Practices(FSBP) to help enable your AWS resources meet industry security standards.
 
 At HashiCorp, we’re committed to making policy management easier for our customers. We understand that developing policies from scratch can be time-consuming and resource-intensive. To address this, we’re introducing our Prewritten Policy Libraries—expertly crafted, ready-to-use policies designed to streamline your compliance processes and enhance security across your infrastructure.
 
-This repository contains several policies designed to accelerate the adoption of the FSBP AWS Foundations Benchmark within HCP Terraform. These policies can be utilized to enforce best practices and security standards across your AWS environment.
+This repository contains several policies designed to accelerate the adoption of the AWS Foundational Security Best Practices(FSBP) within HCP Terraform and TFE. These policies can be utilized to enforce best practices and security standards across your AWS environment.
 
 For more details on how to work with these policies and to understand the Sentinel language and framework, please refer to the [Sentinel documentation](https://developer.hashicorp.com/sentinel/) or the README documentation included with each of the policy [libraries](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies).
 
