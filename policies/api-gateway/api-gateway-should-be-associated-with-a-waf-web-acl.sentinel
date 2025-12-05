@@ -1,6 +1,6 @@
 # This policy checks whether an 'aws_api_gateway_stage' uses 'aws_wafv2_web_acl_association'.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfconfig/v2" as tfconfig
