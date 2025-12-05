@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_msk_cluster' have the 'in_cluster'
 # attribute set to true in encryption_in_transit of encryption_info attribute
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
