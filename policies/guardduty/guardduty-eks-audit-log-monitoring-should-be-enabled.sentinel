@@ -1,6 +1,6 @@
 # This control checks whether 'aws_guardduty_detector' EKS Audit Log Monitoring is enabled.
 
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
