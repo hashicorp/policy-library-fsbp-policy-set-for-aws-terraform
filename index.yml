@@ -1,0 +1,2431 @@
+policies:
+  acm-pca-root-ca-disabled:
+    path: "policies/acm/acm-pca-root-ca-disabled.sentinel"
+    governed_resources: ["aws_acmpca_certificate_authority"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ACM"
+    description: "This policy checks if AWS ACM Private CA has a root certificate authority (CA) that is enabled. The control fails if the root CA is enabled with type 'ROOT'."
+    type: "sentinel"
+  acm-rsa-certificate-key-length-atleast-2048:
+    path: "policies/acm/acm-rsa-certificate-key-length-atleast-2048.sentinel"
+    governed_resources: ["aws_acm_certificate"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ACM"
+    description: "This policy requires resources of type `aws_acm_certificate` with rsa key algorithm should have atleast 2048 bits key length."
+    type: "sentinel"
+  api-gateway-access-logging-should-be-configured:
+    path: "policies/api-gateway/api-gateway-access-logging-should-be-configured.sentinel"
+    governed_resources: ["aws_apigatewayv2_stage"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks if 'aws_apigatewayv2_stage' have access logging configured."
+    type: "sentinel"
+  api-gateway-rest-and-websocket-api-logging-enabled:
+    path: "policies/api-gateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel"
+    governed_resources: ["aws_api_gateway_method_settings"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks for resource type of 'aws_api_gateway_method_settings' whether all stages of an Amazon API Gateway REST or WebSocket API have logging enabled."
+    type: "sentinel"
+  api-gateway-rest-cache-have-encryption-enabled:
+    path: "policies/api-gateway/api-gateway-rest-cache-have-encryption-enabled.sentinel"
+    governed_resources: ["aws_api_gateway_method_settings"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks 'aws_api_gateway_method_settings' in API Gateway REST API stages that have cache enabled are encrypted."
+    type: "sentinel"
+  api-gateway-rest-configure-ssl-certificates:
+    path: "policies/api-gateway/api-gateway-rest-configure-ssl-certificates.sentinel"
+    governed_resources: ["aws_api_gateway_stage"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks whether 'aws_api_gateway_stage' have SSL certificates configured."
+    type: "sentinel"
+  api-gateway-rest-have-x-ray-tracing-enabled:
+    path: "policies/api-gateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel"
+    governed_resources: ["aws_api_gateway_stage"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks whether AWS X-Ray active tracing is enabled for your resource 'aws_api_gateway_stage'."
+    type: "sentinel"
+  api-gateway-routes-should-specify-an-authorization-type:
+    path: "policies/api-gateway/api-gateway-routes-should-specify-an-authorization-type.sentinel"
+    governed_resources: ["aws_apigatewayv2_route"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks if 'aws_apigatewayv2_route' have an authorization type."
+    type: "sentinel"
+  api-gateway-should-be-associated-with-a-waf-web-acl:
+    path: "policies/api-gateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel"
+    governed_resources: ["aws_wafv2_web_acl_association"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "API Gateway"
+    description: "This policy checks whether an 'aws_api_gateway_stage' uses 'aws_wafv2_web_acl_association'."
+    type: "sentinel"
+  appsync-cache-should-be-encrypted-at-transit:
+    path: "policies/appsync/appsync-cache-should-be-encrypted-at-transit.sentinel"
+    governed_resources: ["aws_appsync_api_cache"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "AppSync"
+    description: "This policy requires resources of type `aws_appsync_api_cache` have attribute `transit_encryption_enabled` should be `true`."
+    type: "sentinel"
+  appsync-field-level-logging-should-be-enabled:
+    path: "policies/appsync/appsync-field-level-logging-should-be-enabled.sentinel"
+    governed_resources: ["aws_appsync_graphql_api"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "AppSync"
+    description: "This policy requires resources of type `aws_appsync_graphql_api` have attribute `log_config` with `field_log_level` set to `ERROR` or `ALL`."
+    type: "sentinel"
+  appsync-graphql-api-should-not-authenticate-with-api-keys:
+    path: "policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel"
+    governed_resources: ["aws_appsync_graphql_api"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "AppSync"
+    description: "This policy requires resources of type `aws_appsync_graphql_api` have attribute `authentication_type` should not be `API_KEY`."
+    type: "sentinel"
+  appsync-graphqlapi-cache-should-be-encrypted-at-rest:
+    path: "policies/appsync/appsync-graphqlapi-cache-should-be-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_appsync_api_cache", "aws_appsync_graphql_api"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "AppSync"
+    description: "This policy requires resources of type `aws_appsync_api_cache` should have 'at_rest_encryption_enabled' should be set to true and 'api_id' should be referenced to `aws_appsync_graphql_api` resource."
+    type: "sentinel"
+  athena-workgroup-should-have-logging-enabled:
+    path: "policies/athena/athena-workgroup-should-have-logging-enabled.sentinel"
+    governed_resources: ["aws_athena_workgroup"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Athena"
+    description: "This policy requires resources of type `aws_athena_workgroup` have attribute `publish_cloudwatch_metrics_enabled` should be `true`."
+    type: "sentinel"
+  aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs:
+    path: "policies/rds/aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs.sentinel"
+    governed_resources: ["aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This control checks whether an Amazon Aurora PostgreSQL DB cluster is configured to publish logs to Amazon CloudWatch Logs."
+    type: "sentinel"
+  autoscaling-group-should-cover-multiple-azs:
+    path: "policies/autoscaling-group/autoscaling-group-should-cover-multiple-azs.sentinel"
+    governed_resources: ["aws_autoscaling_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Auto Scaling Group"
+    description: "This policy checks if resources of type 'aws_autoscaling_group' have more than one value in either 'availability_zone' or 'vpc_zone_identifier'"
+    type: "sentinel"
+  autoscaling-group-should-use-launch-templates:
+    path: "policies/autoscaling-group/autoscaling-group-should-use-launch-templates.sentinel"
+    governed_resources: ["aws_autoscaling_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Auto Scaling Group"
+    description: "This policy checks if resources of type 'aws_autoscaling_group' have the 'launch_template' atribute or the attribute must be present in 'mixed_instances_policy'"
+    type: "sentinel"
+  autoscaling-group-should-use-multiple-instance-types:
+    path: "policies/autoscaling-group/autoscaling-group-should-use-multiple-instance-types.sentinel"
+    governed_resources: ["aws_autoscaling_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Auto Scaling Group"
+    description: "This policy checks if resources of type 'aws_autoscaling_group' have the multiple instance types"
+    type: "sentinel"
+  autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck:
+    path: "policies/autoscaling-group/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel"
+    governed_resources: ["aws_autoscaling_attachment", "aws_autoscaling_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Auto Scaling Group"
+    description: "This policy requires `aws_autoscaling_group` resources to be associated with load balancers and to have attribute 'health_check_health_check_type' should be 'ELB'."
+    type: "sentinel"
+  autoscaling-launch-config-public-ip-disabled:
+    path: "policies/autoscaling-group/autoscaling-launch-config-public-ip-disabled.sentinel"
+    governed_resources: ["aws_launch_configuration"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Auto Scaling Group"
+    description: "This policy requires resources of type `aws_launch_configuration` should have 'associate_public_ip_address' set to false."
+    type: "sentinel"
+  backup-recovery-point-encrypted:
+    path: "policies/backup/backup-recovery-point-encrypted.sentinel"
+    governed_resources: ["aws_backup_framework"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Backup"
+    description: "This policy checks if resources of type 'aws_backup_framework' have the attribute 'control' value set to 'BACKUP_RECOVERY_POINT_ENCRYPTED'"
+    type: "sentinel"
+  cloudfront-associated-with-waf:
+    path: "policies/cloudfront/cloudfront-associated-with-waf.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This policy checks whether 'aws_cloudfront_distribution' are associated with either AWS WAF Classic or AWS WAF web ACLs."
+    type: "sentinel"
+  cloudfront-distributions-should-encrypt-traffic-to-custom-origins:
+    path: "policies/cloudfront/cloudfront-distributions-should-encrypt-traffic-to-custom-origins.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether 'aws_cloudfront_distribution' are encrypting traffic to custom origins."
+    type: "sentinel"
+  cloudfront-distributions-should-have-logging-enabled:
+    path: "policies/cloudfront/cloudfront-distributions-should-have-logging-enabled.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether server access logging is enabled on 'aws_cloudfront_distribution'."
+    type: "sentinel"
+  cloudfront-distributions-should-have-origin-failover-configured:
+    path: "policies/cloudfront/cloudfront-distributions-should-have-origin-failover-configured.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether an 'aws_cloudfront_distribution' is configured with an origin group that has two or more origins."
+    type: "sentinel"
+  cloudfront-distributions-should-not-use-deprecated-ssl-protocols:
+    path: "policies/cloudfront/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether 'aws_cloudfront_distribution' are using deprecated SSL protocols for HTTPS communication between CloudFront edge locations and your custom origins."
+    type: "sentinel"
+  cloudfront-distributions-should-use-custom-ssl-tls-certificates:
+    path: "policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether 'aws_cloudfront_distribution' are using the default SSL/TLS certificate CloudFront provides."
+    type: "sentinel"
+  cloudfront-distributions-should-use-sni-to-serve-https-requests:
+    path: "policies/cloudfront/cloudfront-distributions-should-use-sni-to-serve-https-requests.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether 'aws_cloudfront_distribution' are using a custom SSL/TLS certificate and are configured to use SNI to serve HTTPS requests."
+    type: "sentinel"
+  cloudfront-s3-origin-access-control-enabled:
+    path: "policies/cloudfront/cloudfront-s3-origin-access-control-enabled.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This policy checks whether an 'aws_cloudfront_distribution' with an Amazon S3 origin has 'aws_cloudfront_origin_access_control' configured."
+    type: "sentinel"
+  cloudfront-s3-origin-non-existent-bucket:
+    path: "policies/cloudfront/cloudfront-s3-origin-non-existent-bucket.sentinel"
+    governed_resources: ["aws_cloudfront_distribution", "aws_s3_bucket"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This policy checks whether 'aws_cloudfront_distribution' are pointing to non-existent Amazon S3 origins."
+    type: "sentinel"
+  cloudfront-should-have-default-root-object-configured:
+    path: "policies/cloudfront/cloudfront-should-have-default-root-object-configured.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether an 'aws_cloudfront_distribution' is configured to return a specific object that is the default root object."
+    type: "sentinel"
+  cloudfront-should-require-encryption-in-transit:
+    path: "policies/cloudfront/cloudfront-should-require-encryption-in-transit.sentinel"
+    governed_resources: ["aws_cloudfront_distribution"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudFront"
+    description: "This control checks whether an 'aws_cloudfront_distribution' requires viewers to use HTTPS directly or whether it uses redirection."
+    type: "sentinel"
+  cloudtrail-cloudwatch-logs-group-arn-present:
+    path: "policies/cloudtrail/cloudtrail-cloudwatch-logs-group-arn-present.sentinel"
+    governed_resources: ["aws_cloudtrail"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudTrail"
+    description: "This policy requires resources of type `aws_cloudtrail` to have cloudwatch log group arn set."
+    type: "sentinel"
+  cloudtrail-log-file-validation-enabled:
+    path: "policies/cloudtrail/cloudtrail-log-file-validation-enabled.sentinel"
+    governed_resources: ["aws_cloudtrail"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudTrail"
+    description: "This policy requires resources of type `aws_cloudtrail` to have log file validation enabled."
+    type: "sentinel"
+  cloudtrail-server-side-encryption-enabled:
+    path: "policies/cloudtrail/cloudtrail-server-side-encryption-enabled.sentinel"
+    governed_resources: ["aws_cloudtrail"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CloudTrail"
+    description: "This policy requires that resources of type `aws_cloudtrail` have server-side encryption enabled."
+    type: "sentinel"
+  codebuild-bitbucket-url-should-not-contain-sensitive-credentials:
+    path: "policies/codebuild/codebuild-bitbucket-url-should-not-contain-sensitive-credentials.sentinel"
+    governed_resources: ["aws_codebuild_project"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CodeBuild"
+    description: "This control checks whether an 'aws_codebuild_project' Bitbucket source repository URL contains personal access tokens or a user name and password."
+    type: "sentinel"
+  codebuild-project-environments-should-have-a-logging-aws-configuration:
+    path: "policies/codebuild/codebuild-project-environments-should-have-a-logging-aws-configuration.sentinel"
+    governed_resources: ["aws_codebuild_project"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CodeBuild"
+    description: "This control checks whether a 'aws_codebuild_project' has at least one log option, either to S3 or CloudWatch logs enabled."
+    type: "sentinel"
+  codebuild-s3-logs-should-be-encrypted:
+    path: "policies/codebuild/codebuild-s3-logs-should-be-encrypted.sentinel"
+    governed_resources: ["aws_codebuild_project"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "CodeBuild"
+    description: "This control checks if Amazon S3 logs for an 'aws_codebuild_project' are encrypted."
+    type: "sentinel"
+  connect-instance-flow-logging-should-be-enabled:
+    path: "policies/connect/connect-instance-flow-logging-should-be-enabled.sentinel"
+    governed_resources: ["aws_connect_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Connect"
+    description: "This policy requires resources of type `aws_connect_instance` have attribute `contact_flow_logs_enabled` should be true."
+    type: "sentinel"
+  datasync-task-should-have-logging-enabled:
+    path: "policies/datasync/datasync-task-should-have-logging-enabled.sentinel"
+    governed_resources: ["aws_datasync_task"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DataSync"
+    description: "This policy requires resources of type `aws_datasync_task` have attribute `cloudwatch_log_group_arn` should not be empty and log_level should not be 'OFF'."
+    type: "sentinel"
+  dms-auto-minor-version-upgrade-check:
+    path: "policies/dms/dms-auto-minor-version-upgrade-check.sentinel"
+    governed_resources: ["aws_dms_replication_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy checks if resources of type 'aws_dms_replication_instance' have the 'auto_minor_version_upgrade' attribute set to true"
+    type: "sentinel"
+  dms-endpoint-should-be-ssl-configured:
+    path: "policies/dms/dms-endpoint-should-be-ssl-configured.sentinel"
+    governed_resources: ["aws_dms_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy checks if resources of type 'aws_dms_endpoint' have the 'certificate_arn' shouldn't be empty"
+    type: "sentinel"
+  dms-endpoints-should-use-ssl:
+    path: "policies/dms/dms-endpoints-should-use-ssl.sentinel"
+    governed_resources: ["aws_dms_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy requires resources of type `aws_dms_endpoint` have attribute \"ssl_mode\" set to one of: require, verify-ca, verify-full."
+    type: "sentinel"
+  dms-mongo-db-authentication-enabled:
+    path: "policies/dms/dms-mongo-db-authentication-enabled.sentinel"
+    governed_resources: ["aws_dms_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy checks if resources of type 'aws_dms_endpoint' have the 'auth_mechanism' not set to default in 'mongodb_settings' for engine of type 'mongodb'"
+    type: "sentinel"
+  dms-redis-tls-enabled:
+    path: "policies/dms/dms-redis-tls-enabled.sentinel"
+    governed_resources: ["aws_dms_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy checks if resources of type 'aws_dms_endpoint' have the 'ssl_security_protocol' set to 'ssl-encryption' in 'redis_settings' for engine of type 'redis'"
+    type: "sentinel"
+  dms-replication-instances-should-not-be-public:
+    path: "policies/dms/dms-replication-instances-should-not-be-public.sentinel"
+    governed_resources: ["aws_dms_replication_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy checks if resources of type 'aws_dms_replication_instance' have the 'publicly_accessible' attribute set to false"
+    type: "sentinel"
+  dms-replication-task-logging-enabled:
+    path: "policies/dms/dms-replication-task-logging-enabled.sentinel"
+    governed_resources: ["aws_dms_replication_task"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DMS"
+    description: "This policy checks if resources of type 'aws_dms_replication_task' have the 'replication_task_settings' have logging enabled"
+    type: "sentinel"
+  docdb-cluster-audit-logging-enabled:
+    path: "policies/docdb/docdb-cluster-audit-logging-enabled.sentinel"
+    governed_resources: ["aws_docdb_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DocDB"
+    description: "This policy checks if resources of type 'aws_docdb_cluster' have the 'enabled_cloudwatch_logs_exports attribute' set to 'audit'"
+    type: "sentinel"
+  docdb-cluster-backup-retention-check:
+    path: "policies/docdb/docdb-cluster-backup-retention-check.sentinel"
+    governed_resources: ["aws_docdb_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DocDB"
+    description: "This policy checks if resources of type 'aws_docdb_cluster' have the 'backup-retention-period' attribute set in between '7 to 35'"
+    type: "sentinel"
+  docdb-cluster-deletion-protection-enabled:
+    path: "policies/docdb/docdb-cluster-deletion-protection-enabled.sentinel"
+    governed_resources: ["aws_docdb_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DocDB"
+    description: "This policy checks if resources of type 'aws_docdb_cluster' have the 'deletion_protection' attribute set to true"
+    type: "sentinel"
+  docdb-cluster-storage-encrypted:
+    path: "policies/docdb/docdb-cluster-storage-encrypted.sentinel"
+    governed_resources: ["aws_docdb_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DocDB"
+    description: "This policy checks if resources of type 'aws_docdb_cluster' have the 'storage_encrypted' attribute set to true"
+    type: "sentinel"
+  dynamo-db-accelerator-clusters-encryption-at-rest-enabled:
+    path: "policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel"
+    governed_resources: ["aws_dax_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DynamoDB"
+    description: "This policy requires that `server_side_encryption` attribute of the `aws_dax_cluster` resource has `enabled` set to true"
+    type: "sentinel"
+  dynamo-db-accelerator-clusters-encryption-in-transit-enabled:
+    path: "policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-in-transit-enabled.sentinel"
+    governed_resources: ["aws_dax_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DynamoDB"
+    description: "This policy requires that the `aws_dax_cluster` resource has `cluster_endpoint_encryption_type` attribute set to `TLS`"
+    type: "sentinel"
+  dynamo-db-tables-delete-protection-enabled:
+    path: "policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel"
+    governed_resources: ["aws_dynamodb_table"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DynamoDB"
+    description: "This policy requires that `dynamo-db-tables-delete-protection-enabled` attribute of the `aws_dynamodb_table` resource is set to true"
+    type: "sentinel"
+  dynamo-db-tables-point-in-time-recovery-enabled:
+    path: "policies/dynamo-db/dynamo-db-tables-point-in-time-recovery-enabled.sentinel"
+    governed_resources: ["aws_dynamodb_table"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DynamoDB"
+    description: "This policy requires that `point_in_time_recovery` attribute of the `aws_dynamodb_table` resource has `enabled` set to true"
+    type: "sentinel"
+  dynamo-db-tables-scales-capacity-with-demand:
+    path: "policies/dynamo-db/dynamo-db-tables-scales-capacity-with-demand.sentinel"
+    governed_resources: ["aws_appautoscaling_policy", "aws_appautoscaling_target", "aws_dynamodb_table"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "DynamoDB"
+    description: "This policy requires that `aws_dynamodb_table` resources with 'billing_mode' attribute set to 'PROVISIONED' have autoscaling configured"
+    type: "sentinel"
+  ec2-attached-ebs-volumes-encrypted-at-rest:
+    path: "policies/ec2/ec2-attached-ebs-volumes-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_ebs_volume", "aws_volume_attachment"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires `aws_ebs_volume` resources to be encrypted and in attached state."
+    type: "sentinel"
+  ec2-client-vpn-connection-log-enabled:
+    path: "policies/ec2/ec2-client-vpn-connection-log-enabled.sentinel"
+    governed_resources: ["aws_ec2_client_vpn_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy checks if resources of type 'aws_ec2_client_vpn_endpoint' have the cloudwatch logs enabled in the 'connection_log_options' attribute"
+    type: "sentinel"
+  ec2-ebs-encryption-enabled:
+    path: "policies/ec2/ec2-ebs-encryption-enabled.sentinel"
+    governed_resources: ["aws_ebs_volume"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_ebs_volume` have the `encrypted` attribute set to `true`."
+    type: "sentinel"
+  ec2-ebs-snapshot-public-restorable-check-account-level:
+    path: "policies/ec2/ec2-ebs-snapshot-public-restorable-check-account-level.sentinel"
+    governed_resources: ["aws_ebs_snapshot_block_public_access"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires `aws_ebs_snapshot_block_public_access` resources to have attribute state to either 'block-new-sharing' or 'block-all-sharing'."
+    type: "sentinel"
+  ec2-instance-should-not-have-public-ip:
+    path: "policies/ec2/ec2-instance-should-not-have-public-ip.sentinel"
+    governed_resources: ["aws_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_instance` to not have a public IP address."
+    type: "sentinel"
+  ec2-instance-should-not-use-multiple-enis:
+    path: "policies/ec2/ec2-instance-should-not-use-multiple-enis.sentinel"
+    governed_resources: ["aws_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy checks if the EC2 Instance have only one Network Interface"
+    type: "sentinel"
+  ec2-instance-virtualization-should-not-be-paravirtual:
+    path: "policies/ec2/ec2-instance-virtualization-should-not-be-paravirtual.sentinel"
+    governed_resources: ["aws_ami", "aws_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires `aws_ami` resources to have attribute 'virtualization_type' to be 'hvm'."
+    type: "sentinel"
+  ec2-launch-template-imdsv2-check:
+    path: "policies/ec2/ec2-launch-template-imdsv2-check.sentinel"
+    governed_resources: ["aws_launch_template"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy checks if resources of type 'aws_launch_template' have the attribute 'http_tokens' in 'metadata_options' set to 'required'"
+    type: "sentinel"
+  ec2-launch-template-public-ip-disabled:
+    path: "policies/ec2/ec2-launch-template-public-ip-disabled.sentinel"
+    governed_resources: ["aws_launch_template"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy checks if resources of type 'aws_launch_template' have the attribute 'associate_public_ip_address' in 'network_interfaces' set to 'false'"
+    type: "sentinel"
+  ec2-metadata-imdsv2-required:
+    path: "policies/ec2/ec2-metadata-imdsv2-required.sentinel"
+    governed_resources: ["aws_ec2_instance_metadata_defaults", "aws_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type 'aws_instance' or 'aws_ec2_instance_metadata_defaults' to have 'http_tokens' attribute set to 'required'."
+    type: "sentinel"
+  ec2-network-acl:
+    path: "policies/ec2/ec2-network-acl.sentinel"
+    governed_resources: ["aws_network_acl", "aws_network_acl_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_network_acl` and `aws_network_acl_rule` to block ingress traffic from unknown sources to the configured ports"
+    type: "sentinel"
+  ec2-network-acl-should-have-subnet-ids:
+    path: "policies/ec2/ec2-network-acl-should-have-subnet-ids.sentinel"
+    governed_resources: ["aws_network_acl", "aws_network_acl_association"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires `aws_network_acl` resources to have 'subnet_ids' present."
+    type: "sentinel"
+  ec2-security-group-ingress-traffic-restriction-to-common-ports:
+    path: "policies/ec2/ec2-security-group-ingress-traffic-restriction-to-common-ports.sentinel"
+    governed_resources: ["aws_security_group", "aws_security_group_rule", "aws_vpc_security_group_ingress_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "Imports"
+    type: "sentinel"
+  ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports:
+    path: "policies/ec2/ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports.sentinel"
+    governed_resources: ["aws_security_group", "aws_security_group_rule", "aws_vpc_security_group_ingress_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "Security groups should only allow unrestricted incoming traffic for authorized ports"
+    type: "sentinel"
+  ec2-service-vpc-endpoint-enabled:
+    path: "policies/ec2/ec2-service-vpc-endpoint-enabled.sentinel"
+    governed_resources: ["aws_vpc", "aws_vpc_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires `aws_vpc_endpoint` resources to have attribute 'vpc_endpoint_type' to be 'Interface' and 'service_name' to be 'ec2'."
+    type: "sentinel"
+  ec2-subnet-with-auto-assign-public-ip-disabled:
+    path: "policies/ec2/ec2-subnet-with-auto-assign-public-ip-disabled.sentinel"
+    governed_resources: ["aws_subnet"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires `aws_subnet` resources to have attribute 'map_public_ip_on_launch' to be false."
+    type: "sentinel"
+  ec2-transit-gateway-auto-vpc-attach-disabled:
+    path: "policies/ec2/ec2-transit-gateway-auto-vpc-attach-disabled.sentinel"
+    governed_resources: ["aws_ec2_transit_gateway"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy checks if the EC2 Transit Gateway have the attribute 'auto_accept_shared_attachments' set to disable"
+    type: "sentinel"
+  ec2-vpc-block-public-access-options-should-block-internet-gateway-traffic:
+    path: "policies/ec2/ec2-vpc-block-public-access-options-should-block-internet-gateway-traffic.sentinel"
+    governed_resources: ["aws_vpc_block_public_access_options"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_vpc_block_public_access_options` have attribute `internet_gateway_block_mode` should be either 'block-bidirectional' or 'block-ingress'."
+    type: "sentinel"
+  ec2-vpc-default-security-group-no-traffic:
+    path: "policies/ec2/ec2-vpc-default-security-group-no-traffic.sentinel"
+    governed_resources: ["aws_default_security_group", "aws_security_group_rule", "aws_vpc_security_group_egress_rule", "aws_vpc_security_group_ingress_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_vpc` to have no traffic for default security group."
+    type: "sentinel"
+  ec2-vpc-flow-logging-enabled:
+    path: "policies/ec2/ec2-vpc-flow-logging-enabled.sentinel"
+    governed_resources: ["aws_default_vpc", "aws_flow_log", "aws_vpc"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_vpc` and `aws_default_vpc` to have flow logs enabled."
+    type: "sentinel"
+  ec2-vpc-should-be-configured-for-interface-endpoint:
+    path: "policies/ec2/ec2-vpc-should-be-configured-for-interface-endpoint.sentinel"
+    governed_resources: ["aws_vpc", "aws_vpc_endpoint"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy requires resources of type `aws_vpc_endpoint` should have 'vpc_endpoint_type' configured with interface endpoint and should be referenced to `aws_vpc` resource."
+    type: "sentinel"
+  ec2-vpn-connection-logging-enabled:
+    path: "policies/ec2/ec2-vpn-connection-logging-enabled.sentinel"
+    governed_resources: ["aws_vpn_connection"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EC2"
+    description: "This policy checks if resources of type 'aws_vpn_connection' have the cloudwatch logs enabled for both 'tunnel1' and 'tunnel2'"
+    type: "sentinel"
+  ecr-image-scanning-enabled:
+    path: "policies/ecr/ecr-image-scanning-enabled.sentinel"
+    governed_resources: ["aws_ecr_repository"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECR"
+    description: "This policy checks if resources of type 'aws_ecr_repository' have image scanning configuration enabled"
+    type: "sentinel"
+  ecr-lifecycle-policy-configured:
+    path: "policies/ecr/ecr-lifecycle-policy-configured.sentinel"
+    governed_resources: ["aws_ecr_lifecycle_policy", "aws_ecr_repository"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECR"
+    description: "This policy ensures that resources of type 'aws_ecr_repository' have a lifecycle policy configured"
+    type: "sentinel"
+  ecr-tag-immutability-configured:
+    path: "policies/ecr/ecr-tag-immutability-configured.sentinel"
+    governed_resources: ["aws_ecr_repository"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECR"
+    description: "This policy checks if resources of type 'aws_ecr_repository' have tag immutability configured"
+    type: "sentinel"
+  ecs-cluster-enable-container-insights:
+    path: "policies/ecs/ecs-cluster-enable-container-insights.sentinel"
+    governed_resources: ["aws_ecs_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if the 'aws_ecs_cluster' has the setting named 'containerInsights' enabled"
+    type: "sentinel"
+  ecs-fargate-service-platform-compatibility:
+    path: "policies/ecs/ecs-fargate-service-platform-compatibility.sentinel"
+    governed_resources: ["aws_ecs_service"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if resources of type 'aws_ecs_service' with launch_type as 'FARGATE' points to the 'LATEST' platform version"
+    type: "sentinel"
+  ecs-non-privileged-container-definitions:
+    path: "policies/ecs/ecs-non-privileged-container-definitions.sentinel"
+    governed_resources: ["aws_ecs_task_definition"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if the container definitions have the 'privileged' parameter set to true and fails if that is the case."
+    type: "sentinel"
+  ecs-service-no-public-ip-assignment:
+    path: "policies/ecs/ecs-service-no-public-ip-assignment.sentinel"
+    governed_resources: ["aws_ecs_service"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if resources of type 'aws_ecs_service' have the 'assign_public_ip' attribute under networking configuration set to true"
+    type: "sentinel"
+  ecs-task-definition-log-configuration-present:
+    path: "policies/ecs/ecs-task-definition-log-configuration-present.sentinel"
+    governed_resources: ["aws_ecs_task_definition"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if all container definitions of a given 'aws_ecs_task_definition' resource contains a non empty value for the logConfiguration.logDriver attribute."
+    type: "sentinel"
+  ecs-task-definition-no-secrets-as-environment-variables:
+    path: "policies/ecs/ecs-task-definition-no-secrets-as-environment-variables.sentinel"
+    governed_resources: ["aws_ecs_task_definition"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if the container definitions contain non allow listed secrets as environment variables"
+    type: "sentinel"
+  ecs-task-definition-read-only-root-file-system-access:
+    path: "policies/ecs/ecs-task-definition-read-only-root-file-system-access.sentinel"
+    governed_resources: ["aws_ecs_task_definition"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if the container definitions have the 'readOnlyRootFileSystem' set to true."
+    type: "sentinel"
+  ecs-task-definition-restrict-process-id:
+    path: "policies/ecs/ecs-task-definition-restrict-process-id.sentinel"
+    governed_resources: ["aws_ecs_task_definition"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if the 'pidMode' attribute for resources of type 'aws_ecs_task_definition' is equal to 'host'"
+    type: "sentinel"
+  ecs-task-definition-secure-networking-mode-and-user-definitions:
+    path: "policies/ecs/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel"
+    governed_resources: ["aws_ecs_task_definition"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy checks if the task definition with host networking mode has unprivileged or user container definitions."
+    type: "sentinel"
+  ecs-task-set-assign-public-ip-disabled:
+    path: "policies/ecs/ecs-task-set-assign-public-ip-disabled.sentinel"
+    governed_resources: ["aws_ecs_task_set"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ECS"
+    description: "This policy requires resources of type `aws_ecs_task_set` have attribute `assign_public_ip` should be false."
+    type: "sentinel"
+  efs-access-point-should-enforce-root-directory:
+    path: "policies/efs/efs-access-point-should-enforce-root-directory.sentinel"
+    governed_resources: ["aws_efs_access_point"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EFS"
+    description: "This policy requires resources of type `aws_efs_access_point` have attribute `root_directory` should not have path set to '/'."
+    type: "sentinel"
+  efs-access-point-should-enforce-user-identity:
+    path: "policies/efs/efs-access-point-should-enforce-user-identity.sentinel"
+    governed_resources: ["aws_efs_access_point"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EFS"
+    description: "This policy requires resources of type `aws_efs_access_point` have attribute `posix_user` should be defined."
+    type: "sentinel"
+  efs-automatic-backups-enabled:
+    path: "policies/efs/efs-automatic-backups-enabled.sentinel"
+    governed_resources: ["aws_efs_backup_policy", "aws_efs_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EFS"
+    description: "This policy requires EFS file systems to have automatic backups enabled"
+    type: "sentinel"
+  efs-file-systems-should-be-encrypted-at-rest:
+    path: "policies/efs/efs-file-systems-should-be-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_efs_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EFS"
+    description: "This policy requires resources of type `aws_efs_file_system` should have 'encrypted' set to true and 'kms_key_id' should not be empty."
+    type: "sentinel"
+  efs-file-systems-should-be-in-backup-plans:
+    path: "policies/efs/efs-file-systems-should-be-in-backup-plans.sentinel"
+    governed_resources: ["aws_backup_selection", "aws_efs_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EFS"
+    description: "This policy requires resources of type `aws_efs_file_system` should be associated with resource 'aws_backup_selection'."
+    type: "sentinel"
+  efs-filesystem-encrypted:
+    path: "policies/efs/efs-filesystem-encrypted.sentinel"
+    governed_resources: ["aws_efs_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EFS"
+    description: "This policy requires resources of type `aws_efs_file_system` have attribute \"encrypted\" set to true."
+    type: "sentinel"
+  eks-cluster-audit-logging-enabled:
+    path: "policies/eks/eks-cluster-audit-logging-enabled.sentinel"
+    governed_resources: ["aws_eks_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EKS"
+    description: "This policy checks if 'aws_eks_cluster' resources have their unrestricted public endpoint access"
+    type: "sentinel"
+  eks-cluster-encrypted-kubernetes-secrets:
+    path: "policies/eks/eks-cluster-encrypted-kubernetes-secrets.sentinel"
+    governed_resources: ["aws_eks_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EKS"
+    description: "This policy checks if 'aws_eks_cluster' uses KMS service to encrypted Kubernetes secrets"
+    type: "sentinel"
+  eks-cluster-endpoints-restrict-public-access:
+    path: "policies/eks/eks-cluster-endpoints-restrict-public-access.sentinel"
+    governed_resources: ["aws_eks_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EKS"
+    description: "This policy checks if 'aws_eks_cluster' resources have their unrestricted public endpoint access"
+    type: "sentinel"
+  eks-cluster-supported-k8s-version-check:
+    path: "policies/eks/eks-cluster-supported-k8s-version-check.sentinel"
+    governed_resources: ["aws_eks_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EKS"
+    description: "This policy checks if 'aws_eks_cluster' does not run on unsupported kubernetes versions"
+    type: "sentinel"
+  elasticache-redis-cluster-auto-backup-enabled:
+    path: "policies/elasticache/elasticache-redis-cluster-auto-backup-enabled.sentinel"
+    governed_resources: ["aws_elasticache_cluster", "aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `snapshot_retention_limit` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is greater than 0."
+    type: "sentinel"
+  elasticache-redis-cluster-auto-minor-version-upgrade-enabled:
+    path: "policies/elasticache/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel"
+    governed_resources: ["aws_elasticache_cluster", "aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `auto_minor_version_upgrade` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is true."
+    type: "sentinel"
+  elasticache-redis-cluster-non-default-subnet-enabled:
+    path: "policies/elasticache/elasticache-redis-cluster-non-default-subnet-enabled.sentinel"
+    governed_resources: ["aws_elasticache_cluster", "aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `subnet_group_name` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is set."
+    type: "sentinel"
+  elasticache-redis-replication-group-auto-failover-enabled:
+    path: "policies/elasticache/elasticache-redis-replication-group-auto-failover-enabled.sentinel"
+    governed_resources: ["aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `automatic_failover_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: "sentinel"
+  elasticache-redis-replication-group-encryption-at-rest-enabled:
+    path: "policies/elasticache/elasticache-redis-replication-group-encryption-at-rest-enabled.sentinel"
+    governed_resources: ["aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `at_rest_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: "sentinel"
+  elasticache-redis-replication-group-encryption-at-transit-enabled:
+    path: "policies/elasticache/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel"
+    governed_resources: ["aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `transit_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: "sentinel"
+  elasticache-redis-replication-group-redis-auth-enabled:
+    path: "policies/elasticache/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
+    governed_resources: ["aws_elasticache_replication_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ElastiCache"
+    description: "This policy requires that the `aws_elasticache_replication_group` resource with `engine_version` less than 6.0 has `auth_token` set."
+    type: "sentinel"
+  elasticbeanstalk-cloudwatch-log-streaming-enabled:
+    path: "policies/elasticbeanstalk/elasticbeanstalk-cloudwatch-log-streaming-enabled.sentinel"
+    governed_resources: ["aws_elastic_beanstalk_environment"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elastic Beanstalk"
+    description: "This policy requires that the elasticbeanstalk environment have cloudwatch log streaming enabled"
+    type: "sentinel"
+  elasticbeanstalk-enhanced-health-reporting-enabled:
+    path: "policies/elasticbeanstalk/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel"
+    governed_resources: ["aws_elastic_beanstalk_environment"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elastic Beanstalk"
+    description: "This policy requires that the elasticbeanstalk environment have enhanced health reporting enabled"
+    type: "sentinel"
+  elasticbeanstalk-managed-platform-updates-enabled:
+    path: "policies/elasticbeanstalk/elasticbeanstalk-managed-platform-updates-enabled.sentinel"
+    governed_resources: ["aws_elastic_beanstalk_environment"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elastic Beanstalk"
+    description: "This policy requires that the elasticbeanstalk environment have platform updates enabled"
+    type: "sentinel"
+  elasticsearch-audit-logging-enabled:
+    path: "policies/elasticsearch/elasticsearch-audit-logging-enabled.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have 'enabled' attribute set to `true` and 'log_type' set to 'AUDIT_LOGS'."
+    type: "sentinel"
+  elasticsearch-domains-should-have-atleast-three-data-nodes:
+    path: "policies/elasticsearch/elasticsearch-domains-should-have-atleast-three-data-nodes.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` to have at least three data nodes and zone awareness enabled."
+    type: "sentinel"
+  elasticsearch-encrypted-at-rest:
+    path: "policies/elasticsearch/elasticsearch-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `encrypt_at_rest` should have 'enabled' attribute set to `true`."
+    type: "sentinel"
+  elasticsearch-https-required:
+    path: "policies/elasticsearch/elasticsearch-https-required.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `tls_security_policy` set to latest policy that is 'Policy-Min-TLS-1-2-PFS-2023-10' and 'enforce_https' set to true for `domain_endpoint_options` attribute."
+    type: "sentinel"
+  elasticsearch-in-vpc-only:
+    path: "policies/elasticsearch/elasticsearch-in-vpc-only.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `subnet_ids` should not be empty inside 'vpc_options'."
+    type: "sentinel"
+  elasticsearch-logs-to-cloudwatch:
+    path: "policies/elasticsearch/elasticsearch-logs-to-cloudwatch.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have 'enabled' attribute set to `true`."
+    type: "sentinel"
+  elasticsearch-node-to-node-encryption-check:
+    path: "policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `enabled` value set to 'true' for `node_to_node_encrytion` attribute."
+    type: "sentinel"
+  elasticsearch-primary-node-fault-tolerance:
+    path: "policies/elasticsearch/elasticsearch-primary-node-fault-tolerance.sentinel"
+    governed_resources: ["aws_elasticsearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Elasticsearch"
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `dedicated_master_count` atleast 3 and 'dedicated_master_enabled' set to true for `cluster_config` attribute."
+    type: "sentinel"
+  elb-configure-https-tls-termination-classic-load-balancer:
+    path: "policies/elb/elb-configure-https-tls-termination-classic-load-balancer.sentinel"
+    governed_resources: ["aws_elb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if resources of type 'aws_elb' have listeners configured with HTTPS or TLS termination"
+    type: "sentinel"
+  elb-connection-draining-enabled:
+    path: "policies/elb/elb-connection-draining-enabled.sentinel"
+    governed_resources: ["aws_elb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if resources of type 'aws_elb' have the attribute 'connection_draining' set to true"
+    type: "sentinel"
+  elb-cross-zone-load-balancing-enabled:
+    path: "policies/elb/elb-cross-zone-load-balancing-enabled.sentinel"
+    governed_resources: ["aws_elb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if resources of type 'aws_elb' have the attribute 'cross_zone_load_balancing' set to true"
+    type: "sentinel"
+  elb-drop-invalid-http-headers:
+    path: "policies/elb/elb-drop-invalid-http-headers.sentinel"
+    governed_resources: ["aws_lb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if application load balancers are configured to drop invalid HTTP headers"
+    type: "sentinel"
+  elb-ensure-access-logging-enabled:
+    path: "policies/elb/elb-ensure-access-logging-enabled.sentinel"
+    governed_resources: ["aws_elb", "aws_lb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if resources of type 'aws_lb' and 'aws_elb' have 'access_logging' enabled."
+    type: "sentinel"
+  elb-ensure-deletion-protection-enabled:
+    path: "policies/elb/elb-ensure-deletion-protection-enabled.sentinel"
+    governed_resources: ["aws_lb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if resources of type 'aws_lb' has the 'enable_deletion_protection' attribute set to true."
+    type: "sentinel"
+  elb-ensure-http-request-redirection:
+    path: "policies/elb/elb-ensure-http-request-redirection.sentinel"
+    governed_resources: ["aws_lb", "aws_lb_listener", "aws_lb_listener_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy ensures that application load balancer in the terraform configurations have a listener rule configured to redirect HTTP requests to HTTPS"
+    type: "sentinel"
+  elb-ensure-multi-az-configuration-classic-load-balancer:
+    path: "policies/elb/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel"
+    governed_resources: ["aws_elb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if load balancers span across multiple availability zones."
+    type: "sentinel"
+  elb-ensure-ssl-listener-acm-cert-classic-load-balancer:
+    path: "policies/elb/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel"
+    governed_resources: ["aws_elb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if resources of type 'aws_elb' have HTTPS/SSL listeners configured with certs from acm."
+    type: "sentinel"
+  elb-ensure-ssl-listener-predefined-security-policy:
+    path: "policies/elb/elb-ensure-ssl-listener-predefined-security-policy.sentinel"
+    governed_resources: ["aws_elb", "aws_load_balancer_listener_policy", "aws_load_balancer_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if classic load balancers with SSL listeners have predefined security policy configured"
+    type: "sentinel"
+  elb-ensure-valid-desync-mitigation-mode:
+    path: "policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel"
+    governed_resources: ["aws_lb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy checks if load_balancer resources have the 'desync_mitigation_mode' attribute set to either 'defensive' or 'strictest'"
+    type: "sentinel"
+  elb-multiple-az:
+    path: "policies/elb/elb-multiple-az.sentinel"
+    governed_resources: ["aws_lb"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy ensures that Application, Network, and Gateway Load Balancers span multiple Availability Zones"
+    type: "sentinel"
+  elb-predefined-security-policy-ssl-check:
+    path: "policies/elb/elb-predefined-security-policy-ssl-check.sentinel"
+    governed_resources: ["aws_lb_listener"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "ELB"
+    description: "This policy requires 'aws_lb_listener' resources using HTTPS/TLS to use recommended SSL policies."
+    type: "sentinel"
+  emr-block-public-access-enabled:
+    path: "policies/emr/emr-block-public-access-enabled.sentinel"
+    governed_resources: ["aws_emr_block_public_access_configuration"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EMR"
+    description: "This policy requires block public access setting is enabled and any port other than 22 should not be allowed"
+    type: "sentinel"
+  emr-security-configuration-encryption-rest:
+    path: "policies/emr/emr-security-configuration-encryption-rest.sentinel"
+    governed_resources: ["aws_emr_security_configuration"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EMR"
+    description: "This policy requires 'aws_emr_security_configuration' to include at-rest encryption settings."
+    type: "sentinel"
+  emr-security-configuration-encryption-transit:
+    path: "policies/emr/emr-security-configuration-encryption-transit.sentinel"
+    governed_resources: ["aws_emr_security_configuration"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EMR"
+    description: "This policy requires aws_emr_security_configuration to enable encryption in transit."
+    type: "sentinel"
+  eventbridge-custom-event-bus-should-have-attached-policy:
+    path: "policies/eventbridge/eventbridge-custom-event-bus-should-have-attached-policy.sentinel"
+    governed_resources: ["aws_cloudwatch_event_bus", "aws_cloudwatch_event_bus_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "EventBridge"
+    description: "This policy requires `aws_cloudwatch_event_bus` resources to be attached to a policy."
+    type: "sentinel"
+  fsx-lustre-copy-tags-to-backups:
+    path: "policies/fsx/fsx-lustre-copy-tags-to-backups.sentinel"
+    governed_resources: ["aws_fsx_lustre_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "FSx"
+    description: "This policy requires resources of type `aws_fsx_lustre_file_system` have the `copy_tags_to_backups` attributes set to true."
+    type: "sentinel"
+  fsx-ontap-deployment-type-check:
+    path: "policies/fsx/fsx-ontap-deployment-type-check.sentinel"
+    governed_resources: ["aws_fsx_ontap_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "FSx"
+    description: "This policy requires aws_fsx_ontap_file_system resources to use MULTI_AZ_1 deployment type."
+    type: "sentinel"
+  fsx-openzfs-copy-tags-to-backups-and-volumes-enabled:
+    path: "policies/fsx/fsx-openzfs-copy-tags-to-backups-and-volumes-enabled.sentinel"
+    governed_resources: ["aws_fsx_openzfs_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "FSx"
+    description: "This policy requires resources of type `aws_fsx_openzfs_file_system` have the `copy_tags_to_backups` and 'copy_tags_to_columes' attributes set to true."
+    type: "sentinel"
+  fsx-openzfs-deployment-type-check:
+    path: "policies/fsx/fsx-openzfs-deployment-type-check.sentinel"
+    governed_resources: ["aws_fsx_openzfs_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "FSx"
+    description: "This policy requires aws_fsx_openzfs_file_system resources to use MULTI_AZ_1 deployment type."
+    type: "sentinel"
+  fsx-windows-deployment-type-check:
+    path: "policies/fsx/fsx-windows-deployment-type-check.sentinel"
+    governed_resources: ["aws_fsx_windows_file_system"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "FSx"
+    description: "This policy requires aws_fsx_windows_file_system resources to use MULTI_AZ_1 deployment type."
+    type: "sentinel"
+  glue-spark-job-supported-version:
+    path: "policies/glue/glue-spark-job-supported-version.sentinel"
+    governed_resources: ["aws_glue_job"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Glue"
+    description: "This policy ensures that AWS Glue Spark jobs use only supported Glue versions."
+    type: "sentinel"
+  guardduty-ecs-protection-runtime-enabled:
+    path: "policies/guardduty/guardduty-ecs-protection-runtime-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector", "aws_guardduty_detector_feature"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This policy ensures that GuardDuty ECS Runtime Monitoring (EKS_RUNTIME_MONITORING) is enabled."
+    type: "sentinel"
+  guardduty-eks-audit-log-monitoring-should-be-enabled:
+    path: "policies/guardduty/guardduty-eks-audit-log-monitoring-should-be-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This control checks whether 'aws_guardduty_detector' EKS Audit Log Monitoring is enabled."
+    type: "sentinel"
+  guardduty-eks-protection-runtime-should-be-enabled:
+    path: "policies/guardduty/guardduty-eks-protection-runtime-should-be-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector_feature"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This control checks whether 'aws_guardduty_detector_feature' EKS Runtime Monitoring with automated agent management is enabled."
+    type: "sentinel"
+  guardduty-malware-protection-enabled:
+    path: "policies/guardduty/guardduty-malware-protection-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector", "aws_guardduty_detector_feature"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This control checks whether 'aws_guardduty_detector' and 'aws_guardduty_detector_feature' have Malware Protection enabled."
+    type: "sentinel"
+  guardduty-runtime-monitoring-enabled:
+    path: "policies/guardduty/guardduty-runtime-monitoring-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector", "aws_guardduty_detector_feature"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This policy requires GuardDuty Runtime Monitoring to be enabled"
+    type: "sentinel"
+  guardduty-s3-protection-should-be-enabled:
+    path: "policies/guardduty/guardduty-s3-protection-should-be-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This control checks whether 'aws_guardduty_detector' S3 Protection is enabled."
+    type: "sentinel"
+  guardduty-should-be-enabled:
+    path: "policies/guardduty/guardduty-should-be-enabled.sentinel"
+    governed_resources: ["aws_guardduty_detector"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "GuardDuty"
+    description: "This control checks whether 'aws_guardduty_detector' is enabled in your GuardDuty account and Region."
+    type: "sentinel"
+  iam-no-admin-privileges-allowed-by-policies:
+    path: "policies/iam/iam-no-admin-privileges-allowed-by-policies.sentinel"
+    governed_resources: ["aws_iam_policy", "aws_iam_policy_document"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "IAM"
+    description: "IAM policies should not allow administrator privileges to users/roles/groups."
+    type: "sentinel"
+  iam-no-policies-attached-to-users:
+    path: "policies/iam/iam-no-policies-attached-to-users.sentinel"
+    governed_resources: ["aws_iam_user_policy", "aws_iam_user_policy_attachment"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "IAM"
+    description: "IAM users should not be directly attached to IAM policies."
+    type: "sentinel"
+  iam-password-policy-strong-configuration:
+    path: "policies/iam/iam-password-policy-strong-configuration.sentinel"
+    governed_resources: ["aws_iam_account_password_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "IAM"
+    description: "This policy requires that the `aws_iam_account_password_policy` resource have the strong configurations"
+    type: "sentinel"
+  iam-policy-no-statements-with-full-access:
+    path: "policies/iam/iam-policy-no-statements-with-full-access.sentinel"
+    governed_resources: ["aws_iam_policy_document"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "IAM"
+    description: "IAM customer managed policies that you create should not allow wildcard actions for services."
+    type: "sentinel"
+  inspector-ec2-scan-enabled:
+    path: "policies/inspector/inspector-ec2-scan-enabled.sentinel"
+    governed_resources: ["aws_inspector2_enabler"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Inspector"
+    description: "This policy ensures that Amazon Inspector EC2 scanning is enabled"
+    type: "sentinel"
+  inspector-ecr-scan-enabled:
+    path: "policies/inspector/inspector-ecr-scan-enabled.sentinel"
+    governed_resources: ["aws_inspector2_enabler"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Inspector"
+    description: "This policy ensures that Amazon Inspector ECR scanning is enabled"
+    type: "sentinel"
+  inspector-lambda-code-scan-enabled:
+    path: "policies/inspector/inspector-lambda-code-scan-enabled.sentinel"
+    governed_resources: ["aws_inspector2_enabler"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Inspector"
+    description: "This policy ensures that Amazon Inspector Lambda code scanning is enabled"
+    type: "sentinel"
+  inspector-lambda-standard-scan-enabled:
+    path: "policies/inspector/inspector-lambda-standard-scan-enabled.sentinel"
+    governed_resources: ["aws_inspector2_enabler"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Inspector"
+    description: "This policy ensures that Amazon Inspector Lambda standard scanning is enabled"
+    type: "sentinel"
+  kinesis-firehose-delivery-stream-encrypted:
+    path: "policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel"
+    governed_resources: ["aws_kinesis_firehose_delivery_stream"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Kinesis"
+    description: "This policy requires `aws_kinesis_firehose_delivery_stream` resources to have server-side encryption enabled."
+    type: "sentinel"
+  kinesis-stream-backup-retention-check:
+    path: "policies/kinesis/kinesis-stream-backup-retention-check.sentinel"
+    governed_resources: ["aws_kinesis_stream"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Kinesis"
+    description: "This policy requires resources of type `aws_kinesis_stream` have attribute \"retention_period\" set to at least 168 hours (7 days)."
+    type: "sentinel"
+  kinesis-stream-encrypted:
+    path: "policies/kinesis/kinesis-stream-encrypted.sentinel"
+    governed_resources: ["aws_kinesis_stream"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Kinesis"
+    description: "This policy checks if resources of type 'kinesis-stream-encrypted' have the 'encryption_type' set to 'KMS'"
+    type: "sentinel"
+  kms-restrict-iam-inline-policies-decrypt-all-kms-keys:
+    path: "policies/kms/kms-restrict-iam-inline-policies-decrypt-all-kms-keys.sentinel"
+    governed_resources: ["aws_iam_policy_document"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "KMS"
+    description: "This policy checks if resources of type 'aws_iam_policy_document' contain blocked action patterns such as 'kms:ReEncryptFrom' and 'kms:Decrypt'"
+    type: "sentinel"
+  lambda-function-public-access-prohibited:
+    path: "policies/lambda/lambda-function-public-access-prohibited.sentinel"
+    governed_resources: ["aws_lambda_permission"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Lambda"
+    description: "This control checks whether the 'aws_lambda_function' resource-based policy prohibits public access outside of your account."
+    type: "sentinel"
+  lambda-functions-should-use-supported-runtimes:
+    path: "policies/lambda/lambda-functions-should-use-supported-runtimes.sentinel"
+    governed_resources: ["aws_lambda_function"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Lambda"
+    description: "This control checks whether 'aws_lambda_function' runtime settings match the expected values set for the supported runtimes in each language."
+    type: "sentinel"
+  lambda-vpc-multi-az-check:
+    path: "policies/lambda/lambda-vpc-multi-az-check.sentinel"
+    governed_resources: ["aws_lambda_function"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Lambda"
+    description: "This policy if an 'aws_lambda_function' that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs)"
+    type: "sentinel"
+  macie-status-should-be-enabled:
+    path: "policies/macie/macie-status-should-be-enabled.sentinel"
+    governed_resources: ["aws_macie2_account"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Macie"
+    description: "This policy checks if resources of type 'aws_macie2_account' have the 'status' attribute set to 'ENABLED'"
+    type: "sentinel"
+  mq-auto-minor-version-upgrade-enabled:
+    path: "policies/mq/mq-auto-minor-version-upgrade-enabled.sentinel"
+    governed_resources: ["aws_mq_broker"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "MQ"
+    description: "This policy checks if resources of type 'aws_mq_broker' have the 'auto_minor_version_upgrade' attribute set to true"
+    type: "sentinel"
+  mq-cloudwatch-audit-log-enabled:
+    path: "policies/mq/mq-cloudwatch-audit-log-enabled.sentinel"
+    governed_resources: ["aws_mq_broker"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "MQ"
+    description: "This policy checks if resources of type 'aws_mq_broker' have the attribute 'logs' with parameter 'audit' set to true"
+    type: "sentinel"
+  msk-connect-connector-encrypted:
+    path: "policies/msk/msk-connect-connector-encrypted.sentinel"
+    governed_resources: ["aws_mskconnect_connector"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "MSK"
+    description: "This policy requires resources of type `aws_mskconnect_connector` to have encryption in transit enabled."
+    type: "sentinel"
+  msk-in-cluster-node-require-encrypted-in-transit:
+    path: "policies/msk/msk-in-cluster-node-require-encrypted-in-transit.sentinel"
+    governed_resources: ["aws_msk_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "MSK"
+    description: "This policy checks if resources of type 'aws_msk_cluster' have the 'in_cluster' attribute set to true in encryption_in_transit of encryption_info attribute"
+    type: "sentinel"
+  neptune-cluster-audit-logs-publishing-enabled:
+    path: "policies/neptune/neptune-cluster-audit-logs-publishing-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'enable_cloudwatch_logs_exports' to contain 'audit' for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  neptune-cluster-automated-backups-enabled:
+    path: "policies/neptune/neptune-cluster-automated-backups-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'backup_retention_period' to be greater than or equal to 7 for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  neptune-cluster-copy-tags-to-snapshot-enabled:
+    path: "policies/neptune/neptune-cluster-copy-tags-to-snapshot-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'copy_tags_to_snapshot' to be set to true for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  neptune-cluster-db-auth-enabled:
+    path: "policies/neptune/neptune-cluster-db-auth-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'iam_database_authentication_enabled' to be set to true for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  neptune-cluster-deletion-protection-enabled:
+    path: "policies/neptune/neptune-cluster-deletion-protection-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'deletion_protection' to be set to true for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  neptune-cluster-encryption-at-rest-enabled:
+    path: "policies/neptune/neptune-cluster-encryption-at-rest-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'storage_encrypted' to be set to true for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  neptune-cluster-snapshot-encryption-at-rest-enabled:
+    path: "policies/neptune/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel"
+    governed_resources: ["aws_neptune_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Neptune"
+    description: "This policy requires attribute 'snapshot_identifier' to be set and 'storage_encrypted' to be set to true for 'aws_neptune_cluster' resources"
+    type: "sentinel"
+  network-firewall-logging-enabled:
+    path: "policies/network-firewall/network-firewall-logging-enabled.sentinel"
+    governed_resources: ["aws_networkfirewall_firewall", "aws_networkfirewall_logging_configuration"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy ensures that resources of type 'aws_networkfirewall_firewall' have logging enabled"
+    type: "sentinel"
+  network-firewall-policy-default-action-fragmented-packets:
+    path: "policies/network-firewall/network-firewall-policy-default-action-fragmented-packets.sentinel"
+    governed_resources: ["aws_networkfirewall_firewall_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy ensures that resources of type 'aws_networkfirewall_firewall_policy' have default stateless action should be 'aws:drop' or 'aws:forward_to_sfe' for fragmented packets"
+    type: "sentinel"
+  network-firewall-policy-default-action-full-packets:
+    path: "policies/network-firewall/network-firewall-policy-default-action-full-packets.sentinel"
+    governed_resources: ["aws_networkfirewall_firewall_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy ensures that resources of type 'aws_networkfirewall_firewall_policy' have default stateless action should be 'aws:drop' or 'aws:forward_to_sfe' for full packets"
+    type: "sentinel"
+  network-firewall-policy-rule-group-associated:
+    path: "policies/network-firewall/network-firewall-policy-rule-group-associated.sentinel"
+    governed_resources: ["aws_networkfirewall_firewall_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy requires atleast 1 rule group to be enabled for 'aws_networkfirewall_firewall_policy' resources"
+    type: "sentinel"
+  network-firewall-should-have-deletion-protection-enabled:
+    path: "policies/network-firewall/network-firewall-should-have-deletion-protection-enabled.sentinel"
+    governed_resources: ["aws_networkfirewall_firewall"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy checks whether a resource 'aws_networkfirewall_firewall' has deletion protection enabled."
+    type: "sentinel"
+  network-firewall-stateless-rule-group:
+    path: "policies/network-firewall/network-firewall-stateless-rule-group.sentinel"
+    governed_resources: ["aws_networkfirewall_rule_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy checks if a stateless rule group in 'aws_networkfirewall_rule_group' contains rules"
+    type: "sentinel"
+  network-firewall-subnet-change-protection-enabled:
+    path: "policies/network-firewall/network-firewall-subnet-change-protection-enabled.sentinel"
+    governed_resources: ["aws_networkfirewall_firewall"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Network Firewall"
+    description: "This policy requires resources of type `aws_networkfirewall_firewall` have attribute \"subnet_change_protection\" set to true."
+    type: "sentinel"
+  opensearch-access-control-enabled:
+    path: "policies/opensearch/opensearch-access-control-enabled.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'anonymous_auth_enabled' attribute set to true in the 'advanced_security_options' block and the 'advanced_security_options' block is enabled"
+    type: "sentinel"
+  opensearch-audit-logging-enabled:
+    path: "policies/opensearch/opensearch-audit-logging-enabled.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true and 'log_type' set to 'AUDIT_LOGS' in the 'log_publishing_options' block"
+    type: "sentinel"
+  opensearch-data-node-fault-tolerance:
+    path: "policies/opensearch/opensearch-data-node-fault-tolerance.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'instance_count' greater than or equal to 3 in the 'cluster_config' block"
+    type: "sentinel"
+  opensearch-encrypted-at-rest:
+    path: "policies/opensearch/opensearch-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true in the 'encrypt_at_rest' block"
+    type: "sentinel"
+  opensearch-https-required:
+    path: "policies/opensearch/opensearch-https-required.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy requires resources of type `aws_opensearch_domain` have the `tls_security_policy` set to latest policy that is 'Policy-Min-TLS-1-2-PFS-2023-10' and 'enforce_https' set to true for `domain_endpoint_options` attribute."
+    type: "sentinel"
+  opensearch-in-vpc-only:
+    path: "policies/opensearch/opensearch-in-vpc-only.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access."
+    type: "sentinel"
+  opensearch-logs-to-cloudwatch:
+    path: "policies/opensearch/opensearch-logs-to-cloudwatch.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true in the 'log_publishing_options' block"
+    type: "sentinel"
+  opensearch-node-to-node-encryption-check:
+    path: "policies/opensearch/opensearch-node-to-node-encryption-check.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true in the 'node_to_node_encryption' block"
+    type: "sentinel"
+  opensearch-update-check:
+    path: "policies/opensearch/opensearch-update-check.sentinel"
+    governed_resources: ["aws_opensearch_domain"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "OpenSearch"
+    description: "This policy checks if resources of type 'aws_opensearch_domain' have the 'auto_software_update_enabled' attribute set to true in the 'software_update_options' block"
+    type: "sentinel"
+  rds-aurora-mysql-audit-logging-enabled:
+    path: "policies/rds/rds-aurora-mysql-audit-logging-enabled.sentinel"
+    governed_resources: ["aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if resources of type 'aws_rds_cluster' with 'aurora-mysql' engine have the 'enabled_cloudwatch_logs_exports' attribute contains 'audit'"
+    type: "sentinel"
+  rds-cluster-and-db-snapshot-encrypted:
+    path: "policies/rds/rds-cluster-and-db-snapshot-encrypted.sentinel"
+    governed_resources: ["aws_db_instance", "aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` have attribute \"storage_encrypted\" set to true and has kms_key_id This will make sure snapshots are encrypted"
+    type: "sentinel"
+  rds-cluster-default-admin-check:
+    path: "policies/rds/rds-cluster-default-admin-check.sentinel"
+    governed_resources: ["aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if resources of type 'aws_rds_cluster' have the 'master_username' attribute not set to 'admin' (default value)"
+    type: "sentinel"
+  rds-cluster-encrypted-at-rest:
+    path: "policies/rds/rds-cluster-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if resources of type 'aws_rds_cluster' have the 'storage_encrypted' attribute set to true"
+    type: "sentinel"
+  rds-copy-tags-to-snapshot-configured:
+    path: "policies/rds/rds-copy-tags-to-snapshot-configured.sentinel"
+    governed_resources: ["aws_db_instance", "aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_rds_cluster` or `aws_db_instance` to have `copy_tags_to_snapshot` set to true"
+    type: "sentinel"
+  rds-encryption-at-rest-enabled:
+    path: "policies/rds/rds-encryption-at-rest-enabled.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"storage_encrypted\" set to true."
+    type: "sentinel"
+  rds-ensure-automatic-backups-enabled:
+    path: "policies/rds/rds-ensure-automatic-backups-enabled.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"backup_retention_period\" set to integer value between (7, 35)."
+    type: "sentinel"
+  rds-ensure-automatic-minor-version-upgrades-enabled:
+    path: "policies/rds/rds-ensure-automatic-minor-version-upgrades-enabled.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"auto_minor_version_upgrade\" set to true."
+    type: "sentinel"
+  rds-ensure-cloudwatch-logs-enabled:
+    path: "policies/rds/rds-ensure-cloudwatch-logs-enabled.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to valid array of values."
+    type: "sentinel"
+  rds-ensure-cluster-and-db-instance-iam-auth-configured:
+    path: "policies/rds/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel"
+    governed_resources: ["aws_db_instance", "aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `iam_database_authentication_enabled` set to true"
+    type: "sentinel"
+  rds-ensure-cluster-backtracking-enabled:
+    path: "policies/rds/rds-ensure-cluster-backtracking-enabled.sentinel"
+    governed_resources: ["aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_rds_cluster` to have `backtrack_window` greater than 0 for engine \"aurora\" and \"aurora-mysql\""
+    type: "sentinel"
+  rds-ensure-cluster-multi-az-configured:
+    path: "policies/rds/rds-ensure-cluster-multi-az-configured.sentinel"
+    governed_resources: ["aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_rds_cluster` to be configured for multiple availability zones"
+    type: "sentinel"
+  rds-ensure-deletion-protection-enabled:
+    path: "policies/rds/rds-ensure-deletion-protection-enabled.sentinel"
+    governed_resources: ["aws_db_instance", "aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `deletion_protection` set to true"
+    type: "sentinel"
+  rds-ensure-monitoring-configured:
+    path: "policies/rds/rds-ensure-monitoring-configured.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` to have `monitoring_interval` set to any value in (1, 5, 10, 15, 30, 60)"
+    type: "sentinel"
+  rds-ensure-multi-az-configuration:
+    path: "policies/rds/rds-ensure-multi-az-configuration.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy requires resources of type `aws_db_instance` to have `multi_az` set to true"
+    type: "sentinel"
+  rds-ensure-no-default-port:
+    path: "policies/rds/rds-ensure-no-default-port.sentinel"
+    governed_resources: ["aws_db_instance", "aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: "sentinel"
+  rds-event-notifications-configured-for-critical-events:
+    path: "policies/rds/rds-event-notifications-configured-for-critical-events.sentinel"
+    governed_resources: ["aws_db_event_subscription", "aws_rds_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if resources of type 'aws_event_subscription' have the event notifications configured"
+    type: "sentinel"
+  rds-for-mariadb-db-instances-should-be-encrypted-in-transit:
+    path: "policies/rds/rds-for-mariadb-db-instances-should-be-encrypted-in-transit.sentinel"
+    governed_resources: ["aws_db_instance", "aws_db_parameter_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This control checks whether connections to an Amazon RDS for MariaDB DB instance are encrypted in transit"
+    type: "sentinel"
+  rds-for-mariadb-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: "policies/rds/rds-for-mariadb-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This control checks whether an Amazon RDS for MariaDB DB instance is configured to publish certain types of logs to Amazon CloudWatch Logs."
+    type: "sentinel"
+  rds-for-postgresql-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: "policies/rds/rds-for-postgresql-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This control checks whether an Amazon RDS for PostgreSQL DB instance is configured to publish logs to Amazon CloudWatch Logs."
+    type: "sentinel"
+  rds-for-sql-server-db-instances-should-be-encrypted-in-transit:
+    path: "policies/rds/rds-for-sql-server-db-instances-should-be-encrypted-in-transit.sentinel"
+    governed_resources: ["aws_db_instance", "aws_db_parameter_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This control checks whether a connection to an Amazon RDS for Microsoft SQL Server DB instance is encrypted in transit."
+    type: "sentinel"
+  rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: "policies/rds/rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This control checks whether an Amazon RDS for Microsoft SQL Server DB instance is configured to publish logs to Amazon CloudWatch Logs."
+    type: "sentinel"
+  rds-instance-default-admin-check:
+    path: "policies/rds/rds-instance-default-admin-check.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if resources of type 'aws_db_instance' have the 'username' attribute not set to 'admin' (default value)"
+    type: "sentinel"
+  rds-instance-deployed-in-vpc:
+    path: "policies/rds/rds-instance-deployed-in-vpc.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: "sentinel"
+  rds-instance-should-be-private:
+    path: "policies/rds/rds-instance-should-be-private.sentinel"
+    governed_resources: ["aws_db_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "RDS"
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: "sentinel"
+  redshift-cluster-audit-logging-enabled:
+    path: "policies/redshift/redshift-cluster-audit-logging-enabled.sentinel"
+    governed_resources: ["aws_redshift_cluster", "aws_redshift_logging"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the enable attribute set to true in logging or referenced to the resource 'aws_redshift_logging'"
+    type: "sentinel"
+  redshift-cluster-automated-snapshot-retention-enabled:
+    path: "policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'automated-snapshot-retention-period' attribute set in between '7 to 35'"
+    type: "sentinel"
+  redshift-cluster-default-admin-check:
+    path: "policies/redshift/redshift-cluster-default-admin-check.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'master_username' attribute not set to null or 'awsuser' (default value)"
+    type: "sentinel"
+  redshift-cluster-default-db-name-check:
+    path: "policies/redshift/redshift-cluster-default-db-name-check.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'database_name' attribute not set to 'dev' (default value)"
+    type: "sentinel"
+  redshift-cluster-enhanced-vpc-routing-enabled:
+    path: "policies/redshift/redshift-cluster-enhanced-vpc-routing-enabled.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'enhanced_vpc_routing' attribute set to true"
+    type: "sentinel"
+  redshift-cluster-maintenance-settings-check:
+    path: "policies/redshift/redshift-cluster-maintenance-settings-check.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'allow_version_upgrade' attribute set to true"
+    type: "sentinel"
+  redshift-cluster-public-access-check:
+    path: "policies/redshift/redshift-cluster-public-access-check.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'publicly_accessible' attribute set to false"
+    type: "sentinel"
+  redshift-cluster-should-be-encrypted-at-rest:
+    path: "policies/redshift/redshift-cluster-should-be-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_redshift_cluster"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' have the 'encrypted' attribute set to true"
+    type: "sentinel"
+  redshift-cluster-should-be-encrypted-at-transit:
+    path: "policies/redshift/redshift-cluster-should-be-encrypted-at-transit.sentinel"
+    governed_resources: ["aws_redshift_cluster", "aws_redshift_parameter_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy checks if resources of type 'aws_redshift_cluster' referenced to the resources of type 'aws_redshift_parameter_group' and having the 'require_ssl' set to 'true'"
+    type: "sentinel"
+  redshift-cluster-unrestricted-port-access-check:
+    path: "policies/redshift/redshift-cluster-unrestricted-port-access-check.sentinel"
+    governed_resources: ["aws_security_group", "aws_security_group_rule", "aws_vpc_security_group_ingress_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift"
+    description: "This policy requires resources of type `aws_security_group`, `aws_security_group_rule` and `aws_vpc_security_group_ingress_rule` to block ingress traffic from unknown sources to resources of type aws_redshift_cluster"
+    type: "sentinel"
+  redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs:
+    path: "policies/redshiftserverless/redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel"
+    governed_resources: ["aws_redshiftserverless_namespace"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift Serverless"
+    description: "This control checks whether an Amazon Redshift Serverless namespace is configured to export connection and user logs to Amazon CloudWatch Logs."
+    type: "sentinel"
+  redshift-serverless-namespaces-should-not-use-the-default-admin-username:
+    path: "policies/redshiftserverless/redshift-serverless-namespaces-should-not-use-the-default-admin-username.sentinel"
+    governed_resources: ["aws_redshiftserverless_namespace"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift Serverless"
+    description: "This control checks whether the admin username for an Amazon Redshift Serverless namespace is the default admin username, admin."
+    type: "sentinel"
+  redshift-serverless-namespaces-should-not-use-the-default-database-name:
+    path: "policies/redshiftserverless/redshift-serverless-namespaces-should-not-use-the-default-database-name.sentinel"
+    governed_resources: ["aws_redshiftserverless_namespace"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift Serverless"
+    description: "This control checks whether an Amazon Redshift Serverless namespace uses the default database name, dev."
+    type: "sentinel"
+  redshift-serverless-workgroups-should-be-required-to-use-ssl:
+    path: "policies/redshiftserverless/redshift-serverless-workgroups-should-be-required-to-use-ssl.sentinel"
+    governed_resources: ["aws_redshiftserverless_workgroup"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift Serverless"
+    description: "This control checks whether connections to an Amazon Redshift Serverless workgroup are required to encrypt data in transit."
+    type: "sentinel"
+  redshift-serverless-workgroups-should-prohibit-public-access:
+    path: "policies/redshiftserverless/redshift-serverless-workgroups-should-prohibit-public-access.sentinel"
+    governed_resources: ["aws_redshiftserverless_workgroup"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift Serverless"
+    description: "This control checks whether public access is disabled for an Amazon Redshift Serverless workgroup."
+    type: "sentinel"
+  redshift-serverless-workgroups-should-use-enhanced-vpc-routing:
+    path: "policies/redshiftserverless/redshift-serverless-workgroups-should-use-enhanced-vpc-routing.sentinel"
+    governed_resources: ["aws_redshiftserverless_workgroup"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Redshift Serverless"
+    description: "This control checks whether enhanced VPC routing is enabled for an Amazon Redshift Serverless workgroup"
+    type: "sentinel"
+  route-53-public-hosted-zones-should-log-dns-queries:
+    path: "policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
+    governed_resources: ["aws_route53_query_log"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Route 53"
+    description: "This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone."
+    type: "sentinel"
+  s3-access-point-block-public-access-enabled:
+    path: "policies/s3/s3-access-point-block-public-access-enabled.sentinel"
+    governed_resources: ["aws_s3_access_point"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "This policy requires resources of type `aws_s3_access_point` to have all attributes in the `public_access_block_configuration` set to true."
+    type: "sentinel"
+  s3-block-public-access-account-level:
+    path: "policies/s3/s3-block-public-access-account-level.sentinel"
+    governed_resources: ["aws_s3_account_public_access_block"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "This policy verifies if the attributes of the 'aws_s3_account_public_access_block' resource (if present) are in accordance to AWS FSBP standards."
+    type: "sentinel"
+  s3-block-public-access-bucket-level:
+    path: "policies/s3/s3-block-public-access-bucket-level.sentinel"
+    governed_resources: ["aws_s3_bucket", "aws_s3_bucket_public_access_block"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "This policy verifies if the attributes of the 'aws_s3_bucket_public_access_block' resource (if present) block public access of an S3 general purpose bucket."
+    type: "sentinel"
+  s3-bucket-block-public-read-access:
+    path: "policies/s3/s3-bucket-block-public-read-access.sentinel"
+    governed_resources: ["aws_s3_bucket", "aws_s3_bucket_acl", "aws_s3_bucket_policy", "aws_s3_bucket_public_access_block"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "S3 general purpose buckets should block public read access"
+    type: "sentinel"
+  s3-bucket-block-public-write-access:
+    path: "policies/s3/s3-bucket-block-public-write-access.sentinel"
+    governed_resources: ["aws_s3_bucket", "aws_s3_bucket_acl", "aws_s3_bucket_policy", "aws_s3_bucket_public_access_block"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "S3 general purpose buckets should block public write access"
+    type: "sentinel"
+  s3-bucket-policy-restrict-access-to-other-accounts:
+    path: "policies/s3/s3-bucket-policy-restrict-access-to-other-accounts.sentinel"
+    governed_resources: ["aws_iam_policy_document"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "S3 general purpose bucket policies should restrict access to other AWS accounts"
+    type: "sentinel"
+  s3-multi-region-access-points-should-have-block-public-access-settings-enabled:
+    path: "policies/s3/s3-multi-region-access-points-should-have-block-public-access-settings-enabled.sentinel"
+    governed_resources: ["aws_s3control_multi_region_access_point"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "This control checks whether an Amazon S3 Multi-Region Access Point has block public access settings enabled."
+    type: "sentinel"
+  s3-require-ssl:
+    path: "policies/s3/s3-require-ssl.sentinel"
+    governed_resources: ["aws_s3_bucket", "aws_s3_bucket_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "S3"
+    description: "This policy mandates all requests to 'aws_s3_bucket' resources to use ssl using 'aws_s3_bucket_policy' resource."
+    type: "sentinel"
+  sagemaker-endpoint-config-prod-instance-count-check:
+    path: "policies/sagemaker/sagemaker-endpoint-config-prod-instance-count-check.sentinel"
+    governed_resources: ["aws_sagemaker_endpoint_configuration"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This policy checks if resources of type 'aws_sagemaker_endpoint_configuration' have the 'initial_instance_count' in 'production_variants' attribute greater than 1"
+    type: "sentinel"
+  sagemaker-models-should-block-inbound-traffic:
+    path: "policies/sagemaker/sagemaker-models-should-block-inbound-traffic.sentinel"
+    governed_resources: ["aws_sagemaker_model"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This control checks whether an Amazon SageMaker AI hosted model blocks inbound network traffic."
+    type: "sentinel"
+  sagemaker-notebook-ensure-subnet-id-for-instance:
+    path: "policies/sagemaker/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel"
+    governed_resources: ["aws_sagemaker_notebook_instance", "aws_subnet"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This policy checks if resources of type 'aws_sagemaker_instance' is launched in custom vpc"
+    type: "sentinel"
+  sagemaker-notebook-instance-root-access-check:
+    path: "policies/sagemaker/sagemaker-notebook-instance-root-access-check.sentinel"
+    governed_resources: ["aws_sagemaker_notebook_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This policy checks if resources of type 'aws_sagemaker_notebook_instance' have the 'root_access' attribute set to \"Disabled\""
+    type: "sentinel"
+  sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc:
+    path: "policies/sagemaker/sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc.sentinel"
+    governed_resources: ["aws_sagemaker_notebook_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This control checks if an Amazon SageMaker AI notebook instance is launched within a custom virtual private cloud (VPC)."
+    type: "sentinel"
+  sagemaker-notebook-instances-should-run-on-supported-platforms:
+    path: "policies/sagemaker/sagemaker-notebook-instances-should-run-on-supported-platforms.sentinel"
+    governed_resources: ["aws_sagemaker_notebook_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This control checks whether an Amazon SageMaker AI notebook instance is configured to run on a supported platform, based on the platform identifier specified for the notebook instance."
+    type: "sentinel"
+  sagemaker-notebook-no-direct-internet-access:
+    path: "policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel"
+    governed_resources: ["aws_sagemaker_notebook_instance"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SageMaker"
+    description: "This policy checks if resources of type 'aws_sagemaker_notebook_instance' have the 'direct_internet_access' attribute set to \"Disabled\""
+    type: "sentinel"
+  secretsmanager-auto-rotation-enabled-check:
+    path: "policies/secretsmanager/secretsmanager-auto-rotation-enabled-check.sentinel"
+    governed_resources: ["aws_secretsmanager_secret", "aws_secretsmanager_secret_rotation"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Secrets Manager"
+    description: "This policy requires resources of type `aws_secretsmanager_secret` should be configured for automatic rotation."
+    type: "sentinel"
+  service-catalog-shared-within-organization:
+    path: "policies/servicecatalog/service-catalog-shared-within-organization.sentinel"
+    governed_resources: ["aws_servicecatalog_portfolio", "aws_servicecatalog_portfolio_share"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Service Catalog"
+    description: "This policy requires `aws_servicecatalog_portfolio_share` resources to have attribute 'type' should not be 'ACCOUNT'."
+    type: "sentinel"
+  sns-topic-access-policies-should-not-allow-public-access:
+    path: "policies/sns/sns-topic-access-policies-should-not-allow-public-access.sentinel"
+    governed_resources: ["aws_iam_policy_document", "aws_sns_topic_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SNS"
+    description: "This control checks if the Amazon SNS topic access policy allows public access."
+    type: "sentinel"
+  sqs-queue-block-public-access:
+    path: "policies/sqs/sqs-queue-block-public-access.sentinel"
+    governed_resources: ["aws_iam_policy_document", "aws_sqs_queue", "aws_sqs_queue_policy"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SQS"
+    description: "This policy requires resources of type `aws_sqs_queue` should not be public by the resource 'aws_sqs_queue_policy'."
+    type: "sentinel"
+  sqs-queue-should-be-encrypted-at-rest:
+    path: "policies/sqs/sqs-queue-should-be-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_sqs_queue"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SQS"
+    description: "This policy requires resources of type `aws_sqs_queue` to be encrypted at rest."
+    type: "sentinel"
+  ssm-documents-should-not-be-public:
+    path: "policies/ssm/ssm-documents-should-not-be-public.sentinel"
+    governed_resources: ["aws_ssm_document"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "SSM"
+    description: "This policy requires resources of type `aws_ssm_document` to not be public."
+    type: "sentinel"
+  step-functions-state-machine-logging-enabled:
+    path: "policies/stepfunction/step-functions-state-machine-logging-enabled.sentinel"
+    governed_resources: ["aws_sfn_state_machine"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Step Functions"
+    description: "This policy requires AWS Step Functions state machines to have logging configuration enabled with level set to \"ALL\", \"ERROR\", or \"FATAL\"."
+    type: "sentinel"
+  transfer-family-connectors-should-have-logging-enabled:
+    path: "policies/transfer/transfer-family-connectors-should-have-logging-enabled.sentinel"
+    governed_resources: ["aws_transfer_connector"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Transfer Family"
+    description: "This control checks whether Amazon CloudWatch logging is enabled for an AWS Transfer Family connector."
+    type: "sentinel"
+  transfer-family-server-should-not-use-ftp:
+    path: "policies/transfer/transfer-family-server-should-not-use-ftp.sentinel"
+    governed_resources: ["aws_transfer_server"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "Transfer Family"
+    description: "This policy requires AWS Transfer Servers shouldn't contain \"FTP\" for the attribute protocols."
+    type: "sentinel"
+  waf-classic-logging-enabled:
+    path: "policies/waf/waf-classic-logging-enabled.sentinel"
+    governed_resources: ["aws_waf_web_acl"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy checks whether logging is enabled for an 'aws_waf_web_acl'."
+    type: "sentinel"
+  waf-global-rule-not-empty:
+    path: "policies/waf/waf-global-rule-not-empty.sentinel"
+    governed_resources: ["aws_waf_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy requires resources of type `aws_waf_rule` to have at least one predicate."
+    type: "sentinel"
+  waf-global-rulegroup-not-empty:
+    path: "policies/waf/waf-global-rulegroup-not-empty.sentinel"
+    governed_resources: ["aws_waf_rule_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy requires resources of type `aws_waf_rule_group` to have at least one rule."
+    type: "sentinel"
+  waf-global-webacl-not-empty:
+    path: "policies/waf/waf-global-webacl-not-empty.sentinel"
+    governed_resources: ["aws_waf_web_acl"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy requires resources of type `aws_waf_web_acl` to have at least one rule or rule group."
+    type: "sentinel"
+  waf-regional-rule-not-empty:
+    path: "policies/waf/waf-regional-rule-not-empty.sentinel"
+    governed_resources: ["aws_wafregional_rule"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy checks whether an 'aws_wafregional_rule' has at least one condition."
+    type: "sentinel"
+  waf-regional-rulegroup-not-empty:
+    path: "policies/waf/waf-regional-rulegroup-not-empty.sentinel"
+    governed_resources: ["aws_wafregional_rule_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy checks whether an AWS WAF Regional rule group has at least one rule."
+    type: "sentinel"
+  waf-regional-webacl-not-empty:
+    path: "policies/waf/waf-regional-webacl-not-empty.sentinel"
+    governed_resources: ["aws_wafregional_web_acl"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy requires resources of type `aws_wafregional_web_acl` to have at least one rule or rule group."
+    type: "sentinel"
+  wafv2-rulegroup-logging-enabled:
+    path: "policies/waf/wafv2-rulegroup-logging-enabled.sentinel"
+    governed_resources: ["aws_wafv2_rule_group"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy requires resources of type `aws_wafv2_rule_group` have attribute 'cloudwatch_metrics_enabled' set to true."
+    type: "sentinel"
+  wafv2-webacl-not-empty:
+    path: "policies/waf/wafv2-webacl-not-empty.sentinel"
+    governed_resources: ["aws_wafv2_web_acl"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WAF"
+    description: "This policy requires resources of type `aws_wafv2_web_acl` to have at least one rule or rule group."
+    type: "sentinel"
+  workspaces-root-volumes-should-be-encrypted-at-rest:
+    path: "policies/workspaces/workspaces-root-volumes-should-be-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_workspaces_workspace"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WorkSpaces"
+    description: "This control checks whether a root volume in an Amazon WorkSpaces WorkSpace is encrypted at rest."
+    type: "sentinel"
+  workspaces-user-volumes-should-be-encrypted-at-rest:
+    path: "policies/workspaces/workspaces-user-volumes-should-be-encrypted-at-rest.sentinel"
+    governed_resources: ["aws_workspaces_workspace"]
+    provider: "AWS"
+    regulations:
+      - name: "AWS Foundational Security Best Practices(FSBP)"
+    service: "WorkSpaces"
+    description: "This control checks whether a user volume in an Amazon WorkSpaces WorkSpace is encrypted at rest."
+    type: "sentinel"
+modules:
+  report:
+    path: "modules/report/report.sentinel"
+  tfconfig-functions:
+    path: "modules/tfconfig-functions/tfconfig-functions.sentinel"
+  tfplan-functions:
+    path: "modules/tfplan-functions/tfplan-functions.sentinel"
+  tfresources:
+    path: "modules/tfresources/tfresources.sentinel"
