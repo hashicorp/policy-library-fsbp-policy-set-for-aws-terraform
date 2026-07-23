@@ -1,3 +1,4 @@
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-1 for more details.
 // This policy requires `aws_ebs_snapshot_block_public_access` resources to have attribute state to either 'block-new-sharing' or 'block-all-sharing'.
 
 # Copyright IBM Corp. 2024, 2025
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "ec2-ebs-snapshot-public-restorable-check-account-level",
-	"message":     "Attribute 'state' must be either be 'block-all-sharing' or 'block-new-sharing' for 'aws_ebs_snapshot_block_public_access' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-1 for more details.",
+	"message":     "Attribute 'state' must be either be 'block-all-sharing' or 'block-new-sharing' for 'aws_ebs_snapshot_block_public_access' resources",
 	"resource_aws_ebs_snapshot_block_public_access": "aws_ebs_snapshot_block_public_access",
 	"state":     "state",
 	"unblocked": "unblocked",

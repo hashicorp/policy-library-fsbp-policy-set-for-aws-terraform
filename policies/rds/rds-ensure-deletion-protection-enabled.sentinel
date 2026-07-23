@@ -1,4 +1,6 @@
 # This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `deletion_protection` set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -30,9 +32,9 @@ violations = collection.reject(resources, func(res) {
 	return maps.get(res, deletion_protection, false) is true
 })
 
-message = "Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details."
+message = "Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources"
 if resource_type == "aws_db_instance" {
-	message = "Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details."
+	message = "Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources"
 }
 
 summary = {

@@ -1,4 +1,5 @@
 # This control checks whether an Amazon S3 Multi-Region Access Point has block public access settings enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-24 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "s3-multi-region-access-points-should-have-block-public-access-settings-enabled",
-	"message":     "S3 Multi-Region Access Points should have block public access settings enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-24 for more details.",
+	"message":     "S3 Multi-Region Access Points should have block public access settings enabled",
 	"resource_aws_s3control_multi_region_access_point": "aws_s3control_multi_region_access_point",
 	"public_access_block_checks": [
 		"block_public_acls",

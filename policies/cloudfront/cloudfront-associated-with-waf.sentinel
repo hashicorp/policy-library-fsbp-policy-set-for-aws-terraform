@@ -1,3 +1,4 @@
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-6 for more details.
 // This policy checks whether 'aws_cloudfront_distribution' are associated with either AWS WAF Classic or AWS WAF web ACLs.
 
 # Copyright IBM Corp. 2024, 2025
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "cloudfront-associated-with-waf",
-	"message":     "'aws_cloudfront_distribution' are associated with either AWS WAF Classic or AWS WAF web ACLs. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-6 for more details.",
+	"message":     "'aws_cloudfront_distribution' are associated with either AWS WAF Classic or AWS WAF web ACLs",
 	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
 }
 

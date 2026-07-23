@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_appsync_api_cache` should have 'at_rest_encryption_enabled' should be set to true and 'api_id' should be referenced to `aws_appsync_graphql_api` resource.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name":                      "appsync-graphqlapi-cache-should-be-encrypted-at-rest",
-	"message":                          "AWS AppSync API caches should be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-1 for more details.",
+	"message":                          "AWS AppSync API caches should be encrypted at rest",
 	"resource_aws_appsync_api_cache":   "aws_appsync_api_cache",
 	"resource_aws_appsync_graphql_api": "aws_appsync_graphql_api",
 	"at_rest_encryption_enabled":       "at_rest_encryption_enabled",

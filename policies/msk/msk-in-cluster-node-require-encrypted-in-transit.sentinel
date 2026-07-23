@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_msk_cluster' have the 'in_cluster'
 # attribute set to true in encryption_in_transit of encryption_info attribute
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/msk-controls.html#msk-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":              "msk-in-cluster-node-require-encrypted-in-transit",
-	"message":                  "Attribute 'in_cluster' should be true in encryption_in_transit of encryption_info attribute for AWS MSK Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/msk-controls.html#msk-1 for more details.",
+	"message":                  "Attribute 'in_cluster' should be true in encryption_in_transit of encryption_info attribute for AWS MSK Cluster",
 	"resource_aws_msk_cluster": "aws_msk_cluster",
 }
 

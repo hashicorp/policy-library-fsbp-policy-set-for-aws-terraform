@@ -1,4 +1,5 @@
 # This policy requires that the `at_rest_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -36,7 +37,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'at_rest_encryption_enabled' must be true for 'aws_elasticache_replication_group' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-4 for more details.",
+			"message":        "Attribute 'at_rest_encryption_enabled' must be true for 'aws_elasticache_replication_group' resources",
 		}
 	},
 }

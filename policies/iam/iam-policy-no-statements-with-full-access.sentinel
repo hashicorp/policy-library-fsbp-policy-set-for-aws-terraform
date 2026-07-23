@@ -1,4 +1,5 @@
 # IAM customer managed policies that you create should not allow wildcard actions for services.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/iam-controls.html#iam-21 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                      "iam-policy-no-statements-with-full-access",
-	"message":                          "IAM customer managed policies that you create should not allow wildcard actions for services. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/iam-controls.html#iam-21 for more details.",
+	"message":                          "IAM customer managed policies that you create should not allow wildcard actions for services",
 	"resource_aws_iam_policy_document": "aws_iam_policy_document",
 	"Allow": "Allow",
 }

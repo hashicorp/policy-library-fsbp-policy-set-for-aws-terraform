@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_redshift_cluster' have the 'master_username'
 # attribute not set to null or 'awsuser' (default value)
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-8 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                   "redshift-cluster-default-admin-check",
-	"message":                       "Attribute 'master_username' should not be null or 'awsuser' (default value) for AWS Redshift Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-8 for more details.",
+	"message":                       "Attribute 'master_username' should not be null or 'awsuser' (default value) for AWS Redshift Cluster",
 	"resource_aws_redshift_cluster": "aws_redshift_cluster",
 	"master_username_default_value": "awsuser",
 }

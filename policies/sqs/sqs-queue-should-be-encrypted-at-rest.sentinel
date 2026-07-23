@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_sqs_queue` to be encrypted at rest.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sqs-controls.html#sqs-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":             "sqs-queue-should-be-encrypted-at-rest",
-	"message":                 "SQS queues should be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sqs-controls.html#sqs-1 for more details.",
+	"message":                 "SQS queues should be encrypted at rest",
 	"resource_aws_sqs_queue":  "aws_sqs_queue",
 	"kms_master_key_id":       "kms_master_key_id",
 	"sqs_managed_sse_enabled": "sqs_managed_sse_enabled",

@@ -1,5 +1,6 @@
 # This control checks whether an 'aws_cloudfront_distribution' is configured to return a specific object
 # that is the default root object.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                          "cloudfront-should-have-default-root-object-configured",
 	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
-	"message": "'aws_cloudfront_distribution' is configured to return a default root object. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-1 for more details.",
+	"message": "'aws_cloudfront_distribution' is configured to return a default root object",
 }
 
 # Functions

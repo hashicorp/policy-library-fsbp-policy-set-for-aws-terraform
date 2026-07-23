@@ -1,6 +1,7 @@
 # This control checks whether 'aws_lambda_function' runtime settings match the expected values set for the supported runtimes in each language.
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-2 for more details.
 
 import "tfplan/v2" as tfplan
 import "tfresources" as tf
@@ -13,7 +14,7 @@ const = {
 	"policy_name":                  "lambda-functions-should-use-supported-runtimes",
 	"resource_aws_lambda_function": "aws_lambda_function",
 	"runtime":                      "runtime",
-	"message":                      "'aws_lambda_function' runtime settings should match the expected values set for the supported runtimes in each language. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-2 for more details.",
+	"message":                      "'aws_lambda_function' runtime settings should match the expected values set for the supported runtimes in each language",
 }
 
 runtime_expected_values = ["dotnet8", "java21", "java17", "java11", "java8.al2", "nodejs22.x", "nodejs20.x", "nodejs18.x", "python3.13", "python3.12", "python3.11", "python3.10", "python3.9", "ruby3.3", "ruby3.2"]

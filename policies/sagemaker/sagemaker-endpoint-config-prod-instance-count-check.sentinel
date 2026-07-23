@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_sagemaker_endpoint_configuration' have the 'initial_instance_count'
 # in 'production_variants' attribute greater than 1
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -45,7 +46,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'initial_instance_count' should be greater than '" + string(initial_instance_count_limit) + "' for AWS Sagemaker Endpoint Configuration. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-4 for more details.",
+			"message":        "Attribute 'initial_instance_count' should be greater than '" + string(initial_instance_count_limit) + "' for AWS Sagemaker Endpoint Configuration",
 		}
 	},
 }

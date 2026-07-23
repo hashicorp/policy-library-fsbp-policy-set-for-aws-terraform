@@ -1,4 +1,5 @@
 # This control checks whether a root volume in an Amazon WorkSpaces WorkSpace is encrypted at rest.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/workspaces-controls.html#workspaces-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                       "workspaces-root-volumes-should-be-encrypted-at-rest",
-	"message":                           "Attribute 'root_volume_encryption_enabled' must be set to true for 'aws_workspaces_workspace' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/workspaces-controls.html#workspaces-2 for more details.",
+	"message":                           "Attribute 'root_volume_encryption_enabled' must be set to true for 'aws_workspaces_workspace' resources",
 	"resource_aws_workspaces_workspace": "aws_workspaces_workspace",
 	"root_volume_encryption_enabled":    "root_volume_encryption_enabled",
 }

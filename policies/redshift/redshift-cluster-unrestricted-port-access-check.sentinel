@@ -1,5 +1,6 @@
 # This policy requires resources of type `aws_security_group`, `aws_security_group_rule` and `aws_vpc_security_group_ingress_rule`
 # to block ingress traffic from unknown sources to resources of type aws_redshift_cluster
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-15 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                              "redshift-cluster-unrestricted-port-access-check",
-	"message":                                  "Security group rules should not allow ingress to Redshift Cluster port from '0.0.0.0/0' or '::/0'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-15 for more details.",
+	"message":                                  "Security group rules should not allow ingress to Redshift Cluster port from '0.0.0.0/0' or '::/0'",
 	"resource_security_group_rule":             "aws_security_group_rule",
 	"resource_security_group":                  "aws_security_group",
 	"resource_vpc_security_group_ingress_rule": "aws_vpc_security_group_ingress_rule",

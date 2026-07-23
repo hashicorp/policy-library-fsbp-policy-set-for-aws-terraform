@@ -1,4 +1,5 @@
 # This policy requires EFS file systems to have automatic backups enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-7 for more details.
 
 // Copyright IBM Corp. 2024, 2025
 // SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                    "efs-automatic-backups-enabled",
-	"message":                        "EFS file systems should have automatic backups enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-7 for more details.",
+	"message":                        "EFS file systems should have automatic backups enabled",
 	"resource_aws_efs_file_system":   "aws_efs_file_system",
 	"resource_aws_efs_backup_policy": "aws_efs_backup_policy",
 }

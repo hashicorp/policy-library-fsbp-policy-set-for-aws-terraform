@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_macie2_account' have the 'status'
 # attribute set to 'ENABLED'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/macie-controls.html#macie-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                    "aws-macie-status-should-be-enabled",
-	"message":                        "Attribute 'status' should be 'ENABLED' for AWS Macie Account. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/macie-controls.html#macie-1 for more details.",
+	"message":                        "Attribute 'status' should be 'ENABLED' for AWS Macie Account",
 	"resource_aws_macie2_account":    "aws_macie2_account",
 	"resource_macie2_status_enabled": "ENABLED",
 }

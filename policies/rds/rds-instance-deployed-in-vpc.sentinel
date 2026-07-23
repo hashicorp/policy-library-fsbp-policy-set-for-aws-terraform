@@ -1,4 +1,5 @@
 # This policy checks if the aws rds instances are publicly accessible
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-18 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -12,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":  "rds-instance-deployed-in-vpc",
-	"message":      "Attribute 'db_subnet_group_name' should be present for aws_db_instance resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-18 for more details.",
+	"message":      "Attribute 'db_subnet_group_name' should be present for aws_db_instance resource",
 	"rds_resource": "aws_db_instance",
 }
 

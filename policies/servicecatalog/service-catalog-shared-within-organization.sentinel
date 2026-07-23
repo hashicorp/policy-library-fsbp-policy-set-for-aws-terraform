@@ -1,3 +1,4 @@
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/servicecatalog-controls.html#servicecatalog-1 for more details.
 // This policy requires `aws_servicecatalog_portfolio_share` resources to have attribute 'type' should not be 'ACCOUNT'.
 
 # Copyright IBM Corp. 2024, 2025
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name": "service-catalog-shared-within-organization",
-	"message":     "Attribute 'type' must not be 'ACCOUNT' for 'aws_servicecatalog_portfolio_share' linked with the 'aws_servicecatalog_portfolio' resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/servicecatalog-controls.html#servicecatalog-1 for more details.",
+	"message":     "Attribute 'type' must not be 'ACCOUNT' for 'aws_servicecatalog_portfolio_share' linked with the 'aws_servicecatalog_portfolio' resource",
 	"resource_aws_servicecatalog_portfolio_share": "aws_servicecatalog_portfolio_share",
 	"resource_aws_servicecatalog_portfolio":       "aws_servicecatalog_portfolio",
 	"type":            "type",

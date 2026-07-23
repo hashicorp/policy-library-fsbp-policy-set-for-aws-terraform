@@ -1,4 +1,5 @@
 # This control checks whether a 'aws_codebuild_project' has at least one log option, either to S3 or CloudWatch logs enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/codebuild-controls.html#codebuild-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                    "codebuild-project-environments-should-have-a-logging-aws-configuration",
 	"resource_aws_codebuild_project": "aws_codebuild_project",
-	"message":                        "'aws_codebuild_project' should have at least one log option, either to S3 or CloudWatch logs enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/codebuild-controls.html#codebuild-4 for more details.",
+	"message":                        "'aws_codebuild_project' should have at least one log option, either to S3 or CloudWatch logs enabled",
 }
 
 # Functions

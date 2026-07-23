@@ -1,4 +1,5 @@
 # S3 general purpose bucket policies should restrict access to other AWS accounts
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -18,7 +19,7 @@ param blacklistedactionpatterns default ["s3:DeleteBucketPolicy", "s3:PutBucketA
 
 const = {
 	"policy_name":                      "s3-bucket-policy-restrict-access-to-other-accounts",
-	"message":                          "S3 general purpose bucket policies should restrict access to other AWS accounts. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-6 for more details.",
+	"message":                          "S3 general purpose bucket policies should restrict access to other AWS accounts",
 	"resource_aws_iam_policy_document": "aws_iam_policy_document",
 	"Allow": "Allow",
 }

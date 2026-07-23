@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_elb' have the attribute
 # 'cross_zone_load_balancing' set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-9 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":      "elb-connection-draining-enabled",
-	"message":          "Classic load balancers should have cross zone load balancing enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-9 for more details.",
+	"message":          "Classic load balancers should have cross zone load balancing enabled",
 	"resource_aws_elb": "aws_elb",
 }
 

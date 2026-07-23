@@ -1,5 +1,6 @@
 # This policy checks if all container definitions of a given 'aws_ecs_task_definition'
 # resource contains a non empty value for the logConfiguration.logDriver attribute.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-9 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "json"
 # Constants
 const = {
 	"policy_name":                      "ecs-task-definition-log-configuration-present",
-	"message":                          "Attribute logConfiguration.logDriver should be non empty in container definitions for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-9 for more details.",
+	"message":                          "Attribute logConfiguration.logDriver should be non empty in container definitions for the given task definition",
 	"resource_aws_ecs_task_definition": "aws_ecs_task_definition",
 }
 

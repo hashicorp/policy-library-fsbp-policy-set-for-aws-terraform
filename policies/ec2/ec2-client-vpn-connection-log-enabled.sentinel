@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_ec2_client_vpn_endpoint' have the cloudwatch logs
 # enabled in the 'connection_log_options' attribute
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-51 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name": "ec2-client-vpn-connection-log-enabled",
-	"message":     "AWS EC2 Client VPN endpoints should have client connection logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-51 for more details.",
+	"message":     "AWS EC2 Client VPN endpoints should have client connection logging enabled",
 	"resource_aws_ec2_client_vpn_endpoint": "aws_ec2_client_vpn_endpoint",
 	"enabled": "enabled",
 }

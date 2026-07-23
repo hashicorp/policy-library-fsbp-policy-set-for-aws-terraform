@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_wafv2_rule_group` have attribute 'cloudwatch_metrics_enabled' set to true.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-12 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                   "wafv2-rulegroup-logging-enabled",
-	"message":                       "Attribute 'visibility_config.cloudwatch_metrics_enabled' must be set to true for 'aws_wafv2_rule_group' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-12 for more details.",
+	"message":                       "Attribute 'visibility_config.cloudwatch_metrics_enabled' must be set to true for 'aws_wafv2_rule_group' resources",
 	"resource_aws_wafv2_rule_group": "aws_wafv2_rule_group",
 	"visibility_config":             "visibility_config",
 	"cloudwatch_metrics_enabled":    "cloudwatch_metrics_enabled",

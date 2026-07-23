@@ -1,5 +1,6 @@
 # This policy requires that the `subnet_group_name` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group`
 # resource is set.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-7 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -44,7 +45,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'subnet_group_name' must be set for " + v.type + " resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-7 for more details.",
+			"message":        "Attribute 'subnet_group_name' must be set for " + v.type + " resources",
 		}
 	},
 }

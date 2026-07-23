@@ -1,4 +1,5 @@
 # This control checks whether 'aws_guardduty_detector_feature' EKS Runtime Monitoring with automated agent management is enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-7 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                             "guardduty-eks-protection-runtime-should-be-enabled",
 	"resource_aws_guardduty_detector_feature": "aws_guardduty_detector_feature",
-	"message": "'aws_guardduty_detector_feature' EKS Runtime Monitoring with automated agent management should be enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-7 for more details.",
+	"message": "'aws_guardduty_detector_feature' EKS Runtime Monitoring with automated agent management should be enabled",
 }
 
 # Functions

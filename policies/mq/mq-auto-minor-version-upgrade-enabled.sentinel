@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_mq_broker' have the 'auto_minor_version_upgrade'
 # attribute set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":            "mq-auto-minor-version-upgrade-enabled",
-	"message":                "Attribute 'auto_minor_version_upgrade' should be true for AWS MQ Broker. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-3 for more details.",
+	"message":                "Attribute 'auto_minor_version_upgrade' should be true for AWS MQ Broker",
 	"resource_aws_mq_broker": "aws_mq_broker",
 }
 

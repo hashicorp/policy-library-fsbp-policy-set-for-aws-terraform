@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_elb' have
 # HTTPS/SSL listeners configured with certs from acm.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "strings"
 # Constants
 const = {
 	"policy_name":         "elb-ensure-ssl-listener-acm-cert-classic-load-balancer",
-	"message":             "Classic Load Balancers with SSL/HTTPS listeners should use a certificate provided by AWS Certificate Manager. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-2 for more details.",
+	"message":             "Classic Load Balancers with SSL/HTTPS listeners should use a certificate provided by AWS Certificate Manager",
 	"resource_aws_elb":    "aws_elb",
 	"protocols":           ["https", "ssl"],
 	"acm_cert_arn_prefix": "arn:aws:acm:",

@@ -1,5 +1,6 @@
 # This policy checks if 'aws_eks_cluster' does not
 # run on unsupported kubernetes versions
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eks-controls.html#eks-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "strings"
 # Constants
 const = {
 	"policy_name":              "eks-cluster-supported-k8s-version-check",
-	"message":                  "aws_eks_cluster resources should be created with supported kubernetes versions. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eks-controls.html#eks-2 for more details.",
+	"message":                  "aws_eks_cluster resources should be created with supported kubernetes versions",
 	"resource_aws_eks_cluster": "aws_eks_cluster",
 	"version":                  "version",
 }

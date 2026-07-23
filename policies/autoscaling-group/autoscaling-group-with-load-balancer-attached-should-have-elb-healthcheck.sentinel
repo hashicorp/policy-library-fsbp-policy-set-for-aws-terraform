@@ -1,4 +1,5 @@
 # This policy requires `aws_autoscaling_group` resources to be associated with load balancers and to have attribute 'health_check_health_check_type' should be 'ELB'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name":                         "autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck",
-	"message":                             "Attribute 'health_check_type' must be 'ELB' for 'aws_autoscaling_group' and should be associated with the load balancer resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-1 for more details.",
+	"message":                             "Attribute 'health_check_type' must be 'ELB' for 'aws_autoscaling_group' and should be associated with the load balancer resource",
 	"resource_aws_autoscaling_group":      "aws_autoscaling_group",
 	"resource_aws_autoscaling_attachment": "aws_autoscaling_attachment",
 	"health_check_type":                   "health_check_type",

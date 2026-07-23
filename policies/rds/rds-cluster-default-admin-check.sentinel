@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_rds_cluster' have the 'master_username'
 # attribute not set to 'admin' (default value)
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-24 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                   "rds-cluster-default-admin-check",
-	"message":                       "Attribute 'master_username' should not be 'admin' (default value) for AWS RDS Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-24 for more details.",
+	"message":                       "Attribute 'master_username' should not be 'admin' (default value) for AWS RDS Cluster",
 	"resource_aws_rds_cluster":      "aws_rds_cluster",
 	"master_username_default_value": "admin",
 }

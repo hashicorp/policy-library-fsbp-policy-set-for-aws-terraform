@@ -1,3 +1,4 @@
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/datafirehose-controls.html#datafirehose-1 for more details.
 // This policy requires `aws_kinesis_firehose_delivery_stream` resources to have server-side encryption enabled.
 
 # Copyright IBM Corp. 2024, 2025
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "firehose-server-side-encryption-enabled",
-	"message":     "Attribute 'server_side_encryption' must have the enabled set to true for 'aws_kinesis_firehose_delivery_stream' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/datafirehose-controls.html#datafirehose-1 for more details.",
+	"message":     "Attribute 'server_side_encryption' must have the enabled set to true for 'aws_kinesis_firehose_delivery_stream' resources",
 	"resource_aws_kinesis_firehose_delivery_stream": "aws_kinesis_firehose_delivery_stream",
 	"server_side_encryption":                        "server_side_encryption",
 	"enabled":                                       "enabled",

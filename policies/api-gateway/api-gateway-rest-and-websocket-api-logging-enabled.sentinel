@@ -1,5 +1,6 @@
 # This policy checks for resource type of 'aws_api_gateway_method_settings' whether all stages
 # of an Amazon API Gateway REST or WebSocket API have logging enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                              "api-gateway-rest-and-websocket-api-logging-enabled",
 	"resource_aws_api_gateway_method_settings": "aws_api_gateway_method_settings",
-	"message": "Logging should be enabled for resource 'aws_api_gateway_method_settings' at all stages of Amazon API Gateway REST or WebSocket API. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-1 for more details.",
+	"message": "Logging should be enabled for resource 'aws_api_gateway_method_settings' at all stages of Amazon API Gateway REST or WebSocket API",
 }
 
 # Functions

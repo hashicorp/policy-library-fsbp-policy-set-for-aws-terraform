@@ -1,5 +1,6 @@
 # This policy ensures that resources of type 'aws_ecr_repository' have
 # a lifecycle policy configured
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecr-controls.html#ecr-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ const = {
 	"resource_aws_ecr":                  "aws_ecr_repository",
 	"resource_aws_ecr_lifecycle_policy": "aws_ecr_lifecycle_policy",
 	"module_prefix":                     "module.",
-	"message":                           "ECR repositories should have at least one lifecycle policy configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecr-controls.html#ecr-3 for more details.",
+	"message":                           "ECR repositories should have at least one lifecycle policy configured",
 }
 
 # Functions

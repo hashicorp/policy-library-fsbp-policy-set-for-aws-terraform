@@ -1,4 +1,5 @@
 # This policy checks if the EC2 Transit Gateway have the attribute 'auto_accept_shared_attachments' set to disable
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-23 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -12,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                      "ec2-transit-gateway-auto-vpc-attach-disabled",
-	"message":                          "Resource EC2 Transit Gateway should have the attribute 'auto_accept_shared_attachments' set to diable. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-23 for more details.",
+	"message":                          "Resource EC2 Transit Gateway should have the attribute 'auto_accept_shared_attachments' set to disable",
 	"resource_aws_ec2_transit_gateway": "aws_ec2_transit_gateway",
 	"auto_accept_shared_attachments":   "auto_accept_shared_attachments",
 }

@@ -1,4 +1,5 @@
 # This control checks whether an Amazon Redshift Serverless namespace is configured to export connection and user logs to Amazon CloudWatch Logs.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs",
-	"message":     "Redshift Serverless namespaces should export logs to CloudWatch Logs. Both 'connectionlog' and 'userlog' should be configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-6 for more details.",
+	"message":     "Redshift Serverless namespaces should export logs to CloudWatch Logs. Both 'connectionlog' and 'userlog' should be configured",
 	"resource_aws_redshiftserverless_namespace": "aws_redshiftserverless_namespace",
 	"required_log_types":                        ["connectionlog", "userlog"],
 }

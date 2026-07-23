@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_opensearch_domain' have the 'auto_software_update_enabled' attribute set to true
 # in the 'software_update_options' block
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-10 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                    "opensearch-logs-to-cloudwatch",
-	"message":                        "Attribute 'auto_software_update_enabled' in 'software_update_options' should be true for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-10 for more details.",
+	"message":                        "Attribute 'auto_software_update_enabled' in 'software_update_options' should be true for AWS OpenSearch Domain",
 	"resource_aws_opensearch_domain": "aws_opensearch_domain",
 	"auto_software_update_enabled":   "auto_software_update_enabled",
 }

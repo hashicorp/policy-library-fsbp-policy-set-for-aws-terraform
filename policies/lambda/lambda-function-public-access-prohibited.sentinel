@@ -1,4 +1,5 @@
 # This control checks whether the 'aws_lambda_function' resource-based policy prohibits public access outside of your account.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                    "lambda-function-public-access-prohibited",
 	"resource_aws_lambda_permission": "aws_lambda_permission",
-	"message":                        "'aws_lambda_function' resource-based policy should prohibits public access outside of your account. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-1 for more details.",
+	"message":                        "'aws_lambda_function' resource-based policy should prohibits public access outside of your account",
 }
 
 # Functions

@@ -1,5 +1,6 @@
 # This policy requires resources of type `aws_s3_access_point` to have all attributes
 # in the `public_access_block_configuration` set to true.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-19 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "report" as report
 
 const = {
 	"policy_name":                  "s3-access-point-block-public-access-enabled",
-	"message":                      "All attributes in 'public_access_block_configuration' must be set to true for 'aws_s3_access_point' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-19 for more details.",
+	"message":                      "All attributes in 'public_access_block_configuration' must be set to true for 'aws_s3_access_point' resources",
 	"resource_aws_s3_access_point": "aws_s3_access_point",
 	"block_public_acls":            "block_public_acls",
 	"ignore_public_acls":           "ignore_public_acls",

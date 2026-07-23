@@ -1,4 +1,5 @@
 # This control checks whether connections to an Amazon RDS for MariaDB DB instance are encrypted in transit
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-44 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                     "rds-for-mariadb-db-instances-should-be-encrypted-in-transit",
-	"message":                         "RDS for MariaDB DB instances should be encrypted in transit. The parameter 'rds.require_secure_transport' must be set to 1 (ON) in the associated parameter group. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-44 for more details.",
+	"message":                         "RDS for MariaDB DB instances should be encrypted in transit. The parameter 'rds.require_secure_transport' must be set to 1 (ON) in the associated parameter group",
 	"resource_aws_db_instance":        "aws_db_instance",
 	"resource_aws_db_parameter_group": "aws_db_parameter_group",
 	"engine":                     "engine",

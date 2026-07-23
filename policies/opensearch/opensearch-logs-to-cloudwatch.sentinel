@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_opensearch_domain' have the 'enable' attribute set to true
 # in the 'log_publishing_options' block
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                    "opensearch-logs-to-cloudwatch",
-	"message":                        "Attribute 'enable' in 'log_publishing_options' should be true for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-4 for more details.",
+	"message":                        "Attribute 'enable' in 'log_publishing_options' should be true for AWS OpenSearch Domain",
 	"resource_aws_opensearch_domain": "aws_opensearch_domain",
 	"enabled":                        "enabled",
 }

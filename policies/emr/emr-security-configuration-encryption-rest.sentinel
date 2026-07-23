@@ -1,4 +1,5 @@
 # This policy requires 'aws_emr_security_configuration' to include at-rest encryption settings.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "json"
 
 const = {
 	"policy_name": "emr-security-configuration-encryption-rest",
-	"message":     "Amazon EMR security configurations must include encryption at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-3 for more details.",
+	"message":     "Amazon EMR security configurations must include encryption at rest",
 	"resource_aws_emr_security_configuration": "aws_emr_security_configuration",
 }
 

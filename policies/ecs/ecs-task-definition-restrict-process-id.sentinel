@@ -1,5 +1,6 @@
 # This policy checks if the 'pidMode' attribute for resources of
 # type 'aws_ecs_task_definition' is equal to 'host'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                      "ecs-task-definition-restrict-process-id",
-	"message":                          "Containers in a task definition should not share the same process namespace as that of the host. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-3 for more details.",
+	"message":                          "Containers in a task definition should not share the same process namespace as that of the host",
 	"resource_aws_ecs_task_definition": "aws_ecs_task_definition",
 	"host": "host",
 }

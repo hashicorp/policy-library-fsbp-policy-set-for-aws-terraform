@@ -1,4 +1,5 @@
 # This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/route53-controls.html#route53-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                    "route-53-public-hosted-zones-should-log-dns-queries",
-	"message":                        "Route 53 public hosted zones should log DNS queries. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/route53-controls.html#route53-2 for more details.",
+	"message":                        "Route 53 public hosted zones should log DNS queries",
 	"resource_aws_route53_query_log": "aws_route53_query_log",
 }
 

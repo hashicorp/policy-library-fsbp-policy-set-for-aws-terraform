@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_elasticsearch_domain` have the `dedicated_master_count` atleast 3 and 'dedicated_master_enabled' set to true for `cluster_config` attribute.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-7 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -17,7 +18,7 @@ param master_count_value default 3
 # Constants
 const = {
 	"policy_name":                       "elasticsearch-primary-node-fault-tolerance",
-	"message":                           "Attribute 'dedicated_master_count' must be atleast 3 and 'dedicated_master_enabled' set to true for the attribute 'cluster_config' for 'aws_elasticsearch_domain' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-7 for more details.",
+	"message":                           "Attribute 'dedicated_master_count' must be atleast 3 and 'dedicated_master_enabled' set to true for the attribute 'cluster_config' for 'aws_elasticsearch_domain' resources",
 	"resource_aws_elasticsearch_domain": "aws_elasticsearch_domain",
 	"dedicated_master_count":            "dedicated_master_count",
 	"dedicated_master_enabled":          "dedicated_master_enabled",

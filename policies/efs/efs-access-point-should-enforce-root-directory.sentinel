@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_efs_access_point` have attribute `root_directory` should not have path set to '/'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                   "efs-access-point-should-enforce-root-directory",
-	"message":                       "Attribute 'path' should not be '/' in 'root_directory' for 'aws_efs_access_point' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-3 for more details.",
+	"message":                       "Attribute 'path' should not be '/' in 'root_directory' for 'aws_efs_access_point' resources",
 	"resource_aws_efs_access_point": "aws_efs_access_point",
 	"root_directory":                "root_directory",
 	"path":                          "path",

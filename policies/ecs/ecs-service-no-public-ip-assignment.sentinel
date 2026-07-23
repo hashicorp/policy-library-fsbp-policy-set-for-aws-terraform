@@ -1,6 +1,7 @@
 # This policy checks if resources of type 'aws_ecs_service' have
 # the 'assign_public_ip' attribute under networking configuration
 # set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":              "ecs-service-no-public-ip-assignment",
-	"message":                  "ECS services should not have public IPs assigned to them. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-2 for more details",
+	"message":                  "ECS services should not have public IPs assigned to them",
 	"resource_aws_ecs_service": "aws_ecs_service",
 }
 

@@ -1,5 +1,6 @@
 # This policy checks if application load balancers are configured
 # to drop invalid HTTP headers
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":     "elb-drop-invalid-http-headers",
-	"message":         "Application load balancers should be configured to drop invalid HTTP headers. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-4 for more details.",
+	"message":         "Application load balancers should be configured to drop invalid HTTP headers",
 	"resource_aws_lb": "aws_lb",
 	"application":     "application",
 }

@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_datasync_task` have attribute `cloudwatch_log_group_arn` should not be empty and log_level should not be 'OFF'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/datasync-controls.html#datasync-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                "datasync-task-should-have-logging-enabled",
-	"message":                    "Attribute 'cloudwatch_log_group_arn' must not be empty and 'log_level' must not be 'OFF' for 'aws_datasync_task' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/datasync-controls.html#datasync-1 for more details.",
+	"message":                    "Attribute 'cloudwatch_log_group_arn' must not be empty and 'log_level' must not be 'OFF' for 'aws_datasync_task' resources",
 	"resource_aws_datasync_task": "aws_datasync_task",
 	"cloudwatch_log_group_arn":   "cloudwatch_log_group_arn",
 	"log_level":                  "log_level",

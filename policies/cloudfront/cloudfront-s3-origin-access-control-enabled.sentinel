@@ -1,3 +1,4 @@
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-13 for more details.
 // This policy checks whether an 'aws_cloudfront_distribution' with an Amazon S3 origin has 'aws_cloudfront_origin_access_control' configured.
 
 # Copyright IBM Corp. 2024, 2025
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name": "cloudfront-s3-origin-access-control-enabled",
-	"message":     "'aws_cloudfront_distribution' with an Amazon S3 origin has 'aws_cloudfront_origin_access_control' should have configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-13 for more details.",
+	"message":     "'aws_cloudfront_distribution' with an Amazon S3 origin has 'aws_cloudfront_origin_access_control' should have configured",
 	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
 }
 

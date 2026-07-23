@@ -1,5 +1,6 @@
 # This policy ensures that resources of type 'aws_networkfirewall_firewall' have
 # logging enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -17,7 +18,7 @@ const = {
 	"resource_aws_networkfirewall_firewall":              "aws_networkfirewall_firewall",
 	"resource_aws_networkfirewall_logging_configuration": "aws_networkfirewall_logging_configuration",
 	"module_prefix":                                      "module.",
-	"message":                                            "'aws_networkfirewall_firewall' resources should have logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-2 for more details.",
+	"message":                                            "'aws_networkfirewall_firewall' resources should have logging enabled",
 }
 
 # Functions

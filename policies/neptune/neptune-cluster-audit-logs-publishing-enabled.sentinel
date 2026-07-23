@@ -1,4 +1,5 @@
 # This policy requires attribute 'enable_cloudwatch_logs_exports' to contain 'audit' for 'aws_neptune_cluster' resources
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -39,7 +40,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'enable_cloudwatch_logs_exports' must contain 'audit' for 'aws_neptune_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-2 for more details.",
+			"message":        "Attribute 'enable_cloudwatch_logs_exports' must contain 'audit' for 'aws_neptune_cluster' resources",
 		}
 	},
 }

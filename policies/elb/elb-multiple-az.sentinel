@@ -1,4 +1,5 @@
 # This policy ensures that Application, Network, and Gateway Load Balancers span multiple Availability Zones
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-13 for more details.
 
 #  Copyright IBM Corp. 2024, 2025
 #  SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":     "elb-multiple-az",
-	"message":         "Load balancers should span multiple Availability Zones for high availability. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-13 for more details.",
+	"message":         "Load balancers should span multiple Availability Zones for high availability",
 	"resource_aws_lb": "aws_lb",
 }
 

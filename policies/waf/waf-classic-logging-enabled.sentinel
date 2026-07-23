@@ -1,4 +1,5 @@
 # This policy checks whether logging is enabled for an 'aws_waf_web_acl'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":              "waf-classic-logging-enabled",
-	"message":                  "Logging should be enabled for an AWS WAF global web ACL. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-1 for more details.",
+	"message":                  "Logging should be enabled for an AWS WAF global web ACL",
 	"resource_aws_waf_web_acl": "aws_waf_web_acl",
 	"logging_configuration":    "logging_configuration",
 }

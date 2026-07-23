@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_opensearch_domain' have the 'anonymous_auth_enabled' attribute set to true
 # in the 'advanced_security_options' block and the 'advanced_security_options' block is enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-7 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                    "opensearch-access-control-enabled",
-	"message":                        "Attribute 'anonymous_auth_enabled' in 'advanced_security_options' should be true and 'advanced_security_options' should be enabled for Fine Grained Access Control for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-7 for more details.",
+	"message":                        "Attribute 'anonymous_auth_enabled' in 'advanced_security_options' should be true and 'advanced_security_options' should be enabled for Fine Grained Access Control for AWS OpenSearch Domain",
 	"resource_aws_opensearch_domain": "aws_opensearch_domain",
 	"anonymous_auth_enabled":         "anonymous_auth_enabled",
 	"enabled":                        "enabled",

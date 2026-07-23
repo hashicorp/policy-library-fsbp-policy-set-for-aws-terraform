@@ -1,4 +1,5 @@
 # This policy requires block public access setting is enabled and any port other than 22 should not be allowed
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -43,7 +44,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'block_public_security_group_rules' must have been set to true and any port other than 22 should not be allowed for 'aws_emr_block_public_access_configuration' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-2 for more details.",
+			"message":        "Attribute 'block_public_security_group_rules' must have been set to true and any port other than 22 should not be allowed for 'aws_emr_block_public_access_configuration' resources",
 		}
 	},
 }

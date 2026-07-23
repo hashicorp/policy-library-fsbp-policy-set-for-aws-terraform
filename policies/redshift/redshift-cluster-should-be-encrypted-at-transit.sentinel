@@ -1,6 +1,7 @@
 # This policy checks if resources of type 'aws_redshift_cluster' referenced to the
 #resources of type 'aws_redshift_parameter_group' and having the 'require_ssl'
 #set to 'true'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 # Constants
 const = {
 	"policy_name":                           "redshift-cluster-public-access-check",
-	"message":                               "Parameter 'require_ssl' should be true for AWS Redshift Parameter Group. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-2 for more details.",
+	"message":                               "Parameter 'require_ssl' should be true for AWS Redshift Parameter Group",
 	"resource_aws_redshift_cluster":         "aws_redshift_cluster",
 	"resource_aws_redshift_parameter_group": "aws_redshift_parameter_group",
 	"address":        "address",

@@ -1,4 +1,5 @@
 # This policy checks if the EC2 Instance have only one Network Interface
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-17 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -12,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":           "ec2-instance-should-not-use-multiple-enis",
-	"message":               "Resource EC2 Instance should have the only one Network Interface. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-17 for more details.",
+	"message":               "Resource EC2 Instance should have the only one Network Interface",
 	"resource_aws_instance": "aws_instance",
 	"network_interface":     "network_interface",
 }

@@ -1,3 +1,4 @@
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-3 for more details.
 // This policy requires `aws_ebs_volume` resources to be encrypted and in attached state.
 
 # Copyright IBM Corp. 2024, 2025
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name":                    "ec2-attached-ebs-volumes-encrypted-at-rest",
-	"message":                        "Attribute 'encrypted' must be 'true' for 'aws_ebs_volume' resources and should be attached. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-3 for more details.",
+	"message":                        "Attribute 'encrypted' must be 'true' for 'aws_ebs_volume' resources and should be attached",
 	"resource_aws_ebs_volume":        "aws_ebs_volume",
 	"resource_aws_volume_attachment": "aws_volume_attachment",
 	"encrypted":                      "encrypted",

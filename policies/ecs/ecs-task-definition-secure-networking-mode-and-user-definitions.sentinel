@@ -1,5 +1,6 @@
 # This policy checks if the task definition with host networking mode has
 # unprivileged or user container definitions.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,8 +15,8 @@ import "json"
 # Constants
 const = {
 	"policy_name":                             "ecs-task-definition-secure-networking-mode-and-user-definitions",
-	"non_privileged_container_definition_msg": "Attribute 'privileged' should be true for container definitions for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-1 for more details.",
-	"user_container_definition_msg":           "Attribute 'user' should be non empty and should not be 'root' for container definitions for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-1 for more details.",
+	"non_privileged_container_definition_msg": "Attribute 'privileged' should be true for container definitions for the given task definition",
+	"user_container_definition_msg":           "Attribute 'user' should be non empty and should not be 'root' for container definitions for the given task definition",
 	"resource_aws_ecs_task_definition":        "aws_ecs_task_definition",
 	"host_network_mode":                       "host",
 	"privileged":                              "privileged",

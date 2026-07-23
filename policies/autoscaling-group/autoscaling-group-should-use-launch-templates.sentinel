@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_autoscaling_group' have the 'launch_template'
 # atribute or the attribute must be present in 'mixed_instances_policy'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-9 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                    "autoscaling-group-should-use-launch-templates",
-	"message":                        "AWS Autoscaling Group must use AWS EC2 Launch Templates. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-9 for more details.",
+	"message":                        "AWS Autoscaling Group must use AWS EC2 Launch Templates",
 	"resource_aws_autoscaling_group": "aws_autoscaling_group",
 }
 

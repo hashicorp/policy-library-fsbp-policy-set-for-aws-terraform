@@ -1,6 +1,7 @@
 # This policy checks if resources of type 'aws_opensearch_domain' have the
 # 'instance_count' greater than or equal to 3
 # in the 'cluster_config' block
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -18,7 +19,7 @@ param instance_count default 3
 # Constants
 const = {
 	"policy_name":                    "opensearch-data-node-fault-tolerance",
-	"message":                        "Attribute 'instance_count' in 'cluster_config' should atleast 3 for AWS OpenSearch Domain. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-6 for more details.",
+	"message":                        "Attribute 'instance_count' in 'cluster_config' should atleast 3 for AWS OpenSearch Domain",
 	"resource_aws_opensearch_domain": "aws_opensearch_domain",
 }
 

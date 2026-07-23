@@ -1,4 +1,5 @@
 # This control checks whether server access logging is enabled on 'aws_cloudfront_distribution'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-5 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                          "cloudfront-distributions-should-have-logging-enabled",
 	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
-	"message":        "Server access logging should be enabled for 'aws_cloudfront_distribution'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-5 for more details.",
+	"message":        "Server access logging should be enabled for 'aws_cloudfront_distribution'",
 	"logging_config": "logging_config",
 }
 
