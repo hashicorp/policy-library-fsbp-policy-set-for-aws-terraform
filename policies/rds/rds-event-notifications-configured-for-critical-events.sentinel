@@ -20,8 +20,8 @@ param source_type default "db-cluster"
 
 # Constants
 const = {
-	"policy_name":                        "rds-event-notifications-configured-for-critical-events",
-	"message":                            "Event Notifications should be configured for the resource critical events.",
+	"policy_name": "rds-event-notifications-configured-for-critical-events",
+	"message":     "Event Notifications should be configured for the resource critical events.",
 	"resource_aws_db_event_subscription": "aws_db_event_subscription",
 	"address":        "address",
 	"module_prefix":  "module.",
