@@ -1,5 +1,6 @@
 # This policy checks if the container definitions have the 'privileged'
 # parameter set to true and fails if that is the case.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "json"
 # Constants
 const = {
 	"policy_name":                      "ecs-non-privileged-container-definitions",
-	"message":                          "Container definitions within task definitions should not have the privileged parameter set to 'true'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-4 for more details.",
+	"message":                          "Container definitions within task definitions should not have the privileged parameter set to 'true'",
 	"resource_aws_ecs_task_definition": "aws_ecs_task_definition",
 	"privileged":                       "privileged",
 }

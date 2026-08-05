@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_waf_rule_group` to have at least one rule.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-7 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                 "waf-global-rulegroup-not-empty",
-	"message":                     "AWS WAF Classic global rule groups should have at least one rule. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/waf-controls.html#waf-7 for more details.",
+	"message":                     "AWS WAF Classic global rule groups should have at least one rule",
 	"resource_aws_waf_rule_group": "aws_waf_rule_group",
 	"activated_rule":              "activated_rule",
 }

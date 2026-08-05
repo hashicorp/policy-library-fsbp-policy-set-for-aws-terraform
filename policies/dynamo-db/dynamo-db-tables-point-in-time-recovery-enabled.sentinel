@@ -1,4 +1,5 @@
 # This policy requires that  `point_in_time_recovery` attribute of the `aws_dynamodb_table` resource has `enabled` set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -36,7 +37,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'point_in_time_recovery' must have 'enabled' set to true for 'aws_dynamodb_table' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-2 for more details.",
+			"message":        "Attribute 'point_in_time_recovery' must have 'enabled' set to true for 'aws_dynamodb_table' resources",
 		}
 	},
 }

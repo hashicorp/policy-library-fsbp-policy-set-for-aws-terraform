@@ -1,4 +1,5 @@
 # This policy requires `aws_vpc_endpoint` resources to have attribute 'vpc_endpoint_type' to be 'Interface' and 'service_name' to be 'ec2'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-10 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -17,7 +18,7 @@ import "strings"
 
 const = {
 	"policy_name":               "ec2-service-vpc-endpoint-enabled",
-	"message":                   "Attribute 'vpc_endpoint_type' must be 'Interface' and 'service_name' to be 'ec2' for 'aws_vpc_endpoint' linked with the 'aws_vpc' resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-10 for more details.",
+	"message":                   "Attribute 'vpc_endpoint_type' must be 'Interface' and 'service_name' to be 'ec2' for 'aws_vpc_endpoint' linked with the 'aws_vpc' resource",
 	"resource_aws_vpc_endpoint": "aws_vpc_endpoint",
 	"resource_aws_vpc":          "aws_vpc",
 	"vpc_endpoint_type":         "vpc_endpoint_type",

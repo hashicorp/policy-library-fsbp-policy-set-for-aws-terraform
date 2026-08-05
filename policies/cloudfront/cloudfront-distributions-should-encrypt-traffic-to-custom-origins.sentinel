@@ -1,4 +1,5 @@
 # This control checks whether 'aws_cloudfront_distribution' are encrypting traffic to custom origins.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-9 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                          "cloudfront-distributions-should-encrypt-traffic-to-custom-origins",
 	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
-	"message": "'aws_cloudfront_distribution' are encrypting traffic to custom origins. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-9 for more details.",
+	"message": "'aws_cloudfront_distribution' are encrypting traffic to custom origins",
 }
 
 # Functions

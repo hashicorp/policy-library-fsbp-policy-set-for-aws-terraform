@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_athena_workgroup` have attribute `publish_cloudwatch_metrics_enabled` should be `true`.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/athena-controls.html#athena-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                        "athena-workgroup-should-have-logging-enabled",
-	"message":                            "Attribute 'publish_cloudwatch_metrics_enabled' must be set to 'true' for 'aws_athena_workgroup' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/athena-controls.html#athena-4 for more details.",
+	"message":                            "Attribute 'publish_cloudwatch_metrics_enabled' must be set to 'true' for 'aws_athena_workgroup' resources",
 	"resource_aws_athena_workgroup":      "aws_athena_workgroup",
 	"publish_cloudwatch_metrics_enabled": "publish_cloudwatch_metrics_enabled",
 	"configuration":                      "configuration",

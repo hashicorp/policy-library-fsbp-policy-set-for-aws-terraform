@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_elasticsearch_domain` have the `enabled` value set to 'true' for `node_to_node_encrytion` attribute.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                       "elasticsearch-node-to-node-encryption-check",
-	"message":                           "Attribute 'enabled' must be set to true for the attribute 'node_to_node_encryption' for 'aws_elasticsearch_domain' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-3 for more details.",
+	"message":                           "Attribute 'enabled' must be set to true for the attribute 'node_to_node_encryption' for 'aws_elasticsearch_domain' resources",
 	"resource_aws_elasticsearch_domain": "aws_elasticsearch_domain",
 }
 

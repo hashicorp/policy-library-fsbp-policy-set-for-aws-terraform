@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_appsync_api_cache` have attribute `transit_encryption_enabled` should be `true`.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                    "appsync-cache-should-be-encrypted-at-transit",
-	"message":                        "Attribute 'transit_encryption_enabled' must be set to 'true' for 'aws_appsync_api_cache' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-6 for more details.",
+	"message":                        "Attribute 'transit_encryption_enabled' must be set to 'true' for 'aws_appsync_api_cache' resources",
 	"resource_aws_appsync_api_cache": "aws_appsync_api_cache",
 	"transit_encryption_enabled":     "transit_encryption_enabled",
 }

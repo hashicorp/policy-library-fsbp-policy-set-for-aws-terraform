@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_launch_template' have the attribute
 # 'http_tokens' in 'metadata_options' set to 'required'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-170 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                  "ec2-launch-template-imdsv2-check",
-	"message":                      "Attribute 'http_options' must be set to 'required' in 'metadata_options' for 'aws_launch_template' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-170 for more details.",
+	"message":                      "Attribute 'http_options' must be set to 'required' in 'metadata_options' for 'aws_launch_template' resources",
 	"resource_aws_launch_template": "aws_launch_template",
 	"http_tokens":                  "http_tokens",
 	"required":                     "required",

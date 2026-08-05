@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_iam_policy_document'
 # contain blocked action patterns such as 'kms:ReEncryptFrom' and 'kms:Decrypt'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kms-controls.html#kms-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                      "kms-restrict-iam-inline-policies-decrypt-all-kms-keys",
-	"message":                          "Actions 'kms:ReEncryptFrom' and 'kms:Decrypt' must not be allowed on all 'KMS keys'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kms-controls.html#kms-2 for more details.",
+	"message":                          "Actions 'kms:ReEncryptFrom' and 'kms:Decrypt' must not be allowed on all 'KMS keys'",
 	"resource_aws_iam_policy_document": "aws_iam_policy_document",
 }
 

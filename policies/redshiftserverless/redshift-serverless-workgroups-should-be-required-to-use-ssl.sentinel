@@ -1,4 +1,5 @@
 # This control checks whether connections to an Amazon Redshift Serverless workgroup are required to encrypt data in transit.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "redshift-serverless-require-ssl",
-	"message":     "Connections to Redshift Serverless workgroups should be required to use SSL. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-2 for more details.",
+	"message":     "Connections to Redshift Serverless workgroups should be required to use SSL",
 	"resource_aws_redshiftserverless_workgroup": "aws_redshiftserverless_workgroup",
 	"parameter_key":                             "parameter_key",
 	"parameter_value":                           "parameter_value",

@@ -1,4 +1,5 @@
 # This control checks if the Amazon SNS topic access policy allows public access.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                   "sns-topic-access-policies-should-not-allow-public-access",
-	"message":                       "SNS topic access policies should not allow public access. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-4 for more details.",
+	"message":                       "SNS topic access policies should not allow public access",
 	"resource_aws_sns_topic":        "aws_sns_topic",
 	"resource_aws_sns_topic_policy": "aws_sns_topic_policy",
 	"data_aws_iam_policy_document":  "aws_iam_policy_document",

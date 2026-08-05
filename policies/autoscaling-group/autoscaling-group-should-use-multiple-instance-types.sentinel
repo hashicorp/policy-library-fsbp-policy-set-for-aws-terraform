@@ -1,4 +1,5 @@
 # This policy checks if resources of type 'aws_autoscaling_group' have the multiple instance types
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -12,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                    "autoscaling-group-should-use-multiple-instance-types",
-	"message":                        "AWS Autoscaling Group must use multiple instance types. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-6 for more details.",
+	"message":                        "AWS Autoscaling Group must use multiple instance types",
 	"resource_aws_autoscaling_group": "aws_autoscaling_group",
 	"max_size":                       "max_size",
 	"mixed_instances_policy":         "mixed_instances_policy",

@@ -1,4 +1,5 @@
 # This policy requires `aws_cloudwatch_event_bus` resources to be attached to a policy.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eventbridge-controls.html#eventbridge-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name": "eventbridge-custom-event-bus-should-have-attached-policy",
-	"message":     "Policy should be attached for 'aws_cloudwatch_event_bus' resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eventbridge-controls.html#eventbridge-3 for more details.",
+	"message":     "Policy should be attached for 'aws_cloudwatch_event_bus' resource",
 	"resource_aws_cloudwatch_event_bus_policy": "aws_cloudwatch_event_bus_policy",
 	"resource_aws_cloudwatch_event_bus":        "aws_cloudwatch_event_bus",
 	"event_bus_name":                           "event_bus_name",

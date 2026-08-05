@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_dms_endpoint' have the 'ssl_security_protocol'
 # set to 'ssl-encryption' in 'redis_settings' for engine of type 'redis'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-12 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":               "dms-redis-tls-enabled",
-	"message":                   "Attribute 'ssl_security_protocol' should be 'ssl-encrypted' in 'redis_settings' for engine of type 'redis' in AWS DMS Endpoint. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-12 for more details.",
+	"message":                   "Attribute 'ssl_security_protocol' should be 'ssl-encrypted' in 'redis_settings' for engine of type 'redis' in AWS DMS Endpoint",
 	"resource_aws_dms_endpoint": "aws_dms_endpoint",
 	"redis_engine":              "redis",
 	"ssl_encryption":            "ssl-encryption",

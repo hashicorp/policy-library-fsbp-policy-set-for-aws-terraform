@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_sqs_queue` should not be public by the resource 'aws_sqs_queue_policy'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sqs-controls.html#sqs-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -17,7 +18,7 @@ import "strings"
 
 const = {
 	"policy_name":                      "sqs-queue-block-public-access",
-	"message":                          "SQS queue access policies should not allow public access. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sqs-controls.html#sqs-3 for more details.",
+	"message":                          "SQS queue access policies should not allow public access",
 	"resource_aws_sqs_queue":           "aws_sqs_queue",
 	"resource_aws_sqs_queue_policy":    "aws_sqs_queue_policy",
 	"resource_aws_iam_policy_document": "aws_iam_policy_document",

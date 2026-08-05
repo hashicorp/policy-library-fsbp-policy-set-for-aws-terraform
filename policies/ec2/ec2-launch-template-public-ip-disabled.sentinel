@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_launch_template' have the attribute
 # 'associate_public_ip_address' in 'network_interfaces' set to 'false'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-25 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                  "ec2-launch-template-public-ip-disabled",
-	"message":                      "Attribute 'associate_public_ip_address' must be set to 'false' in 'network_interfaces' for 'aws_launch_template' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-25 for more details.",
+	"message":                      "Attribute 'associate_public_ip_address' must be set to 'false' in 'network_interfaces' for 'aws_launch_template' resources",
 	"resource_aws_launch_template": "aws_launch_template",
 	"associate_public_ip_address":  "associate_public_ip_address",
 }

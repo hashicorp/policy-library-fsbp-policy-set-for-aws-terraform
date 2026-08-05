@@ -1,4 +1,9 @@
 # This policy requires resources of type `aws_vpc_endpoint` should have 'vpc_endpoint_type' configured with interface endpoint and should be referenced to `aws_vpc` resource.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-55 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-56 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-57 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-58 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-60 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1

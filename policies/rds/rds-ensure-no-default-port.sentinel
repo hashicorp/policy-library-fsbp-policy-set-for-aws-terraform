@@ -1,4 +1,5 @@
 # This policy checks if the aws rds instances are publicly accessible
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-23 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -12,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":  "rds-ensure-no-default-port",
-	"message":      "Attribute 'port' should be defined with non default port value for aws_db_instance and aws_rds_cluster resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-23 for more details.",
+	"message":      "Attribute 'port' should be defined with non default port value for aws_db_instance and aws_rds_cluster resource",
 	"rds_instance": "aws_db_instance",
 	"rds_cluster":  "aws_rds_cluster",
 	"default_ports": {

@@ -1,4 +1,5 @@
 # This policy requires attribute 'snapshot_identifier' to be set and 'storage_encrypted' to be set to true for 'aws_neptune_cluster' resources
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -38,7 +39,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'snapshot_identifier' should be set and 'storage_encrypted' must have been set to true for 'aws_neptune_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-6 for more details.",
+			"message":        "Attribute 'snapshot_identifier' should be set and 'storage_encrypted' must have been set to true for 'aws_neptune_cluster' resources",
 		}
 	},
 }

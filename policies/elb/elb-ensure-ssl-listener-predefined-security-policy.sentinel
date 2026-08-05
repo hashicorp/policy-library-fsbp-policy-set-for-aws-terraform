@@ -1,5 +1,6 @@
 # This policy checks if classic load balancers with SSL listeners
 # have predefined security policy configured
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-8 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -21,7 +22,7 @@ const = {
 	"predefined_policy_name":                     "ELBSecurityPolicy-TLS-1-2-2017-01",
 	"module_prefix":                              "module.",
 	"allowed_protocols":                          ["https", "ssl"],
-	"message":                                    "Classic Load Balancers with SSL listeners should use a predefined security policy that has strong AWS Configuration. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-8 for more details.",
+	"message":                                    "Classic Load Balancers with SSL listeners should use a predefined security policy that has strong AWS Configuration",
 }
 
 # Functions

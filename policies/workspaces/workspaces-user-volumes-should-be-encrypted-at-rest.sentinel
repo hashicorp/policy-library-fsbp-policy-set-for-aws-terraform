@@ -1,4 +1,5 @@
 # This control checks whether a user volume in an Amazon WorkSpaces WorkSpace is encrypted at rest.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/workspaces-controls.html#workspaces-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                       "workspaces-user-volume-encryption-enabled",
-	"message":                           "WorkSpaces user volumes should be encrypted at rest. Set 'user_volume_encryption_enabled' to true for 'aws_workspaces_workspace' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/workspaces-controls.html#workspaces-1 for more details.",
+	"message":                           "WorkSpaces user volumes should be encrypted at rest. Set 'user_volume_encryption_enabled' to true for 'aws_workspaces_workspace' resources",
 	"resource_aws_workspaces_workspace": "aws_workspaces_workspace",
 	"user_volume_encryption_enabled":    "user_volume_encryption_enabled",
 }

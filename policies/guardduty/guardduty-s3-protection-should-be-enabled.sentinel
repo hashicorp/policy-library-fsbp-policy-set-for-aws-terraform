@@ -1,4 +1,5 @@
 # This control checks whether 'aws_guardduty_detector' S3 Protection is enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-10 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                     "guardduty-s3-protection-should-be-enabled",
 	"resource_aws_guardduty_detector": "aws_guardduty_detector",
-	"message":                         "'aws_guardduty_detector' S3 Protection should be enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-10 for more details.",
+	"message":                         "'aws_guardduty_detector' S3 Protection should be enabled",
 	"datasources":                     "datasources",
 	"s3_logs":                         "s3_logs",
 }

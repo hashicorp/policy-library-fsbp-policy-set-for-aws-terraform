@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_sagemaker_notebook_instance' have the 'root_access'
 # attribute set to "Disabled"
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name": "sagemaker-notebook-instance-root-access-check",
-	"message":     "Attribute 'root_access' should be Disabled for AWS Sagemaker Notebook Instance. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-3 for more details.",
+	"message":     "Attribute 'root_access' should be Disabled for AWS Sagemaker Notebook Instance",
 	"resource_aws_sagemaker_notebook_instance": "aws_sagemaker_notebook_instance",
 	"root_access_value_enabled":                "Enabled",
 	"root_access_value_disabled":               "Disabled",

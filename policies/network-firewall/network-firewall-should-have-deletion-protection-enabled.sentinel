@@ -1,4 +1,5 @@
 # This policy checks whether a resource 'aws_networkfirewall_firewall' has deletion protection enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-9 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                           "network-firewall-should-have-deletion-protection-enabled",
 	"resource_aws_networkfirewall_firewall": "aws_networkfirewall_firewall",
-	"message": "deletion protection enabled in 'aws_networkfirewall_firewall'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-9 for more details.",
+	"message": "deletion protection enabled in 'aws_networkfirewall_firewall'",
 }
 
 # Functions

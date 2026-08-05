@@ -1,5 +1,6 @@
 # This policy checks if 'aws_eks_cluster' resources have
 # their unrestricted public endpoint access
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eks-controls.html#eks-8 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":               "eks-cluster-endpoints-restrict-public-access",
-	"message":                   "Audit logging must be enabled for aws_eks_cluster resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eks-controls.html#eks-8 for more details.",
+	"message":                   "Audit logging must be enabled for aws_eks_cluster resources",
 	"resource_aws_eks_cluster":  "aws_eks_cluster",
 	"enabled_cluster_log_types": "enabled_cluster_log_types",
 	"audit":                     "audit",

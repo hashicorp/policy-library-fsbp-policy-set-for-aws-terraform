@@ -1,5 +1,6 @@
 # This policy checks if the 'aws_ecs_cluster' has the setting named
 # 'containerInsights' enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-12 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":              "ecs-cluster-enable-container-insights",
-	"message":                  "ECS clusters must have container insights enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-12 for more details.",
+	"message":                  "ECS clusters must have container insights enabled",
 	"resource_aws_ecs_cluster": "aws_ecs_cluster",
 	"container_insights":       "containerInsights",
 	"enabled":                  "enabled",

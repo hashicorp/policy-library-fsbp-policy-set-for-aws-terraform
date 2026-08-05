@@ -1,5 +1,6 @@
 # This policy checks if AWS ACM Private CA has a root certificate authority (CA) that is enabled.
 # The control fails if the root CA is enabled with type 'ROOT'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/pca-controls.html#pca-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "acm-private-ca-root-disabled",
-	"message":     "Root CA must be disabled for 'aws_acmpca_certificate_authority' resources. Enablement of root CA should be avoided in production. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/pca-controls.html#pca-1 for more details.",
+	"message":     "Root CA must be disabled for 'aws_acmpca_certificate_authority' resources. Enablement of root CA should be avoided in production",
 	"resource_acmpca_certificate_authority": "aws_acmpca_certificate_authority",
 	"type":    "type",
 	"enabled": "enabled",

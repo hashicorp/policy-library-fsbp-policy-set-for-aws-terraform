@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_docdb_cluster' have the 'enabled_cloudwatch_logs_exports attribute'
 # set to 'audit'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/documentdb-controls.html#documentdb-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                "docdb-cluster-audit-logging-enabled",
-	"message":                    "Attribute 'enabled_cloudwatch_logs_exports' should be 'audit' for AWS DocumentDb Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/documentdb-controls.html#documentdb-4 for more details.",
+	"message":                    "Attribute 'enabled_cloudwatch_logs_exports' should be 'audit' for AWS DocumentDb Cluster",
 	"resource_aws_docdb_cluster": "aws_docdb_cluster",
 }
 

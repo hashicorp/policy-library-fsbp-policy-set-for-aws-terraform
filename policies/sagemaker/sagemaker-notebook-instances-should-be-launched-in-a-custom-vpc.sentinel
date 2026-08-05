@@ -1,4 +1,5 @@
 # This control checks if an Amazon SageMaker AI notebook instance is launched within a custom virtual private cloud (VPC).
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "sagemaker-notebook-instance-inside-vpc",
-	"message":     "SageMaker notebook instances should be launched in a custom VPC. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-2 for more details.",
+	"message":     "SageMaker notebook instances should be launched in a custom VPC",
 	"resource_aws_sagemaker_notebook_instance": "aws_sagemaker_notebook_instance",
 	"subnet_id":                                "subnet_id",
 	"aws_subnet":                               "aws_subnet",

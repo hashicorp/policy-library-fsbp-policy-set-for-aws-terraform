@@ -1,4 +1,5 @@
 # This control checks whether public access is disabled for an Amazon Redshift Serverless workgroup.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "redshift-serverless-workgroup-no-public-access",
-	"message":     "Redshift Serverless workgroups should prohibit public access. Set 'publicly_accessible' to false. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-3 for more details.",
+	"message":     "Redshift Serverless workgroups should prohibit public access. Set 'publicly_accessible' to false",
 	"resource_aws_redshiftserverless_workgroup": "aws_redshiftserverless_workgroup",
 	"publicly_accessible":                       "publicly_accessible",
 }

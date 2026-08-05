@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_efs_file_system` should be associated with resource 'aws_backup_selection'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -18,7 +19,7 @@ param service_name default "ecr.api"
 
 const = {
 	"policy_name":                   "efs-file-systems-should-be-in-backup-plans",
-	"message":                       "AWS EFS file systems should be included in backup plans. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/efs-controls.html#efs-2 for more details.",
+	"message":                       "AWS EFS file systems should be included in backup plans",
 	"resource_aws_efs_file_system":  "aws_efs_file_system",
 	"resource_aws_backup_selection": "aws_backup_selection",
 	"efs_encrypted":                 "encrypted",

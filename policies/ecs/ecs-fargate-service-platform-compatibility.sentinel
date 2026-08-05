@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_ecs_service' with
 # launch_type as 'FARGATE' points to the 'LATEST' platform version
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-10 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "strings"
 # Constants
 const = {
 	"policy_name":              "ecs-fargate-service-platform-compatibility",
-	"message":                  "ECS fargate based services should always run on the latest Farget plaform version. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-10 for more details",
+	"message":                  "ECS fargate based services should always run on the latest Farget plaform version",
 	"resource_aws_ecs_service": "aws_ecs_service",
 	"fargate":                  "FARGATE",
 	"latest_platform_version":  "LATEST",

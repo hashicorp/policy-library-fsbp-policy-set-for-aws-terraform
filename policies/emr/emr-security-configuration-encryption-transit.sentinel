@@ -1,4 +1,5 @@
 # This policy requires aws_emr_security_configuration to enable encryption in transit.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "json"
 
 const = {
 	"policy_name": "emr-security-configuration-encryption-transit",
-	"message":     "Amazon EMR security configurations must enable encryption in transit. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-4 for more details.",
+	"message":     "Amazon EMR security configurations must enable encryption in transit",
 	"resource_aws_emr_security_configuration": "aws_emr_security_configuration",
 }
 

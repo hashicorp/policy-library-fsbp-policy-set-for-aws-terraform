@@ -1,7 +1,7 @@
 # This policy checks if resources of type 'aws_event_subscription' have the event notifications
 # configured
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2025
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan
@@ -20,12 +20,8 @@ param source_type default "db-cluster"
 
 # Constants
 const = {
-	"policy_name":                        "rds-event-notifications-configured-for-critical-events",
-	"message":                            "Event Notifications should be configured for the resource critical events, ",
-	"db-cluster":                         "https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-19",
-	"db-instance":                        "https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-20",
-	"db-parameter-group":                 "https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-21",
-	"db-security-group":                  "https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-22",
+	"policy_name": "rds-event-notifications-configured-for-critical-events",
+	"message":     "Event Notifications should be configured for the resource critical events.",
 	"resource_aws_db_event_subscription": "aws_db_event_subscription",
 	"address":        "address",
 	"module_prefix":  "module.",
@@ -112,15 +108,13 @@ violations += collection.reject(resources, func(res) {
 	return valid_source_ids contains resource_address
 })
 
-message = const.message + "Refer to " + const[source_type] + " for more details."
-
 summary = {
 	"policy_name": const.policy_name,
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        message,
+			"message":        const.message,
 		}
 	},
 }

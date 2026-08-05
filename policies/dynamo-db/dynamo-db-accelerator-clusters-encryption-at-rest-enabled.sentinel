@@ -1,4 +1,5 @@
 # This policy requires that  `server_side_encryption` attribute of the `aws_dax_cluster` resource has `enabled` set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -36,7 +37,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'server_side_encryption' must have 'enabled' set to true for 'aws_dax_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-3 for more details.",
+			"message":        "Attribute 'server_side_encryption' must have 'enabled' set to true for 'aws_dax_cluster' resources",
 		}
 	},
 }

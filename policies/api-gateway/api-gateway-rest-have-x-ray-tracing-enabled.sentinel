@@ -1,5 +1,6 @@
 # This policy checks whether AWS X-Ray active tracing is enabled
 # for your resource 'aws_api_gateway_stage'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                    "api-gateway-rest-have-x-ray-tracing-enabled",
 	"resource_aws_api_gateway_stage": "aws_api_gateway_stage",
-	"message":                        "AWS X-Ray active tracing is enabled for resource 'aws_api_gateway_stage'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-3 for more details.",
+	"message":                        "AWS X-Ray active tracing is enabled for resource 'aws_api_gateway_stage'",
 }
 
 # Functions

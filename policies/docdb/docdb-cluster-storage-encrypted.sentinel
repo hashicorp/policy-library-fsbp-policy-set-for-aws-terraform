@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_docdb_cluster' have the 'storage_encrypted'
 # attribute set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/documentdb-controls.html#documentdb-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                "docdb-cluster-storage-encrypted",
-	"message":                    "Attribute 'storage_encrypted' should be true for AWS DocumentDb Cluster for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/documentdb-controls.html#documentdb-1 for more details.",
+	"message":                    "Attribute 'storage_encrypted' should be true for AWS DocumentDb Cluster for the given task definition",
 	"resource_aws_docdb_cluster": "aws_docdb_cluster",
 }
 

@@ -1,4 +1,5 @@
 # This control checks whether an Amazon Redshift Serverless namespace uses the default database name, dev.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-7 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "redshift-serverless-namespaces-should-not-use-the-default-database-name",
-	"message":     "Redshift Serverless namespaces should not use the default database name 'dev'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-7 for more details.",
+	"message":     "Redshift Serverless namespaces should not use the default database name 'dev'",
 	"resource_aws_redshiftserverless_namespace": "aws_redshiftserverless_namespace",
 	"default_db_name":                           "dev",
 }

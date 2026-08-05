@@ -1,4 +1,5 @@
 # This policy requires 'aws_lb_listener' resources using HTTPS/TLS to use recommended SSL policies.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-17 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name":              "elb-predefined-security-policy-ssl-check",
-	"message":                  "Load balancer listeners using HTTPS or TLS must use a recommended SSL policy. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-17 for more details.",
+	"message":                  "Load balancer listeners using HTTPS or TLS must use a recommended SSL policy",
 	"resource_aws_lb_listener": "aws_lb_listener",
 	"protocols":                ["HTTPS", "TLS"],
 	"recommended_ssl_policies": [

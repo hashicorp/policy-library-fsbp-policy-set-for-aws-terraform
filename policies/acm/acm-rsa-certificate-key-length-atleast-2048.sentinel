@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_acm_certificate` with rsa key algorithm should have atleast 2048 bits key length.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/acm-controls.html#acm-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 
 const = {
 	"policy_name":                  "acm-rsa-certificate-key-length-atleast-2048",
-	"message":                      "ACM Certificate should have at least 2048 bits key length for rsa algorithm. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/acm-controls.html#acm-2 for more details.",
+	"message":                      "ACM Certificate should have at least 2048 bits key length for rsa algorithm",
 	"resource_aws_acm_certificate": "aws_acm_certificate",
 	"key_algorithm":                "key_algorithm",
 	"min_key_length":               2048,

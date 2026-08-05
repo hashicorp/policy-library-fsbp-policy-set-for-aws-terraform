@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'kinesis-stream-encrypted' have the 'encryption_type'
 # set to 'KMS'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kinesis-controls.html#kinesis-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                 "kinesis-stream-encrypted",
-	"message":                     "Attribute 'kms_key_id' attribute must be specified and not empty, and 'encryption_type' must be set to 'KMS' for the AWS Kinesis Stream. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kinesis-controls.html#kinesis-1 for more details.",
+	"message":                     "Attribute 'kms_key_id' attribute must be specified and not empty, and 'encryption_type' must be set to 'KMS' for the AWS Kinesis Stream",
 	"resource_aws_kinesis_stream": "aws_kinesis_stream",
 }
 

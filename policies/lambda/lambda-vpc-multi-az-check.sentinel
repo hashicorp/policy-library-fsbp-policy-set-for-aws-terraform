@@ -1,4 +1,5 @@
 # This policy if an 'aws_lambda_function' that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs)
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-5 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -12,7 +13,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                  "lambda-vpc-multi-az-check",
-	"message":                      "AWS Lambda function that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs). Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/lambda-controls.html#lambda-5 for more details.",
+	"message":                      "AWS Lambda function that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs)",
 	"resource_aws_lambda_function": "aws_lambda_function",
 	"vpc_config":                   "vpc_config",
 	"subnet_ids":                   "subnet_ids",

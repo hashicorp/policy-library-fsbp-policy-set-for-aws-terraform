@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_backup_framework' have the attribute
 # 'control' value set to 'BACKUP_RECOVERY_POINT_ENCRYPTED'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/backup-controls.html#backup-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                     "backup-recovery-point-encrypted",
-	"message":                         "AWS Backup Framework Recovery Point must be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/backup-controls.html#backup-1 for more details.",
+	"message":                         "AWS Backup Framework Recovery Point must be encrypted at rest",
 	"resource_aws_backup_framework":   "aws_backup_framework",
 	"BACKUP_RECOVERY_POINT_ENCRYPTED": "BACKUP_RECOVERY_POINT_ENCRYPTED",
 	"name": "name",

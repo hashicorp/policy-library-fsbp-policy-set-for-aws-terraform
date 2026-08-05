@@ -1,4 +1,5 @@
 # This control checks whether an Amazon SageMaker AI hosted model blocks inbound network traffic.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-5 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                  "sagemaker-models-should-block-inbound-traffic",
-	"message":                      "Attribute 'enable_network_isolation' must be set to true for 'aws_sagemaker_model' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-5 for more details.",
+	"message":                      "Attribute 'enable_network_isolation' must be set to true for 'aws_sagemaker_model' resources",
 	"resource_aws_sagemaker_model": "aws_sagemaker_model",
 	"enable_network_isolation":     "enable_network_isolation",
 }

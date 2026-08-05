@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_db_instance' have the 'username'
 # attribute not set to 'admin' (default value)
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-25 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":              "rds-instance-default-admin-check",
-	"message":                  "Attribute 'username' should not be 'admin' (default value) for AWS RDS DB Instance. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-25 for more details.",
+	"message":                  "Attribute 'username' should not be 'admin' (default value) for AWS RDS DB Instance",
 	"resource_aws_db_instance": "aws_db_instance",
 	"username_default_value":   "admin",
 }

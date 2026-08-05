@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_rds_cluster' have the 'storage_encrypted'
 # attribute set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-27 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":              "rds-cluster-encrypted-at-rest",
-	"message":                  "Attribute 'storage_encrypted' should be true for AWS RDS Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-27 for more details.",
+	"message":                  "Attribute 'storage_encrypted' should be true for AWS RDS Cluster",
 	"resource_aws_rds_cluster": "aws_rds_cluster",
 }
 

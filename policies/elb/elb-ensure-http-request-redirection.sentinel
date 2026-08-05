@@ -1,5 +1,6 @@
 # This policy ensures that application load balancer in the terraform configurations
 # have a listener rule configured to redirect HTTP requests to HTTPS
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -25,7 +26,7 @@ const = {
 	"port_443":                      "443",
 	"https":                         "HTTPS",
 	"module_prefix":                 "module.",
-	"message":                       "Application load balancers should be configured to redirect all HTTP requests to HTTPS. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-1 for more details.",
+	"message":                       "Application load balancers should be configured to redirect all HTTP requests to HTTPS",
 }
 
 # Functions

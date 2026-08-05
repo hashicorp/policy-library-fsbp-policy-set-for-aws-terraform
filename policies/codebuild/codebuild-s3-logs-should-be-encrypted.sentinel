@@ -1,4 +1,5 @@
 # This control checks if Amazon S3 logs for an 'aws_codebuild_project' are encrypted.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/codebuild-controls.html#codebuild-3 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                    "codebuild-s3-logs-should-be-encrypted",
 	"resource_aws_codebuild_project": "aws_codebuild_project",
-	"message":                        "Amazon S3 logs for an 'aws_codebuild_project' should be encrypted. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/codebuild-controls.html#codebuild-3 for more details.",
+	"message":                        "Amazon S3 logs for an 'aws_codebuild_project' should be encrypted",
 }
 
 # Functions

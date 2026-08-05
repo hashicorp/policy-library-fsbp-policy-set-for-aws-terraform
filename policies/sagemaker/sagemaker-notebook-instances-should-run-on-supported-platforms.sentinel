@@ -1,4 +1,5 @@
 # This control checks whether an Amazon SageMaker AI notebook instance is configured to run on a supported platform, based on the platform identifier specified for the notebook instance.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-8 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name": "sagemaker-notebook-instance-platform-version",
-	"message":     "SageMaker notebook instances should run on supported platforms. The platform_identifier attribute must be set to one of the supported platform versions: notebook-al2-v1, notebook-al2-v2, or notebook-al2-v3. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-8 for more details.",
+	"message":     "SageMaker notebook instances should run on supported platforms. The platform_identifier attribute must be set to one of the supported platform versions: notebook-al2-v1, notebook-al2-v2, or notebook-al2-v3",
 	"resource_aws_sagemaker_notebook_instance": "aws_sagemaker_notebook_instance",
 	"supported_platform_versions":              ["notebook-al2-v1", "notebook-al2-v2", "notebook-al2-v3"],
 }

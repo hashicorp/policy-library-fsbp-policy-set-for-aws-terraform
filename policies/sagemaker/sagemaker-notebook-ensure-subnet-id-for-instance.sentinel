@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_sagemaker_instance'
 # is launched in custom vpc
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -14,7 +15,7 @@ import "strings"
 # Constants
 const = {
 	"policy_name": "sagemaker-notebook-ensure-subnet-id-for-instance",
-	"message":     "Attribute 'subnet_id' should be launched in custom vpc for AWS Sagemaker Notebook Instance. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-2 for more details.",
+	"message":     "Attribute 'subnet_id' should be launched in custom vpc for AWS Sagemaker Notebook Instance",
 	"resource_aws_sagemaker_notebook_instance":           "aws_sagemaker_notebook_instance",
 	"resource_aws_subnet":                                "aws_subnet",
 	"resource_aws_vpc":                                   "aws_vpc",

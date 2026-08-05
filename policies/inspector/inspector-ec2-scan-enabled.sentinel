@@ -1,4 +1,5 @@
 # This policy ensures that Amazon Inspector EC2 scanning is enabled
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/inspector-controls.html#inspector-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                     "inspector-ec2-scan-enabled",
-	"message":                         "Amazon Inspector EC2 scanning should be enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/inspector-controls.html#inspector-1 for more details.",
+	"message":                         "Amazon Inspector EC2 scanning should be enabled",
 	"resource_aws_inspector2_enabler": "aws_inspector2_enabler",
 }
 

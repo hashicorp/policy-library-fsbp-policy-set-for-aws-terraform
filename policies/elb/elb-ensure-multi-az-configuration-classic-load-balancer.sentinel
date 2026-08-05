@@ -1,5 +1,6 @@
 # This policy checks if load balancers span across
 # multiple availability zones.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-10 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -36,7 +37,7 @@ summary = {
 		{
 			"address":        res.address,
 			"module_address": res.module_address,
-			"message":        "Classic load balancers of type must have atleast " + string(min_availability_zones) + " availability zones configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-10 for more details.",
+			"message":        "Classic load balancers of type must have atleast " + string(min_availability_zones) + " availability zones configured",
 		}
 	},
 }

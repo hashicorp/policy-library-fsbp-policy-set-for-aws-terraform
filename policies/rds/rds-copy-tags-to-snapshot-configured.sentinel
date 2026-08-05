@@ -1,4 +1,6 @@
 # This policy requires resources of type `aws_rds_cluster` or `aws_db_instance` to have `copy_tags_to_snapshot` set to true
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-16 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-17 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -19,14 +21,14 @@ param resource default "aws_rds_cluster"
 
 const = {
 	"policy_name": "rds-cluster-copy-tags-to-snapshot-configured",
-	"message":     "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-16 for more details.",
+	"message":     "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_rds_cluster' resources",
 }
 
 # Variables
 
 if (resource == "aws_db_instance") {
 	const["policy_name"] = "rds-instance-copy-tags-to-snapshot-configured"
-	const["message"] = "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-17 for more details."
+	const["message"] = "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_db_instance' resources"
 }
 
 resources = tf.plan(tfplan.planned_values.resources).type(resource).resources

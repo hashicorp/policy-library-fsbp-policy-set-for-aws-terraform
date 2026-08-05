@@ -1,4 +1,5 @@
 # This policy requires AWS Transfer Servers shouldn't contain "FTP" for the attribute protocols.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/transfer-controls.html#transfer-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                  "transfer-family-server-should-not-use-ftp",
-	"message":                      "Transfer Family servers should not use FTP protocol for endpoint connection. For more information, Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/transfer-controls.html#transfer-2 for more details.",
+	"message":                      "Transfer Family servers should not use FTP protocol for endpoint connection. For more information,",
 	"resource_aws_transfer_server": "aws_transfer_server",
 	"protocols":                    "protocols",
 	"FTP":                          "FTP",

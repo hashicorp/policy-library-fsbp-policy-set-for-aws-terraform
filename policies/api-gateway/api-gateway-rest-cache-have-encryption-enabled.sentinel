@@ -1,4 +1,5 @@
 # This policy checks 'aws_api_gateway_method_settings' in API Gateway REST API stages that have cache enabled are encrypted.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-5 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ const = {
 	"resource_aws_api_gateway_method_settings": "aws_api_gateway_method_settings",
 	"caching_enabled":                          "caching_enabled",
 	"cache_data_encrypted":                     "cache_data_encrypted",
-	"message":                                  "API Gateway caching encryption can be enabled and configured to encrypt the cache data while at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-5 for more details.",
+	"message":                                  "API Gateway caching encryption can be enabled and configured to encrypt the cache data while at rest",
 }
 
 # Functions

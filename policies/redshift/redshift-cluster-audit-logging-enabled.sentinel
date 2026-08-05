@@ -1,6 +1,7 @@
 # This policy checks if resources of type 'aws_redshift_cluster' have the
 # enable attribute set to true in logging or referenced to the
 # resource 'aws_redshift_logging'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -16,7 +17,7 @@ import "strings"
 # Constants
 const = {
 	"policy_name":                           "redshift-cluster-audit-logging-enabled",
-	"message":                               "Parameter 'logging' should be enabled or referenced to resource AWS Redshift Logging for AWS Redshift Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-4 for more details.",
+	"message":                               "Parameter 'logging' should be enabled or referenced to resource AWS Redshift Logging for AWS Redshift Cluster",
 	"resource_aws_redshift_cluster":         "aws_redshift_cluster",
 	"resource_aws_redshift_cluster_logging": "aws_redshift_logging",
 	"address":        "address",

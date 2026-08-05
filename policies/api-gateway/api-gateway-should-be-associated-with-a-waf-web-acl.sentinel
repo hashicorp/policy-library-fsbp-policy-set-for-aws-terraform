@@ -1,4 +1,5 @@
 # This policy checks whether an 'aws_api_gateway_stage' uses 'aws_wafv2_web_acl_association'.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-4 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ const = {
 	"policy_name":                            "api-gateway-should-be-associated-with-a-waf-web-acl",
 	"resource_aws_api_gateway_stage":         "aws_api_gateway_stage",
 	"resource_aws_wafv2_web_acl_association": "aws_wafv2_web_acl_association",
-	"message": "'aws_api_gateway_stage' should be associated with a 'aws_wafv2_web_acl_association'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-4 for more details.",
+	"message": "'aws_api_gateway_stage' should be associated with a 'aws_wafv2_web_acl_association'",
 }
 
 # Functions

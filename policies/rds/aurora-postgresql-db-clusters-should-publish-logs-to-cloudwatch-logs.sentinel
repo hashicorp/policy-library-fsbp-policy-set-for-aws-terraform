@@ -1,4 +1,5 @@
 # This control checks whether an Amazon Aurora PostgreSQL DB cluster is configured to publish logs to Amazon CloudWatch Logs.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-37 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":              "aurora-postgresql-logs-to-cloudwatch",
-	"message":                  "Aurora PostgreSQL DB clusters should publish logs to CloudWatch Logs. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-37 for more details.",
+	"message":                  "Aurora PostgreSQL DB clusters should publish logs to CloudWatch Logs",
 	"resource_aws_rds_cluster": "aws_rds_cluster",
 	"engine":                   "engine",
 	"enabled_cloudwatch_logs_exports": "enabled_cloudwatch_logs_exports",

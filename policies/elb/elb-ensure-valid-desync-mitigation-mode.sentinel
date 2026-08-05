@@ -1,6 +1,8 @@
 # This policy checks if load_balancer resources have the
 # 'desync_mitigation_mode' attribute set to either 'defensive' or
 # 'strictest'
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-14 for more details.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-12 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -50,9 +52,9 @@ invalid_load_balancers = collection.reject(load_balancers, func(res) {
 	return maps.get(res, "values.desync_mitigation_mode", const.defensive) in [const.defensive, const.strictest]
 })
 
-message = "Classic load balancers should be configured with defensive or strictest desync mitigation mode. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-14 for more details."
+message = "Classic load balancers should be configured with defensive or strictest desync mitigation mode"
 if lb_type is const.application {
-	message = "Application load balancers should be configured with defensive or strictest desync mitigation mode. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-12 for more details."
+	message = "Application load balancers should be configured with defensive or strictest desync mitigation mode"
 }
 
 summary = {

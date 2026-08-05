@@ -1,4 +1,5 @@
 # This policy checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-2 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                    "opensearch-in-vpc-only",
 	"resource_aws_opensearch_domain": "aws_opensearch_domain",
-	"message":                        "OpenSearch domains should be in VPC. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/opensearch-controls.html#opensearch-2 for more details.",
+	"message":                        "OpenSearch domains should be in VPC",
 }
 
 # Functions

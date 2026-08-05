@@ -1,4 +1,5 @@
 # This control checks whether 'aws_guardduty_detector' is enabled in your GuardDuty account and Region.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-1 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                     "guardduty-should-be-enabled",
 	"resource_aws_guardduty_detector": "aws_guardduty_detector",
-	"message":                         "'aws_guardduty_detector' is enabled in your GuardDuty account and Region. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-1 for more details.",
+	"message":                         "'aws_guardduty_detector' is enabled in your GuardDuty account and Region",
 }
 
 # Functions

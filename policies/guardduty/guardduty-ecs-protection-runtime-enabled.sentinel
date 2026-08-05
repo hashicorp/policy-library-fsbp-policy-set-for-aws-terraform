@@ -1,4 +1,5 @@
 # This policy ensures that GuardDuty ECS Runtime Monitoring (EKS_RUNTIME_MONITORING) is enabled.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-12 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                             "guardduty-ecs-protection-runtime-enabled",
-	"message":                                 "GuardDuty ECS Runtime Monitoring should be enabled. Ensure that GuardDuty detector is enabled and Runtime Monitoring feature is enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-12 for more details.",
+	"message":                                 "GuardDuty ECS Runtime Monitoring should be enabled. Ensure that GuardDuty detector is enabled and Runtime Monitoring feature is enabled",
 	"resource_aws_guardduty_detector":         "aws_guardduty_detector",
 	"resource_aws_guardduty_detector_feature": "aws_guardduty_detector_feature",
 }

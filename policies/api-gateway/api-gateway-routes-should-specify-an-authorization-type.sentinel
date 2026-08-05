@@ -1,4 +1,5 @@
 # This policy checks if 'aws_apigatewayv2_route' have an authorization type.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-8 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                     "api-gateway-routes-should-specify-an-authorization-type",
 	"resource_aws_apigatewayv2_route": "aws_apigatewayv2_route",
-	"message":                         "API Gateway routes should specify an authorization type for resource 'aws_apigatewayv2_route'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-8 for more details.",
+	"message":                         "API Gateway routes should specify an authorization type for resource 'aws_apigatewayv2_route'",
 }
 
 # Functions

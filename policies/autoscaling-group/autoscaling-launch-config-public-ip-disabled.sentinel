@@ -1,4 +1,5 @@
 # This policy requires resources of type `aws_launch_configuration` should have 'associate_public_ip_address' set to false.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-5 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -15,7 +16,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                       "autoscaling-launch-config-public-ip-disabled",
-	"message":                           "Resource Autoscaling Launch Configuration should have 'associate_public_ip_address' set to false. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/autoscaling-controls.html#autoscaling-5 for more details.",
+	"message":                           "Resource Autoscaling Launch Configuration should have 'associate_public_ip_address' set to false",
 	"resource_aws_launch_configuration": "aws_launch_configuration",
 	"associate_public_ip_address":       "associate_public_ip_address",
 }

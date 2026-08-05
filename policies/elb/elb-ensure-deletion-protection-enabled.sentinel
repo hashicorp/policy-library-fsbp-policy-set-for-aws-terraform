@@ -1,5 +1,6 @@
 # This policy checks if resources of type 'aws_lb' has the
 # 'enable_deletion_protection' attribute set to true.
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-6 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -13,7 +14,7 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":     "elb-ensure-deletion-protection-enabled",
-	"message":         "Application, Gateway, and Network Load Balancers should have deletion protection enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-6 for more details.",
+	"message":         "Application, Gateway, and Network Load Balancers should have deletion protection enabled",
 	"resource_aws_lb": "aws_lb",
 }
 

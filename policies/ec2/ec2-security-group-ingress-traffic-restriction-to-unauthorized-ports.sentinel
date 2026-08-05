@@ -1,4 +1,5 @@
 # Security groups should only allow unrestricted incoming traffic for authorized ports
+# Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-18 for more details.
 
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
@@ -20,7 +21,7 @@ param authorized_udp_ports default []
 
 const = {
 	"policy_name":                              "ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports",
-	"message":                                  "Security group rules should not allow ingress from 0.0.0.0/0 or ::/0 to unauthorized ports. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-18 for more details.",
+	"message":                                  "Security group rules should not allow ingress from 0.0.0.0/0 or ::/0 to unauthorized ports",
 	"resource_security_group_rule":             "aws_security_group_rule",
 	"resource_security_group":                  "aws_security_group",
 	"resource_vpc_security_group_ingress_rule": "aws_vpc_security_group_ingress_rule",
