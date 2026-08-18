@@ -1,4 +1,4 @@
-# This policy requires resources of type aws_security_group aws_security_group_rule and aws_vpc_security_group_ingress_rule Redshift Parameter Group set to true to block ingress traffic from unknown sources to resources of type aws_redshift_cluster
+# AWS Redshift security groups should allow ingress on the cluster port only from restricted origins
 
 | Provider            | Category  |
 | ------------------- | --------  |
