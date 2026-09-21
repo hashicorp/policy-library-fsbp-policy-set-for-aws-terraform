@@ -2,7 +2,7 @@
 # attribute set to true in encryption_in_transit of encryption_info attribute
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/msk-controls.html#msk-1 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

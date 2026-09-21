@@ -1,7 +1,7 @@
 # This control checks whether connections to an Amazon RDS for MariaDB DB instance are encrypted in transit
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-44 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

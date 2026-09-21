@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_appsync_graphql_api` have attribute `authentication_type` should not be `API_KEY`.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-5 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
