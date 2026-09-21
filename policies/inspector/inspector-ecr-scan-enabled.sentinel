@@ -1,7 +1,7 @@
 # This policy ensures that Amazon Inspector ECR scanning is enabled
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/inspector-controls.html#inspector-2 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

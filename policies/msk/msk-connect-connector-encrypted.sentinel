@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_mskconnect_connector` to have encryption in transit enabled.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/msk-controls.html#msk-3 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

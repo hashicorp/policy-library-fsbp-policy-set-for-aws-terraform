@@ -1,7 +1,7 @@
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-13 for more details.
 // This policy checks whether an 'aws_cloudfront_distribution' with an Amazon S3 origin has 'aws_cloudfront_origin_access_control' configured.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 // Imports

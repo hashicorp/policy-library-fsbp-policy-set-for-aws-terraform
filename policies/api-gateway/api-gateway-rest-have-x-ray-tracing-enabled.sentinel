@@ -2,7 +2,7 @@
 # for your resource 'aws_api_gateway_stage'.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/apigateway-controls.html#apigateway-3 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

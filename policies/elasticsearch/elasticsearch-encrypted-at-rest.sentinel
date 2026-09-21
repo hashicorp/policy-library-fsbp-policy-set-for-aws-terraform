@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_elasticsearch_domain` have the `encrypt_at_rest` should have 'enabled' attribute set to `true`.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-1 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Import

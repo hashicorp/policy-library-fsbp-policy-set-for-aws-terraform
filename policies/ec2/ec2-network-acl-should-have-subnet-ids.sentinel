@@ -1,7 +1,7 @@
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-16 for more details.
 // This policy requires `aws_network_acl` resources to have 'subnet_ids' present.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 // Imports

@@ -2,7 +2,7 @@
 # contain blocked action patterns such as 'kms:ReEncryptFrom' and 'kms:Decrypt'
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kms-controls.html#kms-2 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfstate/v2" as tfstate
