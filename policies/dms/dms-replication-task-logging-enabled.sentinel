@@ -20,7 +20,9 @@ const = {
 	"policy_name":                       "dms-replication-task-logging-enabled",
 	"message":                           "Attribute 'replication_task_settings' should have the logging enabled for AWS DMS Replication Task.",
 	"resource_aws_dms_replication_task": "aws_dms_replication_task",
-	"logging_severity_accepted_level":   ["LOGGER_SEVERITY_DEFAULT", "LOGGER_SEVERITY_DEBUG", "LOGGER_SEVERITY_DETAILED_DEBUG"],
+	"target": "https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-7",
+	"source": "https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-8",
+	"logging_severity_accepted_level": ["LOGGER_SEVERITY_DEFAULT", "LOGGER_SEVERITY_DEBUG", "LOGGER_SEVERITY_DETAILED_DEBUG"],
 }
 
 logging_attribute_list = {
@@ -66,13 +68,15 @@ get_violations = func(resources) {
 dms_replication_task = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_dms_replication_task).resources
 violations = get_violations(dms_replication_task)
 
+message = const.message + "Refer to " + const[db_type] + " for more details."
+
 summary = {
 	"policy_name": const.policy_name,
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        const.message,
+			"message":        message,
 		}
 	},
 }
