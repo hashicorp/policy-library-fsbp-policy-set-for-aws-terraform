@@ -1,0 +1,2704 @@
+policies:
+  acm-pca-root-ca-disabled:
+    path: policies/acm/acm-pca-root-ca-disabled.sentinel
+    sha: 0afb8cbd6f992ba42adc84c9f89bb8479f2d94d729d0daca7bb6711f8d6834ff
+    governed_resources: [aws_acmpca_certificate_authority]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ACM
+    description: "This policy checks if AWS ACM Private CA has a root certificate authority (CA) that is enabled. The control fails if the root CA is enabled with type `ROOT`."
+    type: sentinel
+  acm-rsa-certificate-key-length-atleast-2048:
+    path: policies/acm/acm-rsa-certificate-key-length-atleast-2048.sentinel
+    sha: 94760a87c8ffe82d53887f16266533c3e839e6ae5aa4212acf20ce236fa0b491
+    governed_resources: [aws_acm_certificate]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ACM
+    description: "This policy requires resources of type `aws_acm_certificate` with rsa key algorithm should have atleast 2048 bits key length."
+    type: sentinel
+  api-gateway-access-logging-should-be-configured:
+    path: policies/api-gateway/api-gateway-access-logging-should-be-configured.sentinel
+    sha: 78338ebd98b896ba04469c180c152ccc8316d9096c948c1550a15eea291aad92
+    governed_resources: [aws_apigatewayv2_stage]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks if `aws_apigatewayv2_stage` have access logging configured."
+    type: sentinel
+  api-gateway-rest-and-websocket-api-logging-enabled:
+    path: policies/api-gateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel
+    sha: dc978742949b156684c8a1519d5e581ea5fa84c52547a0badf48409da90cc7b1
+    governed_resources: [aws_api_gateway_method_settings]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks for resource type of `aws_api_gateway_method_settings` whether all stages of an Amazon API Gateway REST or WebSocket API have logging enabled."
+    type: sentinel
+  api-gateway-rest-cache-have-encryption-enabled:
+    path: policies/api-gateway/api-gateway-rest-cache-have-encryption-enabled.sentinel
+    sha: 121780cfc2d1285e65975483d5862bc59e84f8a2897f0872814809840980df0c
+    governed_resources: [aws_api_gateway_method_settings]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks `aws_api_gateway_method_settings` in API Gateway REST API stages that have cache enabled are encrypted."
+    type: sentinel
+  api-gateway-rest-configure-ssl-certificates:
+    path: policies/api-gateway/api-gateway-rest-configure-ssl-certificates.sentinel
+    sha: 5614b45b5d4f87677d022765549447ff32cbdac9fb74d4c435a186dc2d519e7f
+    governed_resources: [aws_api_gateway_stage]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks whether `aws_api_gateway_stage` have SSL certificates configured."
+    type: sentinel
+  api-gateway-rest-have-x-ray-tracing-enabled:
+    path: policies/api-gateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel
+    sha: 4395f4f95db0b3bef87f83805b1ed0e80f39ceffdabce9df3029c0d6c35e93ec
+    governed_resources: [aws_api_gateway_stage]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks whether AWS X-Ray active tracing is enabled for your resource `aws_api_gateway_stage`."
+    type: sentinel
+  api-gateway-routes-should-specify-an-authorization-type:
+    path: policies/api-gateway/api-gateway-routes-should-specify-an-authorization-type.sentinel
+    sha: 9b5fb2c06f41a887b3eeabfbac37152a6463a3cfb484426887e2f2e07cb6084c
+    governed_resources: [aws_apigatewayv2_route]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks if `aws_apigatewayv2_route` have an authorization type."
+    type: sentinel
+  api-gateway-should-be-associated-with-a-waf-web-acl:
+    path: policies/api-gateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel
+    sha: c795da8bf14cf771d55722e0f878cd99212104b778016e370f8391b7d1cfbd02
+    governed_resources: [aws_wafv2_web_acl_association]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: API Gateway
+    description: "This policy checks whether an `aws_api_gateway_stage` uses `aws_wafv2_web_acl_association`."
+    type: sentinel
+  appsync-cache-should-be-encrypted-at-transit:
+    path: policies/appsync/appsync-cache-should-be-encrypted-at-transit.sentinel
+    sha: 13a9f007e18c421e4e4f76001fa7237533f6fc0e172a1a02f5134a7d50714516
+    governed_resources: [aws_appsync_api_cache]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: AppSync
+    description: "This policy requires resources of type `aws_appsync_api_cache` have attribute `transit_encryption_enabled` should be `true`."
+    type: sentinel
+  appsync-field-level-logging-should-be-enabled:
+    path: policies/appsync/appsync-field-level-logging-should-be-enabled.sentinel
+    sha: d31dcecb24a5db5fdea7a1df74c358121e57c9b167c4c67c8d44cdf3dfad2c4c
+    governed_resources: [aws_appsync_graphql_api]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: AppSync
+    description: "This policy requires resources of type `aws_appsync_graphql_api` have attribute `log_config` with `field_log_level` set to `ERROR` or `ALL`."
+    type: sentinel
+  appsync-graphql-api-should-not-authenticate-with-api-keys:
+    path: policies/appsync/appsync-graphql-api-should-not-authenticate-with-api-keys.sentinel
+    sha: 10802bead9e2aa3325828a457fd7b05bb9e68d64c8e96ad7a5cd2f2e83cfc3af
+    governed_resources: [aws_appsync_graphql_api]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: AppSync
+    description: "This policy requires resources of type `aws_appsync_graphql_api` have attribute `authentication_type` should not be `API_KEY`."
+    type: sentinel
+  appsync-graphqlapi-cache-should-be-encrypted-at-rest:
+    path: policies/appsync/appsync-graphqlapi-cache-should-be-encrypted-at-rest.sentinel
+    sha: 2959b4f1349408f4773f754945236d5a2dd750f519d650f96481c7bab53f403f
+    governed_resources: [aws_appsync_api_cache, aws_appsync_graphql_api]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: AppSync
+    description: "This policy requires resources of type `aws_appsync_api_cache` should have `at_rest_encryption_enabled` should be set to true and `api_id` should be referenced to `aws_appsync_graphql_api` resource."
+    type: sentinel
+  athena-workgroup-should-have-logging-enabled:
+    path: policies/athena/athena-workgroup-should-have-logging-enabled.sentinel
+    sha: f7fb5c9e6b8d28e5fb44505bc760b7ff61ec2666fab8d8d9b1d4a9b2698617ca
+    governed_resources: [aws_athena_workgroup]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Athena
+    description: "This policy requires resources of type `aws_athena_workgroup` have attribute `publish_cloudwatch_metrics_enabled` should be `true`."
+    type: sentinel
+  aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs:
+    path: policies/rds/aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs.sentinel
+    sha: 3532e8ac84757915017840f69d9d78ff36cee1911e46817d1b4335c8c179e986
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This control checks whether an Amazon Aurora PostgreSQL DB cluster is configured to publish logs to Amazon CloudWatch Logs."
+    type: sentinel
+  autoscaling-group-should-cover-multiple-azs:
+    path: policies/autoscaling-group/autoscaling-group-should-cover-multiple-azs.sentinel
+    sha: e1f67c0502700031f63188b937ca7ea915ad2a14572720cfe4da07b0ed7af6c2
+    governed_resources: [aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Auto Scaling Group
+    description: "This policy checks if resources of type `aws_autoscaling_group` have more than one value in either `availability_zone` or `vpc_zone_identifier`"
+    type: sentinel
+  autoscaling-group-should-use-launch-templates:
+    path: policies/autoscaling-group/autoscaling-group-should-use-launch-templates.sentinel
+    sha: 72bb0c6ec34e7216ff83e6f887d57bf38eba49c5c68d935bca3eb9d5ebde0b9d
+    governed_resources: [aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Auto Scaling Group
+    description: "This policy checks if resources of type `aws_autoscaling_group` have the `launch_template` atribute or the attribute must be present in `mixed_instances_policy`"
+    type: sentinel
+  autoscaling-group-should-use-multiple-instance-types:
+    path: policies/autoscaling-group/autoscaling-group-should-use-multiple-instance-types.sentinel
+    sha: 3703c45e980deade27ba575dc5782cbe4f1a3f6e4a881b4620137fdf6fe09589
+    governed_resources: [aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Auto Scaling Group
+    description: "This policy checks if resources of type `aws_autoscaling_group` have the multiple instance types"
+    type: sentinel
+  autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck:
+    path: policies/autoscaling-group/autoscaling-group-with-load-balancer-attached-should-have-elb-healthcheck.sentinel
+    sha: 474d16f38bd2904b5ba5c95fd47abb4a7f1f98e0e3646feeba3f2f2c0247526a
+    governed_resources: [aws_autoscaling_attachment, aws_autoscaling_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Auto Scaling Group
+    description: "This policy requires `aws_autoscaling_group` resources to be associated with load balancers and to have attribute `health_check_health_check_type` should be `ELB`."
+    type: sentinel
+  autoscaling-launch-config-public-ip-disabled:
+    path: policies/autoscaling-group/autoscaling-launch-config-public-ip-disabled.sentinel
+    sha: 77945a50c4836f04ec89294ba7ee5abf563b0bce3a36ff459072b767c16d6ab3
+    governed_resources: [aws_launch_configuration]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Auto Scaling Group
+    description: "This policy requires resources of type `aws_launch_configuration` should have `associate_public_ip_address` set to false."
+    type: sentinel
+  backup-recovery-point-encrypted:
+    path: policies/backup/backup-recovery-point-encrypted.sentinel
+    sha: e20d81ee11635cdf0f10876cd3f20c00154fc2624c2e85c62c74051b8127fe19
+    governed_resources: [aws_backup_framework]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Backup
+    description: "This policy checks if resources of type `aws_backup_framework` have the attribute `control` value set to `BACKUP_RECOVERY_POINT_ENCRYPTED`"
+    type: sentinel
+  cloudfront-associated-with-waf:
+    path: policies/cloudfront/cloudfront-associated-with-waf.sentinel
+    sha: de663c3f521dc8f71db9b3ca4d1e13233a2672cb471667063341d0cbb348d359
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This policy checks whether `aws_cloudfront_distribution` are associated with either AWS WAF Classic or AWS WAF web ACLs."
+    type: sentinel
+  cloudfront-distributions-should-encrypt-traffic-to-custom-origins:
+    path: policies/cloudfront/cloudfront-distributions-should-encrypt-traffic-to-custom-origins.sentinel
+    sha: c707ed7417146b70f336f1085292131ff1f64427d1d8e40da4d92d60ba04b0ce
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are encrypting traffic to custom origins."
+    type: sentinel
+  cloudfront-distributions-should-have-logging-enabled:
+    path: policies/cloudfront/cloudfront-distributions-should-have-logging-enabled.sentinel
+    sha: 56b63d4fd37a0a674986322c89dbd1b6e2fa4565348c04a31fcdabca9650eb72
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether server access logging is enabled on `aws_cloudfront_distribution`."
+    type: sentinel
+  cloudfront-distributions-should-have-origin-failover-configured:
+    path: policies/cloudfront/cloudfront-distributions-should-have-origin-failover-configured.sentinel
+    sha: e0ff6cb0ba628b58a8ea91e8bbec2be20dd16cfef4cb0ad3d7ff8e453931270c
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether an `aws_cloudfront_distribution` is configured with an origin group that has two or more origins."
+    type: sentinel
+  cloudfront-distributions-should-not-use-deprecated-ssl-protocols:
+    path: policies/cloudfront/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.sentinel
+    sha: d6bbd751bb3dc250a0f7bdf0108d58b80159b82f969ebcfcefffc570f3b1949d
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are using deprecated SSL protocols for HTTPS communication between CloudFront edge locations and your custom origins."
+    type: sentinel
+  cloudfront-distributions-should-use-custom-ssl-tls-certificates:
+    path: policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel
+    sha: d985ed7c29e4455613259970c50f9ae9fe99cbf3bdf0a559dd4fabd6563d174a
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are using the default SSL/TLS certificate CloudFront provides."
+    type: sentinel
+  cloudfront-distributions-should-use-sni-to-serve-https-requests:
+    path: policies/cloudfront/cloudfront-distributions-should-use-sni-to-serve-https-requests.sentinel
+    sha: c763cbe39e748d67041d2ff3c74707f9fa4fae1aeac7bfe11cd78e7fd7bc0812
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether `aws_cloudfront_distribution` are using a custom SSL/TLS certificate and are configured to use SNI to serve HTTPS requests."
+    type: sentinel
+  cloudfront-s3-origin-access-control-enabled:
+    path: policies/cloudfront/cloudfront-s3-origin-access-control-enabled.sentinel
+    sha: 3be0a0d818083045c9d5ba333dc6e6bd1a24818dcfa229f85207860ff96df5a9
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This policy checks whether an `aws_cloudfront_distribution` with an Amazon S3 origin has `aws_cloudfront_origin_access_control` configured."
+    type: sentinel
+  cloudfront-s3-origin-non-existent-bucket:
+    path: policies/cloudfront/cloudfront-s3-origin-non-existent-bucket.sentinel
+    sha: ca706eee986a906c8fa24e2691e92c346ee8ea1757f425721e7c92628fa9ee59
+    governed_resources: [aws_cloudfront_distribution, aws_s3_bucket]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This policy checks whether `aws_cloudfront_distribution` are pointing to non-existent Amazon S3 origins."
+    type: sentinel
+  cloudfront-should-have-default-root-object-configured:
+    path: policies/cloudfront/cloudfront-should-have-default-root-object-configured.sentinel
+    sha: 4ca4d49f81b6e2700204fc94765a13e4d22ce9bbc23af4431334122cce0309b5
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether an `aws_cloudfront_distribution` is configured to return a specific object that is the default root object."
+    type: sentinel
+  cloudfront-should-require-encryption-in-transit:
+    path: policies/cloudfront/cloudfront-should-require-encryption-in-transit.sentinel
+    sha: ae8f32e9a8e4d8f49e10917e7df33d4a502d209d7494a2481e202cf8b9c81865
+    governed_resources: [aws_cloudfront_distribution]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudFront
+    description: "This control checks whether an `aws_cloudfront_distribution` requires viewers to use HTTPS directly or whether it uses redirection."
+    type: sentinel
+  cloudtrail-cloudwatch-logs-group-arn-present:
+    path: policies/cloudtrail/cloudtrail-cloudwatch-logs-group-arn-present.sentinel
+    sha: 7fb1a47a4eb14511a61fa59f95cc11b9a8afa87196b113563fcef2a90803d382
+    governed_resources: [aws_cloudtrail]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudTrail
+    description: "This policy requires resources of type `aws_cloudtrail` to have cloudwatch log group arn set."
+    type: sentinel
+  cloudtrail-log-file-validation-enabled:
+    path: policies/cloudtrail/cloudtrail-log-file-validation-enabled.sentinel
+    sha: 7728be47ff9b055b2ca106842ed9eca7c7a97da4db6626b2378cf806a1035ced
+    governed_resources: [aws_cloudtrail]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudTrail
+    description: "This policy requires resources of type `aws_cloudtrail` to have log file validation enabled."
+    type: sentinel
+  cloudtrail-server-side-encryption-enabled:
+    path: policies/cloudtrail/cloudtrail-server-side-encryption-enabled.sentinel
+    sha: 82037a7f7ec6e29075a4e5b09cf37a779513816e686f144216ce141d94682c6b
+    governed_resources: [aws_cloudtrail]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CloudTrail
+    description: "This policy requires that resources of type `aws_cloudtrail` have server-side encryption enabled."
+    type: sentinel
+  codebuild-bitbucket-url-should-not-contain-sensitive-credentials:
+    path: policies/codebuild/codebuild-bitbucket-url-should-not-contain-sensitive-credentials.sentinel
+    sha: f22ae2063d73c51a0438047eabc87562ca9783bfe353102e862385589c97fb88
+    governed_resources: [aws_codebuild_project]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CodeBuild
+    description: "This control checks whether an `aws_codebuild_project` Bitbucket source repository URL contains personal access tokens or a user name and password."
+    type: sentinel
+  codebuild-project-environments-should-have-a-logging-aws-configuration:
+    path: policies/codebuild/codebuild-project-environments-should-have-a-logging-aws-configuration.sentinel
+    sha: 423e07cce5b9f8106f4e59401f1622114ab2deda7325277654a3579a13b63347
+    governed_resources: [aws_codebuild_project]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CodeBuild
+    description: "This control checks whether a `aws_codebuild_project` has at least one log option, either to S3 or CloudWatch logs enabled."
+    type: sentinel
+  codebuild-s3-logs-should-be-encrypted:
+    path: policies/codebuild/codebuild-s3-logs-should-be-encrypted.sentinel
+    sha: 614407fd0fc1efc554f4bc527b5ee805fefc06fbee55b8135fe4b42ca073fa18
+    governed_resources: [aws_codebuild_project]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: CodeBuild
+    description: "This control checks if Amazon S3 logs for an `aws_codebuild_project` are encrypted."
+    type: sentinel
+  connect-instance-flow-logging-should-be-enabled:
+    path: policies/connect/connect-instance-flow-logging-should-be-enabled.sentinel
+    sha: 8feb67dfba8aa29b5d670baca61656feab41df1422ae126ea064a111f8d030cc
+    governed_resources: [aws_connect_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Connect
+    description: "This policy requires resources of type `aws_connect_instance` have attribute `contact_flow_logs_enabled` should be true."
+    type: sentinel
+  datasync-task-should-have-logging-enabled:
+    path: policies/datasync/datasync-task-should-have-logging-enabled.sentinel
+    sha: 6975427e606562c59144daf5a53b856ead9805482f210e6f693e2ed9c812d576
+    governed_resources: [aws_datasync_task]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DataSync
+    description: "This policy requires resources of type `aws_datasync_task` have attribute `cloudwatch_log_group_arn` should not be empty and log_level should not be `OFF`."
+    type: sentinel
+  dms-auto-minor-version-upgrade-check:
+    path: policies/dms/dms-auto-minor-version-upgrade-check.sentinel
+    sha: f92cc469067c115c822421b5c1dae9ef95d7fc19842fd6633f4dfedb4da656ba
+    governed_resources: [aws_dms_replication_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_replication_instance` have the `auto_minor_version_upgrade` attribute set to true"
+    type: sentinel
+  dms-endpoint-should-be-ssl-configured:
+    path: policies/dms/dms-endpoint-should-be-ssl-configured.sentinel
+    sha: 8ec291d6aead7eb098f82c701344490f4edacfffcf89cd35b38c24bd5e6e010b
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_endpoint` have the `certificate_arn` shouldn't be empty"
+    type: sentinel
+  dms-endpoints-should-use-ssl:
+    path: policies/dms/dms-endpoints-should-use-ssl.sentinel
+    sha: 148dbab44da7b334941ea44ded4edeb53006d4689b336f89753ea25506961e02
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy requires resources of type `aws_dms_endpoint` have attribute \"ssl_mode\" set to one of: require, verify-ca, verify-full."
+    type: sentinel
+  dms-mongo-db-authentication-enabled:
+    path: policies/dms/dms-mongo-db-authentication-enabled.sentinel
+    sha: d085cbd6b4f4fb67dfb1ce2f85186a046edd2f6a221f7d4da5b0444e9ebe5402
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_endpoint` have the `auth_mechanism` not set to default in `mongodb_settings` for engine of type `mongodb`"
+    type: sentinel
+  dms-redis-tls-enabled:
+    path: policies/dms/dms-redis-tls-enabled.sentinel
+    sha: a07dc28b526328bb69e305ada5714fbc47c1cc446b086e53942bc547bee364ce
+    governed_resources: [aws_dms_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_endpoint` have the `ssl_security_protocol` set to `ssl-encryption` in `redis_settings` for engine of type `redis`"
+    type: sentinel
+  dms-replication-instances-should-not-be-public:
+    path: policies/dms/dms-replication-instances-should-not-be-public.sentinel
+    sha: 0c574a7fe844896e99faffd5f95e5f419048da28af50cdf62bc1fe2a17b7a5d4
+    governed_resources: [aws_dms_replication_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_replication_instance` have the `publicly_accessible` attribute set to false"
+    type: sentinel
+  dms-replication-task-logging-enabled:
+    path: policies/dms/dms-replication-task-logging-enabled.sentinel
+    sha: efa6fa9de4b2204730f6400b39696a3f8c770f8c80fe57ea4a57ef1430ab880d
+    governed_resources: [aws_dms_replication_task]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DMS
+    description: "This policy checks if resources of type `aws_dms_replication_task` have the `replication_task_settings` have logging enabled"
+    type: sentinel
+  docdb-cluster-audit-logging-enabled:
+    path: policies/docdb/docdb-cluster-audit-logging-enabled.sentinel
+    sha: 0af0c8a99d7dbe102797933edd89fe9b1aa1b6f56bca779f1038df5ec1b6ddbf
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `enabled_cloudwatch_logs_exports attribute` set to `audit`"
+    type: sentinel
+  docdb-cluster-backup-retention-check:
+    path: policies/docdb/docdb-cluster-backup-retention-check.sentinel
+    sha: d2b26db8e4578e62120e4c12aec3bd9467cadd070c5fd4a20120d92c3a5d46aa
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `backup-retention-period` attribute set in between `7 to 35`"
+    type: sentinel
+  docdb-cluster-deletion-protection-enabled:
+    path: policies/docdb/docdb-cluster-deletion-protection-enabled.sentinel
+    sha: 8a7d2b87c85696ebbbc4e40d6f489e4e9a031737f097c1830a505c97fbbb8de3
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `deletion_protection` attribute set to true"
+    type: sentinel
+  docdb-cluster-storage-encrypted:
+    path: policies/docdb/docdb-cluster-storage-encrypted.sentinel
+    sha: 3f0a6b6aae82550088eb960e8b9b57c9961db89faf8f15f62c9b41c5b000d277
+    governed_resources: [aws_docdb_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DocDB
+    description: "This policy checks if resources of type `aws_docdb_cluster` have the `storage_encrypted` attribute set to true"
+    type: sentinel
+  dynamo-db-accelerator-clusters-encryption-at-rest-enabled:
+    path: policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel
+    sha: 51640bf02ad1b7c301a633ea03211a62e411704ab1497bb33e83706f3db66f34
+    governed_resources: [aws_dax_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DynamoDB
+    description: "This policy requires that `server_side_encryption` attribute of the `aws_dax_cluster` resource has `enabled` set to true"
+    type: sentinel
+  dynamo-db-accelerator-clusters-encryption-in-transit-enabled:
+    path: policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-in-transit-enabled.sentinel
+    sha: 98b35532b872a065432e955e0730309e176ff89c1425bef70578d28fcd10ad3d
+    governed_resources: [aws_dax_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DynamoDB
+    description: "This policy requires that the `aws_dax_cluster` resource has `cluster_endpoint_encryption_type` attribute set to `TLS`"
+    type: sentinel
+  dynamo-db-tables-delete-protection-enabled:
+    path: policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel
+    sha: e2dbbffe81bac3ff20218085b9c371344c8ec15609daba5e206c1399736b361d
+    governed_resources: [aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DynamoDB
+    description: "This policy requires that `dynamo-db-tables-delete-protection-enabled` attribute of the `aws_dynamodb_table` resource is set to true"
+    type: sentinel
+  dynamo-db-tables-point-in-time-recovery-enabled:
+    path: policies/dynamo-db/dynamo-db-tables-point-in-time-recovery-enabled.sentinel
+    sha: b4141b0a5297f471136dfdc2a10376233c6a46e96b75e6b56e028c900f73f61d
+    governed_resources: [aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DynamoDB
+    description: "This policy requires that `point_in_time_recovery` attribute of the `aws_dynamodb_table` resource has `enabled` set to true"
+    type: sentinel
+  dynamo-db-tables-scales-capacity-with-demand:
+    path: policies/dynamo-db/dynamo-db-tables-scales-capacity-with-demand.sentinel
+    sha: 5e74902ad06462e77524f3f5d3a8f43a610a59c8c12498642974601298ac1dcb
+    governed_resources: [aws_appautoscaling_policy, aws_appautoscaling_target, aws_dynamodb_table]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: DynamoDB
+    description: "This policy requires that `aws_dynamodb_table` resources with `billing_mode` attribute set to `PROVISIONED` have autoscaling configured"
+    type: sentinel
+  ec2-attached-ebs-volumes-encrypted-at-rest:
+    path: policies/ec2/ec2-attached-ebs-volumes-encrypted-at-rest.sentinel
+    sha: a9b6f5adef49aabefe1767d1e43ce99f8342b4844b43dd7c4babd91e4f63e9c1
+    governed_resources: [aws_ebs_volume, aws_volume_attachment]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires `aws_ebs_volume` resources to be encrypted and in attached state."
+    type: sentinel
+  ec2-client-vpn-connection-log-enabled:
+    path: policies/ec2/ec2-client-vpn-connection-log-enabled.sentinel
+    sha: e9e71b797c5107397f0942189ee39b62b7422c83b49b2cd6d1623c8a3bde027b
+    governed_resources: [aws_ec2_client_vpn_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy checks if resources of type `aws_ec2_client_vpn_endpoint` have the cloudwatch logs enabled in the `connection_log_options` attribute"
+    type: sentinel
+  ec2-ebs-encryption-enabled:
+    path: policies/ec2/ec2-ebs-encryption-enabled.sentinel
+    sha: d8232de53c8e1def27832d21ba1c5bebca0af8595ab57314c81805ff291ef74d
+    governed_resources: [aws_ebs_volume]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_ebs_volume` have the `encrypted` attribute set to `true`."
+    type: sentinel
+  ec2-ebs-snapshot-public-restorable-check-account-level:
+    path: policies/ec2/ec2-ebs-snapshot-public-restorable-check-account-level.sentinel
+    sha: f6da1228b3c074eef522a456f99c773936ea7874e69aa7736ea4988a2d1cb256
+    governed_resources: [aws_ebs_snapshot_block_public_access]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires `aws_ebs_snapshot_block_public_access` resources to have attribute state to either `block-new-sharing` or `block-all-sharing`."
+    type: sentinel
+  ec2-instance-should-not-have-public-ip:
+    path: policies/ec2/ec2-instance-should-not-have-public-ip.sentinel
+    sha: df26d36fdf4aa5f2bc555e62105658e5048c4dafbc2ec2ee66e1444e6dec2d0b
+    governed_resources: [aws_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_instance` to not have a public IP address."
+    type: sentinel
+  ec2-instance-should-not-use-multiple-enis:
+    path: policies/ec2/ec2-instance-should-not-use-multiple-enis.sentinel
+    sha: 26f96ad2e0a1d7376fbdc2816dd81ca4cf88d16615e5a77ac1ed344a43ff081c
+    governed_resources: [aws_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy checks if the EC2 Instance have only one Network Interface"
+    type: sentinel
+  ec2-instance-virtualization-should-not-be-paravirtual:
+    path: policies/ec2/ec2-instance-virtualization-should-not-be-paravirtual.sentinel
+    sha: fd16cef98814a747d79edf2207eb0393ff0527be2cfc7b5a72b9dab759ca3545
+    governed_resources: [aws_ami, aws_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires `aws_ami` resources to have attribute `virtualization_type` to be `hvm`."
+    type: sentinel
+  ec2-launch-template-imdsv2-check:
+    path: policies/ec2/ec2-launch-template-imdsv2-check.sentinel
+    sha: 9aabd0ecb30c4e03fae6531052022ae1d5c674fd8d08be380700810e8deccbdb
+    governed_resources: [aws_launch_template]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy checks if resources of type `aws_launch_template` have the attribute `http_tokens` in `metadata_options` set to `required`"
+    type: sentinel
+  ec2-launch-template-public-ip-disabled:
+    path: policies/ec2/ec2-launch-template-public-ip-disabled.sentinel
+    sha: 4305f2e54eab47be57a21c2a32b303f707d2c361f5cb500616a00e2906ab62df
+    governed_resources: [aws_launch_template]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy checks if resources of type `aws_launch_template` have the attribute `associate_public_ip_address` in `network_interfaces` set to `false`"
+    type: sentinel
+  ec2-metadata-imdsv2-required:
+    path: policies/ec2/ec2-metadata-imdsv2-required.sentinel
+    sha: 0bf60ae7dc0ee12442a5f6a9bc1fbbdbdc2be330ae95e824a777ba9ed018b4ab
+    governed_resources: [aws_ec2_instance_metadata_defaults, aws_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_instance` or `aws_ec2_instance_metadata_defaults` to have `http_tokens` attribute set to `required`."
+    type: sentinel
+  ec2-network-acl:
+    path: policies/ec2/ec2-network-acl.sentinel
+    sha: cd009fa9f23569a7d95634413b54da5dfd50797fa12c7ce65a6d7fe4f03975a8
+    governed_resources: [aws_network_acl, aws_network_acl_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_network_acl` and `aws_network_acl_rule` to block ingress traffic from unknown sources to the configured ports"
+    type: sentinel
+  ec2-network-acl-should-have-subnet-ids:
+    path: policies/ec2/ec2-network-acl-should-have-subnet-ids.sentinel
+    sha: 9392055457d3e4806cfd169d2393e7cc2b21ddca72b6923b30b45a5e30807bee
+    governed_resources: [aws_network_acl, aws_network_acl_association]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires `aws_network_acl` resources to have `subnet_ids` present."
+    type: sentinel
+  ec2-security-group-ingress-traffic-restriction-to-common-ports:
+    path: policies/ec2/ec2-security-group-ingress-traffic-restriction-to-common-ports.sentinel
+    sha: 066dd7f41671b7f38f62fec34d30c2a414817cd0b923078b86986ed2c8089eae
+    governed_resources: [aws_security_group, aws_security_group_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "Imports"
+    type: sentinel
+  ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports:
+    path: policies/ec2/ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports.sentinel
+    sha: c54593f17e4815d377941edb6c352b76330d209cf7770bd2b8168a3d1f6b4bbf
+    governed_resources: [aws_security_group, aws_security_group_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "Security groups should only allow unrestricted incoming traffic for authorized ports"
+    type: sentinel
+  ec2-service-vpc-endpoint-enabled:
+    path: policies/ec2/ec2-service-vpc-endpoint-enabled.sentinel
+    sha: 7a1e9295d602c310585771675a3ac135588ad6bed93881ea42541f3d4971a0bb
+    governed_resources: [aws_vpc, aws_vpc_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires `aws_vpc_endpoint` resources to have attribute `vpc_endpoint_type` to be `Interface` and `service_name` to be `ec2`."
+    type: sentinel
+  ec2-subnet-with-auto-assign-public-ip-disabled:
+    path: policies/ec2/ec2-subnet-with-auto-assign-public-ip-disabled.sentinel
+    sha: 480714b0072a6839d968edccc00ee072444c4c673a76ca5942f66dbbf9519029
+    governed_resources: [aws_subnet]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires `aws_subnet` resources to have attribute `map_public_ip_on_launch` to be false."
+    type: sentinel
+  ec2-transit-gateway-auto-vpc-attach-disabled:
+    path: policies/ec2/ec2-transit-gateway-auto-vpc-attach-disabled.sentinel
+    sha: 3c2b5c9c7901a1cdf7ee532610e16fe27498d6b2e41cecb5adf91e26b300379f
+    governed_resources: [aws_ec2_transit_gateway]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy checks if the EC2 Transit Gateway have the attribute `auto_accept_shared_attachments` set to disable"
+    type: sentinel
+  ec2-vpc-block-public-access-options-should-block-internet-gateway-traffic:
+    path: policies/ec2/ec2-vpc-block-public-access-options-should-block-internet-gateway-traffic.sentinel
+    sha: 28a938c8080385403726976eaa0b20a8ed710e6303f433605cf9dfad16906461
+    governed_resources: [aws_vpc_block_public_access_options]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc_block_public_access_options` have attribute `internet_gateway_block_mode` should be either `block-bidirectional` or `block-ingress`."
+    type: sentinel
+  ec2-vpc-default-security-group-no-traffic:
+    path: policies/ec2/ec2-vpc-default-security-group-no-traffic.sentinel
+    sha: 7618f08c4fd32565d3e43f23a0a6495896b00e2595ecd356ef1c9d4620cabcff
+    governed_resources: [aws_default_security_group, aws_security_group_rule, aws_vpc_security_group_egress_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc` to have no traffic for default security group."
+    type: sentinel
+  ec2-vpc-flow-logging-enabled:
+    path: policies/ec2/ec2-vpc-flow-logging-enabled.sentinel
+    sha: a546b761dfcc16f41b498da165958c4bdfb3e3fa050a790617cb8c8b914898f5
+    governed_resources: [aws_default_vpc, aws_flow_log, aws_vpc]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc` and `aws_default_vpc` to have flow logs enabled."
+    type: sentinel
+  ec2-vpc-should-be-configured-for-interface-endpoint:
+    path: policies/ec2/ec2-vpc-should-be-configured-for-interface-endpoint.sentinel
+    sha: 766b361b544ba8d9492360d16b2978f84f03b6a0d20e4130b6aa2cb050a683e9
+    governed_resources: [aws_vpc, aws_vpc_endpoint]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy requires resources of type `aws_vpc_endpoint` should have `vpc_endpoint_type` configured with interface endpoint and should be referenced to `aws_vpc` resource."
+    type: sentinel
+  ec2-vpn-connection-logging-enabled:
+    path: policies/ec2/ec2-vpn-connection-logging-enabled.sentinel
+    sha: 3e022c6e9700e111fb4df4f11628505c504bb909973177534138033a61cc9abc
+    governed_resources: [aws_vpn_connection]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EC2
+    description: "This policy checks if resources of type `aws_vpn_connection` have the cloudwatch logs enabled for both `tunnel1` and `tunnel2`"
+    type: sentinel
+  ecr-image-scanning-enabled:
+    path: policies/ecr/ecr-image-scanning-enabled.sentinel
+    sha: 2442fe5207eec800ecd378dd9676ca718052973253a4124917eb85cd21dff12f
+    governed_resources: [aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECR
+    description: "This policy checks if resources of type `aws_ecr_repository` have image scanning configuration enabled"
+    type: sentinel
+  ecr-lifecycle-policy-configured:
+    path: policies/ecr/ecr-lifecycle-policy-configured.sentinel
+    sha: 1855648ebc5bd0c04be4b1d8fb642b79039ef7f3c510d535deef52f2fdc3b75b
+    governed_resources: [aws_ecr_lifecycle_policy, aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECR
+    description: "This policy ensures that resources of type `aws_ecr_repository` have a lifecycle policy configured"
+    type: sentinel
+  ecr-tag-immutability-configured:
+    path: policies/ecr/ecr-tag-immutability-configured.sentinel
+    sha: fcedc65a0b2379beba8972f07d29272cf101028cf85bb63a9bf9bbab88724e32
+    governed_resources: [aws_ecr_repository]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECR
+    description: "This policy checks if resources of type `aws_ecr_repository` have tag immutability configured"
+    type: sentinel
+  ecs-cluster-enable-container-insights:
+    path: policies/ecs/ecs-cluster-enable-container-insights.sentinel
+    sha: c83d33aa37a62cff20372cbb9ad83d4ec3e4d5fb1cb2dc80953e3edc19c7f262
+    governed_resources: [aws_ecs_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if the `aws_ecs_cluster` has the setting named `containerInsights` enabled"
+    type: sentinel
+  ecs-fargate-service-platform-compatibility:
+    path: policies/ecs/ecs-fargate-service-platform-compatibility.sentinel
+    sha: 21bde91d52c9f5b27585baaca9503935055c8c97ddc7965c087914e54115d9d9
+    governed_resources: [aws_ecs_service]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if resources of type `aws_ecs_service` with launch_type as `FARGATE` points to the `LATEST` platform version"
+    type: sentinel
+  ecs-non-privileged-container-definitions:
+    path: policies/ecs/ecs-non-privileged-container-definitions.sentinel
+    sha: e8fb5850c1882bafe7cedda6aedb516c14131954ddf073741567c468f0f33c54
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if the container definitions have the `privileged` parameter set to true and fails if that is the case."
+    type: sentinel
+  ecs-service-no-public-ip-assignment:
+    path: policies/ecs/ecs-service-no-public-ip-assignment.sentinel
+    sha: dc0132546c88ca9ec35e69360e68a2a0d14eee628b4ed013bc546954f3fe0a83
+    governed_resources: [aws_ecs_service]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if resources of type `aws_ecs_service` have the `assign_public_ip` attribute under networking configuration set to true"
+    type: sentinel
+  ecs-task-definition-log-configuration-present:
+    path: policies/ecs/ecs-task-definition-log-configuration-present.sentinel
+    sha: 13357beab41f48dc44436a5ea5af8ae753cd44d1b7eb621498e9b9383b416c26
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if all container definitions of a given `aws_ecs_task_definition` resource contains a non empty value for the logConfiguration.logDriver attribute."
+    type: sentinel
+  ecs-task-definition-no-secrets-as-environment-variables:
+    path: policies/ecs/ecs-task-definition-no-secrets-as-environment-variables.sentinel
+    sha: df45973fd747249d3f00cec9f337a9d4e238795019e79c7776b368d18118b01c
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if the container definitions contain non allow listed secrets as environment variables"
+    type: sentinel
+  ecs-task-definition-read-only-root-file-system-access:
+    path: policies/ecs/ecs-task-definition-read-only-root-file-system-access.sentinel
+    sha: e399bb8ec7a6e24ea2f53412c45b598295e3cbe5492ddd9471e7660632a050a4
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if the container definitions have the `readOnlyRootFileSystem` set to true."
+    type: sentinel
+  ecs-task-definition-restrict-process-id:
+    path: policies/ecs/ecs-task-definition-restrict-process-id.sentinel
+    sha: b5eaff6f5a5e85970c9637b6c27487025faf618d83bf452e96eeaa6eed0ee51e
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if the `pidMode` attribute for resources of type `aws_ecs_task_definition` is equal to `host`"
+    type: sentinel
+  ecs-task-definition-secure-networking-mode-and-user-definitions:
+    path: policies/ecs/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel
+    sha: 4e621699ecf212ee73fcb40b87a533b34a821737dd9449c098b43cae7a2a4ba6
+    governed_resources: [aws_ecs_task_definition]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy checks if the task definition with host networking mode has unprivileged or user container definitions."
+    type: sentinel
+  ecs-task-set-assign-public-ip-disabled:
+    path: policies/ecs/ecs-task-set-assign-public-ip-disabled.sentinel
+    sha: 59fecb3d7037bc52b0d7bb96a9f57ce209f49d3671eef15e9510659dbf5710bd
+    governed_resources: [aws_ecs_task_set]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ECS
+    description: "This policy requires resources of type `aws_ecs_task_set` have attribute `assign_public_ip` should be false."
+    type: sentinel
+  efs-access-point-should-enforce-root-directory:
+    path: policies/efs/efs-access-point-should-enforce-root-directory.sentinel
+    sha: 4d68f90c76b2b9df85ca865904de10d0b148b66a2ac1a48fbdca3e946e1e3ae9
+    governed_resources: [aws_efs_access_point]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_access_point` have attribute `root_directory` should not have path set to `/`."
+    type: sentinel
+  efs-access-point-should-enforce-user-identity:
+    path: policies/efs/efs-access-point-should-enforce-user-identity.sentinel
+    sha: c700932030b74a86f82ec7b4acba60c4533bbfc288d8d315eb958add45568078
+    governed_resources: [aws_efs_access_point]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_access_point` have attribute `posix_user` should be defined."
+    type: sentinel
+  efs-automatic-backups-enabled:
+    path: policies/efs/efs-automatic-backups-enabled.sentinel
+    sha: 783537a9bd1f0e87a411bcf38d9222d51307ca71c35c8569a143720c8833db35
+    governed_resources: [aws_efs_backup_policy, aws_efs_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EFS
+    description: "This policy requires EFS file systems to have automatic backups enabled"
+    type: sentinel
+  efs-file-systems-should-be-encrypted-at-rest:
+    path: policies/efs/efs-file-systems-should-be-encrypted-at-rest.sentinel
+    sha: 6e78de5f7c9b40602adccdbdffc5a23f666cdae304ee6db259bc794b2a1de064
+    governed_resources: [aws_efs_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_file_system` should have `encrypted` set to true and `kms_key_id` should not be empty."
+    type: sentinel
+  efs-file-systems-should-be-in-backup-plans:
+    path: policies/efs/efs-file-systems-should-be-in-backup-plans.sentinel
+    sha: a4a905bea8f5da6ca152b0f6e83f77012ab105c39ced4e7bc3690b94cac4d485
+    governed_resources: [aws_backup_selection, aws_efs_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_file_system` should be associated with resource `aws_backup_selection`."
+    type: sentinel
+  efs-filesystem-encrypted:
+    path: policies/efs/efs-filesystem-encrypted.sentinel
+    sha: 384500f95c2a17baeed4bf7d879a55d37010231d40e7f498d2bbe2d533042deb
+    governed_resources: [aws_efs_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EFS
+    description: "This policy requires resources of type `aws_efs_file_system` have attribute \"encrypted\" set to true."
+    type: sentinel
+  eks-cluster-audit-logging-enabled:
+    path: policies/eks/eks-cluster-audit-logging-enabled.sentinel
+    sha: c5560c60a62b7ce2ece865f9c02c4104d1c525b50a0f7215832cb41eff0fbab6
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` resources have their unrestricted public endpoint access"
+    type: sentinel
+  eks-cluster-encrypted-kubernetes-secrets:
+    path: policies/eks/eks-cluster-encrypted-kubernetes-secrets.sentinel
+    sha: a03c604bb3335d9e099cdd4af5ddc797f71d524429178b7cd51df9112adad443
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` uses KMS service to encrypted Kubernetes secrets"
+    type: sentinel
+  eks-cluster-endpoints-restrict-public-access:
+    path: policies/eks/eks-cluster-endpoints-restrict-public-access.sentinel
+    sha: f268965c3ff534250f392c8e0b61f9126f607cd513769a20fee79ea61a75cde0
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` resources have their unrestricted public endpoint access"
+    type: sentinel
+  eks-cluster-supported-k8s-version-check:
+    path: policies/eks/eks-cluster-supported-k8s-version-check.sentinel
+    sha: d5c174d2afaed4a8f30023dd14e224552357b712ebd568d16ec484ba8db1430d
+    governed_resources: [aws_eks_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EKS
+    description: "This policy checks if `aws_eks_cluster` does not run on unsupported kubernetes versions"
+    type: sentinel
+  elasticache-redis-cluster-auto-backup-enabled:
+    path: policies/elasticache/elasticache-redis-cluster-auto-backup-enabled.sentinel
+    sha: 1197aad0451f562188ed4c2caa666560bff3b0caf654be63fec5020d4da2ead3
+    governed_resources: [aws_elasticache_cluster, aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `snapshot_retention_limit` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is greater than 0."
+    type: sentinel
+  elasticache-redis-cluster-auto-minor-version-upgrade-enabled:
+    path: policies/elasticache/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel
+    sha: b525241651f8c99e69c027409399074570130cd50c161a5965ff09fbb875782e
+    governed_resources: [aws_elasticache_cluster, aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `auto_minor_version_upgrade` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-cluster-non-default-subnet-enabled:
+    path: policies/elasticache/elasticache-redis-cluster-non-default-subnet-enabled.sentinel
+    sha: 58db56b6e8f88158253f9d91c8c2526f16b16c47054333fe9a2a6c33469a8daf
+    governed_resources: [aws_elasticache_cluster, aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `subnet_group_name` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group` resource is set."
+    type: sentinel
+  elasticache-redis-replication-group-auto-failover-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-auto-failover-enabled.sentinel
+    sha: 679f0c1352c06320f6b4d72c21f2b0fdafe2d0fb193dd1b11830551b58c016f7
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `automatic_failover_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-replication-group-encryption-at-rest-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-encryption-at-rest-enabled.sentinel
+    sha: db1c653ab2917e0ddfb474c61f67e1b533fb40db06b50c4a6c73514c39fe7b32
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `at_rest_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-replication-group-encryption-at-transit-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel
+    sha: ee2c5646be5f97efecdf6b1d78015370169e2582ed01a95ab83c03f67e52521b
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `transit_encryption_enabled` attribute of the `aws_elasticache_replication_group` resource is true."
+    type: sentinel
+  elasticache-redis-replication-group-redis-auth-enabled:
+    path: policies/elasticache/elasticache-redis-replication-group-redis-auth-enabled.sentinel
+    sha: 042dab7ad3db6ab11c5ff8e37a220613f12def98158ae9ef19e23f703f6d65d4
+    governed_resources: [aws_elasticache_replication_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ElastiCache
+    description: "This policy requires that the `aws_elasticache_replication_group` resource with `engine_version` less than 6.0 has `auth_token` set."
+    type: sentinel
+  elasticbeanstalk-cloudwatch-log-streaming-enabled:
+    path: policies/elasticbeanstalk/elasticbeanstalk-cloudwatch-log-streaming-enabled.sentinel
+    sha: 48b37cf11d2af4e36a7738ea4df05c49f4780963c5ccf27d56bbfd19e2a6ee21
+    governed_resources: [aws_elastic_beanstalk_environment]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elastic Beanstalk
+    description: "This policy requires that the elasticbeanstalk environment have cloudwatch log streaming enabled"
+    type: sentinel
+  elasticbeanstalk-enhanced-health-reporting-enabled:
+    path: policies/elasticbeanstalk/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel
+    sha: bba825fa10870b6ba200ae5ca58ca26a399b7ca9b8a4ad94b579340f0923bc3c
+    governed_resources: [aws_elastic_beanstalk_environment]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elastic Beanstalk
+    description: "This policy requires that the elasticbeanstalk environment have enhanced health reporting enabled"
+    type: sentinel
+  elasticbeanstalk-managed-platform-updates-enabled:
+    path: policies/elasticbeanstalk/elasticbeanstalk-managed-platform-updates-enabled.sentinel
+    sha: 2ddd743735f41b0d27833f4927a03b51fb22080d9b4737370eeef09a9e5704d4
+    governed_resources: [aws_elastic_beanstalk_environment]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elastic Beanstalk
+    description: "This policy requires that the elasticbeanstalk environment have platform updates enabled"
+    type: sentinel
+  elasticsearch-audit-logging-enabled:
+    path: policies/elasticsearch/elasticsearch-audit-logging-enabled.sentinel
+    sha: aeccc91d633f579476378409d235ea9835d29c3e8dc3a39881ce6025953e18dc
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have `enabled` attribute set to `true` and `log_type` set to `AUDIT_LOGS`."
+    type: sentinel
+  elasticsearch-domains-should-have-atleast-three-data-nodes:
+    path: policies/elasticsearch/elasticsearch-domains-should-have-atleast-three-data-nodes.sentinel
+    sha: e5459324f29067cea8d6ddbdef8205f436e92f49fd38ef3371806f8e52964e0d
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` to have at least three data nodes and zone awareness enabled."
+    type: sentinel
+  elasticsearch-encrypted-at-rest:
+    path: policies/elasticsearch/elasticsearch-encrypted-at-rest.sentinel
+    sha: 0be24cca63633ef5edf7c63052debb12d58011b341b922133bbe99f0ce59f2dc
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `encrypt_at_rest` should have `enabled` attribute set to `true`."
+    type: sentinel
+  elasticsearch-https-required:
+    path: policies/elasticsearch/elasticsearch-https-required.sentinel
+    sha: cd66779c9d1554086701282bcee8aa4db90fd459fbc2ecb4b14ea80cc2a904db
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `tls_security_policy` set to latest policy that is `Policy-Min-TLS-1-2-PFS-2023-10` and `enforce_https` set to true for `domain_endpoint_options` attribute."
+    type: sentinel
+  elasticsearch-in-vpc-only:
+    path: policies/elasticsearch/elasticsearch-in-vpc-only.sentinel
+    sha: 487869db8965cbad8f5473aba2b824ee7cbdd042a073c568890260c19b42d80e
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `subnet_ids` should not be empty inside `vpc_options`."
+    type: sentinel
+  elasticsearch-logs-to-cloudwatch:
+    path: policies/elasticsearch/elasticsearch-logs-to-cloudwatch.sentinel
+    sha: 7dfebed029872a5fc113a0749ee47529b3ad8f7f1b76ad589d63191891458a40
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `log_publishing_options` should have `enabled` attribute set to `true`."
+    type: sentinel
+  elasticsearch-node-to-node-encryption-check:
+    path: policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel
+    sha: db2a09acc9a7f5eca5a3ca226a5bffe338b2d2a410b19076362c1ae0f1268633
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `enabled` value set to `true` for `node_to_node_encrytion` attribute."
+    type: sentinel
+  elasticsearch-primary-node-fault-tolerance:
+    path: policies/elasticsearch/elasticsearch-primary-node-fault-tolerance.sentinel
+    sha: b725ab0aac870133b28b771551548d822d5bb0eddbc35ea285dbd4f00b5e6e48
+    governed_resources: [aws_elasticsearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Elasticsearch
+    description: "This policy requires resources of type `aws_elasticsearch_domain` have the `dedicated_master_count` atleast 3 and `dedicated_master_enabled` set to true for `cluster_config` attribute."
+    type: sentinel
+  elb-configure-https-tls-termination-classic-load-balancer:
+    path: policies/elb/elb-configure-https-tls-termination-classic-load-balancer.sentinel
+    sha: 61ba918d55e45ba0b0e435cb32d1c4243c00235cfe48112183a6333070bfaad4
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have listeners configured with HTTPS or TLS termination"
+    type: sentinel
+  elb-connection-draining-enabled:
+    path: policies/elb/elb-connection-draining-enabled.sentinel
+    sha: c152ddcc19ac2bca09ce81801d6d708cba84173116f09688dd5d5ab5bb2f5dc2
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have the attribute `connection_draining` set to true"
+    type: sentinel
+  elb-cross-zone-load-balancing-enabled:
+    path: policies/elb/elb-cross-zone-load-balancing-enabled.sentinel
+    sha: ce47a07238e2c8ce376730026315a2179fb73f09fb72b52e9d20155b133fa0a6
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have the attribute `cross_zone_load_balancing` set to true"
+    type: sentinel
+  elb-drop-invalid-http-headers:
+    path: policies/elb/elb-drop-invalid-http-headers.sentinel
+    sha: 97a549c3884f9e29bdb44e6d69ebf0acafde62f5c2f07c51d8f4315c158b86b1
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if application load balancers are configured to drop invalid HTTP headers"
+    type: sentinel
+  elb-ensure-access-logging-enabled:
+    path: policies/elb/elb-ensure-access-logging-enabled.sentinel
+    sha: 9fc80ec4e25c7753a7cc015871b8e4e8ad5a15010e4162c0c5186544bfe9a892
+    governed_resources: [aws_elb, aws_lb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if resources of type `aws_lb` and `aws_elb` have `access_logging` enabled."
+    type: sentinel
+  elb-ensure-deletion-protection-enabled:
+    path: policies/elb/elb-ensure-deletion-protection-enabled.sentinel
+    sha: 8c2dfc6125ac43b16333cfc1ed4f6a0869a25a336336de38114ba99494b5adb4
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if resources of type `aws_lb` has the `enable_deletion_protection` attribute set to true."
+    type: sentinel
+  elb-ensure-http-request-redirection:
+    path: policies/elb/elb-ensure-http-request-redirection.sentinel
+    sha: 450487a8766753c7d40f783e6709d7e159713435f0c43822fb11aa8cedf74a39
+    governed_resources: [aws_lb, aws_lb_listener, aws_lb_listener_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy ensures that application load balancer in the terraform configurations have a listener rule configured to redirect HTTP requests to HTTPS"
+    type: sentinel
+  elb-ensure-multi-az-configuration-classic-load-balancer:
+    path: policies/elb/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel
+    sha: a309198b18e329363236bc9baef497803a04f94cbf4171b98e3b9d59d84da7ec
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if load balancers span across multiple availability zones."
+    type: sentinel
+  elb-ensure-ssl-listener-acm-cert-classic-load-balancer:
+    path: policies/elb/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel
+    sha: 12c23dc68f619714bb4af74e986d6ff9ed1fd2dbc7085dd99ffa82df83937233
+    governed_resources: [aws_elb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if resources of type `aws_elb` have HTTPS/SSL listeners configured with certs from acm."
+    type: sentinel
+  elb-ensure-ssl-listener-predefined-security-policy:
+    path: policies/elb/elb-ensure-ssl-listener-predefined-security-policy.sentinel
+    sha: 5430e5a35dfe21793cdf0a3e46f7a544e69afd40f870ea8394aa7a22bcd3e940
+    governed_resources: [aws_elb, aws_load_balancer_listener_policy, aws_load_balancer_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if classic load balancers with SSL listeners have predefined security policy configured"
+    type: sentinel
+  elb-ensure-valid-desync-mitigation-mode:
+    path: policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel
+    sha: 626b8a737071a0b31e2edba8a0eeef578f8d1fe2212e1f360fa5866ba75da434
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy checks if load_balancer resources have the `desync_mitigation_mode` attribute set to either `defensive` or `strictest`"
+    type: sentinel
+  elb-multiple-az:
+    path: policies/elb/elb-multiple-az.sentinel
+    sha: 65268fcda4479de10d0e282a0c3b659d93dc48ed62df455784eb9712825abeef
+    governed_resources: [aws_lb]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy ensures that Application, Network, and Gateway Load Balancers span multiple Availability Zones"
+    type: sentinel
+  elb-predefined-security-policy-ssl-check:
+    path: policies/elb/elb-predefined-security-policy-ssl-check.sentinel
+    sha: 112016f989ddd20312c7002d349f6cc31dc46456df000907021c5aefb5240257
+    governed_resources: [aws_lb_listener]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: ELB
+    description: "This policy requires `aws_lb_listener` resources using HTTPS/TLS to use recommended SSL policies."
+    type: sentinel
+  emr-block-public-access-enabled:
+    path: policies/emr/emr-block-public-access-enabled.sentinel
+    sha: 23fd30634e7717292ccab00eb74d6cdae88d172cad025053c7f09b39ef45abbc
+    governed_resources: [aws_emr_block_public_access_configuration]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EMR
+    description: "This policy requires block public access setting is enabled and any port other than 22 should not be allowed"
+    type: sentinel
+  emr-security-configuration-encryption-rest:
+    path: policies/emr/emr-security-configuration-encryption-rest.sentinel
+    sha: 1cc12f385fe1db9008a9635ac06996d9de9694307b3f3fda79ccce5235454a65
+    governed_resources: [aws_emr_security_configuration]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EMR
+    description: "This policy requires `aws_emr_security_configuration` to include at-rest encryption settings."
+    type: sentinel
+  emr-security-configuration-encryption-transit:
+    path: policies/emr/emr-security-configuration-encryption-transit.sentinel
+    sha: d5e8b95add46171d8a49d96d6e07fa8e85aa1c282158e8e6343cc2bc72218416
+    governed_resources: [aws_emr_security_configuration]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EMR
+    description: "This policy requires aws_emr_security_configuration to enable encryption in transit."
+    type: sentinel
+  eventbridge-custom-event-bus-should-have-attached-policy:
+    path: policies/eventbridge/eventbridge-custom-event-bus-should-have-attached-policy.sentinel
+    sha: 67952e9aa6b07c06e434c8733ff236386343da54e140f23cd64e28d41d433021
+    governed_resources: [aws_cloudwatch_event_bus, aws_cloudwatch_event_bus_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: EventBridge
+    description: "This policy requires `aws_cloudwatch_event_bus` resources to be attached to a policy."
+    type: sentinel
+  fsx-lustre-copy-tags-to-backups:
+    path: policies/fsx/fsx-lustre-copy-tags-to-backups.sentinel
+    sha: 9858caa3fd449fe85db4f3fc9a698bba3948a4a23896ee82cf30889b320a3da6
+    governed_resources: [aws_fsx_lustre_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: FSx
+    description: "This policy requires resources of type `aws_fsx_lustre_file_system` have the `copy_tags_to_backups` attributes set to true."
+    type: sentinel
+  fsx-ontap-deployment-type-check:
+    path: policies/fsx/fsx-ontap-deployment-type-check.sentinel
+    sha: fa1718d3d1b5bdbfe3af272e246069aa6f206a568b83b439b01b96e5c2dd0891
+    governed_resources: [aws_fsx_ontap_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: FSx
+    description: "This policy requires aws_fsx_ontap_file_system resources to use MULTI_AZ_1 deployment type."
+    type: sentinel
+  fsx-openzfs-copy-tags-to-backups-and-volumes-enabled:
+    path: policies/fsx/fsx-openzfs-copy-tags-to-backups-and-volumes-enabled.sentinel
+    sha: c545d1aee48c1753f3a086deb7bc2100a9bef2d046a2c5d952aed7b131ed9c64
+    governed_resources: [aws_fsx_openzfs_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: FSx
+    description: "This policy requires resources of type `aws_fsx_openzfs_file_system` have the `copy_tags_to_backups` and `copy_tags_to_columes` attributes set to true."
+    type: sentinel
+  fsx-openzfs-deployment-type-check:
+    path: policies/fsx/fsx-openzfs-deployment-type-check.sentinel
+    sha: 2d96d84505b1972a442cbd02e23aa1ecfbf17b69a96e3d5e6f2defa1cea8f9d5
+    governed_resources: [aws_fsx_openzfs_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: FSx
+    description: "This policy requires aws_fsx_openzfs_file_system resources to use MULTI_AZ_1 deployment type."
+    type: sentinel
+  fsx-windows-deployment-type-check:
+    path: policies/fsx/fsx-windows-deployment-type-check.sentinel
+    sha: fdc2ebd352c5eaf389e9eb0e19f9eb2836f7e891c2b1ad99a6066bb1b61eb451
+    governed_resources: [aws_fsx_windows_file_system]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: FSx
+    description: "This policy requires aws_fsx_windows_file_system resources to use MULTI_AZ_1 deployment type."
+    type: sentinel
+  glue-spark-job-supported-version:
+    path: policies/glue/glue-spark-job-supported-version.sentinel
+    sha: 2f4445f84dac6d71caf5585e026b955cfddc498b13002d30898bcc622cd16ef6
+    governed_resources: [aws_glue_job]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Glue
+    description: "This policy ensures that AWS Glue Spark jobs use only supported Glue versions."
+    type: sentinel
+  guardduty-ecs-protection-runtime-enabled:
+    path: policies/guardduty/guardduty-ecs-protection-runtime-enabled.sentinel
+    sha: ef244f4a9d83f4c6e4954059e255f0c676345259a74d8418df7b914ccd563e09
+    governed_resources: [aws_guardduty_detector, aws_guardduty_detector_feature]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This policy ensures that GuardDuty ECS Runtime Monitoring (EKS_RUNTIME_MONITORING) is enabled."
+    type: sentinel
+  guardduty-eks-audit-log-monitoring-should-be-enabled:
+    path: policies/guardduty/guardduty-eks-audit-log-monitoring-should-be-enabled.sentinel
+    sha: 5660e9ca3f3f30fb68a0b4d25ef0c9a90e83335796aa96b78ac9e76cb9c8145c
+    governed_resources: [aws_guardduty_detector]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This control checks whether `aws_guardduty_detector` EKS Audit Log Monitoring is enabled."
+    type: sentinel
+  guardduty-eks-protection-runtime-should-be-enabled:
+    path: policies/guardduty/guardduty-eks-protection-runtime-should-be-enabled.sentinel
+    sha: 6014826bb61904164b87ae868891349ead862bf1fec0b0c65ef733019c753afe
+    governed_resources: [aws_guardduty_detector_feature]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This control checks whether `aws_guardduty_detector_feature` EKS Runtime Monitoring with automated agent management is enabled."
+    type: sentinel
+  guardduty-malware-protection-enabled:
+    path: policies/guardduty/guardduty-malware-protection-enabled.sentinel
+    sha: 9a4962da64ff9e373e88486e213afe2c2797699018c306106502e8706a830c67
+    governed_resources: [aws_guardduty_detector, aws_guardduty_detector_feature]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This control checks whether `aws_guardduty_detector` and `aws_guardduty_detector_feature` have Malware Protection enabled."
+    type: sentinel
+  guardduty-runtime-monitoring-enabled:
+    path: policies/guardduty/guardduty-runtime-monitoring-enabled.sentinel
+    sha: 3d2b645ce1aee33c2ddf66b5726eaef6d5c4a7349b35d59ac446031adea2bb5a
+    governed_resources: [aws_guardduty_detector, aws_guardduty_detector_feature]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This policy requires GuardDuty Runtime Monitoring to be enabled"
+    type: sentinel
+  guardduty-s3-protection-should-be-enabled:
+    path: policies/guardduty/guardduty-s3-protection-should-be-enabled.sentinel
+    sha: 91cdd5e5016e2b7b722bbef25b77afb2737c8c352485a60023f4f93d6c0fe7be
+    governed_resources: [aws_guardduty_detector]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This control checks whether `aws_guardduty_detector` S3 Protection is enabled."
+    type: sentinel
+  guardduty-should-be-enabled:
+    path: policies/guardduty/guardduty-should-be-enabled.sentinel
+    sha: 2b95694b4d669b66650e14df506eb1828ce084a0fbf6ba9c1efd2d5919098d20
+    governed_resources: [aws_guardduty_detector]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: GuardDuty
+    description: "This control checks whether `aws_guardduty_detector` is enabled in your GuardDuty account and Region."
+    type: sentinel
+  iam-no-admin-privileges-allowed-by-policies:
+    path: policies/iam/iam-no-admin-privileges-allowed-by-policies.sentinel
+    sha: 74a81691fd7c62ebdf02339df30bf6ea32d6313c98bd2eae24e6150bd59cf716
+    governed_resources: [aws_iam_policy, aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: IAM
+    description: "IAM policies should not allow administrator privileges to users/roles/groups."
+    type: sentinel
+  iam-no-policies-attached-to-users:
+    path: policies/iam/iam-no-policies-attached-to-users.sentinel
+    sha: f0555b5cea7f9fa41695ddaff8357e0e257978381eabefdf992dde5f5102ad4b
+    governed_resources: [aws_iam_user_policy, aws_iam_user_policy_attachment]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: IAM
+    description: "IAM users should not be directly attached to IAM policies."
+    type: sentinel
+  iam-password-policy-strong-configuration:
+    path: policies/iam/iam-password-policy-strong-configuration.sentinel
+    sha: 82068ebd8f5c8eb95d2cf6431e271c79dea59d2d5b36329d799d8fa5f73d6b76
+    governed_resources: [aws_iam_account_password_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: IAM
+    description: "This policy requires that the `aws_iam_account_password_policy` resource have the strong configurations"
+    type: sentinel
+  iam-policy-no-statements-with-full-access:
+    path: policies/iam/iam-policy-no-statements-with-full-access.sentinel
+    sha: 3c3465797105d860a47d77f36a581641c9ae8164f433dfd668a03ead7f158818
+    governed_resources: [aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: IAM
+    description: "IAM customer managed policies that you create should not allow wildcard actions for services."
+    type: sentinel
+  inspector-ec2-scan-enabled:
+    path: policies/inspector/inspector-ec2-scan-enabled.sentinel
+    sha: d52160dec21af2d57c85dfe6044c20e53c05439d3c73520577962b280a383baa
+    governed_resources: [aws_inspector2_enabler]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Inspector
+    description: "This policy ensures that Amazon Inspector EC2 scanning is enabled"
+    type: sentinel
+  inspector-ecr-scan-enabled:
+    path: policies/inspector/inspector-ecr-scan-enabled.sentinel
+    sha: 1df7f5d2bab607bbc884eca4e7f0bb2ac0360068ca853dd26c3f222084c03e21
+    governed_resources: [aws_inspector2_enabler]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Inspector
+    description: "This policy ensures that Amazon Inspector ECR scanning is enabled"
+    type: sentinel
+  inspector-lambda-code-scan-enabled:
+    path: policies/inspector/inspector-lambda-code-scan-enabled.sentinel
+    sha: d77716156eb4d18f2953a9bb05dedb5108cce7bf09f41f29468f26fff057bdf0
+    governed_resources: [aws_inspector2_enabler]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Inspector
+    description: "This policy ensures that Amazon Inspector Lambda code scanning is enabled"
+    type: sentinel
+  inspector-lambda-standard-scan-enabled:
+    path: policies/inspector/inspector-lambda-standard-scan-enabled.sentinel
+    sha: 9abf9a08f163ea01887cb2f6de337f07c976b4b10dcf62d8e3cf63795b97ab1a
+    governed_resources: [aws_inspector2_enabler]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Inspector
+    description: "This policy ensures that Amazon Inspector Lambda standard scanning is enabled"
+    type: sentinel
+  kinesis-firehose-delivery-stream-encrypted:
+    path: policies/kinesis/kinesis-firehose-delivery-stream-encrypted.sentinel
+    sha: 0c14ac3a2bff1b95084a94619bc638e6df83b7d163d70c15cc3d449a0b62176c
+    governed_resources: [aws_kinesis_firehose_delivery_stream]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Kinesis
+    description: "This policy requires `aws_kinesis_firehose_delivery_stream` resources to have server-side encryption enabled."
+    type: sentinel
+  kinesis-stream-backup-retention-check:
+    path: policies/kinesis/kinesis-stream-backup-retention-check.sentinel
+    sha: ae49b3523ff43b2a41bf2563072f82250499ee43c67e5c3aa3b2029131888b3e
+    governed_resources: [aws_kinesis_stream]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Kinesis
+    description: "This policy requires resources of type `aws_kinesis_stream` have attribute \"retention_period\" set to at least 168 hours (7 days)."
+    type: sentinel
+  kinesis-stream-encrypted:
+    path: policies/kinesis/kinesis-stream-encrypted.sentinel
+    sha: b1b4468170ef538f689f865a5d02948bb7d2b85c486ad78eed0f34c088540b2d
+    governed_resources: [aws_kinesis_stream]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Kinesis
+    description: "This policy checks if resources of type `kinesis-stream-encrypted` have the `encryption_type` set to `KMS`"
+    type: sentinel
+  kms-restrict-iam-inline-policies-decrypt-all-kms-keys:
+    path: policies/kms/kms-restrict-iam-inline-policies-decrypt-all-kms-keys.sentinel
+    sha: 2c691b570830ace3fd536d1cb9ead81411652642331314e6f592541fa3b4046d
+    governed_resources: [aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: KMS
+    description: "This policy checks if resources of type `aws_iam_policy_document` contain blocked action patterns such as `kms:ReEncryptFrom` and `kms:Decrypt`"
+    type: sentinel
+  lambda-function-public-access-prohibited:
+    path: policies/lambda/lambda-function-public-access-prohibited.sentinel
+    sha: 16a5c2578b36071fdc3af0cc51494b2043199d7822782860b0cba8c934724f4e
+    governed_resources: [aws_lambda_permission]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Lambda
+    description: "This control checks whether the `aws_lambda_function` resource-based policy prohibits public access outside of your account."
+    type: sentinel
+  lambda-functions-should-use-supported-runtimes:
+    path: policies/lambda/lambda-functions-should-use-supported-runtimes.sentinel
+    sha: 1d734efc66333c29b8910dcf97e5bf0c950b866730ca20af13d6e50018247f1d
+    governed_resources: [aws_lambda_function]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Lambda
+    description: "This control checks whether `aws_lambda_function` runtime settings match the expected values set for the supported runtimes in each language."
+    type: sentinel
+  lambda-vpc-multi-az-check:
+    path: policies/lambda/lambda-vpc-multi-az-check.sentinel
+    sha: 24bafd0a81c2fa728f00afee65c4ae09797bfdb82f1fbc16db0ef894e944ec68
+    governed_resources: [aws_lambda_function]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Lambda
+    description: "This policy if an `aws_lambda_function` that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs)"
+    type: sentinel
+  macie-status-should-be-enabled:
+    path: policies/macie/macie-status-should-be-enabled.sentinel
+    sha: e87664d8a0100e7da47eb97180f8de5a0ead06097b2234ced1bd6022ca36a339
+    governed_resources: [aws_macie2_account]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Macie
+    description: "This policy checks if resources of type `aws_macie2_account` have the `status` attribute set to `ENABLED`"
+    type: sentinel
+  mq-auto-minor-version-upgrade-enabled:
+    path: policies/mq/mq-auto-minor-version-upgrade-enabled.sentinel
+    sha: 59b51c42d36d20416597b3707ed88797fe35eb84ea34440ef4dceb5d73771374
+    governed_resources: [aws_mq_broker]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: MQ
+    description: "This policy checks if resources of type `aws_mq_broker` have the `auto_minor_version_upgrade` attribute set to true"
+    type: sentinel
+  mq-cloudwatch-audit-log-enabled:
+    path: policies/mq/mq-cloudwatch-audit-log-enabled.sentinel
+    sha: f850852936f4d0624649dc0b58d02e5ea74f943c54c40f8a005fee43fcf3da7c
+    governed_resources: [aws_mq_broker]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: MQ
+    description: "This policy checks if resources of type `aws_mq_broker` have the attribute `logs` with parameter `audit` set to true"
+    type: sentinel
+  msk-connect-connector-encrypted:
+    path: policies/msk/msk-connect-connector-encrypted.sentinel
+    sha: d9808d6fa79b1ce76c2ab748ac5b764783f57e77c3778065f45d17b1699be643
+    governed_resources: [aws_mskconnect_connector]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: MSK
+    description: "This policy requires resources of type `aws_mskconnect_connector` to have encryption in transit enabled."
+    type: sentinel
+  msk-in-cluster-node-require-encrypted-in-transit:
+    path: policies/msk/msk-in-cluster-node-require-encrypted-in-transit.sentinel
+    sha: 1124e3dba6eebe9c7b02eea9dc39c977cc680bdadccf1d162a7c0c8314f81ee5
+    governed_resources: [aws_msk_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: MSK
+    description: "This policy checks if resources of type `aws_msk_cluster` have the `in_cluster` attribute set to true in encryption_in_transit of encryption_info attribute"
+    type: sentinel
+  neptune-cluster-audit-logs-publishing-enabled:
+    path: policies/neptune/neptune-cluster-audit-logs-publishing-enabled.sentinel
+    sha: 724cffd004f3994fb1a4a2c97148c67c03af00242ba0de530615fb845b5f388e
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `enable_cloudwatch_logs_exports` to contain `audit` for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-automated-backups-enabled:
+    path: policies/neptune/neptune-cluster-automated-backups-enabled.sentinel
+    sha: aa35b93ea3cce469314e556379d79dc50bc3b27009bcad5c123670bd8abd87dd
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `backup_retention_period` to be greater than or equal to 7 for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-copy-tags-to-snapshot-enabled:
+    path: policies/neptune/neptune-cluster-copy-tags-to-snapshot-enabled.sentinel
+    sha: cd7e073fccd5b0bfc3a3138c0c1b86979425da4672aced7881f0dcd03fc89f09
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `copy_tags_to_snapshot` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-db-auth-enabled:
+    path: policies/neptune/neptune-cluster-db-auth-enabled.sentinel
+    sha: a243b8204dadd04e62de86e2f8a95c8efe7844024de387848ef82b4204909d6d
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `iam_database_authentication_enabled` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-deletion-protection-enabled:
+    path: policies/neptune/neptune-cluster-deletion-protection-enabled.sentinel
+    sha: 6479db1da00ad6d3d7008505a73979cc6a46a02b3fce7cbd9784d918be79899c
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `deletion_protection` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-encryption-at-rest-enabled:
+    path: policies/neptune/neptune-cluster-encryption-at-rest-enabled.sentinel
+    sha: 9fbb102258ee6f4c0b64d4a872edf4f76f1a8fdaa330d998bafbe60d5afb4290
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `storage_encrypted` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  neptune-cluster-snapshot-encryption-at-rest-enabled:
+    path: policies/neptune/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel
+    sha: ab76ee52d1a91aadbefabf71a642544994250faf0b80e838c214809f2782a27b
+    governed_resources: [aws_neptune_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Neptune
+    description: "This policy requires attribute `snapshot_identifier` to be set and `storage_encrypted` to be set to true for `aws_neptune_cluster` resources"
+    type: sentinel
+  network-firewall-logging-enabled:
+    path: policies/network-firewall/network-firewall-logging-enabled.sentinel
+    sha: 8eacf65f4b255d3fbb00ff1b158d572903d32a0d81e48dd8f44fbf79cfb4d4e3
+    governed_resources: [aws_networkfirewall_firewall, aws_networkfirewall_logging_configuration]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy ensures that resources of type `aws_networkfirewall_firewall` have logging enabled"
+    type: sentinel
+  network-firewall-policy-default-action-fragmented-packets:
+    path: policies/network-firewall/network-firewall-policy-default-action-fragmented-packets.sentinel
+    sha: 4449314d3b447d692c6b2c685211e54fc962c5a0b2f904003b0b9d5a3e5db260
+    governed_resources: [aws_networkfirewall_firewall_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy ensures that resources of type `aws_networkfirewall_firewall_policy` have default stateless action should be `aws:drop` or `aws:forward_to_sfe` for fragmented packets"
+    type: sentinel
+  network-firewall-policy-default-action-full-packets:
+    path: policies/network-firewall/network-firewall-policy-default-action-full-packets.sentinel
+    sha: 4c8c60e1b0c60bc746b07ff3b94ad9c95af81f1183c5168aeb845d4b8b712649
+    governed_resources: [aws_networkfirewall_firewall_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy ensures that resources of type `aws_networkfirewall_firewall_policy` have default stateless action should be `aws:drop` or `aws:forward_to_sfe` for full packets"
+    type: sentinel
+  network-firewall-policy-rule-group-associated:
+    path: policies/network-firewall/network-firewall-policy-rule-group-associated.sentinel
+    sha: c2c3acb307bfdcd54f16f20f61385a681d53adca4913ad0197ca004849fd3b1b
+    governed_resources: [aws_networkfirewall_firewall_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy requires atleast 1 rule group to be enabled for `aws_networkfirewall_firewall_policy` resources"
+    type: sentinel
+  network-firewall-should-have-deletion-protection-enabled:
+    path: policies/network-firewall/network-firewall-should-have-deletion-protection-enabled.sentinel
+    sha: 1e1da4ac57b770ae4fc6c14d5fd832dad7019c295a9d07f0c6b360b09aa090bf
+    governed_resources: [aws_networkfirewall_firewall]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy checks whether a resource `aws_networkfirewall_firewall` has deletion protection enabled."
+    type: sentinel
+  network-firewall-stateless-rule-group:
+    path: policies/network-firewall/network-firewall-stateless-rule-group.sentinel
+    sha: 94e5dad66c1ffd65cfcce5450d01e4c3366189a123dffadfe560a79fbb238abe
+    governed_resources: [aws_networkfirewall_rule_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy checks if a stateless rule group in `aws_networkfirewall_rule_group` contains rules"
+    type: sentinel
+  network-firewall-subnet-change-protection-enabled:
+    path: policies/network-firewall/network-firewall-subnet-change-protection-enabled.sentinel
+    sha: 7ab9c275d5c3ca65207519f6bbdf0b864cc0468d7215612def615e5d84685eb7
+    governed_resources: [aws_networkfirewall_firewall]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Network Firewall
+    description: "This policy requires resources of type `aws_networkfirewall_firewall` have attribute \"subnet_change_protection\" set to true."
+    type: sentinel
+  opensearch-access-control-enabled:
+    path: policies/opensearch/opensearch-access-control-enabled.sentinel
+    sha: 7c6de5f33da84056eaaa58354875ef60fa54f69c33591a44ea3a843b8a26ed99
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `anonymous_auth_enabled` attribute set to true in the `advanced_security_options` block and the `advanced_security_options` block is enabled"
+    type: sentinel
+  opensearch-audit-logging-enabled:
+    path: policies/opensearch/opensearch-audit-logging-enabled.sentinel
+    sha: 3e465d9fd224eea3e0afa3aa920404e78106978821077f6fc5702e3140d79763
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true and `log_type` set to `AUDIT_LOGS` in the `log_publishing_options` block"
+    type: sentinel
+  opensearch-data-node-fault-tolerance:
+    path: policies/opensearch/opensearch-data-node-fault-tolerance.sentinel
+    sha: 12b25824374e98500d5c39537dd0dff45e65362f4150a9b1cea4226bde460344
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `instance_count` greater than or equal to 3 in the `cluster_config` block"
+    type: sentinel
+  opensearch-encrypted-at-rest:
+    path: policies/opensearch/opensearch-encrypted-at-rest.sentinel
+    sha: d4c45601fb43530b75570044e0b272b1e7072a226da300ca9b67defb3ab41b45
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true in the `encrypt_at_rest` block"
+    type: sentinel
+  opensearch-https-required:
+    path: policies/opensearch/opensearch-https-required.sentinel
+    sha: 103c13425a1c68365d7560a30676efcb32af3542de1e8ac5f65380d175e0a345
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy requires resources of type `aws_opensearch_domain` have the `tls_security_policy` set to latest policy that is `Policy-Min-TLS-1-2-PFS-2023-10` and `enforce_https` set to true for `domain_endpoint_options` attribute."
+    type: sentinel
+  opensearch-in-vpc-only:
+    path: policies/opensearch/opensearch-in-vpc-only.sentinel
+    sha: 77190df26d0fc73267ebe1a0020819d787cfc16856c35cb3b0620ddc78a15c0d
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks whether OpenSearch domains are in a VPC. It does not evaluate the VPC subnet routing configuration to determine public access."
+    type: sentinel
+  opensearch-logs-to-cloudwatch:
+    path: policies/opensearch/opensearch-logs-to-cloudwatch.sentinel
+    sha: a8da664ab3187fc4fe26c00ee6dceec6153576beb21ccc6001425c3555bf3ade
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true in the `log_publishing_options` block"
+    type: sentinel
+  opensearch-node-to-node-encryption-check:
+    path: policies/opensearch/opensearch-node-to-node-encryption-check.sentinel
+    sha: c68532e41d8648e8d225523ca7217af1c27021746ec6c7457cdf952bd2232ebc
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `enable` attribute set to true in the `node_to_node_encryption` block"
+    type: sentinel
+  opensearch-update-check:
+    path: policies/opensearch/opensearch-update-check.sentinel
+    sha: e45582228c646c6b0e20e1e1975cd02b85000b783fa4d8294a9d0646990acefe
+    governed_resources: [aws_opensearch_domain]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: OpenSearch
+    description: "This policy checks if resources of type `aws_opensearch_domain` have the `auto_software_update_enabled` attribute set to true in the `software_update_options` block"
+    type: sentinel
+  rds-aurora-mysql-audit-logging-enabled:
+    path: policies/rds/rds-aurora-mysql-audit-logging-enabled.sentinel
+    sha: 9dac5f8e45d42cfeff99a06cc6a2478c279e91cd321f4650157fa886b40a14a6
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if resources of type `aws_rds_cluster` with `aurora-mysql` engine have the `enabled_cloudwatch_logs_exports` attribute contains `audit`"
+    type: sentinel
+  rds-cluster-and-db-snapshot-encrypted:
+    path: policies/rds/rds-cluster-and-db-snapshot-encrypted.sentinel
+    sha: 1f3fecbc4524682ce495ba5912f8c146b2f365ff4e23b6e6c582e4482b26c51d
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` have attribute \"storage_encrypted\" set to true and has kms_key_id This will make sure snapshots are encrypted"
+    type: sentinel
+  rds-cluster-default-admin-check:
+    path: policies/rds/rds-cluster-default-admin-check.sentinel
+    sha: 1b83d3cce8dcde98877356bcd0e45a95f697b0002552fcdc53a474bde2de68f6
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if resources of type `aws_rds_cluster` have the `master_username` attribute not set to `admin` (default value)"
+    type: sentinel
+  rds-cluster-encrypted-at-rest:
+    path: policies/rds/rds-cluster-encrypted-at-rest.sentinel
+    sha: 45a4e782f44b1cdfe73e54fc638c464fb72a47e496d8a97dd44624bcf9e0beba
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if resources of type `aws_rds_cluster` have the `storage_encrypted` attribute set to true"
+    type: sentinel
+  rds-copy-tags-to-snapshot-configured:
+    path: policies/rds/rds-copy-tags-to-snapshot-configured.sentinel
+    sha: 68bd19126cd8ad3f5378a0b2b7d8910ec39b71d4133cafe04d144e42cb3b0317
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_rds_cluster` or `aws_db_instance` to have `copy_tags_to_snapshot` set to true"
+    type: sentinel
+  rds-encryption-at-rest-enabled:
+    path: policies/rds/rds-encryption-at-rest-enabled.sentinel
+    sha: d0ed249f8a3508fa1d314b82200590ff83c9893f71b86fa6417fac7d1ee36b6f
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"storage_encrypted\" set to true."
+    type: sentinel
+  rds-ensure-automatic-backups-enabled:
+    path: policies/rds/rds-ensure-automatic-backups-enabled.sentinel
+    sha: cd82ebe2df944a0185a4adb6d5baa51a3a4d54b6f5f3a4767fec5d3e292d48f4
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"backup_retention_period\" set to integer value between (7, 35)."
+    type: sentinel
+  rds-ensure-automatic-minor-version-upgrades-enabled:
+    path: policies/rds/rds-ensure-automatic-minor-version-upgrades-enabled.sentinel
+    sha: 843876753d32a73c3bd3ca4fa1862bdc93a396a9aa43f458bcb50a7b7d87d7c3
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` have attribute \"auto_minor_version_upgrade\" set to true."
+    type: sentinel
+  rds-ensure-cloudwatch-logs-enabled:
+    path: policies/rds/rds-ensure-cloudwatch-logs-enabled.sentinel
+    sha: 4a103cd06260229957e39fb13e9e564b82b1d195ec0751408ad13878271d8dbc
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to valid array of values."
+    type: sentinel
+  rds-ensure-cluster-and-db-instance-iam-auth-configured:
+    path: policies/rds/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel
+    sha: 8787c25c4dc04ca667e0c5f1e7b8ef8463a85a8926ef37c958a8ce8e422d08b0
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `iam_database_authentication_enabled` set to true"
+    type: sentinel
+  rds-ensure-cluster-backtracking-enabled:
+    path: policies/rds/rds-ensure-cluster-backtracking-enabled.sentinel
+    sha: bf1a2debbb9f4c190fc9ffd7f026d219abd4b53ccdf07e0550f59df1dd76cfa9
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_rds_cluster` to have `backtrack_window` greater than 0 for engine \"aurora\" and \"aurora-mysql\""
+    type: sentinel
+  rds-ensure-cluster-multi-az-configured:
+    path: policies/rds/rds-ensure-cluster-multi-az-configured.sentinel
+    sha: 4ac4b6e6a030d92f318be926c9ac5a13f910f14921a1801aa1d2187f497e63eb
+    governed_resources: [aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_rds_cluster` to be configured for multiple availability zones"
+    type: sentinel
+  rds-ensure-deletion-protection-enabled:
+    path: policies/rds/rds-ensure-deletion-protection-enabled.sentinel
+    sha: a0a33951a855e1c12f00937705d1ccf368b5fde88c1c1418d5a15d5f2a8257c8
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `deletion_protection` set to true"
+    type: sentinel
+  rds-ensure-monitoring-configured:
+    path: policies/rds/rds-ensure-monitoring-configured.sentinel
+    sha: 0ee9b4bf9e6601e905e7c516feb2b32babcf727c2aa8632b0979a7cec60dacd1
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` to have `monitoring_interval` set to any value in (1, 5, 10, 15, 30, 60)"
+    type: sentinel
+  rds-ensure-multi-az-configuration:
+    path: policies/rds/rds-ensure-multi-az-configuration.sentinel
+    sha: 0de43a5de90400e5adb9aff3ac3ea2eaa59aee17412b0fc62d972578ee46ae1c
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy requires resources of type `aws_db_instance` to have `multi_az` set to true"
+    type: sentinel
+  rds-ensure-no-default-port:
+    path: policies/rds/rds-ensure-no-default-port.sentinel
+    sha: 76fde5694447125dd6a106221dad524e06cb5c13b6fc3b584962f3190e596087
+    governed_resources: [aws_db_instance, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: sentinel
+  rds-event-notifications-configured-for-critical-events:
+    path: policies/rds/rds-event-notifications-configured-for-critical-events.sentinel
+    sha: e78b7800d9fb35f14066aba6323305651cab73b4c162c35b240054c1fb057746
+    governed_resources: [aws_db_event_subscription, aws_rds_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if resources of type `aws_event_subscription` have the event notifications configured"
+    type: sentinel
+  rds-for-mariadb-db-instances-should-be-encrypted-in-transit:
+    path: policies/rds/rds-for-mariadb-db-instances-should-be-encrypted-in-transit.sentinel
+    sha: f00d44659c4e2d8dd7dccf81669cabbee92709ee5eadb2479562347a01d8648b
+    governed_resources: [aws_db_instance, aws_db_parameter_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This control checks whether connections to an Amazon RDS for MariaDB DB instance are encrypted in transit"
+    type: sentinel
+  rds-for-mariadb-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: policies/rds/rds-for-mariadb-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel
+    sha: d4a1673752bf7231990833083b048befc1cb0f2b9216088db147c2a4ad39aba4
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This control checks whether an Amazon RDS for MariaDB DB instance is configured to publish certain types of logs to Amazon CloudWatch Logs."
+    type: sentinel
+  rds-for-postgresql-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: policies/rds/rds-for-postgresql-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel
+    sha: d7da3c39690103f68ae3fa87e35120266929029291152f55018043e97bf1c802
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This control checks whether an Amazon RDS for PostgreSQL DB instance is configured to publish logs to Amazon CloudWatch Logs."
+    type: sentinel
+  rds-for-sql-server-db-instances-should-be-encrypted-in-transit:
+    path: policies/rds/rds-for-sql-server-db-instances-should-be-encrypted-in-transit.sentinel
+    sha: 02f5fa06d2769511980a39e4ae227e710802bc29a3c29dbe21d41d6ec348c1cb
+    governed_resources: [aws_db_instance, aws_db_parameter_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This control checks whether a connection to an Amazon RDS for Microsoft SQL Server DB instance is encrypted in transit."
+    type: sentinel
+  rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs:
+    path: policies/rds/rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs.sentinel
+    sha: 56b51e869a99c86ae56fc3cdf8ee63081ca99ab0c5443ee99a42c5526862487c
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This control checks whether an Amazon RDS for Microsoft SQL Server DB instance is configured to publish logs to Amazon CloudWatch Logs."
+    type: sentinel
+  rds-instance-default-admin-check:
+    path: policies/rds/rds-instance-default-admin-check.sentinel
+    sha: fe9e6be1b0a6a61ccc83758fcb7a054f81d2d8d1ec769739aab61187289730b0
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if resources of type `aws_db_instance` have the `username` attribute not set to `admin` (default value)"
+    type: sentinel
+  rds-instance-deployed-in-vpc:
+    path: policies/rds/rds-instance-deployed-in-vpc.sentinel
+    sha: 8b36d950bc05f0b8eef23764ed24087c4c1994b5b34c796dd0f0e6b600dd5057
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: sentinel
+  rds-instance-should-be-private:
+    path: policies/rds/rds-instance-should-be-private.sentinel
+    sha: 3fb87d5a1ea563ac0b5f1351127fa30513b7975d6608b4e8de4d9717e127c86b
+    governed_resources: [aws_db_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: RDS
+    description: "This policy checks if the aws rds instances are publicly accessible"
+    type: sentinel
+  redshift-cluster-audit-logging-enabled:
+    path: policies/redshift/redshift-cluster-audit-logging-enabled.sentinel
+    sha: 5698a9ddc155822001f7395580a990e1ee4b67d72bdc24f251466bd2d2fb6486
+    governed_resources: [aws_redshift_cluster, aws_redshift_logging]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the enable attribute set to true in logging or referenced to the resource `aws_redshift_logging`"
+    type: sentinel
+  redshift-cluster-automated-snapshot-retention-enabled:
+    path: policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel
+    sha: 1cdd0d726eaf83a8adc02e34236723fbbc24d04529b274e4942dfd6f22df7161
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `automated-snapshot-retention-period` attribute set in between `7 to 35`"
+    type: sentinel
+  redshift-cluster-default-admin-check:
+    path: policies/redshift/redshift-cluster-default-admin-check.sentinel
+    sha: d1e6d3a0eff8d09effe16da7232bdca83db068aebcc6ba411cbaf19ac97d280f
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `master_username` attribute not set to null or `awsuser` (default value)"
+    type: sentinel
+  redshift-cluster-default-db-name-check:
+    path: policies/redshift/redshift-cluster-default-db-name-check.sentinel
+    sha: a6c23e56145cd53a3c6f47b394c047c4293e31b8e4711e4be3766016a2ce1a7e
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `database_name` attribute not set to `dev` (default value)"
+    type: sentinel
+  redshift-cluster-enhanced-vpc-routing-enabled:
+    path: policies/redshift/redshift-cluster-enhanced-vpc-routing-enabled.sentinel
+    sha: 65dc4cc4f3b7adbc0a336d226238c989a6553b96b00f8550d680c6498c551716
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `enhanced_vpc_routing` attribute set to true"
+    type: sentinel
+  redshift-cluster-maintenance-settings-check:
+    path: policies/redshift/redshift-cluster-maintenance-settings-check.sentinel
+    sha: c5e3c55145fee8b1fa4fb83ad2d631300e68d5628e5470a48e5e87a48878aa5d
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `allow_version_upgrade` attribute set to true"
+    type: sentinel
+  redshift-cluster-public-access-check:
+    path: policies/redshift/redshift-cluster-public-access-check.sentinel
+    sha: 709cfd41eb7add2a7ba7e8c8d61509447c8ddad78d95b549b0f8dc8f247d16f5
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `publicly_accessible` attribute set to false"
+    type: sentinel
+  redshift-cluster-should-be-encrypted-at-rest:
+    path: policies/redshift/redshift-cluster-should-be-encrypted-at-rest.sentinel
+    sha: 1423172b4d0e0767473b1fea5e3abe778acc1ebbf15a165d40cab073005ee166
+    governed_resources: [aws_redshift_cluster]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` have the `encrypted` attribute set to true"
+    type: sentinel
+  redshift-cluster-should-be-encrypted-at-transit:
+    path: policies/redshift/redshift-cluster-should-be-encrypted-at-transit.sentinel
+    sha: a81bebaad2be20dc9d3c85d8624f8b417806a24d6b703fcc117069ef56a93be3
+    governed_resources: [aws_redshift_cluster, aws_redshift_parameter_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy checks if resources of type `aws_redshift_cluster` referenced to the resources of type `aws_redshift_parameter_group` and having the `require_ssl` set to `true`"
+    type: sentinel
+  redshift-cluster-unrestricted-port-access-check:
+    path: policies/redshift/redshift-cluster-unrestricted-port-access-check.sentinel
+    sha: 5e92fffa58f8afa80c1ad14bbb488f642d546386a8365330692bd7ca8ff41bc5
+    governed_resources: [aws_security_group, aws_security_group_rule, aws_vpc_security_group_ingress_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift
+    description: "This policy requires resources of type `aws_security_group`, `aws_security_group_rule` and `aws_vpc_security_group_ingress_rule` to block ingress traffic from unknown sources to resources of type aws_redshift_cluster"
+    type: sentinel
+  redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs:
+    path: policies/redshiftserverless/redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel
+    sha: 23b68c2a9f9d8de53d5c1ffcb4e198c465da68ee01a2bc607653ef899e3d7538
+    governed_resources: [aws_redshiftserverless_namespace]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift Serverless
+    description: "This control checks whether an Amazon Redshift Serverless namespace is configured to export connection and user logs to Amazon CloudWatch Logs."
+    type: sentinel
+  redshift-serverless-namespaces-should-not-use-the-default-admin-username:
+    path: policies/redshiftserverless/redshift-serverless-namespaces-should-not-use-the-default-admin-username.sentinel
+    sha: d41d29d4ecca0d7089295295fb4ba853e9674f2a90793e35a3d6fb3f795de5bd
+    governed_resources: [aws_redshiftserverless_namespace]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift Serverless
+    description: "This control checks whether the admin username for an Amazon Redshift Serverless namespace is the default admin username, admin."
+    type: sentinel
+  redshift-serverless-namespaces-should-not-use-the-default-database-name:
+    path: policies/redshiftserverless/redshift-serverless-namespaces-should-not-use-the-default-database-name.sentinel
+    sha: e3ce2c9ef96c808a1498b741204311876eaf93bf0dcfeb8b8e9d189c9b9c1b81
+    governed_resources: [aws_redshiftserverless_namespace]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift Serverless
+    description: "This control checks whether an Amazon Redshift Serverless namespace uses the default database name, dev."
+    type: sentinel
+  redshift-serverless-workgroups-should-be-required-to-use-ssl:
+    path: policies/redshiftserverless/redshift-serverless-workgroups-should-be-required-to-use-ssl.sentinel
+    sha: a14ae432782c6ec5649b698c74758ba0b1288785e19f3762a09d10ce7292edb3
+    governed_resources: [aws_redshiftserverless_workgroup]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift Serverless
+    description: "This control checks whether connections to an Amazon Redshift Serverless workgroup are required to encrypt data in transit."
+    type: sentinel
+  redshift-serverless-workgroups-should-prohibit-public-access:
+    path: policies/redshiftserverless/redshift-serverless-workgroups-should-prohibit-public-access.sentinel
+    sha: 955aa0bee209a67de7d1771c309bdc45c26222b7f89e18bd7b1941759f9124ca
+    governed_resources: [aws_redshiftserverless_workgroup]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift Serverless
+    description: "This control checks whether public access is disabled for an Amazon Redshift Serverless workgroup."
+    type: sentinel
+  redshift-serverless-workgroups-should-use-enhanced-vpc-routing:
+    path: policies/redshiftserverless/redshift-serverless-workgroups-should-use-enhanced-vpc-routing.sentinel
+    sha: 597ddb77b442edc48218c76cf73b76032dcb5489610d0747869d6cce7532b780
+    governed_resources: [aws_redshiftserverless_workgroup]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Redshift Serverless
+    description: "This control checks whether enhanced VPC routing is enabled for an Amazon Redshift Serverless workgroup"
+    type: sentinel
+  route-53-public-hosted-zones-should-log-dns-queries:
+    path: policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel
+    sha: 579142ccaa25822a7e67c6bb1aea30cc53969554f9512454d2f76c5f03668dd4
+    governed_resources: [aws_route53_query_log]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Route 53
+    description: "This control checks if DNS query logging is enabled for an Amazon Route 53 public hosted zone."
+    type: sentinel
+  s3-access-point-block-public-access-enabled:
+    path: policies/s3/s3-access-point-block-public-access-enabled.sentinel
+    sha: 9497209d71f81bf90383698ff8e55d199a19a95518a7bb717b2c8187ff54c895
+    governed_resources: [aws_s3_access_point]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "This policy requires resources of type `aws_s3_access_point` to have all attributes in the `public_access_block_configuration` set to true."
+    type: sentinel
+  s3-block-public-access-account-level:
+    path: policies/s3/s3-block-public-access-account-level.sentinel
+    sha: 953cdfc4cdc784e5a14914d7ae2c2b65757afda9b51d5372578ebebac7e8b06c
+    governed_resources: [aws_s3_account_public_access_block]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "This policy verifies if the attributes of the `aws_s3_account_public_access_block` resource (if present) are in accordance to AWS FSBP standards."
+    type: sentinel
+  s3-block-public-access-bucket-level:
+    path: policies/s3/s3-block-public-access-bucket-level.sentinel
+    sha: 66a6836abc892045fc0f4c06bb62b437aba911c8f309cf6a2742e975283d4d9d
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_public_access_block]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "This policy verifies if the attributes of the `aws_s3_bucket_public_access_block` resource (if present) block public access of an S3 general purpose bucket."
+    type: sentinel
+  s3-bucket-block-public-read-access:
+    path: policies/s3/s3-bucket-block-public-read-access.sentinel
+    sha: e43c86bf1fe6b4f644239bdda4b39223eec0ab3045c27d7456cde5d89f5bc94b
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_acl, aws_s3_bucket_policy, aws_s3_bucket_public_access_block]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "S3 general purpose buckets should block public read access"
+    type: sentinel
+  s3-bucket-block-public-write-access:
+    path: policies/s3/s3-bucket-block-public-write-access.sentinel
+    sha: 8d7864eb80dbc6f87531818b1338a892af648574bffdeeefd4e42817a0aab2c8
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_acl, aws_s3_bucket_policy, aws_s3_bucket_public_access_block]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "S3 general purpose buckets should block public write access"
+    type: sentinel
+  s3-bucket-policy-restrict-access-to-other-accounts:
+    path: policies/s3/s3-bucket-policy-restrict-access-to-other-accounts.sentinel
+    sha: 94970b8847d25e9a99cf4517767994159bedad7a4eb9c6e12377aeee443c6236
+    governed_resources: [aws_iam_policy_document]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "S3 general purpose bucket policies should restrict access to other AWS accounts"
+    type: sentinel
+  s3-multi-region-access-points-should-have-block-public-access-settings-enabled:
+    path: policies/s3/s3-multi-region-access-points-should-have-block-public-access-settings-enabled.sentinel
+    sha: 777b4b1ac10a8aecb728c0f75698d6a0b8aca5905eab07225e0d1aa5862047f6
+    governed_resources: [aws_s3control_multi_region_access_point]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "This control checks whether an Amazon S3 Multi-Region Access Point has block public access settings enabled."
+    type: sentinel
+  s3-require-ssl:
+    path: policies/s3/s3-require-ssl.sentinel
+    sha: 11621a1590661fa64d949830f8b4728cd5d67811370ec317b1b697e2f12c5122
+    governed_resources: [aws_s3_bucket, aws_s3_bucket_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: S3
+    description: "This policy mandates all requests to `aws_s3_bucket` resources to use ssl using `aws_s3_bucket_policy` resource."
+    type: sentinel
+  sagemaker-endpoint-config-prod-instance-count-check:
+    path: policies/sagemaker/sagemaker-endpoint-config-prod-instance-count-check.sentinel
+    sha: 7c392f0a7c610b73d3ccebae82aca5f979016251bc6fda00388d4cf3ee5f5d1f
+    governed_resources: [aws_sagemaker_endpoint_configuration]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_endpoint_configuration` have the `initial_instance_count` in `production_variants` attribute greater than 1"
+    type: sentinel
+  sagemaker-models-should-block-inbound-traffic:
+    path: policies/sagemaker/sagemaker-models-should-block-inbound-traffic.sentinel
+    sha: 591489903799fd429ea557e7b4c1424dc001be4361088299141ed61abf8f1d9b
+    governed_resources: [aws_sagemaker_model]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This control checks whether an Amazon SageMaker AI hosted model blocks inbound network traffic."
+    type: sentinel
+  sagemaker-notebook-ensure-subnet-id-for-instance:
+    path: policies/sagemaker/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel
+    sha: 099e385e183acd9908d1ec9e2f535b78d429714f22c1f1b887b85fbdeee063d5
+    governed_resources: [aws_sagemaker_notebook_instance, aws_subnet]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_instance` is launched in custom vpc"
+    type: sentinel
+  sagemaker-notebook-instance-root-access-check:
+    path: policies/sagemaker/sagemaker-notebook-instance-root-access-check.sentinel
+    sha: 2af258d32127730053f1711f85de09088c02eaa04242f52a31c0add76b3afbf7
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_notebook_instance` have the `root_access` attribute set to \"Disabled\""
+    type: sentinel
+  sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc:
+    path: policies/sagemaker/sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc.sentinel
+    sha: 8bed44cce62f0c3d1cc6fed223a411892e3d4659c130be5fe051cd5afec3ad38
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This control checks if an Amazon SageMaker AI notebook instance is launched within a custom virtual private cloud (VPC)."
+    type: sentinel
+  sagemaker-notebook-instances-should-run-on-supported-platforms:
+    path: policies/sagemaker/sagemaker-notebook-instances-should-run-on-supported-platforms.sentinel
+    sha: 66dec3f8d2badc3a389a9bbee29698f80d300f6e1cc914ae56e345342639fb19
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This control checks whether an Amazon SageMaker AI notebook instance is configured to run on a supported platform, based on the platform identifier specified for the notebook instance."
+    type: sentinel
+  sagemaker-notebook-no-direct-internet-access:
+    path: policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel
+    sha: 82630dde51d66513ad0f7c4bf9dad18cb278b29b13fde1653da6737e68ec25b6
+    governed_resources: [aws_sagemaker_notebook_instance]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SageMaker
+    description: "This policy checks if resources of type `aws_sagemaker_notebook_instance` have the `direct_internet_access` attribute set to \"Disabled\""
+    type: sentinel
+  secretsmanager-auto-rotation-enabled-check:
+    path: policies/secretsmanager/secretsmanager-auto-rotation-enabled-check.sentinel
+    sha: 9e12a1e3025bcfa0068ad15bc72f8202dbe5ce157bb4df5c87a3623c53358c88
+    governed_resources: [aws_secretsmanager_secret, aws_secretsmanager_secret_rotation]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Secrets Manager
+    description: "This policy requires resources of type `aws_secretsmanager_secret` should be configured for automatic rotation."
+    type: sentinel
+  service-catalog-shared-within-organization:
+    path: policies/servicecatalog/service-catalog-shared-within-organization.sentinel
+    sha: 7170b2efdc43e68b821f579bcf20aace0dcfc5798c90aebe5a16451c12cf20d7
+    governed_resources: [aws_servicecatalog_portfolio, aws_servicecatalog_portfolio_share]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Service Catalog
+    description: "This policy requires `aws_servicecatalog_portfolio_share` resources to have attribute `type` should not be `ACCOUNT`."
+    type: sentinel
+  sns-topic-access-policies-should-not-allow-public-access:
+    path: policies/sns/sns-topic-access-policies-should-not-allow-public-access.sentinel
+    sha: 68a4f3f5df9c7886e923434e474409af9e7408304660a4a5f214ab21262af23c
+    governed_resources: [aws_iam_policy_document, aws_sns_topic_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SNS
+    description: "This control checks if the Amazon SNS topic access policy allows public access."
+    type: sentinel
+  sqs-queue-block-public-access:
+    path: policies/sqs/sqs-queue-block-public-access.sentinel
+    sha: 0965869031a8451faea39d14c625d38cc3bd40223a122a53243c665e358e3fd7
+    governed_resources: [aws_iam_policy_document, aws_sqs_queue, aws_sqs_queue_policy]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SQS
+    description: "This policy requires resources of type `aws_sqs_queue` should not be public by the resource `aws_sqs_queue_policy`."
+    type: sentinel
+  sqs-queue-should-be-encrypted-at-rest:
+    path: policies/sqs/sqs-queue-should-be-encrypted-at-rest.sentinel
+    sha: 286ffc9ac733da0e4eac0390a4896bc9763a98d6b6ca890b33f74c9ec30d325c
+    governed_resources: [aws_sqs_queue]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SQS
+    description: "This policy requires resources of type `aws_sqs_queue` to be encrypted at rest."
+    type: sentinel
+  ssm-documents-should-not-be-public:
+    path: policies/ssm/ssm-documents-should-not-be-public.sentinel
+    sha: fae07c359c51f7465cb4aff9d5fe96152128e45a0b5505d1a7741cac37f6fe72
+    governed_resources: [aws_ssm_document]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: SSM
+    description: "This policy requires resources of type `aws_ssm_document` to not be public."
+    type: sentinel
+  step-functions-state-machine-logging-enabled:
+    path: policies/stepfunction/step-functions-state-machine-logging-enabled.sentinel
+    sha: b5a5c5239bbbe5deca27c7b76cdac8912f086c539e6bb2e506ce82efe67db5dc
+    governed_resources: [aws_sfn_state_machine]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Step Functions
+    description: "This policy requires AWS Step Functions state machines to have logging configuration enabled with level set to \"ALL\", \"ERROR\", or \"FATAL\"."
+    type: sentinel
+  transfer-family-connectors-should-have-logging-enabled:
+    path: policies/transfer/transfer-family-connectors-should-have-logging-enabled.sentinel
+    sha: 14bbc67f7dbae459356ae6b19cbde6acf47a8d60e8879a76c7f3168683eeecd7
+    governed_resources: [aws_transfer_connector]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Transfer Family
+    description: "This control checks whether Amazon CloudWatch logging is enabled for an AWS Transfer Family connector."
+    type: sentinel
+  transfer-family-server-should-not-use-ftp:
+    path: policies/transfer/transfer-family-server-should-not-use-ftp.sentinel
+    sha: 8c034dc2c75bb87517624d2f7ca5e5c1206baa5f4bb2545614f20765d99464be
+    governed_resources: [aws_transfer_server]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: Transfer Family
+    description: "This policy requires AWS Transfer Servers shouldn't contain \"FTP\" for the attribute protocols."
+    type: sentinel
+  waf-classic-logging-enabled:
+    path: policies/waf/waf-classic-logging-enabled.sentinel
+    sha: 32447bca4276f7153a87c5690c8d5870204b43bb55966aa11ec01616f2d858cc
+    governed_resources: [aws_waf_web_acl]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy checks whether logging is enabled for an `aws_waf_web_acl`."
+    type: sentinel
+  waf-global-rule-not-empty:
+    path: policies/waf/waf-global-rule-not-empty.sentinel
+    sha: ecab0be23024b592f59e710851033de95f6da67ca641cb1270314fe270456a40
+    governed_resources: [aws_waf_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy requires resources of type `aws_waf_rule` to have at least one predicate."
+    type: sentinel
+  waf-global-rulegroup-not-empty:
+    path: policies/waf/waf-global-rulegroup-not-empty.sentinel
+    sha: 5e1e21b60eb0297fe67d52b089a16720abff11e0acf60068b371b24f34c04d36
+    governed_resources: [aws_waf_rule_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy requires resources of type `aws_waf_rule_group` to have at least one rule."
+    type: sentinel
+  waf-global-webacl-not-empty:
+    path: policies/waf/waf-global-webacl-not-empty.sentinel
+    sha: 9a6867ddc282beb9a39cd060d0aed530991899bf20a85a1d51413b3b8214ada7
+    governed_resources: [aws_waf_web_acl]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy requires resources of type `aws_waf_web_acl` to have at least one rule or rule group."
+    type: sentinel
+  waf-regional-rule-not-empty:
+    path: policies/waf/waf-regional-rule-not-empty.sentinel
+    sha: 0babb6b4c6b70ec31dc93072f63193c5e95bb0c741992677a339f7b1e1939766
+    governed_resources: [aws_wafregional_rule]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy checks whether an `aws_wafregional_rule` has at least one condition."
+    type: sentinel
+  waf-regional-rulegroup-not-empty:
+    path: policies/waf/waf-regional-rulegroup-not-empty.sentinel
+    sha: 019071f5d9621e70fd45528746d14ddc9a64de227cb0ef2d188be28312c17d4c
+    governed_resources: [aws_wafregional_rule_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy checks whether an AWS WAF Regional rule group has at least one rule."
+    type: sentinel
+  waf-regional-webacl-not-empty:
+    path: policies/waf/waf-regional-webacl-not-empty.sentinel
+    sha: bcb15674ce455faedcca1d5510399ad95a7606ac3956f39ade825d4b0acf71e4
+    governed_resources: [aws_wafregional_web_acl]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy requires resources of type `aws_wafregional_web_acl` to have at least one rule or rule group."
+    type: sentinel
+  wafv2-rulegroup-logging-enabled:
+    path: policies/waf/wafv2-rulegroup-logging-enabled.sentinel
+    sha: 761859be3647b0cf81bddb62f51705b93e02bcb979f0d186bfa619a5a594516b
+    governed_resources: [aws_wafv2_rule_group]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy requires resources of type `aws_wafv2_rule_group` have attribute `cloudwatch_metrics_enabled` set to true."
+    type: sentinel
+  wafv2-webacl-not-empty:
+    path: policies/waf/wafv2-webacl-not-empty.sentinel
+    sha: 4f913b7a094aaff71721091aabe3dbdaadd21f754ca569f33d7777300f8d4644
+    governed_resources: [aws_wafv2_web_acl]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WAF
+    description: "This policy requires resources of type `aws_wafv2_web_acl` to have at least one rule or rule group."
+    type: sentinel
+  workspaces-root-volumes-should-be-encrypted-at-rest:
+    path: policies/workspaces/workspaces-root-volumes-should-be-encrypted-at-rest.sentinel
+    sha: 9d02ea4b3f15502ebf4312118926409d4e4cf51f6fbbc3301afbd786ef18ecc1
+    governed_resources: [aws_workspaces_workspace]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WorkSpaces
+    description: "This control checks whether a root volume in an Amazon WorkSpaces WorkSpace is encrypted at rest."
+    type: sentinel
+  workspaces-user-volumes-should-be-encrypted-at-rest:
+    path: policies/workspaces/workspaces-user-volumes-should-be-encrypted-at-rest.sentinel
+    sha: 1a25a213a8a399150e71121598e237fa6e8c898699fa6ca221c40214bab207c3
+    governed_resources: [aws_workspaces_workspace]
+    provider: AWS
+    regulations:
+      - name: AWS FSBP
+    service: WorkSpaces
+    description: "This control checks whether a user volume in an Amazon WorkSpaces WorkSpace is encrypted at rest."
+    type: sentinel
+modules:
+  report:
+    path: modules/report/report.sentinel
+    sha: c85a834886c08d53a981aa406de0bde409d72edd97b19228029cfdbdab222a74
+  tfconfig-functions:
+    path: modules/tfconfig-functions/tfconfig-functions.sentinel
+    sha: fd6ddbd78dd7542eba26cce4686a261181573707ab4e4c9d4a814096f5eebd65
+  tfplan-functions:
+    path: modules/tfplan-functions/tfplan-functions.sentinel
+    sha: c9d7eda58e7744ebac110bdfd7d53bb10ab9b24b437a49884966c358fbb493f2
+  tfresources:
+    path: modules/tfresources/tfresources.sentinel
+    sha: bcad66175e6f10f11068618263a9533082f4eb7368cdb7a6a2ef867ed6ca904b
