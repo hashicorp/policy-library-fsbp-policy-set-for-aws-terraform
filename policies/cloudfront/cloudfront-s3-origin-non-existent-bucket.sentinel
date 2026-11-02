@@ -1,7 +1,7 @@
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-12 for more details.
 // This policy checks whether 'aws_cloudfront_distribution' are pointing to non-existent Amazon S3 origins.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 // Imports

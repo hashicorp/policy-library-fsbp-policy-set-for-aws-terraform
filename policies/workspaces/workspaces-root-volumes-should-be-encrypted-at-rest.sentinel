@@ -1,7 +1,7 @@
 # This control checks whether a root volume in an Amazon WorkSpaces WorkSpace is encrypted at rest.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/workspaces-controls.html#workspaces-2 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

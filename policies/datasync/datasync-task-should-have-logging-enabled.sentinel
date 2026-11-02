@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_datasync_task` have attribute `cloudwatch_log_group_arn` should not be empty and log_level should not be 'OFF'.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/datasync-controls.html#datasync-1 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
