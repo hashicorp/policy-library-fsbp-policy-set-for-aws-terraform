@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_sqs_queue` to be encrypted at rest.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sqs-controls.html#sqs-1 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

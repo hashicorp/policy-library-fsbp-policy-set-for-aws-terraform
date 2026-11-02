@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_kinesis_stream` have attribute "retention_period" set to at least 168 hours (7 days).
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kinesis-controls.html#kinesis-3 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

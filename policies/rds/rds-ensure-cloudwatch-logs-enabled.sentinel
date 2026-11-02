@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to valid array of values.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-9 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

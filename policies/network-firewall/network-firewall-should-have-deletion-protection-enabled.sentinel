@@ -1,7 +1,7 @@
 # This policy checks whether a resource 'aws_networkfirewall_firewall' has deletion protection enabled.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-9 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

@@ -1,7 +1,7 @@
 # This policy requires attribute 'iam_database_authentication_enabled' to be set to true for 'aws_neptune_cluster' resources
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-7 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
