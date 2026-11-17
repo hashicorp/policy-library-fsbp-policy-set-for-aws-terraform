@@ -38,7 +38,7 @@ get_complaint_resources = func(sqs_policy_resources, policy_document_resources) 
 		if value is null {
 			return true
 		}
-		return value is empty
+		return value is not empty
 	})
 }
 
@@ -47,8 +47,7 @@ get_referenced_policy_statements = func(res) {
 	if policy[const.references] is not defined or policy[const.references][1] not matches "^data.aws_iam_policy_document.(.*)$" {
 		return false
 	}
-	reference = policy[const.references][1]
-	address = strings.trim_prefix(reference, "data.")
+	address = policy[const.references][1]
 	// Append the module address to the data source's local address
 	// in case of nested modules
 	if strings.has_prefix(res.module_address, const.module_prefix) {
@@ -64,11 +63,12 @@ get_referenced_policy_statements = func(res) {
 	if datasource_statements is empty {
 		return null
 	}
-	return filter datasource_statements as _, statement {
-		not (statement.effect is "Allow" and any statement.principals as _, principal {
-			principal.type is "*"
-		})
+	public_allows = filter datasource_statements as _, statement {
+		statement.effect is "Allow" and any statement.principals as _, principal {
+			principal.type is "*" or (principal.type is "AWS" and "*" in principal.identifiers)
+		}
 	}
+	return public_allows
 }
 
 # Variables

@@ -1,0 +1,25 @@
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"module.messaging.data.aws_iam_policy_document.test": {
+			"address": "module.messaging.data.aws_iam_policy_document.test", "mode": "data",
+			"module_address": "module.messaging", "name": "test", "type": "aws_iam_policy_document",
+			"values": {
+				"statement": [
+					{
+						"effect":     "Allow",
+						"principals": [{"type": "AWS", "identifiers": ["arn:aws:iam::123456789012:root"]}],
+					},
+					{
+						"effect":     "Allow",
+						"principals": [{"type": "*", "identifiers": ["*"]}],
+					},
+				],
+			},
+		},
+		"module.messaging.aws_sqs_queue.q": {
+			"address": "module.messaging.aws_sqs_queue.q", "mode": "managed",
+			"module_address": "module.messaging", "name": "q", "type": "aws_sqs_queue", "values": {},
+		},
+	},
+}

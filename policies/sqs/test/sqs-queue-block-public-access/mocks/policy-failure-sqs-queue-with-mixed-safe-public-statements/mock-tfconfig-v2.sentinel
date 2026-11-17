@@ -1,0 +1,14 @@
+resources = {
+	"module.messaging.aws_sqs_queue.q": {
+		"address": "module.messaging.aws_sqs_queue.q", "config": {}, "mode": "managed",
+		"module_address": "module.messaging", "name": "q", "type": "aws_sqs_queue",
+	},
+	"module.messaging.aws_sqs_queue_policy.test": {
+		"address": "module.messaging.aws_sqs_queue_policy.test",
+		"config": {
+			"policy":    {"references": ["data.aws_iam_policy_document.test.json", "data.aws_iam_policy_document.test"]},
+			"queue_url": {"references": ["aws_sqs_queue.q.id", "aws_sqs_queue.q"]},
+		},
+		"mode": "managed", "module_address": "module.messaging", "name": "test", "type": "aws_sqs_queue_policy",
+	},
+}
