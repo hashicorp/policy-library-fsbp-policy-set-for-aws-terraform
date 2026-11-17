@@ -23,6 +23,6 @@ mock "report" {
 
 test {
 	rules = {
-		main = false
+		main = true
 	}
 }
