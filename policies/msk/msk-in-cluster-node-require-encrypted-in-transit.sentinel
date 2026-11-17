@@ -24,13 +24,13 @@ get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
 		attribute_encryption_info_resource_value = maps.get(res, "values.encryption_info", [])
 		if attribute_encryption_info_resource_value is empty {
-			return false
+			return true
 		}
 		attribute_encryption_in_transit_resource_value = maps.get(attribute_encryption_info_resource_value[0], "encryption_in_transit", [])
 		if attribute_encryption_in_transit_resource_value is empty {
-			return false
+			return true
 		}
-		return maps.get(attribute_encryption_in_transit_resource_value[0], "in_cluster", false) is true
+		return maps.get(attribute_encryption_in_transit_resource_value[0], "in_cluster", true) is true
 	})
 }
 
