@@ -19,20 +19,20 @@ const = {
 
 # Functions
 
+origin_avoids_sslv3 = func(origin) {
+	custom_origin_config = maps.get(origin, "custom_origin_config", [])
+	return maps.get(custom_origin_config[0], "origin_ssl_protocols", []) not contains "SSLv3"
+}
+
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		origin = maps.get(res.values, "origin", [])
-		if origin is empty or origin[0] is not defined {
-			return true
+		origins = maps.get(res.values, "origin", [])
+		custom_origins = filter origins as origin {
+			maps.get(origin, "custom_origin_config", []) is not empty
 		}
-		custom_origin_config = maps.get(origin[0], "custom_origin_config", [])
-
-		if custom_origin_config is empty or custom_origin_config[0] is not defined {
-			return true
+		return all custom_origins as origin {
+			origin_avoids_sslv3(origin)
 		}
-		origin_ssl_protocols = maps.get(custom_origin_config[0], "origin_ssl_protocols", [])
-
-		return origin_ssl_protocols not contains "SSLv3"
 	})
 }
 
