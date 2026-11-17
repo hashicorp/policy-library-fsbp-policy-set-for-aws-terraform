@@ -21,7 +21,6 @@ const = {
 	"resource_aws_lb_listener_rule": "aws_lb_listener_rule",
 	"application":                   "application",
 	"http":                          "HTTP",
-	"port_80":                       80,
 	"redirect":                      "redirect",
 	"port_443":                      "443",
 	"https":                         "HTTPS",
@@ -78,13 +77,10 @@ plan_resources = tf.plan(tfplan.planned_values.resources)
 // Get resources of type 'aws_lb_listener'
 aws_lb_listeners = plan_resources.type(const.resource_aws_lb_listener).resources
 
-// Filter all aws_lb_listeners that have protocol as HTTP and port as 80
+// Filter all aws_lb_listeners that use HTTP, regardless of port.
 http_listeners = collection.reject(aws_lb_listeners, func(res) {
 	protocol = maps.get(res, "values.protocol", const.http)
-	port = int(maps.get(res, "values.port", 0))
-
-	// We ignore listeners which don't match these expectations
-	return protocol is not const.http or port is not const.port_80
+	return protocol is not const.http
 })
 
 // Check for inline redirection configuration in the given http listeners
@@ -139,11 +135,12 @@ if aws_lb_listener_rules_config_list is not empty {
 	}
 }
 
-// For every valid listener filtered till now, find out the referenced load balancer
-referenced_valid_load_balancers = []
-for http_listener_addresses_with_https_redirection as _, listener_addr {
+// For every listener, find out the referenced load balancer.
+referenced_load_balancers = []
+referenced_invalid_load_balancers = []
+for aws_lb_listeners as _, listener {
 	// Get the aws_lb_listener's config
-	listener_config = config_resources.type(const.resource_aws_lb_listener).address(listener_addr).resources
+	listener_config = config_resources.type(const.resource_aws_lb_listener).address(listener.address).resources
 	if listener_config is empty {
 		continue
 	}
@@ -154,7 +151,11 @@ for http_listener_addresses_with_https_redirection as _, listener_addr {
 		continue
 	}
 
-	append(referenced_valid_load_balancers, referenced_lb_address)
+	append(referenced_load_balancers, referenced_lb_address)
+	if maps.get(listener, "values.protocol", const.http) is const.http and
+		listener.address not in http_listener_addresses_with_https_redirection {
+		append(referenced_invalid_load_balancers, referenced_lb_address)
+	}
 }
 
 // Now we get all the load balancers
@@ -168,7 +169,8 @@ invalid_load_balancers = collection.reject(aws_load_balancers, func(res) {
 		return true
 	}
 
-	return res.address in referenced_valid_load_balancers
+	return res.address in referenced_load_balancers and
+		res.address not in referenced_invalid_load_balancers
 })
 
 summary = {

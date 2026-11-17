@@ -1,0 +1,4 @@
+resources = {
+	"aws_lb.this":           {"address": "aws_lb.this", "config": {}, "mode": "managed", "module_address": "", "name": "this", "type": "aws_lb"},
+	"aws_lb_listener.https": {"address": "aws_lb_listener.https", "config": {"load_balancer_arn": {"references": ["aws_lb.this.arn", "aws_lb.this"]}}, "mode": "managed", "module_address": "", "name": "https", "type": "aws_lb_listener"},
+}
