@@ -14,6 +14,10 @@ Linux Amazon Machine Images (AMIs) use one of two types of virtualization: parav
 
 This rule is covered by the [ec2-instance-virtualization-should-not-be-paravirtual](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ec2/ec2-instance-virtualization-should-not-be-paravirtual.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, an instance AMI's virtualization type cannot be established when `ami` is a literal ID, comes from an `aws_ami` data source, or otherwise does not reference a managed `aws_ami` resource whose `virtualization_type` is present in configuration. The policy currently does not report a virtualization violation for those unresolved AMI references. This result does not verify that the referenced AMI uses HVM virtualization.
+
 ## Policy Results (Pass)
 
 ```bash

@@ -39,7 +39,7 @@ get_virtualization_complaint = func(resources) {
 	})
 }
 
-get_violations = func(ami_complaint, instance_resources) {
+get_violations = func(ami_resources, ami_complaint, instance_resources) {
 	return collection.reject(instance_resources, func(res) {
 		if res.config.ami.constant_value is defined {
 			return false
@@ -49,10 +49,12 @@ get_violations = func(ami_complaint, instance_resources) {
 		if ami is not defined or ami is empty {
 			return false
 		}
-		if ami_complaint is empty {
-			return false
+		if collection.find(ami_resources, func(res) {
+			return ami is res.address
+		}) is not defined {
+			return true
 		}
-		return collection.reject(ami_complaint, func(res) {
+		return collection.find(ami_complaint, func(res) {
 			return ami is res.address
 		}) is defined
 	})
@@ -73,11 +75,11 @@ get_referenced_resource_address = func(res, attr) {
 // Variables
 
 config_resources = tf.config(tfconfig.resources)
-ami_resources = config_resources.type(const.resource_aws_ami).resources
+ami_resources = config_resources.type(const.resource_aws_ami).mode("managed").resources
 instance_resources = config_resources.type(const.resource_aws_instance).resources
 
 ami_complaint = get_virtualization_complaint(ami_resources)
-violations = get_violations(ami_complaint, instance_resources)
+violations = get_violations(ami_resources, ami_complaint, instance_resources)
 
 summary = {
 	"policy_name": const.policy_name,
