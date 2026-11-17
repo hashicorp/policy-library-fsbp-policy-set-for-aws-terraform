@@ -30,7 +30,10 @@ const = {
 get_violations = func(network_acl_resources, network_acl_association_resources) {
 	return collection.reject(network_acl_resources, func(res) {
 		subnet_id_values = maps.get(res, "config." + const.subnet_ids, [])
-		if (subnet_id_values is empty or subnet_id_values.constant_value is defined) and check_network_acl_association(res.address, network_acl_association_resources) {
+		if subnet_id_values is empty and check_network_acl_association(res.address, network_acl_association_resources) {
+			return false
+		}
+		if subnet_id_values is not empty and subnet_id_values.constant_value is defined and subnet_id_values.constant_value is empty and check_network_acl_association(res.address, network_acl_association_resources) {
 			return false
 		}
 		return true
