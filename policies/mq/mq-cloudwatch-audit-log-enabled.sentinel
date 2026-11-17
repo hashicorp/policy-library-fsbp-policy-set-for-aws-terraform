@@ -23,6 +23,9 @@ const = {
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
+		if maps.get(res, "values.engine_type", "") is not "ActiveMQ" {
+			return true
+		}
 		mq_broker_logs_values = maps.get(res, "values.logs", {})
 		return mq_broker_logs_values is not empty and mq_broker_logs_values[0].audit is "true"
 	})

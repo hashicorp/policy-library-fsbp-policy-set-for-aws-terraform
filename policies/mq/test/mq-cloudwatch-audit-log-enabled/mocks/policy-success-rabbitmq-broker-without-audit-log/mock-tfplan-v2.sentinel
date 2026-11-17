@@ -1,0 +1,10 @@
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_mq_broker.rabbit": {
+			"address": "aws_mq_broker.rabbit", "mode": "managed", "module_address": "",
+			"name": "rabbit", "type": "aws_mq_broker",
+			"values": {"engine_type": "RabbitMQ", "logs": []},
+		},
+	},
+}
