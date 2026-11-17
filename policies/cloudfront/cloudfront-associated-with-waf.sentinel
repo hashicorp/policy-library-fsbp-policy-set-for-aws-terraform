@@ -28,6 +28,10 @@ get_violations = func(resources) {
 		if web_acl_id is null or web_acl_id is empty {
 			return false
 		}
+		constant_value = maps.get(web_acl_id, "constant_value", "")
+		if constant_value is not null and constant_value is not "" {
+			return true
+		}
 		references = maps.get(web_acl_id, "references", [])
 		return references is not empty
 	})
