@@ -34,31 +34,34 @@ get_origin_access_violations = func(res) {
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		origin = maps.get(res.config, "origin", [])
-		if origin is empty {
-			return false
-		}
-		origin_access_control_id = maps.get(origin[0], "origin_access_control_id", [])
-		if origin_access_control_id is empty {
-			return false
-		}
-		references = maps.get(origin_access_control_id, "references", [])
-		if references is empty {
-			return false
-		}
-		for references as ref {
-			ref_split = strings.split(ref, ".")
-			if ref_split is empty or length(ref_split) < 2 {
+		origins = maps.get(res.config, "origin", [])
+		for origins as origin {
+			if maps.get(origin, "custom_origin_config", []) is not empty {
+				continue
+			}
+			domain_name = maps.get(origin, "domain_name", {})
+			domain_value = maps.get(domain_name, "constant_value", "")
+			domain_references = maps.get(domain_name, "references", [])
+			if domain_value not matches "(^|\\.)s3([.-][a-z0-9-]+)?\\.amazonaws\\.com$" and
+				not any domain_references as ref { ref matches "(^|\\.)aws_s3_bucket\\." } {
+				continue
+			}
+
+			origin_access_control_id = maps.get(origin, "origin_access_control_id", {})
+			references = maps.get(origin_access_control_id, "references", [])
+			if references is empty {
 				return false
 			}
-			origin_access_control = ref_split[0] + "." + ref_split[1]
-			origin_access_control_resource = tf.config(tfconfig.resources).address(origin_access_control).resources
-			if origin_access_control_resource is empty {
-				return false
-			}
-			violation = get_origin_access_violations(origin_access_control_resource)
-			if !violation {
-				return false
+			for references as ref {
+				ref_split = strings.split(ref, ".")
+				if length(ref_split) < 2 {
+					return false
+				}
+				origin_access_control = ref_split[0] + "." + ref_split[1]
+				origin_access_control_resource = tf.config(tfconfig.resources).address(origin_access_control).resources
+				if origin_access_control_resource is empty or !get_origin_access_violations(origin_access_control_resource) {
+					return false
+				}
 			}
 		}
 		return true
