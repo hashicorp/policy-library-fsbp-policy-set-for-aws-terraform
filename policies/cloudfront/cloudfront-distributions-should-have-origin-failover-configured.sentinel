@@ -21,12 +21,10 @@ const = {
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		origin = maps.get(res.values, "origin", [])
-		if length(origin) < 2 {
-			return true
-		}
 		origin_group = maps.get(res.values, "origin_group", [])
-		return origin_group is not empty
+		return any origin_group as group {
+			length(maps.get(group, "member", [])) is 2
+		}
 	})
 }
 
