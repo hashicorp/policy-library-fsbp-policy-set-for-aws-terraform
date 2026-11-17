@@ -1,0 +1,18 @@
+terraform_version = "1.9.4"
+
+planned_values = {
+	"resources": {
+		"aws_redshift_cluster.main": {
+			"address": "aws_redshift_cluster.main", "module_address": "", "type": "aws_redshift_cluster",
+			"values": {"port": 5439, "vpc_security_group_ids": ["sg-redshift"]},
+		},
+		"aws_security_group.redshift": {
+			"address": "aws_security_group.redshift", "module_address": "", "type": "aws_security_group",
+			"values": {"id": "sg-redshift", "ingress": []},
+		},
+		"aws_security_group.web": {
+			"address": "aws_security_group.web", "module_address": "", "type": "aws_security_group",
+			"values": {"id": "sg-web", "ingress": [{"from_port": 443, "to_port": 443, "cidr_blocks": ["0.0.0.0/0"], "ipv6_cidr_blocks": []}]},
+		},
+	},
+}

@@ -1,0 +1,16 @@
+terraform_version = "1.9.4"
+
+# The security group and cluster are created in the same plan, so their IDs are
+# unknown and omitted from planned_values.
+planned_values = {
+	"resources": {
+		"aws_redshift_cluster.main": {
+			"address": "aws_redshift_cluster.main", "module_address": "", "type": "aws_redshift_cluster",
+			"values": {"port": 5439},
+		},
+		"aws_security_group.redshift": {
+			"address": "aws_security_group.redshift", "module_address": "", "type": "aws_security_group",
+			"values": {"ingress": [{"from_port": 5439, "to_port": 5439, "cidr_blocks": ["0.0.0.0/0"], "ipv6_cidr_blocks": []}]},
+		},
+	},
+}
