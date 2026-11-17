@@ -14,6 +14,10 @@ Deploying resources across multiple AZs is an AWS best practice to ensure high a
 
 This rule is covered by the [lambda-vpc-multi-az-check](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/lambda/lambda-vpc-multi-az-check.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, subnet Availability Zones cannot be established when a VPC configuration supplies literal or external subnet IDs without matching `aws_subnet` configuration resources. The policy retains its baseline unsupported-path expression in this case: literal IDs without a `references` value produce the baseline runtime error, while references without matching configured subnets retain the baseline subnet-reference-count result. This unresolved result does not verify that the function operates in multiple Availability Zones.
+
 ## Policy Results (Pass)
 ```bash
 trace:

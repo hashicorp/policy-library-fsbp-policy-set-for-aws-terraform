@@ -6,12 +6,10 @@ mock "tfconfig/v2" {
 		source = "./mocks/policy-success-multiple-availability-zones/mock-tfconfig-v2.sentinel"
 	}
 }
-
-
 mock "tfresources" {
-  module {
-    source = "../../../../modules/tfresources/tfresources.sentinel"
-  }
+	module {
+		source = "../../../../modules/tfresources/tfresources.sentinel"
+	}
 }
 
 mock "report" {

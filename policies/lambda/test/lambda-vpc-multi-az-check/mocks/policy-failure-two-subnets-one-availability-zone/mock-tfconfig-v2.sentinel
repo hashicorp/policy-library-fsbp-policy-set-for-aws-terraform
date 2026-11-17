@@ -1,0 +1,48 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"aws_lambda_function.vpc_lambda": {
+		"address":        "aws_lambda_function.vpc_lambda",
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "vpc_lambda",
+		"type":           "aws_lambda_function",
+		"config": {
+			"vpc_config": [{
+				"subnet_ids": {
+					"references": [
+						"aws_subnet.az1_primary.id",
+						"aws_subnet.az1_primary",
+						"aws_subnet.az1_secondary.id",
+						"aws_subnet.az1_secondary",
+					],
+				},
+			}],
+		},
+	},
+	"aws_subnet.az1_primary": {
+		"address":        "aws_subnet.az1_primary",
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "az1_primary",
+		"type":           "aws_subnet",
+		"config": {
+			"availability_zone": {
+				"constant_value": "us-east-1a",
+			},
+		},
+	},
+	"aws_subnet.az1_secondary": {
+		"address":        "aws_subnet.az1_secondary",
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "az1_secondary",
+		"type":           "aws_subnet",
+		"config": {
+			"availability_zone": {
+				"constant_value": "us-east-1a",
+			},
+		},
+	},
+}

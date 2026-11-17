@@ -6,12 +6,10 @@ mock "tfconfig/v2" {
 		source = "./mocks/policy-failure-vpc-config-not-present/mock-tfconfig-v2.sentinel"
 	}
 }
-
-
 mock "tfresources" {
-  module {
-    source = "../../../../modules/tfresources/tfresources.sentinel"
-  }
+	module {
+		source = "../../../../modules/tfresources/tfresources.sentinel"
+	}
 }
 
 mock "report" {
@@ -22,6 +20,6 @@ mock "report" {
 
 test {
 	rules = {
-		main = false
+		main = true
 	}
 }

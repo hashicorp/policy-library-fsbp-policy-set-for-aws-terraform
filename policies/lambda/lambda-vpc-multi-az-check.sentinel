@@ -15,27 +15,50 @@ const = {
 	"policy_name":                  "lambda-vpc-multi-az-check",
 	"message":                      "AWS Lambda function that connects to a virtual private cloud (VPC) operates in at least the specified number of Availability Zone (AZs)",
 	"resource_aws_lambda_function": "aws_lambda_function",
+	"resource_aws_subnet":          "aws_subnet",
+	"availability_zone":            "availability_zone",
 	"vpc_config":                   "vpc_config",
 	"subnet_ids":                   "subnet_ids",
 }
 
 # Functions
 
-get_violations = func(resources) {
+get_violations = func(resources, subnets) {
 	return collection.reject(resources, func(res) {
 		vpc_config_values = maps.get(res.config, const.vpc_config, [])
 		if vpc_config_values is empty {
-			return false
+			return true
 		}
-		subnet_ids = maps.get(vpc_config_values[0], const.subnet_ids, [])
-		return length(subnet_ids.references) > 2
+
+		subnet_ids = maps.get(vpc_config_values[0], const.subnet_ids, {})
+		references = maps.get(subnet_ids, "references", [])
+		referenced_subnets = filter subnets as _, subnet {
+			subnet.address in references
+		}
+		if referenced_subnets is empty {
+			# Preserve the baseline result when the current imports cannot supply
+			# Availability Zone evidence for the configured subnet identifiers.
+			return length(subnet_ids.references) > 2
+		}
+
+		availability_zones = {}
+		for referenced_subnets as _, subnet {
+			availability_zone = maps.get(subnet.config, const.availability_zone, {})
+			availability_zone = maps.get(availability_zone, "constant_value", null)
+			if availability_zone is not null {
+				availability_zones[availability_zone] = true
+			}
+		}
+
+		return length(availability_zones) >= 2
 	})
 }
 
 # Variables
 
 aws_lambda_function = tf.config(tfconfig.resources).type(const.resource_aws_lambda_function).resources
-violations = get_violations(aws_lambda_function)
+aws_subnets = tf.config(tfconfig.resources).type(const.resource_aws_subnet).resources
+violations = get_violations(aws_lambda_function, aws_subnets)
 
 summary = {
 	"policy_name": const.policy_name,
