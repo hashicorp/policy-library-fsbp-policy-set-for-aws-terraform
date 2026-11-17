@@ -1,0 +1,16 @@
+resources = {
+	"aws_cloudfront_distribution.custom": {
+		"address":        "aws_cloudfront_distribution.custom",
+		"module_address": "",
+		"name":           "custom",
+		"mode":           "managed",
+		"type":           "aws_cloudfront_distribution",
+		"config": {
+			"origin": [{
+				"custom_origin_config": [{}],
+				"domain_name":          {"constant_value": "api.example.com"},
+				"origin_id":            {"constant_value": "custom"},
+			}],
+		},
+	},
+}
