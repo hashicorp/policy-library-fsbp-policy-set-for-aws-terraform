@@ -1,0 +1,8 @@
+resources = {
+	"aws_redshift_cluster.first":  {"address": "aws_redshift_cluster.first", "module_address": "", "type": "aws_redshift_cluster", "config": {}},
+	"aws_redshift_cluster.second": {"address": "aws_redshift_cluster.second", "module_address": "", "type": "aws_redshift_cluster", "config": {}},
+	"aws_redshift_logging.first": {
+		"address": "aws_redshift_logging.first", "module_address": "", "type": "aws_redshift_logging",
+		"config": {"cluster_identifier": {"references": ["aws_redshift_cluster.first.id", "aws_redshift_cluster.first"]}},
+	},
+}
