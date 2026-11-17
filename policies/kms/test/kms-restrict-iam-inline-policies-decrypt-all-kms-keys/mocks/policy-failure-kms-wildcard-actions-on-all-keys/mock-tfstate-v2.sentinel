@@ -1,0 +1,34 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.5"
+outputs = {}
+
+resources = {
+	"data.aws_iam_policy_document.kms_wildcards": {
+		"address":        "data.aws_iam_policy_document.kms_wildcards",
+		"mode":           "data",
+		"module_address": "",
+		"name":           "kms_wildcards",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_policy_document",
+		"values": {
+			"statement": [
+				{
+					"actions":       ["kms:*"],
+					"effect":        "Allow",
+					"not_actions":   [],
+					"not_resources": [],
+					"resources":     ["*"],
+				},
+				{
+					"actions":       ["*"],
+					"effect":        "Allow",
+					"not_actions":   [],
+					"not_resources": [],
+					"resources":     ["*"],
+				},
+			],
+		},
+	},
+}

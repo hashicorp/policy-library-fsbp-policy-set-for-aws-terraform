@@ -26,7 +26,14 @@ get_violations = func(resources) {
 		statements = maps.get(res, "values.statement", [])
 		for statements as statement {
 			actions = maps.get(statement, "actions", [])
-			if actions contains "kms:ReEncryptFrom" or actions contains "kms:Decrypt" {
+			resources = maps.get(statement, "resources", [])
+			effect = maps.get(statement, "effect", "Allow")
+			allows_forbidden_action = actions contains "kms:ReEncryptFrom" or
+				actions contains "kms:ReEncrypt*" or
+				actions contains "kms:Decrypt" or
+				actions contains "kms:*" or
+				actions contains "*"
+			if effect is "Allow" and resources contains "*" and allows_forbidden_action {
 				return false
 			}
 		}
