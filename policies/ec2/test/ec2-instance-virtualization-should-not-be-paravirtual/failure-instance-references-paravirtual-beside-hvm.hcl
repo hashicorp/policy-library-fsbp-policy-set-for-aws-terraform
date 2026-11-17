@@ -7,6 +7,12 @@ mock "tfconfig/v2" {
   }
 }
 
+mock "tfstate/v2" {
+  module {
+    source = "./mocks/empty-tfstate/mock-tfstate-v2.sentinel"
+  }
+}
+
 mock "tfresources" {
   module {
     source = "../../../../modules/tfresources/tfresources.sentinel"

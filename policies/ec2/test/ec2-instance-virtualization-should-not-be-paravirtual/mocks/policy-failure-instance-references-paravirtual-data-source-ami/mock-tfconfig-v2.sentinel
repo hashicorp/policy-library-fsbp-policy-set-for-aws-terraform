@@ -1,0 +1,12 @@
+# Copyright IBM Corp. 2025, 2026
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"data.aws_ami.example": {
+		"address": "data.aws_ami.example", "config": {}, "mode": "data", "module_address": "", "name": "example", "type": "aws_ami",
+	},
+	"aws_instance.example": {
+		"address": "aws_instance.example", "mode": "managed", "module_address": "", "name": "example", "type": "aws_instance",
+		"config": {"ami": {"references": ["data.aws_ami.example.id", "data.aws_ami.example"]}},
+	},
+}

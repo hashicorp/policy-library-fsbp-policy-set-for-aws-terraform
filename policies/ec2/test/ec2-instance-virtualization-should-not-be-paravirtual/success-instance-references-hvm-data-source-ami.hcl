@@ -1,0 +1,32 @@
+# Copyright IBM Corp. 2025, 2026
+# SPDX-License-Identifier: BUSL-1.1
+
+mock "tfconfig/v2" {
+  module {
+    source = "./mocks/policy-success-instance-references-hvm-data-source-ami/mock-tfconfig-v2.sentinel"
+  }
+}
+
+mock "tfstate/v2" {
+  module {
+    source = "./mocks/policy-success-instance-references-hvm-data-source-ami/mock-tfstate-v2.sentinel"
+  }
+}
+
+mock "tfresources" {
+  module {
+    source = "../../../../modules/tfresources/tfresources.sentinel"
+  }
+}
+
+mock "report" {
+  module {
+    source = "../../../../modules/mocks/report/report.sentinel"
+  }
+}
+
+test {
+  rules = {
+    main = true
+  }
+}

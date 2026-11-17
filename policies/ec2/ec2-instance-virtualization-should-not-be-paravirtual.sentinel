@@ -7,6 +7,7 @@
 // Imports
 
 import "tfconfig/v2" as tfconfig
+import "tfstate/v2" as tfstate
 import "tfresources" as tf
 import "report" as report
 import "collection" as collection
@@ -39,6 +40,18 @@ get_virtualization_complaint = func(resources) {
 	})
 }
 
+# Data sources are read during plan, so an aws_ami data source's result,
+# including virtualization_type, is in tfstate/v2. Returns null when the
+# data source was not read at plan time (for example, its arguments are
+# only known after apply).
+get_data_source_virtualization_type = func(address) {
+	data_sources = tf.state(tfstate.resources).mode("data").address(address).resources
+	if data_sources is empty {
+		return null
+	}
+	return maps.get(data_sources[0], "values." + const.virtualization_type, null)
+}
+
 get_violations = func(ami_resources, ami_complaint, instance_resources) {
 	return collection.reject(instance_resources, func(res) {
 		if res.config.ami.constant_value is defined {
@@ -48,6 +61,9 @@ get_violations = func(ami_resources, ami_complaint, instance_resources) {
 		ami = get_referenced_resource_address(res, "config.ami")
 		if ami is not defined or ami is empty {
 			return false
+		}
+		if strings.has_prefix(ami, "data.aws_ami.") or ami contains ".data.aws_ami." {
+			return get_data_source_virtualization_type(ami) is not const.paravirtual
 		}
 		if collection.find(ami_resources, func(res) {
 			return ami is res.address

@@ -1,0 +1,23 @@
+# Copyright IBM Corp. 2025, 2026
+# SPDX-License-Identifier: BUSL-1.1
+
+# Shape of a real plan's prior_state: the data source is read during plan.
+resources = {
+	"data.aws_ami.example": {
+		"address":        "data.aws_ami.example",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_ami",
+		"values": {
+			"id":                  "ami-0123456789abcdef0",
+			"most_recent":         true,
+			"virtualization_type": "hvm",
+		},
+	},
+}
