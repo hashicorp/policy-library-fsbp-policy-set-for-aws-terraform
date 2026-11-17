@@ -1,0 +1,12 @@
+planned_values = {
+	"resources": {
+		"aws_networkfirewall_rule_group.empty": {
+			"address": "aws_networkfirewall_rule_group.empty", "mode": "managed", "module_address": "", "name": "empty", "type": "aws_networkfirewall_rule_group",
+			"values": {"type": "STATELESS", "rule_group": [{"rules_source": []}]},
+		},
+	},
+}
+variables = {}
+resource_changes = {}
+resource_drift = {}
+output_changes = {}

@@ -1,0 +1,15 @@
+planned_values = {
+	"resources": {
+		"aws_networkfirewall_rule_group.stateful": {
+			"address": "aws_networkfirewall_rule_group.stateful", "mode": "managed", "module_address": "", "name": "stateful", "type": "aws_networkfirewall_rule_group",
+			"values": {
+				"type":       "STATEFUL",
+				"rule_group": [{"rules_source": [{"stateful_rule": [{"action": "PASS"}]}]}],
+			},
+		},
+	},
+}
+variables = {}
+resource_changes = {}
+resource_drift = {}
+output_changes = {}
