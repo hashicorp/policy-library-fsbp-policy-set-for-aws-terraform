@@ -11,70 +11,32 @@ import "tfresources" as tf
 import "report" as report
 import "collection" as collection
 import "collection/maps" as maps
-import "strings"
 
 # Constants
 
 const = {
-	"policy_name":                      "appsync-graphqlapi-cache-should-be-encrypted-at-rest",
-	"message":                          "AWS AppSync API caches should be encrypted at rest",
-	"resource_aws_appsync_api_cache":   "aws_appsync_api_cache",
-	"resource_aws_appsync_graphql_api": "aws_appsync_graphql_api",
-	"at_rest_encryption_enabled":       "at_rest_encryption_enabled",
-	"references":                       "references",
-	"address":                          "address",
-	"module_prefix":                    "module.",
+	"policy_name":                    "appsync-graphqlapi-cache-should-be-encrypted-at-rest",
+	"message":                        "AWS AppSync API caches should be encrypted at rest",
+	"resource_aws_appsync_api_cache": "aws_appsync_api_cache",
+	"at_rest_encryption_enabled":     "at_rest_encryption_enabled",
 }
 
 # Functions
 
-# Removes module address prefix from a resource
-# and returns back the localized address for a module.
-resource_address_without_module_address = func(res) {
-	resource_addr = res[const.address]
-
-	# Check for root module
-	if not strings.has_prefix(resource_addr, const.module_prefix) {
-		return resource_addr
-	}
-
-	module_addr_prefix = res[const.module_address] + "."
-	return strings.trim_prefix(resource_addr, module_addr_prefix)
-}
-
-get_complaint_resources = func(appsync_api_cache_resources) {
-	if appsync_api_cache_resources is null or appsync_api_cache_resources is empty {
-		return null
-	}
+get_noncompliant_resources = func(appsync_api_cache_resources) {
 	return collection.reject(appsync_api_cache_resources, func(res) {
 		encryption_at_rest_values = maps.get(res.config, const.at_rest_encryption_enabled, null)
-		if encryption_at_rest_values is null or encryption_at_rest_values is empty {
-			return true
+		if encryption_at_rest_values is null {
+			return false
 		}
-		return maps.get(encryption_at_rest_values, "constant_value", false) is not true
+		return maps.get(encryption_at_rest_values, "constant_value", false) is true
 	})
 }
 
 # Variables
 
 appsync_api_cache_resources = tf.config(tfconfig.resources).type(const.resource_aws_appsync_api_cache).resources
-appsync_graphql_api_resources = tf.config(tfconfig.resources).type(const.resource_aws_appsync_graphql_api).resources
-
-appsync_api_cache_complaint = get_complaint_resources(appsync_api_cache_resources)
-violations = []
-
-if appsync_api_cache_complaint is null {
-	violations = appsync_graphql_api_resources
-} else {
-	# Get the api_id references from the complaint resources
-	appsync_api_cache_addresses = map appsync_api_cache_complaint as _, res {
-		res.config.api_id.references[1]
-	}
-
-	violations = filter appsync_graphql_api_resources as _, res {
-		resource_address_without_module_address(res) not in appsync_api_cache_addresses
-	}
-}
+violations = get_noncompliant_resources(appsync_api_cache_resources)
 
 summary = {
 	"policy_name": const.policy_name,

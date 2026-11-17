@@ -1,0 +1,21 @@
+import "strings"
+
+providers = {}
+resources = {
+	"module.api.aws_appsync_api_cache.example": {
+		"address": "module.api.aws_appsync_api_cache.example",
+		"config": {
+			"api_id":                     {"references": ["module.api.aws_appsync_graphql_api.example.id", "module.api.aws_appsync_graphql_api.example"]},
+			"at_rest_encryption_enabled": {"constant_value": true},
+		},
+		"mode": "managed", "module_address": "module.api", "name": "example", "type": "aws_appsync_api_cache",
+	},
+	"module.api.aws_appsync_graphql_api.example": {
+		"address": "module.api.aws_appsync_graphql_api.example", "config": {}, "mode": "managed", "module_address": "module.api", "name": "example", "type": "aws_appsync_graphql_api",
+	},
+}
+provisioners = {}
+variables = {}
+outputs = {}
+module_calls = {}
+strip_index = func(addr) { return strings.split(addr, "[")[0] }
