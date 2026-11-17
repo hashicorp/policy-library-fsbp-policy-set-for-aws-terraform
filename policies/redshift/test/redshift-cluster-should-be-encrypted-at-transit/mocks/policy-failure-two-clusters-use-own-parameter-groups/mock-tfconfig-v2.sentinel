@@ -1,0 +1,10 @@
+resources = {
+	"aws_redshift_cluster.good": {
+		"address": "aws_redshift_cluster.good", "module_address": "", "type": "aws_redshift_cluster",
+		"config": {"cluster_parameter_group_name": {"references": ["aws_redshift_parameter_group.good.name", "aws_redshift_parameter_group.good"]}},
+	},
+	"aws_redshift_cluster.bad": {
+		"address": "aws_redshift_cluster.bad", "module_address": "", "type": "aws_redshift_cluster",
+		"config": {"cluster_parameter_group_name": {"references": ["aws_redshift_parameter_group.bad.name", "aws_redshift_parameter_group.bad"]}},
+	},
+}

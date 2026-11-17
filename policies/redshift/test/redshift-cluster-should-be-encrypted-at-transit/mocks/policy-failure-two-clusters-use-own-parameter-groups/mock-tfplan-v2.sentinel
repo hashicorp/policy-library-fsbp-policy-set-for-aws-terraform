@@ -1,0 +1,22 @@
+terraform_version = "1.9.4"
+
+planned_values = {
+	"resources": {
+		"aws_redshift_cluster.bad": {
+			"address": "aws_redshift_cluster.bad", "module_address": "", "type": "aws_redshift_cluster",
+			"values": {"cluster_parameter_group_name": "bad"},
+		},
+		"aws_redshift_cluster.good": {
+			"address": "aws_redshift_cluster.good", "module_address": "", "type": "aws_redshift_cluster",
+			"values": {"cluster_parameter_group_name": "good"},
+		},
+		"aws_redshift_parameter_group.bad": {
+			"address": "aws_redshift_parameter_group.bad", "module_address": "", "type": "aws_redshift_parameter_group",
+			"values": {"parameter": [{"name": "require_ssl", "value": "false"}]},
+		},
+		"aws_redshift_parameter_group.good": {
+			"address": "aws_redshift_parameter_group.good", "module_address": "", "type": "aws_redshift_parameter_group",
+			"values": {"parameter": [{"name": "require_ssl", "value": "true"}]},
+		},
+	},
+}
