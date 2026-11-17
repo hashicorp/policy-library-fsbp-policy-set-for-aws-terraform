@@ -28,8 +28,10 @@ get_violations = func(resources) {
 			return true
 		}
 
-		viewer_protocol_policy_values = maps.get(default_cache_behavior_values[0], const.viewer_protocol_policy, "")
-		return viewer_protocol_policy_values is not "allow-all"
+		cache_behaviors = default_cache_behavior_values + maps.get(res.values, "ordered_cache_behavior", [])
+		return all cache_behaviors as cache_behavior {
+			maps.get(cache_behavior, const.viewer_protocol_policy, "") is not "allow-all"
+		}
 	})
 }
 
