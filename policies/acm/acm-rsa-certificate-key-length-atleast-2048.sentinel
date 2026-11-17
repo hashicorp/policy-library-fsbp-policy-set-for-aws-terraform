@@ -26,10 +26,24 @@ const = {
 # Variables
 
 resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_acm_certificate).resources
+resource_changes = tf.plan(tfplan.resource_changes).type(const.resource_aws_acm_certificate).resources
 
 violations = collection.reject(resources, func(res) {
 	key_algorithm = maps.get(res, "values.key_algorithm", null)
 	if key_algorithm is null {
+		changes = filter resource_changes as _, resource_change {
+			resource_change.address is res.address
+		}
+		if length(changes) is 1 {
+			change = changes[0].change
+			is_new_request = "create" in maps.get(change, "actions", []) and
+				maps.get(change, "after.domain_name", null) is not null and
+				maps.get(change, "after.certificate_body", null) is null and
+				maps.get(change, "after.private_key", null) is null
+			if is_new_request {
+				return true
+			}
+		}
 		return false
 	}
 

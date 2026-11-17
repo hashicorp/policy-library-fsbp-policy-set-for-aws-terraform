@@ -12,6 +12,12 @@ The strength of encryption directly correlates with key size. We recommend key l
 
 This rule is covered by the [acm-rsa-certificate-key-length-atleast-2048](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/acm/acm-rsa-certificate-key-length-atleast-2048.sentinel) policy.
 
+When `key_algorithm` is omitted for a new ACM certificate request, the policy applies the ACM `RSA_2048` request default.
+
+## Limitations
+
+With the current Sentinel imports used by this policy, the certificate key algorithm cannot be established when an imported certificate or another existing certificate has an unresolved `key_algorithm`. The policy currently reports a violation in this case. This result does not verify that the certificate uses an RSA key length of at least 2,048 bits.
+
 ## Policy Results (Pass)
 
 ```bash

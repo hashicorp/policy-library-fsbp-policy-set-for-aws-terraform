@@ -1,0 +1,50 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.17.0"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_acm_certificate.requested": {
+			"address":        "aws_acm_certificate.requested",
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "requested",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_acm_certificate",
+			"values": {
+				"certificate_body": null,
+				"domain_name":      "example.com",
+				"key_algorithm":    null,
+				"private_key":      null,
+			},
+		},
+	},
+}
+
+resource_changes = {
+	"aws_acm_certificate.requested": {
+		"address":        "aws_acm_certificate.requested",
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "requested",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_acm_certificate",
+		"change": {
+			"actions": ["create"],
+			"after": {
+				"certificate_body": null,
+				"domain_name":      "example.com",
+				"key_algorithm":    null,
+				"private_key":      null,
+			},
+			"after_unknown": {},
+			"before":        null,
+		},
+	},
+}
+
+variables = {}
+resource_drift = {}
+output_changes = {}
