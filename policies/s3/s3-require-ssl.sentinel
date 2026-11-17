@@ -53,7 +53,7 @@ get_referenced_policy_statements = func(res) {
 	}
 	reference = policy[const.references][1]
 
-	address = strings.trim_prefix(reference, "data.")
+	address = reference
 	// Append the module address to the data source's local address
 	// in case of nested modules
 	if strings.has_prefix(res.module_address, const.module_prefix) {
@@ -61,7 +61,6 @@ get_referenced_policy_statements = func(res) {
 	}
 	datasource = tf.state(tfstate.resources).mode("data").address(address).resources
 	if datasource is null or datasource is not defined or datasource is empty {
-		address = "data." + address
 		datasource = tf.config(tfconfig.resources).mode("data").address(address).resources
 		if datasource is null or datasource is not defined {
 			return []

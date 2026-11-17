@@ -6,7 +6,7 @@
 
 ## Description
 
-DISCLAIMER - This policy works when all resources of type `aws_s3_bucket_policy` are present in the root module and have their `policy` attribute set using `aws_iam_policy_document` datasource.
+This policy evaluates `aws_s3_bucket_policy` resources in the root module and nested modules when their `policy` attribute references an `aws_iam_policy_document` data source.
 
 At the Amazon S3 bucket level, you can configure permissions through a bucket policy making the objects accessible only through HTTPS.
 
