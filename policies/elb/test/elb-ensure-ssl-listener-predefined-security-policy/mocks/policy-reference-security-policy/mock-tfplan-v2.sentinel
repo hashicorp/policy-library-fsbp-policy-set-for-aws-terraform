@@ -1,0 +1,4 @@
+planned_values = {"outputs": {}, "resources": {
+	"aws_elb.this":                  {"address": "aws_elb.this", "module_address": "", "mode": "managed", "name": "this", "type": "aws_elb", "values": {"listener": [{"lb_protocol": "https"}]}},
+	"aws_load_balancer_policy.this": {"address": "aws_load_balancer_policy.this", "module_address": "", "mode": "managed", "name": "this", "type": "aws_load_balancer_policy", "values": {"policy_name": "security-policy", "policy_type_name": "SSLNegotiationPolicyType", "policy_attribute": [{"name": "Reference-Security-Policy", "value": "ELBSecurityPolicy-TLS-1-2-2017-01"}]}},
+}}

@@ -66,8 +66,14 @@ planned_values = {
 			"tainted":        false,
 			"type":           "aws_load_balancer_policy",
 			"values": {
+				"policy_attribute": [
+					{
+						"name":  "Reference-Security-Policy",
+						"value": "ELBSecurityPolicy-TLS-1-2-2017-01",
+					},
+				],
 				"policy_name":      "security-policy",
-				"policy_type_name": "ELBSecurityPolicy-TLS-1-2-2017-01",
+				"policy_type_name": "SSLNegotiationPolicyType",
 			},
 		},
 	},

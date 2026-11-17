@@ -1,0 +1,4 @@
+resources = {
+	"aws_elb.this":                           {"address": "aws_elb.this", "config": {}, "mode": "managed", "module_address": "", "name": "this", "type": "aws_elb"},
+	"aws_load_balancer_listener_policy.this": {"address": "aws_load_balancer_listener_policy.this", "config": {"load_balancer_name": {"references": ["aws_elb.this.name", "aws_elb.this"]}, "policy_names": {"references": ["aws_load_balancer_policy.this.policy_name", "aws_load_balancer_policy.this"]}}, "mode": "managed", "module_address": "", "name": "this", "type": "aws_load_balancer_listener_policy"},
+}
