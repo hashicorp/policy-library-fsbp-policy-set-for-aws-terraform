@@ -16,22 +16,46 @@ const = {
 	"policy_name":                    "autoscaling-group-should-cover-multiple-azs",
 	"message":                        "Attribute 'availability_zone' or 'vpc_zone_identifier' should have atleast two values for AWS Autoscaling Group",
 	"resource_aws_autoscaling_group": "aws_autoscaling_group",
+	"resource_aws_subnet":            "aws_subnet",
 }
 
 # Functions
 
-get_violations = func(resources) {
+get_violations = func(resources, subnet_resources) {
 	return collection.reject(resources, func(res) {
 		availability_zones_values = maps.get(res, "config.availability_zones", {})
 		vpc_zone_identifier_values = maps.get(res, "config.vpc_zone_identifier", {})
-		return length(maps.get(availability_zones_values, "constant_value", [])) > 1 or length(maps.get(vpc_zone_identifier_values, "references", [])) > 2
+		if length(maps.get(availability_zones_values, "constant_value", [])) > 1 {
+			return true
+		}
+
+		subnet_references = maps.get(vpc_zone_identifier_values, "references", [])
+		referenced_availability_zones = []
+		for subnet_resources as _, subnet {
+			if subnet.address not in subnet_references {
+				continue
+			}
+			availability_zone = maps.get(subnet, "config.availability_zone.constant_value", "")
+			if availability_zone is not empty and availability_zone not in referenced_availability_zones {
+				append(referenced_availability_zones, availability_zone)
+			}
+		}
+
+		if referenced_availability_zones is not empty {
+			return length(referenced_availability_zones) > 1
+		}
+
+		// Preserve the existing result when referenced subnet AZs are unavailable.
+		return length(subnet_references) > 2
 	})
 }
 
 # Variables
 
-autoscaling_groups_config_resources = tf.config(tfconfig.resources).type(const.resource_aws_autoscaling_group).resources
-violations = get_violations(autoscaling_groups_config_resources)
+config_resources = tf.config(tfconfig.resources)
+autoscaling_groups_config_resources = config_resources.type(const.resource_aws_autoscaling_group).resources
+subnet_config_resources = config_resources.type(const.resource_aws_subnet).resources
+violations = get_violations(autoscaling_groups_config_resources, subnet_config_resources)
 
 summary = {
 	"policy_name": const.policy_name,
