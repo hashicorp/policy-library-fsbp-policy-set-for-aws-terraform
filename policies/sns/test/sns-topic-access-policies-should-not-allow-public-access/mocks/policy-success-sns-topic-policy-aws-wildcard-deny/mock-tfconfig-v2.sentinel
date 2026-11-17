@@ -1,0 +1,22 @@
+resources = {
+	"aws_sns_topic_policy.test": {
+		"address": "aws_sns_topic_policy.test",
+		"config": {
+			"policy": {"references": ["data.aws_iam_policy_document.test.json", "data.aws_iam_policy_document.test"]},
+		},
+		"mode": "managed", "module_address": "", "name": "test", "type": "aws_sns_topic_policy",
+	},
+	"data.aws_iam_policy_document.test": {
+		"address": "data.aws_iam_policy_document.test",
+		"config": {
+			"statement": [{
+				"effect": {"constant_value": "Deny"},
+				"principals": [{
+					"type":        {"constant_value": "AWS"},
+					"identifiers": {"constant_value": ["*"]},
+				}],
+			}],
+		},
+		"mode": "data", "module_address": "", "name": "test", "type": "aws_iam_policy_document",
+	},
+}
