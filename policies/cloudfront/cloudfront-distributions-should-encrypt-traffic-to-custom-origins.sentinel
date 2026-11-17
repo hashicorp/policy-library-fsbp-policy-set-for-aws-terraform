@@ -27,22 +27,20 @@ get_violations = func(resources) {
 		}
 		viewer_protocol_policy = maps.get(default_cache_behavior[0], "viewer_protocol_policy", "")
 
-		origin = maps.get(res.values, "origin", [])
-		if origin is empty or origin[0] is not defined {
-			return true
-		}
-		custom_origin_config = maps.get(origin[0], "custom_origin_config", [])
-		if custom_origin_config is empty or custom_origin_config[0] is not defined {
-			return true
-		}
+		origins = maps.get(res.values, "origin", [])
+		for origins as origin {
+			custom_origin_config = maps.get(origin, "custom_origin_config", [])
+			if custom_origin_config is empty or custom_origin_config[0] is not defined {
+				continue
+			}
 
-		origin_protocol_policy = maps.get(custom_origin_config[0], "origin_protocol_policy", "")
-
-		if viewer_protocol_policy is "allow-all" and origin_protocol_policy is "match-viewer" {
-			return false
+			origin_protocol_policy = maps.get(custom_origin_config[0], "origin_protocol_policy", "")
+			if origin_protocol_policy is "http-only" or
+				(viewer_protocol_policy is "allow-all" and origin_protocol_policy is "match-viewer") {
+				return false
+			}
 		}
-
-		return origin_protocol_policy is not "http-only"
+		return true
 	})
 }
 
