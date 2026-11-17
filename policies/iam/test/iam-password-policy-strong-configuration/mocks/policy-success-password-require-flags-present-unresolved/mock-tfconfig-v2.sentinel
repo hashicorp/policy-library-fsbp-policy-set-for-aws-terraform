@@ -1,0 +1,40 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"module.identity[\"primary\"].aws_iam_account_password_policy.policy": {
+		"address": "module.identity[\"primary\"].aws_iam_account_password_policy.policy",
+		"config": {
+			"max_password_age": {
+				"constant_value": 90,
+			},
+			"minimum_password_length": {
+				"constant_value": 14,
+			},
+			"password_reuse_prevention": {
+				"constant_value": 24,
+			},
+			"require_lowercase_characters": {
+				"references": ["var.require_lowercase_characters"],
+			},
+			"require_numbers": {
+				"references": ["var.require_numbers"],
+			},
+			"require_symbols": {
+				"references": ["var.require_symbols"],
+			},
+			"require_uppercase_characters": {
+				"references": ["var.require_uppercase_characters"],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.identity[\"primary\"]",
+		"name":                "policy",
+		"provider_config_key": "module.identity:aws",
+		"provisioners":        [],
+		"type":                "aws_iam_account_password_policy",
+	},
+}
