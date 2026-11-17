@@ -13,6 +13,7 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                  "lambda-functions-should-use-supported-runtimes",
 	"resource_aws_lambda_function": "aws_lambda_function",
+	"package_type":                 "package_type",
 	"runtime":                      "runtime",
 	"message":                      "'aws_lambda_function' runtime settings should match the expected values set for the supported runtimes in each language",
 }
@@ -23,6 +24,10 @@ runtime_expected_values = ["dotnet8", "java21", "java17", "java11", "java8.al2",
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
+		package_type = maps.get(res.values, const.package_type, "Zip")
+		if package_type is "Image" {
+			return true
+		}
 		runtime = maps.get(res.values, const.runtime, null)
 		return runtime in runtime_expected_values
 	})
