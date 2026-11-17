@@ -27,7 +27,7 @@ trace:
 
         → → Overall Result: true
 
-        This result means that all resources have passed the policy check for the policy opensearch-logs-to-cloudwatch.
+        This result means that all resources have passed the policy check for the policy opensearch-update-check.
 
         ✓ Found 0 resource violations
 
@@ -53,7 +53,7 @@ trace:
 
         → → Overall Result: false
 
-        This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy opensearch-logs-to-cloudwatch.
+        This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy opensearch-update-check.
 
         Found 1 resource violations
 
