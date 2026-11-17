@@ -1,0 +1,32 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_db_instance.oracle": {
+			"address":        "aws_db_instance.oracle",
+			"module_address": "",
+			"mode":           "managed",
+			"name":           "oracle",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_db_instance",
+			"values": {
+				"enabled_cloudwatch_logs_exports": ["alert"],
+				"engine": "oracle-ee",
+			},
+		},
+		"aws_db_instance.sqlserver": {
+			"address":        "aws_db_instance.sqlserver",
+			"module_address": "",
+			"mode":           "managed",
+			"name":           "sqlserver",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_db_instance",
+			"values": {
+				"enabled_cloudwatch_logs_exports": ["error"],
+				"engine": "sqlserver-ee",
+			},
+		},
+	},
+}
