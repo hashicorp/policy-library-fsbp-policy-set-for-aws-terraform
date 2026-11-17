@@ -1,0 +1,8 @@
+resource = func(address, type, values) {
+	return {"address": address, "module_address": "", "mode": "managed", "type": type, "values": values}
+}
+planned_values = {"resources": {
+	"aws_guardduty_detector.one":             resource("aws_guardduty_detector.one", "aws_guardduty_detector", {"enable": true, "id": "detector-one"}),
+	"aws_guardduty_detector.two":             resource("aws_guardduty_detector.two", "aws_guardduty_detector", {"enable": true, "id": "detector-two"}),
+	"aws_guardduty_detector_feature.runtime": resource("aws_guardduty_detector_feature.runtime", "aws_guardduty_detector_feature", {"detector_id": "detector-two", "name": "RUNTIME_MONITORING", "status": "ENABLED", "additional_configuration": [{"name": "ECS_FARGATE_AGENT_MANAGEMENT", "status": "ENABLED"}]}),
+}}
