@@ -7,10 +7,12 @@
 # Imports
 
 import "tfstate/v2" as tfstate
+import "tfplan/v2" as tfplan
 import "tfresources" as tf
 import "report" as report
 import "collection" as collection
 import "collection/maps" as maps
+import "json"
 
 # Params
 param blacklistedactionpatterns default ["s3:DeleteBucketPolicy", "s3:PutBucketAcl", "s3:PutBucketPolicy", "s3:PutEncryptionConfiguration", "s3:PutObjectAcl"]
@@ -21,14 +23,28 @@ const = {
 	"policy_name":                      "s3-bucket-policy-restrict-access-to-other-accounts",
 	"message":                          "S3 general purpose bucket policies should restrict access to other AWS accounts",
 	"resource_aws_iam_policy_document": "aws_iam_policy_document",
+	"resource_aws_s3_bucket_policy":    "aws_s3_bucket_policy",
 	"Allow": "Allow",
 }
 
 # Functions
 
-get_violations = func(resources) {
-	return collection.reject(resources, func(res) {
-		statements = maps.get(res, "values.statement", [])
+get_violations = func(bucket_policies, policy_documents) {
+	return collection.reject(bucket_policies, func(bucket_policy) {
+		# The provider normalizes the bucket policy JSON, so compare parsed documents, not strings.
+		policy_json = maps.get(bucket_policy, "values.policy", "")
+		if policy_json is null or policy_json is "" {
+			return true
+		}
+		policy = json.unmarshal(policy_json)
+		document = collection.find(policy_documents, func(candidate) {
+			candidate_json = maps.get(candidate, "values.json", "")
+			return candidate_json is not null and candidate_json is not "" and json.unmarshal(candidate_json) == policy
+		})
+		if document is not defined {
+			return true
+		}
+		statements = maps.get(document, "values.statement", [])
 		if statements is null {
 			return true
 		}
@@ -37,7 +53,7 @@ get_violations = func(resources) {
 			return collection.find(actions, func(action) {
 				return action contains "s3:*" or action in blacklistedactionpatterns
 			}) is defined and
-				maps.get(statement, "effect", "") == const.Allow
+				maps.get(statement, "effect", const.Allow) == const.Allow
 		})
 		return full_access is not defined or full_access is empty
 	})
@@ -45,7 +61,15 @@ get_violations = func(resources) {
 
 iam_policy_document_resources = tf.state(tfstate.resources).type(const.resource_aws_iam_policy_document).resources
 
-violations = get_violations(iam_policy_document_resources)
+# Bucket policies created in this plan are not in state yet, so include planned ones too.
+state_bucket_policies = tf.state(tfstate.resources).type(const.resource_aws_s3_bucket_policy).resources
+state_bucket_policy_addresses = map state_bucket_policies as _, bp { bp.address }
+planned_bucket_policies = filter tf.plan(tfplan.planned_values.resources).type(const.resource_aws_s3_bucket_policy).resources as _, bp {
+	bp.address not in state_bucket_policy_addresses
+}
+bucket_policy_resources = state_bucket_policies + planned_bucket_policies
+
+violations = get_violations(bucket_policy_resources, iam_policy_document_resources)
 
 summary = {
 	"policy_name": const.policy_name,
