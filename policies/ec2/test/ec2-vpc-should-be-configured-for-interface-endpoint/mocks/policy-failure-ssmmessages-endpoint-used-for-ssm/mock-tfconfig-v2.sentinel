@@ -1,0 +1,16 @@
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"aws_vpc.main": {
+		"address": "aws_vpc.main", "config": {}, "mode": "managed", "module_address": "", "name": "main", "type": "aws_vpc",
+	},
+	"aws_vpc_endpoint.ssm_messages": {
+		"address": "aws_vpc_endpoint.ssm_messages", "mode": "managed", "module_address": "", "name": "ssm_messages", "type": "aws_vpc_endpoint",
+		"config": {
+			"service_name":      {"constant_value": "com.amazonaws.us-east-1.ssmmessages"},
+			"vpc_endpoint_type": {"constant_value": "Interface"},
+			"vpc_id":            {"references": ["aws_vpc.main.id", "aws_vpc.main"]},
+		},
+	},
+}
