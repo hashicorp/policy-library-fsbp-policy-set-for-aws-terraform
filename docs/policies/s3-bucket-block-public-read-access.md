@@ -12,6 +12,10 @@ Some use cases may require that everyone on the internet be able to read from yo
 
 This rule is covered by the [s3-bucket-block-public-read-access](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/s3/s3-bucket-block-public-read-access.sentinel) policy.
 
+## Limitations
+
+This policy does not evaluate IAM statement conditions. It determines public read access from the direct principal, action, and effect fields, so a restricting condition does not change the result of that check. Condition-effective access remains unsupported.
+
 ## Policy Results (Pass)
 ```bash
 trace:
