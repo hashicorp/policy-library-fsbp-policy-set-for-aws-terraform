@@ -26,7 +26,7 @@ trace:
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy ec2-ebs-snapshot-public-restorable-check-account-level.
+    This result means that all resources have passed the policy check for the policy ec2-subnet-with-auto-assign-public-ip-disabled.
 
     ✓ Found 0 resource violations
 
@@ -52,7 +52,7 @@ trace:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy ec2-ebs-snapshot-public-restorable-check-account-level.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy ec2-subnet-with-auto-assign-public-ip-disabled.
 
     Found 1 resource violations
 
