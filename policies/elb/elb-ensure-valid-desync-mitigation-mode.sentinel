@@ -63,7 +63,7 @@ summary = {
 		{
 			"address":        res.address,
 			"module_address": res.module_address,
-			"message":        const.message,
+			"message":        message,
 		}
 	},
 }
