@@ -21,16 +21,14 @@ const = {
 
 # Functions
 
-get_violations = func(resources) {
-	return collection.reject(resources, func(res) {
-		resource_arn = maps.get(res, "config.resource_arn", {})
-		if resource_arn is not defined {
-			return false
-		}
-		references = maps.get(resource_arn, "references", [])
-		for references as _, val {
-			if strings.has_prefix(val, "aws_api_gateway_stage") {
-				return true
+get_violations = func(stages, associations) {
+	return collection.reject(stages, func(stage) {
+		for associations as _, association {
+			references = maps.get(association, "config.resource_arn.references", [])
+			for references as _, reference {
+				if reference is stage.address or strings.has_prefix(reference, stage.address + ".") {
+					return true
+				}
 			}
 		}
 		return false
@@ -40,7 +38,8 @@ get_violations = func(resources) {
 # Variables
 
 aws_wafv2_web_acl_association = tf.config(tfconfig.resources).type(const.resource_aws_wafv2_web_acl_association).resources
-violations = get_violations(aws_wafv2_web_acl_association)
+aws_api_gateway_stages = tf.config(tfconfig.resources).type(const.resource_aws_api_gateway_stage).resources
+violations = get_violations(aws_api_gateway_stages, aws_wafv2_web_acl_association)
 
 summary = {
 	"policy_name": const.policy_name,

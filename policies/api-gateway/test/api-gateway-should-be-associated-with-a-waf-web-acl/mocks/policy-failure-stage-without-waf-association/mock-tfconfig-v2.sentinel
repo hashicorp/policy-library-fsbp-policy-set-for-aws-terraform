@@ -1,0 +1,18 @@
+import "strings"
+
+providers = {}
+resources = {
+	"aws_api_gateway_stage.missing": {
+		"address":        "aws_api_gateway_stage.missing",
+		"config":         {},
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "missing",
+		"type":           "aws_api_gateway_stage",
+	},
+}
+provisioners = {}
+variables = {}
+outputs = {}
+module_calls = {}
+strip_index = func(addr) { return strings.split(addr, "[")[0] }

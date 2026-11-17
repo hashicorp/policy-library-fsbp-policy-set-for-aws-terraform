@@ -12,6 +12,12 @@ AWS WAF is a web application firewall that helps protect web applications and AP
 
 This rule is covered by the [api-gateway-should-be-associated-with-a-waf-web-acl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/api-gateway/api-gateway-should-be-associated-with-a-waf-web-acl.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, an association to an API Gateway stage cannot be established when `resource_arn` is supplied as a literal ARN rather than a Terraform reference to the stage. The policy currently reports the stage as a violation in this case. This result does not verify whether the deployed stage is associated with a WAF web ACL.
+
+With the current Sentinel imports used by this policy, the association reference cannot be matched to a stage declared inside a module, because the reference is module-local while the stage address includes the module path. The policy currently reports such a stage as a violation. This result does not verify whether a module-declared stage is associated with a WAF web ACL.
+
 ## Policy Results (Pass)
 ```bash
 trace:
