@@ -13,24 +13,33 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                             "guardduty-eks-protection-runtime-should-be-enabled",
+	"resource_aws_guardduty_detector":         "aws_guardduty_detector",
 	"resource_aws_guardduty_detector_feature": "aws_guardduty_detector_feature",
 	"message": "'aws_guardduty_detector_feature' EKS Runtime Monitoring with automated agent management should be enabled",
 }
 
 # Functions
 
-get_violations = func(resources) {
-	return collection.reject(resources, func(res) {
-		name = maps.get(res.values, "name", "")
-		status = maps.get(res.values, "status", "")
-		return name is "EKS_RUNTIME_MONITORING" and status is "ENABLED"
+get_violations = func(detectors, features) {
+	return collection.reject(detectors, func(detector) {
+		if maps.get(detector, "values.enable", true) is not true {
+			return false
+		}
+		detector_id = maps.get(detector, "values.id", "")
+		matching_features = filter features as _, feature {
+			maps.get(feature, "values.detector_id", "") is detector_id and
+				maps.get(feature, "values.name", "") is "EKS_RUNTIME_MONITORING" and
+				maps.get(feature, "values.status", "") is "ENABLED"
+		}
+		return matching_features is not empty
 	})
 }
 
 # Variables
 
+aws_guardduty_detector = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_guardduty_detector).resources
 aws_guardduty_detector_feature = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_guardduty_detector_feature).resources
-violations = get_violations(aws_guardduty_detector_feature)
+violations = get_violations(aws_guardduty_detector, aws_guardduty_detector_feature)
 
 summary = {
 	"policy_name": const.policy_name,
