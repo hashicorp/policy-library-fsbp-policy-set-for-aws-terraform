@@ -1,0 +1,4 @@
+resources = {
+	"aws_autoscaling_attachment.example": {"address": "aws_autoscaling_attachment.example", "config": {"autoscaling_group_name": {"constant_value": "example-asg"}, "lb_target_group_arn": {"constant_value": "arn:aws:elasticloadbalancing:us-east-1:123456789012:targetgroup/example/123"}}, "mode": "managed", "module_address": "", "name": "example", "type": "aws_autoscaling_attachment"},
+	"aws_autoscaling_group.example":      {"address": "aws_autoscaling_group.example", "config": {"name": {"constant_value": "example-asg"}, "health_check_type": {"constant_value": "EC2"}}, "mode": "managed", "module_address": "", "name": "example", "type": "aws_autoscaling_group"},
+}

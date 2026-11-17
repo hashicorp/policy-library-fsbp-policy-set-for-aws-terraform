@@ -21,7 +21,8 @@ const = {
 	"resource_aws_autoscaling_group":      "aws_autoscaling_group",
 	"resource_aws_autoscaling_attachment": "aws_autoscaling_attachment",
 	"health_check_type":                   "health_check_type",
-	"ELB":                                 "ELB",
+	"lb_target_group_arn":                 "lb_target_group_arn",
+	"ELB": "ELB",
 	"autoscaling_group_name": "autoscaling_group_name",
 	"name":           "name",
 	"constant_value": "constant_value",
@@ -36,6 +37,11 @@ get_violations = func(autoscaling_resources, autoscaling_attachment_resources) {
 	}
 	autoscaling_elb_attached = get_autoscaling_attached_ids(autoscaling_attachment_resources)
 	return collection.reject(autoscaling_resources, func(res) {
+		name = maps.get(res, "config.name.constant_value", "")
+		is_attached = res.address in autoscaling_elb_attached or name in autoscaling_elb_attached
+		if not is_attached {
+			return true
+		}
 		health_check_values = maps.get(res, "config." + const.health_check_type, {})
 		if health_check_values is empty {
 			return false
@@ -44,26 +50,29 @@ get_violations = func(autoscaling_resources, autoscaling_attachment_resources) {
 		if maps.get(health_check_values, const.constant_value, "") is const.ELB {
 			autoscaling_complaint = true
 		}
-		return autoscaling_complaint and res.address in autoscaling_elb_attached
+		return autoscaling_complaint
 	})
 }
 
 get_autoscaling_attached_ids = func(autoscaling_attachment_resources) {
 	autoscaling_elb_attached = collection.reject(autoscaling_attachment_resources, func(res) {
 		elb_attached = maps.get(res.config, "elb", [])
-		return elb_attached is empty or elb_attached is not defined
+		target_group_attached = maps.get(res.config, const.lb_target_group_arn, [])
+		return (elb_attached is empty or elb_attached is not defined) and
+			(target_group_attached is empty or target_group_attached is not defined)
 	})
 	return map autoscaling_elb_attached as _, res {
-		get_referenced_resource_address(res, "config.autoscaling_group_name")
+		get_resource_address_or_name(res, "config.autoscaling_group_name")
 	}
 }
 
-get_referenced_resource_address = func(res, attr) {
-	references_list = maps.get(res, attr, [])
-	if references_list.references is empty {
-		return ""
+get_resource_address_or_name = func(res, attr) {
+	attribute = maps.get(res, attr, {})
+	references_list = maps.get(attribute, "references", [])
+	if references_list is empty {
+		return maps.get(attribute, const.constant_value, "")
 	}
-	referenced_address = references_list.references[1]
+	referenced_address = references_list[1]
 	if strings.has_prefix(res.address, const.module_prefix) {
 		referenced_address = res.module_address + "." + referenced_address
 	}
