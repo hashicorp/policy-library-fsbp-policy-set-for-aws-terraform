@@ -12,6 +12,12 @@ Logging DNS queries for a Route 53 hosted zone addresses DNS security and compli
 
 This rule is covered by the [route-53-public-hosted-zones-should-log-dns-queries](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, a query log cannot be associated with a managed public zone when the query log's `zone_id` is supplied as a literal value rather than a Terraform reference to that zone. The policy currently reports the zone as a violation in this case. This result does not verify whether DNS query logging is enabled for the deployed zone.
+
+With the current Sentinel imports used by this policy, the query log reference cannot be matched to a zone declared inside a module, because the reference is module-local while the zone address includes the module path. The policy currently reports such a zone as a violation. This result does not verify whether DNS query logging is enabled for a module-declared zone.
+
 ## Policy Results (Pass)
 
 ```bash

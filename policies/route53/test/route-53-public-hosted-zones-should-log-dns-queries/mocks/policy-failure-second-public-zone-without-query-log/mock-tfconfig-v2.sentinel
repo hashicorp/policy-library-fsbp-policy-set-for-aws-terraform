@@ -1,0 +1,24 @@
+import "strings"
+
+providers = {}
+resources = {
+	"aws_route53_zone.logged": {
+		"address": "aws_route53_zone.logged", "config": {}, "mode": "managed", "module_address": "", "name": "logged", "type": "aws_route53_zone",
+	},
+	"aws_route53_zone.missing": {
+		"address": "aws_route53_zone.missing", "config": {}, "mode": "managed", "module_address": "", "name": "missing", "type": "aws_route53_zone",
+	},
+	"aws_route53_query_log.logged": {
+		"address": "aws_route53_query_log.logged",
+		"config": {
+			"cloudwatch_log_group_arn": {"constant_value": "arn:aws:logs:us-east-1:123456789012:log-group:/aws/route53/logged"},
+			"zone_id":                  {"references": ["aws_route53_zone.logged.zone_id", "aws_route53_zone.logged"]},
+		},
+		"mode": "managed", "module_address": "", "name": "logged", "type": "aws_route53_query_log",
+	},
+}
+provisioners = {}
+variables = {}
+outputs = {}
+module_calls = {}
+strip_index = func(addr) { return strings.split(addr, "[")[0] }
