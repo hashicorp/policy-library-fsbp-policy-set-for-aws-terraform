@@ -1,0 +1,15 @@
+planned_values = {
+	"resources": {
+		"aws_cloudfront_distribution.ordered_allow_all": {
+			"address":        "aws_cloudfront_distribution.ordered_allow_all",
+			"module_address": "",
+			"name":           "ordered_allow_all",
+			"mode":           "managed",
+			"type":           "aws_cloudfront_distribution",
+			"values": {
+				"default_cache_behavior": [{"viewer_protocol_policy": "redirect-to-https"}],
+				"ordered_cache_behavior": [{"viewer_protocol_policy": "allow-all"}],
+			},
+		},
+	},
+}

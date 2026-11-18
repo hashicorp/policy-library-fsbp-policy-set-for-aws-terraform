@@ -37,29 +37,31 @@ s3_bucket_names = get_bucket_names()
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
+		origins = maps.get(res.config, "origin", [])
+		applicable_origins = filter origins as origin {
+			maps.get(origin, "custom_origin_config", []) is empty
+		}
+		if applicable_origins is empty {
+			return true
+		}
 		if s3_bucket_names is empty {
 			return false
 		}
-		origin = maps.get(res.config, "origin", [])
-		if origin is empty {
-			return false
-		}
-		domain_name = maps.get(origin[0], "domain_name", [])
-		if domain_name is empty {
-			return false
-		}
-		references = maps.get(domain_name, "references", [])
-		if references is empty {
-			return false
-		}
-		for references as ref {
-			bucket_name_split = strings.split(ref, ".")
-			if bucket_name_split is empty or length(bucket_name_split) < 2 {
-				return false
-			}
-			bucket_name = bucket_name_split[0] + "." + bucket_name_split[1]
-			if s3_bucket_names not contains bucket_name {
-				return false
+		for applicable_origins as origin {
+			domain_name = maps.get(origin, "domain_name", {})
+			references = maps.get(domain_name, "references", [])
+			for references as ref {
+				if ref not matches "(^|\\.)aws_s3_bucket\\." {
+					continue
+				}
+				bucket_name_split = strings.split(ref, ".")
+				if length(bucket_name_split) < 2 {
+					return false
+				}
+				bucket_name = bucket_name_split[0] + "." + bucket_name_split[1]
+				if s3_bucket_names not contains bucket_name {
+					return false
+				}
 			}
 		}
 		return true

@@ -1,0 +1,14 @@
+resources = {
+	"aws_cloudfront_distribution.literal_waf": {
+		"address":        "aws_cloudfront_distribution.literal_waf",
+		"module_address": "",
+		"name":           "literal_waf",
+		"mode":           "managed",
+		"type":           "aws_cloudfront_distribution",
+		"config": {
+			"web_acl_id": {
+				"constant_value": "arn:aws:wafv2:us-east-1:123456789012:global/webacl/example/id",
+			},
+		},
+	},
+}

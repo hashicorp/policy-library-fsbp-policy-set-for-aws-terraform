@@ -1,0 +1,18 @@
+planned_values = {
+	"resources": {
+		"aws_cloudfront_distribution.two_custom_origins": {
+			"address":        "aws_cloudfront_distribution.two_custom_origins",
+			"module_address": "",
+			"name":           "two_custom_origins",
+			"mode":           "managed",
+			"type":           "aws_cloudfront_distribution",
+			"values": {
+				"default_cache_behavior": [{"viewer_protocol_policy": "redirect-to-https"}],
+				"origin": [
+					{"custom_origin_config": [{"origin_protocol_policy": "https-only"}]},
+					{"custom_origin_config": [{"origin_protocol_policy": "http-only"}]},
+				],
+			},
+		},
+	},
+}

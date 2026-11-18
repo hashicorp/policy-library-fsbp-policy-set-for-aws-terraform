@@ -1,0 +1,17 @@
+planned_values = {
+	"resources": {
+		"aws_cloudfront_distribution.default": {
+			"address":        "aws_cloudfront_distribution.default",
+			"module_address": "",
+			"name":           "default",
+			"mode":           "managed",
+			"type":           "aws_cloudfront_distribution",
+			"values": {
+				"viewer_certificate": [{
+					"cloudfront_default_certificate": true,
+					"ssl_support_method":             null,
+				}],
+			},
+		},
+	},
+}
