@@ -52,10 +52,8 @@ planned_values = {
 				"enable_global_write_forwarding":   false,
 				"enable_http_endpoint":             false,
 				"enable_local_write_forwarding":    false,
-				"enabled_cloudwatch_logs_exports": [
-					"postgresql",
-				],
-				"engine":                              "aurora-postgresql",
+				"enabled_cloudwatch_logs_exports":  null,
+				"engine":                              "aurora-mysql",
 				"engine_mode":                         "provisioned",
 				"engine_version":                      "13.6",
 				"final_snapshot_identifier":           null,

@@ -32,7 +32,7 @@ violations = collection.reject(rds_cluster_resources, func(res) {
 
 	# Only apply to Aurora PostgreSQL clusters
 	if engine != "aurora-postgresql" {
-		return false
+		return true
 	}
 
 	# Check if PostgreSQL logs are exported to CloudWatch Logs

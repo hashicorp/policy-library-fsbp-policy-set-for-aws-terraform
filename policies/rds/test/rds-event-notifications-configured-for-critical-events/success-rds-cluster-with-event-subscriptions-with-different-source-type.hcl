@@ -27,8 +27,8 @@ mock "report" {
 	}
 }
 
-test {
-	rules = {
-		main = true
+	test {
+		rules = {
+			main = false
+		}
 	}
-}

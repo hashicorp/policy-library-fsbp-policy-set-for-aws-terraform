@@ -1,0 +1,10 @@
+resources = {
+	"aws_db_event_subscription.all": {
+		"address": "aws_db_event_subscription.all",
+		"config": {
+			"event_categories": {"constant_value": []},
+			"source_type":      {"constant_value": "db-cluster"},
+		},
+		"type": "aws_db_event_subscription",
+	},
+}

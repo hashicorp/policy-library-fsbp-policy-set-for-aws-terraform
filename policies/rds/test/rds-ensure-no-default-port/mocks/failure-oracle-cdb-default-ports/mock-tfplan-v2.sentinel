@@ -1,0 +1,32 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_db_instance.oracle_ee_cdb": {
+			"address":        "aws_db_instance.oracle_ee_cdb",
+			"module_address": "",
+			"mode":           "managed",
+			"name":           "oracle_ee_cdb",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_db_instance",
+			"values": {
+				"engine": "oracle-ee-cdb",
+				"port":   1521,
+			},
+		},
+		"aws_db_instance.oracle_se2_cdb": {
+			"address":        "aws_db_instance.oracle_se2_cdb",
+			"module_address": "",
+			"mode":           "managed",
+			"name":           "oracle_se2_cdb",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_db_instance",
+			"values": {
+				"engine": "oracle-se2-cdb",
+				"port":   1521,
+			},
+		},
+	},
+}

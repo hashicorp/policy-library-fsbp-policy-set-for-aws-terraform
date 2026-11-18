@@ -12,6 +12,8 @@ DBCluster: ["maintenance","failure"]
 
 The control passes if there are no existing event subscriptions in your account.
 
+An empty or omitted `event_categories` list subscribes to all event categories. An empty or omitted `source_ids` list covers every source of the matching `source_type`. When `source_ids` contains literal identifiers, the policy compares them with the protected resource identifier (`cluster_identifier` for clusters, `identifier` for DB instances, and `name` for parameter and security groups); a subscription for a different source type does not cover the resource.
+
 RDS event notifications uses Amazon SNS to make you aware of changes in the availability or configuration of your RDS resources. These notifications allow for rapid response. For additional information about RDS event notifications, see Using Amazon RDS event notification in the Amazon RDS User Guide.
 
 This rule is covered by the [rds-event-notifications-configured-for-critical-events](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/rds/rds-event-notifications-configured-for-critical-events.sentinel) policy.

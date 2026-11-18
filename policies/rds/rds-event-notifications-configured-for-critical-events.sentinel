@@ -35,6 +35,13 @@ event_categories_list = {
 	"db-security-group":  ["configuration change", "failure"],
 }
 
+source_identifier_attributes = {
+	"db-cluster":         "cluster_identifier",
+	"db-instance":        "identifier",
+	"db-parameter-group": "name",
+	"db-security-group":  "name",
+}
+
 # Functions
 
 # Removes module address prefix from a resource
@@ -60,31 +67,40 @@ get_valid_rds_resource_ids = func(event_subscription_resources, config_resources
 		return ["all"]
 	}
 	for event_subscription_resources as res {
+		if maps.get(res, "values.source_type", "") is not source_type {
+			continue
+		}
+
 		res_address = maps.get(res, "address", "")
 		event_subscription_config_resource = config_resources.address(res_address).resources[0]
-		source_ids = maps.get(event_subscription_config_resource, "config.source_ids", [])
+		source_ids = maps.get(event_subscription_config_resource, "config.source_ids", {})
 		source_ids_reference = maps.get(source_ids, "references", [])
-		if source_ids_reference is empty {
-			source_ids_reference = ["all"]
-		}
-		if maps.get(res, "values.source_type", "") is not source_type {
-			valid_source_ids += source_ids_reference
-			continue
+		literal_source_ids = maps.get(res, "values.source_ids", [])
+		if literal_source_ids is null {
+			literal_source_ids = []
 		}
 
 		is_event_category_list_specified_in_resource = true
 		resource_event_categories = maps.get(res, "values.event_categories", [])
+		if resource_event_categories is null {
+			resource_event_categories = []
+		}
 
 		# Check if the event categories list specified in the resource contains the required event categories specified in the aws control
 		for event_categories_list[source_type] as event_category {
-			if event_category not in resource_event_categories {
+			if resource_event_categories is not empty and event_category not in resource_event_categories {
 				is_event_category_list_specified_in_resource = false
 			}
 		}
 
 		# If the event categories specified matches the aws control, than the resource is valid
 		if is_event_category_list_specified_in_resource is true {
-			valid_source_ids += source_ids_reference
+			if source_ids_reference is empty and literal_source_ids is empty {
+				valid_source_ids += ["all"]
+			} else {
+				valid_source_ids += source_ids_reference
+				valid_source_ids += literal_source_ids
+			}
 		}
 	}
 	return valid_source_ids
@@ -105,7 +121,9 @@ violations += collection.reject(resources, func(res) {
 	if valid_source_ids contains "all" {
 		return true
 	}
-	return valid_source_ids contains resource_address
+	resource_identifier_attribute = source_identifier_attributes[source_type]
+	resource_identifier = maps.get(res, "values." + resource_identifier_attribute, "")
+	return valid_source_ids contains resource_address or valid_source_ids contains resource_identifier
 })
 
 summary = {

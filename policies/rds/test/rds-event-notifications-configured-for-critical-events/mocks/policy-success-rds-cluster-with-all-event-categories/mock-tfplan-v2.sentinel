@@ -1,0 +1,19 @@
+planned_values = {
+	"resources": {
+		"aws_db_event_subscription.all": {
+			"address":        "aws_db_event_subscription.all",
+			"module_address": "",
+			"type":           "aws_db_event_subscription",
+			"values": {
+				"event_categories": [],
+				"source_type":      "db-cluster",
+			},
+		},
+		"aws_rds_cluster.default": {
+			"address":        "aws_rds_cluster.default",
+			"module_address": "",
+			"type":           "aws_rds_cluster",
+			"values":         {"cluster_identifier": "cluster-default"},
+		},
+	},
+}
