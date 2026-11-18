@@ -14,6 +14,12 @@ GuardDuty Runtime Monitoring observes and analyzes operating system-level, netwo
 
 This rule is covered by the [guardduty-ecs-protection-runtime-enabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/guardduty/guardduty-ecs-protection-runtime-enabled.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, organization-managed ECS-Fargate Runtime Monitoring state cannot be established when the relevant detector and detector feature resources are not present in the Terraform configuration. The policy currently evaluates only configured `aws_guardduty_detector` resources and their `RUNTIME_MONITORING` feature with `ECS_FARGATE_AGENT_MANAGEMENT` in this case. This result does not verify ECS-Fargate Runtime Monitoring for externally or centrally managed organization accounts.
+
+With the current Sentinel imports used by this policy, a detector feature cannot be tied to a specific detector when the detector is created in the same plan, because the detector ID is unknown until apply. The policy currently matches such features by their unknown (empty) detector ID, so with several new detectors in one plan, one detector's feature can satisfy another. This result does not verify per-detector feature coverage for detectors created in the same plan.
+
 ## Policy Results (Pass)
 ```bash
 trace:

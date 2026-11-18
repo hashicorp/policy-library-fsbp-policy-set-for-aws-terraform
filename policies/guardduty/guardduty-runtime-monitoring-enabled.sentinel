@@ -26,18 +26,18 @@ const = {
 detector_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_guardduty_detector).resources
 feature_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_guardduty_detector_feature).resources
 
-# Check if GuardDuty detector is enabled
-detector_violations = collection.reject(detector_resources, func(res) {
-	return maps.get(res, "values.enable", true) is true
+violations = collection.reject(detector_resources, func(detector) {
+	if maps.get(detector, "values.enable", true) is not true {
+		return false
+	}
+	detector_id = maps.get(detector, "values.id", "")
+	matching_features = filter feature_resources as _, feature {
+		maps.get(feature, "values.detector_id", "") is detector_id and
+			maps.get(feature, "values.name", "") is "RUNTIME_MONITORING" and
+			maps.get(feature, "values.status", "") is "ENABLED"
+	}
+	return matching_features is not empty
 })
-
-# Check if Runtime Monitoring feature is enabled
-feature_violations = collection.reject(feature_resources, func(res) {
-	return maps.get(res, "values.name", "") == "RUNTIME_MONITORING" and
-		maps.get(res, "values.status", "") == "ENABLED"
-})
-
-violations = detector_violations + feature_violations
 
 summary = {
 	"policy_name": const.policy_name,

@@ -1,0 +1,8 @@
+resource = func(address, type, values) {
+	return {"address": address, "module_address": "", "mode": "managed", "type": type, "values": values}
+}
+planned_values = {"resources": {
+	"aws_guardduty_detector.one":               resource("aws_guardduty_detector.one", "aws_guardduty_detector", {"enable": true, "id": "detector-one"}),
+	"aws_guardduty_detector_feature.eks":       resource("aws_guardduty_detector_feature.eks", "aws_guardduty_detector_feature", {"detector_id": "detector-one", "name": "EKS_RUNTIME_MONITORING", "status": "ENABLED"}),
+	"aws_guardduty_detector_feature.unrelated": resource("aws_guardduty_detector_feature.unrelated", "aws_guardduty_detector_feature", {"detector_id": "detector-one", "name": "S3_DATA_EVENTS", "status": "ENABLED"}),
+}}
