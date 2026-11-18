@@ -1,0 +1,22 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_iam_account_password_policy.omitted_require_flags": {
+			"address":        "aws_iam_account_password_policy.omitted_require_flags",
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "omitted_require_flags",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_iam_account_password_policy",
+			"values": {
+				"allow_users_to_change_password": true,
+				"max_password_age":               90,
+				"minimum_password_length":        14,
+				"password_reuse_prevention":      24,
+			},
+		},
+	},
+}

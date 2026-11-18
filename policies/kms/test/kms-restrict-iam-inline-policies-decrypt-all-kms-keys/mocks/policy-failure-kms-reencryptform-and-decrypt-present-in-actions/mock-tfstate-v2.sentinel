@@ -41,7 +41,7 @@ resources = {
 					"not_resources":  [],
 					"principals":     [],
 					"resources": [
-						"arn:aws:s3:::*",
+						"*",
 					],
 					"sid": "1",
 				},

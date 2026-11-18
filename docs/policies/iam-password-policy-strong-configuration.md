@@ -10,6 +10,12 @@ This control checks whether the account password policy for IAM users uses stron
 
 This rule is covered by the [iam-password-policy-strong-configuration](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/iam/iam-password-policy-strong-configuration.sentinel) policy.
 
+## Limitations
+
+The policy correlates each planned `aws_iam_account_password_policy` resource with its exact `tfconfig/v2` address. When configuration proves that any of `require_lowercase_characters`, `require_uppercase_characters`, `require_numbers`, or `require_symbols` was omitted, the policy evaluates the provider's omitted value as `false`; explicit planned boolean values are evaluated against the corresponding policy parameters.
+
+With the current Sentinel imports used by this policy, the eventual value of a configured but unresolved password requirement cannot be established when planned values omit the attribute. The policy retains its original fallback for that case, and also when no matching configuration resource is available. If an unresolved attribute is present as explicit `null` in planned values, the original explicit-null behavior is retained and the resource fails. These fallback results do not verify the eventual password-policy flag value.
+
 ## Policy Results (Pass)
 ```bash
 trace:
