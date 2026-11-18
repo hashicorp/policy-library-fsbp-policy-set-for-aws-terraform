@@ -12,6 +12,10 @@ An Auto Scaling group that doesn't span multiple AZs can't launch instances in a
 
 This rule is covered by the [autoscaling-group-should-cover-multiple-azs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/autoscaling-group/autoscaling-group-should-cover-multiple-azs.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, the Availability Zones of subnets cannot be established when `vpc_zone_identifier` contains literal external subnet IDs or references subnets whose `availability_zone` is not present in the Terraform configuration. The policy currently fails literal subnet lists and preserves its existing subnet-reference count result when referenced subnet AZ evidence is unavailable. This result does not verify that the Auto Scaling group spans distinct Availability Zones.
+
 ## Policy Results (Pass)
 
 ```bash

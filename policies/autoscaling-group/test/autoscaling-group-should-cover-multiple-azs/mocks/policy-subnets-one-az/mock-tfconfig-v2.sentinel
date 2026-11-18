@@ -1,0 +1,5 @@
+resources = {
+	"aws_autoscaling_group.example": {"address": "aws_autoscaling_group.example", "config": {"vpc_zone_identifier": {"references": ["aws_subnet.a.id", "aws_subnet.a", "aws_subnet.b.id", "aws_subnet.b"]}}, "mode": "managed", "module_address": "", "name": "example", "type": "aws_autoscaling_group"},
+	"aws_subnet.a":                  {"address": "aws_subnet.a", "config": {"availability_zone": {"constant_value": "us-east-1a"}}, "mode": "managed", "module_address": "", "name": "a", "type": "aws_subnet"},
+	"aws_subnet.b":                  {"address": "aws_subnet.b", "config": {"availability_zone": {"constant_value": "us-east-1a"}}, "mode": "managed", "module_address": "", "name": "b", "type": "aws_subnet"},
+}

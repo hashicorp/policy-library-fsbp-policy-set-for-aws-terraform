@@ -1,0 +1,4 @@
+planned_values = {"outputs": {}, "resources": {
+	"aws_lb.this":           {"address": "aws_lb.this", "module_address": "", "mode": "managed", "name": "this", "type": "aws_lb", "values": {"load_balancer_type": "application"}},
+	"aws_lb_listener.https": {"address": "aws_lb_listener.https", "module_address": "", "mode": "managed", "name": "https", "type": "aws_lb_listener", "values": {"port": 443, "protocol": "HTTPS", "default_action": [{"type": "forward", "redirect": []}]}},
+}}

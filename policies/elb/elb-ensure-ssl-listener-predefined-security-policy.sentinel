@@ -20,6 +20,7 @@ const = {
 	"resource_aws_load_balancer_policy":          "aws_load_balancer_policy",
 	"resource_aws_load_balancer_listener_policy": "aws_load_balancer_listener_policy",
 	"predefined_policy_name":                     "ELBSecurityPolicy-TLS-1-2-2017-01",
+	"reference_security_policy":                  "Reference-Security-Policy",
 	"module_prefix":                              "module.",
 	"allowed_protocols":                          ["https", "ssl"],
 	"message":                                    "Classic Load Balancers with SSL listeners should use a predefined security policy that has strong AWS Configuration",
@@ -51,7 +52,11 @@ plan_resources = tf.plan(tfplan.planned_values.resources)
 load_balancer_policies = plan_resources.type(const.resource_aws_load_balancer_policy).resources
 
 load_balancer_policy_resources_with_expected_policy = collection.reject(load_balancer_policies, func(res) {
-	return maps.get(res, "values.policy_type_name", "") is not const.predefined_policy_name
+	policy_attributes = maps.get(res, "values.policy_attribute", [])
+	return collection.find(policy_attributes, func(attribute) {
+		return maps.get(attribute, "name", "") is const.reference_security_policy and
+			maps.get(attribute, "value", "") is const.predefined_policy_name
+	}) is not defined
 })
 
 // Filter out the addresses
