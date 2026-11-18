@@ -29,7 +29,7 @@ const = {
 	"vpc_endpoint_type":         "vpc_endpoint_type",
 	"service_name":              "service_name",
 	"interface":                 "Interface",
-	"regex":                     "^com.amazonaws.(.*).",
+	"regex":                     "^com\\.amazonaws\\.[^.]+\\.",
 	"references":                "references",
 	"address":                   "address",
 	"module_prefix":             "module.",
@@ -72,7 +72,7 @@ get_complaint_resources = func(vpc_endpoint_resources) {
 		if service_name_values is null or service_name_values is empty {
 			return true
 		}
-		regex = const.regex + service_name
+		regex = const.regex + service_name + "$"
 		return maps.get(endpoint_type_values, "constant_value", false) is not const.interface or maps.get(service_name_values, "constant_value", "") not matches regex
 	})
 }

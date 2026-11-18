@@ -1,0 +1,17 @@
+# Copyright IBM Corp. 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"aws_ami.paravirtual": {
+		"address": "aws_ami.paravirtual", "mode": "managed", "module_address": "", "name": "paravirtual", "type": "aws_ami",
+		"config": {"virtualization_type": {"constant_value": "paravirtual"}},
+	},
+	"aws_ami.hvm": {
+		"address": "aws_ami.hvm", "mode": "managed", "module_address": "", "name": "hvm", "type": "aws_ami",
+		"config": {"virtualization_type": {"constant_value": "hvm"}},
+	},
+	"aws_instance.example": {
+		"address": "aws_instance.example", "mode": "managed", "module_address": "", "name": "example", "type": "aws_instance",
+		"config": {"ami": {"references": ["aws_ami.paravirtual.id", "aws_ami.paravirtual"]}},
+	},
+}

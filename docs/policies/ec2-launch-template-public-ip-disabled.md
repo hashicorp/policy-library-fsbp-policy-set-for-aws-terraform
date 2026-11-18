@@ -12,6 +12,8 @@ A public IP address is one that is reachable from the internet. If you configure
 
 This rule is covered by the [ec2-launch-template-public-ip-disabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ec2/ec2-launch-template-public-ip-disabled.sentinel) policy.
 
+Launch templates without a `network_interfaces` block pass because they do not explicitly enable public-IP association. When the block is present, every interface must set `associate_public_ip_address` to `false`.
+
 ## Policy Results (Pass)
 
 ```bash

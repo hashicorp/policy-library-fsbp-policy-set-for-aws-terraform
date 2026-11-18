@@ -27,7 +27,7 @@ get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
 		network_interfaces_values = maps.get(res, "values.network_interfaces", [])
 		if network_interfaces_values is empty {
-			return false
+			return true
 		}
 		return collection.reject(network_interfaces_values, func(network_interfaces_value) {
 			return maps.get(network_interfaces_value, const.associate_public_ip_address, true) is "false"
