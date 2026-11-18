@@ -1,18 +1,16 @@
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
-mock "tfplan/v2" {
+mock "tfconfig/v2" {
 	module {
-		source = "./mocks/policy-failure-msk-with-no-in-cluster-node-attribute/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-failure-sns-topic-policy-aws-wildcard-omitted-allow/mock-tfconfig-v2.sentinel"
 	}
 }
 
-
-
 mock "tfresources" {
-  module {
-    source = "../../../../modules/tfresources/tfresources.sentinel"
-  }
+	module {
+		source = "../../../../modules/tfresources/tfresources.sentinel"
+	}
 }
 
 mock "report" {

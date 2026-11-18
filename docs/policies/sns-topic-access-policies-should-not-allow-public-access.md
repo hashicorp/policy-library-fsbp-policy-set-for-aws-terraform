@@ -12,6 +12,10 @@ You use an Amazon SNS access policy with a particular topic to restrict who can 
 
 This rule is covered by the [sns-topic-access-policies-should-not-allow-public-access](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/sns/sns-topic-access-policies-should-not-allow-public-access.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, whether a principal is public cannot be established when its type or identifiers are unresolved expressions. The policy currently does not classify that principal as public in this case. This result does not verify that access is restricted to known principals.
+
 ## Policy Results (Pass)
 
 ```bash

@@ -6,8 +6,8 @@ terraform_version = "1.10.2"
 planned_values = {
 	"outputs": {},
 	"resources": {
-		"aws_iam_policy_document.test": {
-			"address":        "aws_iam_policy_document.test",
+		"data.aws_iam_policy_document.test": {
+			"address":        "data.aws_iam_policy_document.test",
 			"depends_on":     [],
 			"deposed_key":    "",
 			"index":          null,

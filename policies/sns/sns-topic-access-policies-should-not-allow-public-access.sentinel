@@ -31,8 +31,8 @@ is_policy_public = func(statements) {
 	}
 
 	for statements as statement {
-		effect = maps.get(statement, "effect.constant_value", "")
-		if effect is null or effect == "" {
+		effect = maps.get(statement, "effect.constant_value", "Allow")
+		if effect is not "Allow" {
 			continue
 		}
 
@@ -47,8 +47,8 @@ is_policy_public = func(statements) {
 			if type is "*" {
 				return true
 			}
-			identifiers = maps.get(principal, "identifiers.constant_value", [])
-			if conditions is [] and identifiers is [] {
+			identifiers = maps.get(principal, "identifiers.constant_value", null)
+			if conditions is [] and type is "AWS" and identifiers is not null and "*" in identifiers {
 				return true
 			}
 		}

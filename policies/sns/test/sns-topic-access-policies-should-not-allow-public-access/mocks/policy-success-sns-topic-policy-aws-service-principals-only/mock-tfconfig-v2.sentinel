@@ -83,11 +83,11 @@ resources = {
 						{
 							"identifiers": {
 								"constant_value": [
-									"*",
+									"sns.amazonaws.com",
 								],
 							},
 							"type": {
-								"constant_value": "AWS",
+								"constant_value": "Service",
 							},
 						},
 					],
