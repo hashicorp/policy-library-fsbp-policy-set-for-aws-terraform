@@ -1,0 +1,15 @@
+import "strings"
+
+providers = {}
+resources = {
+	"aws_route53_zone.private": {
+		"address": "aws_route53_zone.private",
+		"config":  {"vpc": [{"vpc_id": {"constant_value": "vpc-0123456789abcdef0"}}]},
+		"mode":    "managed", "module_address": "", "name": "private", "type": "aws_route53_zone",
+	},
+}
+provisioners = {}
+variables = {}
+outputs = {}
+module_calls = {}
+strip_index = func(addr) { return strings.split(addr, "[")[0] }

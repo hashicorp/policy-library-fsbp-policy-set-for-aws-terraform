@@ -22,12 +22,18 @@ const = {
 # Functions
 
 get_violations = func(resources) {
-	return collection.reject(resources, func(res) {
+	stateless_resources = filter resources as _, res {
+		maps.get(res, "values.type", "") is "STATELESS"
+	}
+	return collection.reject(stateless_resources, func(res) {
 		rule_group = maps.get(res, "values.rule_group", [])
 		if rule_group is empty {
 			return false
 		}
 		rules_source = maps.get(rule_group[0], const.rules_source, [])
+		if rules_source is empty {
+			return false
+		}
 		stateless_rules = maps.get(rules_source[0], const.stateless_rules_and_custom_actions, [])
 		return stateless_rules is not empty
 	})

@@ -1,0 +1,22 @@
+import "strings"
+
+providers = {}
+resources = {
+	"aws_wafv2_web_acl_association.alb": {
+		"address": "aws_wafv2_web_acl_association.alb",
+		"config": {
+			"resource_arn": {
+				"references": ["aws_lb.example.arn", "aws_lb.example"],
+			},
+		},
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "alb",
+		"type":           "aws_wafv2_web_acl_association",
+	},
+}
+provisioners = {}
+variables = {}
+outputs = {}
+module_calls = {}
+strip_index = func(addr) { return strings.split(addr, "[")[0] }

@@ -18,28 +18,28 @@ const = {
 	"policy_name":                    "route-53-public-hosted-zones-should-log-dns-queries",
 	"message":                        "Route 53 public hosted zones should log DNS queries",
 	"resource_aws_route53_query_log": "aws_route53_query_log",
+	"resource_aws_route53_zone":      "aws_route53_zone",
 }
 
 # Variables
 
 route53_query_log_resources = tf.config(tfconfig.resources).type(const.resource_aws_route53_query_log).resources
+route53_zone_resources = tf.config(tfconfig.resources).type(const.resource_aws_route53_zone).resources
 
-violations = collection.reject(route53_query_log_resources, func(res) {
-	config = maps.get(res, "config", {})
-	if config is {} or config is null {
-		return false
-	}
-	cloudwatch_log_group_arn = maps.get(config, "cloudwatch_log_group_arn", {})
-	constant_value = maps.get(cloudwatch_log_group_arn, "constant_value", "")
-	references = maps.get(cloudwatch_log_group_arn, "references", [])
-	if references is [] and (constant_value == "" or constant_value is null) {
-		return false
-	}
-	if (constant_value != "" and constant_value is not null) {
-		return true
-	}
-	if references is not [] {
-		return true
+public_zones = filter route53_zone_resources as _, zone {
+	maps.get(zone, "config.vpc", []) is empty
+}
+
+violations = collection.reject(public_zones, func(zone) {
+	for route53_query_log_resources as _, query_log {
+		references = maps.get(query_log, "config.zone_id.references", [])
+		cloudwatch_log_group_arn = maps.get(query_log, "config.cloudwatch_log_group_arn", {})
+		constant_value = maps.get(cloudwatch_log_group_arn, "constant_value", "")
+		arn_references = maps.get(cloudwatch_log_group_arn, "references", [])
+		has_log_group = arn_references is not empty or (constant_value is not null and constant_value != "")
+		if has_log_group and (zone.address in references or zone.address + ".zone_id" in references) {
+			return true
+		}
 	}
 	return false
 })

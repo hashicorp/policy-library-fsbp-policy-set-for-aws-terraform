@@ -6,8 +6,6 @@
 
 ## Description
 
-DISCLAIMER - This policy works when all resources of type aws_appsync_graphql_api and aws_appsync_api_cache are present in the root module.
-
 This control checks whether an AWS AppSync API cache is encrypted at rest. The control fails if the API cache isn't encrypted at rest.
 
 Data at rest refers to data that's stored in persistent, non-volatile storage for any duration. Encrypting data at rest helps you protect its confidentiality, which reduces the risk that an unauthorized user can access it.
@@ -60,7 +58,7 @@ trace:
         Found 1 resource violations
 
         → Module name: root
-        ↳ Resource Address: aws_appsync_graphql_api.example
+        ↳ Resource Address: aws_appsync_api_cache.example
             | ✗ failed
             | AWS AppSync API caches should be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-1 for more details.
 
