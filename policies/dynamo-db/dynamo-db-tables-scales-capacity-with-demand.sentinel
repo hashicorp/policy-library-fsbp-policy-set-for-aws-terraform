@@ -95,7 +95,7 @@ violations = collection.reject(dynamodb_tables, func(table) {
 	return scaling_target_exists(read_scaling_targets, table, min_read_capacity, max_read_capacity) and
 		scaling_target_exists(write_scaling_targets, table, min_write_capacity, max_write_capacity) and
 		scaling_policy_exists(find_scaling_policies_by_metric("DynamoDBReadCapacityUtilization"), table, min_target_read_utilization, max_target_read_utilization) and
-		scaling_policy_exists(find_scaling_policies_by_metric("DynamoDBWriteCapacityUtilization"), table, min_target_read_utilization, max_target_write_utilization)
+		scaling_policy_exists(find_scaling_policies_by_metric("DynamoDBWriteCapacityUtilization"), table, min_target_write_utilization, max_target_write_utilization)
 })
 
 summary = {

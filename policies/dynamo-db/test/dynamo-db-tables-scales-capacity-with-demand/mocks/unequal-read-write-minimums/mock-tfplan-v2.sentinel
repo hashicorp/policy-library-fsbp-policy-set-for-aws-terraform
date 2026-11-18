@@ -1,0 +1,26 @@
+terraform_version = "1.9.4"
+
+planned_values = {
+	"resources": {
+		"aws_dynamodb_table.main": {
+			"address": "aws_dynamodb_table.main", "module_address": "", "type": "aws_dynamodb_table",
+			"values": {"name": "example", "billing_mode": "PROVISIONED"},
+		},
+		"aws_appautoscaling_target.read": {
+			"address": "aws_appautoscaling_target.read", "module_address": "", "type": "aws_appautoscaling_target",
+			"values": {"resource_id": "table/example", "scalable_dimension": "dynamodb:table:ReadCapacityUnits", "min_capacity": 1, "max_capacity": 100},
+		},
+		"aws_appautoscaling_target.write": {
+			"address": "aws_appautoscaling_target.write", "module_address": "", "type": "aws_appautoscaling_target",
+			"values": {"resource_id": "table/example", "scalable_dimension": "dynamodb:table:WriteCapacityUnits", "min_capacity": 1, "max_capacity": 100},
+		},
+		"aws_appautoscaling_policy.read": {
+			"address": "aws_appautoscaling_policy.read", "module_address": "", "type": "aws_appautoscaling_policy",
+			"values": {"resource_id": "table/example", "target_tracking_scaling_policy_configuration": [{"target_value": 85, "predefined_metric_specification": [{"predefined_metric_type": "DynamoDBReadCapacityUtilization"}]}]},
+		},
+		"aws_appautoscaling_policy.write": {
+			"address": "aws_appautoscaling_policy.write", "module_address": "", "type": "aws_appautoscaling_policy",
+			"values": {"resource_id": "table/example", "target_tracking_scaling_policy_configuration": [{"target_value": 70, "predefined_metric_specification": [{"predefined_metric_type": "DynamoDBWriteCapacityUtilization"}]}]},
+		},
+	},
+}

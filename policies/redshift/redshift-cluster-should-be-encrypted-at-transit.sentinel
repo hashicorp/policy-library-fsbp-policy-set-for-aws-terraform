@@ -30,9 +30,13 @@ const = {
 get_violations = func(redshift_cluster_resources, redshift_parameter_group_resources, config_resources) {
 	return collection.reject(redshift_cluster_resources, func(res) {
 		redshift_cluster_config_resources = config_resources.type(const.resource_aws_redshift_cluster).resources
+		redshift_cluster_address_without_module = resource_address_without_module_address(res)
+		redshift_cluster_config_resource = collection.find(redshift_cluster_config_resources, func(cluster_config_resource) {
+			return resource_address_without_module_address(cluster_config_resource) is redshift_cluster_address_without_module
+		})
 
 		# Extract the address of resource aws_redshift_parameter_group which is refereced to the resource aws_redshift_cluster
-		redshift_cluster_referenced_parameter_group_address = maps.get(redshift_cluster_config_resources[0], "config.cluster_parameter_group_name.references", "")
+		redshift_cluster_referenced_parameter_group_address = maps.get(redshift_cluster_config_resource, "config.cluster_parameter_group_name.references", "")
 		if redshift_cluster_referenced_parameter_group_address is empty {
 			return false
 		}

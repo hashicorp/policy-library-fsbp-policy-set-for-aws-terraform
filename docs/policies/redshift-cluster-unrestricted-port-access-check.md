@@ -12,6 +12,10 @@ Permitting unrestricted inbound access to the Redshift cluster port (IP address 
 
 This rule is covered by the [redshift-cluster-unrestricted-port-access-check](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/redshift/redshift-cluster-unrestricted-port-access-check.sentinel) policy.
 
+## Limitations
+
+With the current Sentinel imports used by this policy, a security group cannot be matched to a Redshift cluster when the group ID or the cluster's `vpc_security_group_ids` are unknown at plan time, for example when both are created in the same plan. The policy currently keeps its earlier behavior in this case and reports any security group rule open to `0.0.0.0/0` or `::/0` as a violation, regardless of port or attachment. This result does not verify whether the open rule is attached to a Redshift cluster.
+
 ## Policy Results (Pass)
 
 ```bash

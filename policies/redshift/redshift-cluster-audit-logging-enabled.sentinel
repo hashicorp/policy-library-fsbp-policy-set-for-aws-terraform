@@ -40,9 +40,12 @@ redshift_cluster_referenced_to_logging = func(redshift_cluster, config_resources
 		return false
 	}
 	# Check if the redshift cluster is referenced to the redshift cluster logging resource
-	redshift_logging_referenced_to_redshift_cluster_resources = redshift_cluster_logging_config_resources[0].config.cluster_identifier.references[-1]
 	redshift_cluster_address_without_module_prefix = resource_address_without_module_address(redshift_cluster)
-	return redshift_logging_referenced_to_redshift_cluster_resources is redshift_cluster_address_without_module_prefix
+	return collection.find(redshift_cluster_logging_config_resources, func(logging_config_resource) {
+		redshift_logging_referenced_to_redshift_cluster_resource = maps.get(logging_config_resource, "config.cluster_identifier.references", [])
+		return redshift_logging_referenced_to_redshift_cluster_resource is not empty and
+			redshift_logging_referenced_to_redshift_cluster_resource[-1] is redshift_cluster_address_without_module_prefix
+	}) is defined
 }
 
 # Removes module address prefix from a resource

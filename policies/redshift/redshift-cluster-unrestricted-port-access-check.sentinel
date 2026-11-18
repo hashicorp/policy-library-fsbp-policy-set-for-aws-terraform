@@ -19,13 +19,14 @@ const = {
 	"resource_security_group_rule":             "aws_security_group_rule",
 	"resource_security_group":                  "aws_security_group",
 	"resource_vpc_security_group_ingress_rule": "aws_vpc_security_group_ingress_rule",
-	"ingress":          "ingress",
-	"cidr_blocks":      "cidr_blocks",
-	"cidr_ipv4":        "cidr_ipv4",
-	"cidr_ipv6":        "cidr_ipv6",
-	"ipv6_cidr_blocks": "ipv6_cidr_blocks",
-	"from_port":        "from_port",
-	"to_port":          "to_port",
+	"resource_redshift_cluster":                "aws_redshift_cluster",
+	"ingress":                                  "ingress",
+	"cidr_blocks":                              "cidr_blocks",
+	"cidr_ipv4":                                "cidr_ipv4",
+	"cidr_ipv6":                                "cidr_ipv6",
+	"ipv6_cidr_blocks":                         "ipv6_cidr_blocks",
+	"from_port":                                "from_port",
+	"to_port":                                  "to_port",
 }
 
 # Functions
@@ -50,27 +51,52 @@ is_ingress_rule_violation = func(ingress, ipv4_cidr, ipv6_cidr) {
 	return contains_catchall_ip(maps.get(ingress, ipv4_cidr, ""), maps.get(ingress, ipv6_cidr, ""))
 }
 
+contains_cluster_port = func(ingress_rule, cluster_port) {
+	return maps.get(ingress_rule, const.from_port, cluster_port + 1) <= cluster_port and
+		maps.get(ingress_rule, const.to_port, cluster_port - 1) >= cluster_port
+}
+
+is_attached_group_rule_violation = func(ingress_rule, security_group_id, redshift_clusters) {
+	if redshift_clusters is empty {
+		return false
+	}
+	attachment_unresolved = security_group_id is "" or any redshift_clusters as _, cluster {
+		maps.get(cluster.values, "vpc_security_group_ids", []) is empty
+	}
+	if attachment_unresolved {
+		return true
+	}
+	return collection.find(redshift_clusters, func(cluster) {
+		return maps.get(cluster.values, "vpc_security_group_ids", []) contains security_group_id and
+			contains_cluster_port(ingress_rule, maps.get(cluster.values, "port", 5439))
+	}) is defined
+}
+
 # Variables
 
 plan_resources = tf.plan(tfplan.planned_values.resources)
+redshift_clusters = plan_resources.type(const.resource_redshift_cluster).resources
 
 resources = plan_resources.type(const.resource_security_group_rule).resources
 aws_security_group_rule_violations = collection.reject(resources, func(res) {
 	return not (is_ingress_rule(maps.get(res.values, "type", "")) and
-		is_ingress_rule_violation(res.values, const.cidr_blocks, const.ipv6_cidr_blocks))
+		is_ingress_rule_violation(res.values, const.cidr_blocks, const.ipv6_cidr_blocks) and
+		is_attached_group_rule_violation(res.values, maps.get(res.values, "security_group_id", ""), redshift_clusters))
 })
 
 resources = plan_resources.type(const.resource_security_group).resources
 aws_security_group_violations = collection.reject(resources, func(res) {
 	ingress_data = maps.get(res.values, "ingress", [])
 	return collection.find(ingress_data, func(ingress) {
-		return is_ingress_rule_violation(ingress, const.cidr_blocks, const.ipv6_cidr_blocks)
+		return is_ingress_rule_violation(ingress, const.cidr_blocks, const.ipv6_cidr_blocks) and
+			is_attached_group_rule_violation(ingress, maps.get(res.values, "id", ""), redshift_clusters)
 	}) is not defined
 })
 
 resources = plan_resources.type(const.resource_vpc_security_group_ingress_rule).resources
 aws_vpc_security_group_ingress_rule_violations = collection.reject(resources, func(res) {
-	return not is_ingress_rule_violation(res.values, const.cidr_ipv4, const.cidr_ipv6)
+	return not (is_ingress_rule_violation(res.values, const.cidr_ipv4, const.cidr_ipv6) and
+		is_attached_group_rule_violation(res.values, maps.get(res.values, "security_group_id", ""), redshift_clusters))
 })
 
 violations = aws_security_group_rule_violations + aws_security_group_violations + aws_vpc_security_group_ingress_rule_violations
