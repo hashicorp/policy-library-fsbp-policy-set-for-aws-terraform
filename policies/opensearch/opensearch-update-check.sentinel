@@ -13,7 +13,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                    "opensearch-logs-to-cloudwatch",
+	"policy_name":                    "opensearch-update-check",
 	"message":                        "Attribute 'auto_software_update_enabled' in 'software_update_options' should be true for AWS OpenSearch Domain",
 	"resource_aws_opensearch_domain": "aws_opensearch_domain",
 	"auto_software_update_enabled":   "auto_software_update_enabled",

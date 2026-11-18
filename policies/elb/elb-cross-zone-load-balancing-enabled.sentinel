@@ -13,7 +13,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":      "elb-connection-draining-enabled",
+	"policy_name":      "elb-cross-zone-load-balancing-enabled",
 	"message":          "Classic load balancers should have cross zone load balancing enabled",
 	"resource_aws_elb": "aws_elb",
 }

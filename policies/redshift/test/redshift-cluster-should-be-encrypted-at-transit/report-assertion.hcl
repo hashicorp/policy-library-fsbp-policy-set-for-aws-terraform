@@ -1,0 +1,34 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+mock "tfplan/v2" {
+	module {
+		source = "./mocks/policy-failure-redshift-cluster-parameter-having-require-ssl-set-to-false/mock-tfplan-v2.sentinel"
+	}
+}
+
+
+mock "tfconfig/v2" {
+	module {
+		source = "./mocks/policy-failure-redshift-cluster-parameter-having-require-ssl-set-to-false/mock-tfconfig-v2.sentinel"
+	}
+}
+
+
+mock "tfresources" {
+  module {
+    source = "../../../../modules/tfresources/tfresources.sentinel"
+  }
+}
+
+mock "report" {
+	module {
+		source = "./mocks/report-assertion/report.sentinel"
+	}
+}
+
+test {
+	rules = {
+		main = false
+	}
+}

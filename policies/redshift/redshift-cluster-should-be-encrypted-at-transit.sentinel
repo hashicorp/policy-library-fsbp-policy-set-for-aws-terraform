@@ -16,7 +16,7 @@ import "strings"
 
 # Constants
 const = {
-	"policy_name":                           "redshift-cluster-public-access-check",
+	"policy_name":                           "redshift-cluster-should-be-encrypted-at-transit",
 	"message":                               "Parameter 'require_ssl' should be true for AWS Redshift Parameter Group",
 	"resource_aws_redshift_cluster":         "aws_redshift_cluster",
 	"resource_aws_redshift_parameter_group": "aws_redshift_parameter_group",

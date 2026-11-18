@@ -14,7 +14,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                                "elasticache-redis-replication-group-encryption-at-rest-enabled",
+	"policy_name":                                "elasticache-redis-replication-group-encryption-at-transit-enabled",
 	"resource_aws_elasticache_replication_group": "aws_elasticache_replication_group",
 }
 
