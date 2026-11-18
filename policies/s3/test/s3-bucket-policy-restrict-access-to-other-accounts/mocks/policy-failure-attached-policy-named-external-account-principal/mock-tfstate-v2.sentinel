@@ -1,0 +1,42 @@
+# Copyright IBM Corp. 2024, 2025
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.9.4"
+
+outputs = {}
+
+resources = {
+	"data.aws_iam_policy_document.policy": {
+		"address":        "data.aws_iam_policy_document.policy",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "",
+		"name":           "policy",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_iam_policy_document",
+		"values": {
+			"id":                        "named-external-account",
+			"json":                      "{\"Version\": \"2012-10-17\", \"Id\": \"named-external-account\"}",
+			"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:DeleteBucketPolicy\",\"Principal\":{\"AWS\":\"arn:aws:iam::999999999999:root\"},\"Resource\":\"*\"}]}",
+			"override_json":             null,
+			"override_policy_documents": null,
+			"policy_id":                 null,
+			"source_json":               null,
+			"source_policy_documents":   null,
+			"statement": [{
+				"actions": ["s3:DeleteBucketPolicy"], "condition": [], "effect": "Allow",
+				"not_actions": [], "not_principals": [], "not_resources": [],
+				"principals": [{"type": "AWS", "identifiers": ["arn:aws:iam::999999999999:root"]}],
+				"resources":  ["*"], "sid": "",
+			}],
+			"version": "2012-10-17",
+		},
+	},
+	"aws_s3_bucket_policy.attached": {
+		"address": "aws_s3_bucket_policy.attached", "mode": "managed", "module_address": "", "type": "aws_s3_bucket_policy",
+		"values": {"policy": "{\"Version\": \"2012-10-17\", \"Id\": \"named-external-account\"}"},
+	},
+}

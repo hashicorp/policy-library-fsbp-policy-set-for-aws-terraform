@@ -6,8 +6,8 @@ terraform_version = "1.9.4"
 outputs = {}
 
 resources = {
-	"aws_iam_policy_document.policy": {
-		"address":        "aws_iam_policy_document.policy",
+	"data.aws_iam_policy_document.policy": {
+		"address":        "data.aws_iam_policy_document.policy",
 		"depends_on":     [],
 		"deposed_key":    "",
 		"index":          null,
@@ -19,7 +19,7 @@ resources = {
 		"type":           "aws_iam_policy_document",
 		"values": {
 			"id":                        "2090251874",
-			"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+			"json":                      "{\"Version\": \"2012-10-17\", \"Id\": \"identity\"}",
 			"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"s3:GetObject\",\"Resource\":\"*\"}]}",
 			"override_json":             null,
 			"override_policy_documents": null,
@@ -29,7 +29,7 @@ resources = {
 			"statement": [
 				{
 					"actions": [
-						"s3:GetObject",
+						"s3:DeleteBucketPolicy",
 					],
 					"condition":      [],
 					"effect":         "Allow",
@@ -45,5 +45,9 @@ resources = {
 			],
 			"version": "2012-10-17",
 		},
+	},
+	"aws_s3_bucket_policy.attached": {
+		"address": "aws_s3_bucket_policy.attached", "mode": "managed", "module_address": "", "type": "aws_s3_bucket_policy",
+		"values": {"policy": "{\"Version\": \"2012-10-17\", \"Id\": \"different-attached\"}"},
 	},
 }

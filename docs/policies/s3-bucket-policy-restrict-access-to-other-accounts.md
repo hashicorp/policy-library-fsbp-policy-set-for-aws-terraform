@@ -12,6 +12,14 @@ Implementing least privilege access is fundamental to reducing security risk and
 
 This rule is covered by the [s3-bucket-policy-restrict-access-to-other-accounts](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/s3/s3-bucket-policy-restrict-access-to-other-accounts.sentinel) policy.
 
+## Limitations
+
+The policy evaluates `aws_s3_bucket_policy` resources from state and from the plan, and links each one to an `aws_iam_policy_document` data source whose rendered JSON matches the bucket policy. With the current Sentinel imports used by this policy, that link cannot be established when the bucket policy is written as inline JSON rather than from a policy document data source, or when the document is only rendered at apply time (for example, because it references a bucket ARN that is unknown until apply). The policy currently does not evaluate such bucket policies. This result does not verify them.
+
+With the current Sentinel imports used by this policy, the owning AWS account cannot be established. To preserve the policy's existing handling of unknown account ownership, any bucket-attached policy document containing an Allow statement for a restricted S3 action is rejected, whether its principal is wildcard, a named principal from the bucket owner's account, or a named principal from another account. The policy therefore cannot distinguish same-account from cross-account grants and remains intentionally overbroad; it does not provide full cross-account correctness.
+
+With the current Sentinel imports used by this policy, the effective access granted by IAM conditions cannot be established when evaluating condition-dependent principals. The policy currently preserves its direct principal and action checks in this case. This result does not verify the full effective IAM authorization decision.
+
 ## Policy Results (Pass)
 ```bash
 trace:
@@ -53,7 +61,7 @@ trace:
         Found 1 resource violations
 
         → Module name: root
-        ↳ Resource Address: aws_iam_policy_document.policy
+        ↳ Resource Address: aws_s3_bucket_policy.attached
             | ✗ failed
             | S3 general purpose bucket policies should restrict access to other AWS accounts. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-6 for more details.
 

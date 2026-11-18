@@ -6,8 +6,8 @@ terraform_version = "1.9.4"
 outputs = {}
 
 resources = {
-	"aws_iam_policy_document.policy": {
-		"address":        "aws_iam_policy_document.policy",
+	"data.aws_iam_policy_document.policy": {
+		"address":        "data.aws_iam_policy_document.policy",
 		"depends_on":     [],
 		"deposed_key":    "",
 		"index":          null,
@@ -45,5 +45,9 @@ resources = {
 			],
 			"version": "2012-10-17",
 		},
+	},
+	"aws_s3_bucket_policy.attached": {
+		"address": "aws_s3_bucket_policy.attached", "mode": "managed", "module_address": "", "type": "aws_s3_bucket_policy",
+		"values": {"policy": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Deny\",\n      \"Action\": \"s3:DeleteBucketPolicy\",\n      \"Resource\": \"*\"\n    }\n  ]\n}"},
 	},
 }

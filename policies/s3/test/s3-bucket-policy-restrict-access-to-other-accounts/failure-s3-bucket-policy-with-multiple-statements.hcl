@@ -1,6 +1,12 @@
 # Copyright IBM Corp. 2024, 2025
 # SPDX-License-Identifier: BUSL-1.1
 
+mock "tfplan/v2" {
+	module {
+		source = "./mocks/empty-tfplan/mock-tfplan-v2.sentinel"
+	}
+}
+
 mock "tfstate/v2" {
 	module {
 		source = "./mocks/policy-failure-s3-bucket-policy-with-multiple-statements/mock-tfstate-v2.sentinel"
