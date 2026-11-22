@@ -1,7 +1,7 @@
 # This control checks whether an 'aws_cloudfront_distribution' is configured with an origin group that has two or more origins.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-4 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

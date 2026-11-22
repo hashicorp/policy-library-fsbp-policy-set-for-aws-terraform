@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_elasticsearch_domain` have the `dedicated_master_count` atleast 3 and 'dedicated_master_enabled' set to true for `cluster_config` attribute.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/es-controls.html#es-7 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Import

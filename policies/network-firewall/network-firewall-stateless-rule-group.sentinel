@@ -1,7 +1,7 @@
 # This policy checks if a stateless rule group in 'aws_networkfirewall_rule_group' contains rules
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-6 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 import "tfplan/v2" as tfplan

@@ -1,7 +1,7 @@
 # This policy requires attribute 'backup_retention_period' to be greater than or equal to 7 for 'aws_neptune_cluster' resources
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-5 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports

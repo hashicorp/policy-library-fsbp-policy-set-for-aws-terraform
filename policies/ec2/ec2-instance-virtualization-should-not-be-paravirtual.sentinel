@@ -1,7 +1,7 @@
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-24 for more details.
 // This policy requires `aws_ami` resources to have attribute 'virtualization_type' to be 'hvm'.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 // Imports

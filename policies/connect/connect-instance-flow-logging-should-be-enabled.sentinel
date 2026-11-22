@@ -1,7 +1,7 @@
 # This policy requires resources of type `aws_connect_instance` have attribute `contact_flow_logs_enabled` should be true.
 # Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/connect-controls.html#connect-2 for more details.
 
-# Copyright IBM Corp. 2024, 2025
+# Copyright IBM Corp. 2024, 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 # Imports
