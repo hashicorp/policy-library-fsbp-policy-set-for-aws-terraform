@@ -10,6 +10,12 @@ This control checks whether an AWS AppSync API has field-level logging turned on
 
 This rule is covered by the [appsync-field-level-logging-should-be-enabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/appsync/appsync-field-level-logging-should-be-enabled.sentinel) policy.
 
+## Parameters
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `field_log_level_options` | Field logging level. A GraphQL API passes when its field resolver log level is one of these levels. | `list(string)` | `["ERROR", "ALL"]` | `{ allowed_values: ["ERROR", "ALL", "INFO", "DEBUG"], min_items: 1 }` |
+
 ## Policy Results (Pass)
 
 ```bash

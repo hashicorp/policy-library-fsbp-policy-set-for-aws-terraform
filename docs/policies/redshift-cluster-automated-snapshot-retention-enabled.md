@@ -12,6 +12,12 @@ Backups help you to recover more quickly from a security incident. They strength
 
 This rule is covered by the [redshift-cluster-automated-snapshot-retention-enabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel) policy.
 
+## Parameters
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `automated_snapshot_retention_period_lower_limit` | Minimum snapshot retention period in days | `number` | `7` | `{ min: 7, max: 35, integer: true }` |
+
 ## Policy Results (Pass)
 
 ```bash

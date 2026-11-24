@@ -12,6 +12,12 @@ Backups help you recover more quickly from a security incident and strengthen th
 
 This rule is covered by the [docdb-cluster-backup-retention-check](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/docdb/docdb-cluster-backup-retention-check.sentinel) policy.
 
+## Parameters
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `backup_retention_period_lower_limit` | Minimum backup retention period in days | `number` | `7` | `{ min: 7, max: 35, integer: true }` |
+
 ## Policy Results (Pass)
 
 ```bash

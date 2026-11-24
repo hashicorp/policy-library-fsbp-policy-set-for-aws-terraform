@@ -12,6 +12,12 @@ A Classic Load Balancer can be set up to distribute incoming requests across Ama
 
 This rule is covered by the [elb-ensure-multi-az-configuration-classic-load-balancer](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elb/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel) policy.
 
+## Parameters
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `min_availability_zones` | Minimum number of Availability Zones | `number` | `2` | `{ allowed_values: [2, 3, 4, 5, 6] }` |
+
 ## Policy Results (Pass)
 ```bash
 trace:
