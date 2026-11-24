@@ -14,13 +14,9 @@ This rule is covered by the [redshift-cluster-automated-snapshot-retention-enabl
 
 ## Parameters
 
-Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-3).
-
 | Parameter | Description | Type | Default | Constraints |
 | --- | --- | --- | --- | --- |
 | `automated_snapshot_retention_period_lower_limit` | Minimum snapshot retention period in days | `number` | `7` | `{ min: 7, max: 35, integer: true }` |
-
-The policy also has a fixed upper limit of 35 days (`automated_snapshot_retention_period_upper_limit`) that is not customizable.
 
 ## Policy Results (Pass)
 

@@ -13,8 +13,6 @@ This rule is covered by the [dynamo-db-tables-scales-capacity-with-demand](https
 
 ## Parameters
 
-Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-1).
-
 | Parameter | Description | Type | Default | Constraints |
 | --- | --- | --- | --- | --- |
 | `min_read_capacity` | Minimum number of provisioned read capacity units for DynamoDB auto scaling | `number` | `1` | `{ min: 1, max: 40000, integer: true }` |

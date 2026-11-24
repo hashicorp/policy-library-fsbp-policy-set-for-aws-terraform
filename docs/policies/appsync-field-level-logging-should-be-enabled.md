@@ -12,8 +12,6 @@ This rule is covered by the [appsync-field-level-logging-should-be-enabled](http
 
 ## Parameters
 
-Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/appsync-controls.html#appsync-2).
-
 | Parameter | Description | Type | Default | Constraints |
 | --- | --- | --- | --- | --- |
 | `field_log_level_options` | Field logging level. A GraphQL API passes when its field resolver log level is one of these levels. | `list(string)` | `["ERROR", "ALL"]` | `{ allowed_values: ["ERROR", "ALL", "INFO", "DEBUG"], min_items: 1 }` |

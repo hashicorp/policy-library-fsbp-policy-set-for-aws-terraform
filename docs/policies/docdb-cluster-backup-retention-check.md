@@ -14,13 +14,9 @@ This rule is covered by the [docdb-cluster-backup-retention-check](https://githu
 
 ## Parameters
 
-Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/documentdb-controls.html#documentdb-2).
-
 | Parameter | Description | Type | Default | Constraints |
 | --- | --- | --- | --- | --- |
 | `backup_retention_period_lower_limit` | Minimum backup retention period in days | `number` | `7` | `{ min: 7, max: 35, integer: true }` |
-
-The policy also has a fixed upper limit of 35 days (`backup_retention_period_upper_limit`) that is not customizable.
 
 ## Policy Results (Pass)
 

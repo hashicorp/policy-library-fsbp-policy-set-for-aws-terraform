@@ -14,8 +14,6 @@ This rule is covered by the [elb-ensure-multi-az-configuration-classic-load-bala
 
 ## Parameters
 
-Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-10).
-
 | Parameter | Description | Type | Default | Constraints |
 | --- | --- | --- | --- | --- |
 | `min_availability_zones` | Minimum number of Availability Zones | `number` | `2` | `{ allowed_values: [2, 3, 4, 5, 6] }` |
