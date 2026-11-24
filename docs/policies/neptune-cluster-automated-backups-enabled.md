@@ -10,6 +10,14 @@ This control checks whether a Neptune DB cluster has automated backups enabled, 
 
 This rule is covered by the [neptune-cluster-automated-backups-enabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/neptune/neptune-cluster-automated-backups-enabled.sentinel) policy.
 
+## Parameters
+
+Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-5).
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `backup_retention_period` | Minimum backup retention period in days | `number` | `7` | `{ min: 7, max: 35, integer: true }` |
+
 ## Policy Results (Pass)
 ```bash
 trace:

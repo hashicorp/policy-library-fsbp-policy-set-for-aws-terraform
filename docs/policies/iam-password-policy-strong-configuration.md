@@ -10,6 +10,18 @@ This control checks whether the account password policy for IAM users uses stron
 
 This rule is covered by the [iam-password-policy-strong-configuration](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/iam/iam-password-policy-strong-configuration.sentinel) policy.
 
+## Parameters
+
+Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/iam-controls.html#iam-7).
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `minimum_password_length_param` | Minimum number of characters in the password | `number` | `8` | `{ min: 8, max: 128, integer: true }` |
+| `min_password_reuse_prevention_param` | Number of password rotations before an old password can be reused | `number` | `12` | `{ min: 12, max: 24, integer: true }` |
+| `max_password_age_param` | Number of days before password expiration | `number` | `90` | `{ min: 1, max: 90, integer: true }` |
+
+AWS Security Hub has no default for the password reuse and password age parameters. The defaults above are the values this policy applies.
+
 ## Limitations
 
 The policy correlates each planned `aws_iam_account_password_policy` resource with its exact `tfconfig/v2` address. When configuration proves that any of `require_lowercase_characters`, `require_uppercase_characters`, `require_numbers`, or `require_symbols` was omitted, the policy evaluates the provider's omitted value as `false`; explicit planned boolean values are evaluated against the corresponding policy parameters.

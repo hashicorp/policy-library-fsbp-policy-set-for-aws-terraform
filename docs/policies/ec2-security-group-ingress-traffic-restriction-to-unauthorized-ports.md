@@ -16,6 +16,17 @@ This control checks whether an Amazon EC2 security group permits unrestricted in
 
 This rule is covered by the [ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ec2/ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports.sentinel) policy.
 
+## Parameters
+
+Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-18).
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `authorized_tcp_ports` | List of authorized TCP ports | `list(number)` | `[80, 443]` | `{ min: 1, max: 65535, integer: true, min_items: 1, max_items: 32 }` |
+| `authorized_udp_ports` | List of authorized UDP ports | `list(number)` | `[]` | `{ min: 1, max: 65535, integer: true, min_items: 1, max_items: 32 }` |
+
+The default `[]` for `authorized_udp_ports` means no UDP port is authorized.
+
 ## Policy Results (Pass)
 ```bash
 trace:

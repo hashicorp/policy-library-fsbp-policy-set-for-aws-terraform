@@ -12,6 +12,16 @@ Backups help you recover more quickly from a security incident and strengthen th
 
 This rule is covered by the [docdb-cluster-backup-retention-check](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/docdb/docdb-cluster-backup-retention-check.sentinel) policy.
 
+## Parameters
+
+Custom values are set with `params` in the policy block in [sentinel.hcl](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/sentinel.hcl). Descriptions follow the [AWS Security Hub control reference](https://docs.aws.amazon.com/securityhub/latest/userguide/documentdb-controls.html#documentdb-2).
+
+| Parameter | Description | Type | Default | Constraints |
+| --- | --- | --- | --- | --- |
+| `backup_retention_period_lower_limit` | Minimum backup retention period in days | `number` | `7` | `{ min: 7, max: 34, integer: true }` |
+
+The policy also has a fixed upper limit of 35 days (`backup_retention_period_upper_limit`) that is not customizable. The policy requires the lower limit to be below it, so the lower limit is limited to 34 here, while AWS Security Hub allows 7 to 35.
+
 ## Policy Results (Pass)
 
 ```bash
