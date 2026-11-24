@@ -55,7 +55,7 @@ print(report.generate_policy_report(summary))
 # Rules
 
 check_if_automated_snapshot_retention_limits_are_valid = rule {
-	automated_snapshot_retention_period_lower_limit < automated_snapshot_retention_period_upper_limit
+	automated_snapshot_retention_period_lower_limit <= automated_snapshot_retention_period_upper_limit
 }
 
 check_redshift_cluster_backup_retention_violations = rule {

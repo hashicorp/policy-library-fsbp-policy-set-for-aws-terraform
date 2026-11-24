@@ -55,7 +55,7 @@ print(report.generate_policy_report(summary))
 # Rules
 
 check_if_backup_retention_limits_are_valid = rule {
-	backup_retention_period_lower_limit < backup_retention_period_upper_limit
+	backup_retention_period_lower_limit <= backup_retention_period_upper_limit
 }
 
 check_docdb_cluster_backup_retention_violations = rule {
